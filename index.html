@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>Asheville</title>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <style type="text/css">
+      #intro-area               { float: left; width: 65%; margin-right: 10%; }
+      #connect-area             { float: right; width: 25%; }
+      #connect-area .button     {  }
+      #connect-area .tip        { border-top: 1px solid #dadada; margin-top: 1.5em; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Asheville</h1>
+      <div id="intro-area">
+        <p>Asheville is a service that automatically backs up the content you post on social networks to your Dropbox account.</p>
+        <p>You'll get direct access to the files that constitute your photos, status updates, and other types of posts. And you won't have to worry about losing memories should these social networks ever restrict access to your content.</p>
+        <p>To get started, simply connect your Dropbox account to the right. Or <a href="http://github.com/asheville/spec">learn more</a> about this service on Github.</p>
+      </div>
+      <div id="connect-area">
+        <div class="button">Connect Dropbox</div>
+        <div class="tip">
+          <p>Note: By connecting Dropbox, you are <em>not</em> giving us access to any of the files currently stored in your account.<p>
+          <p>Connecting will simply allow us to start storing data in a new folder on Dropbox for you. We will only be able to read and change files in that specific folder.</p>
+        </div>
+      </div>
+      <div style="clear: both;"></div>
+      <hr />
+      <div style="font-size: 0.9em;">
+        <h2>Interested in using Asheville but would prefer to use a different storage service than Dropbox?</h2>
+        <p>Enter your email address and preferred storage service so we can notify you when it's available.</p>
+        <form>
+          <input type="text" name="email" placeholder="Your email address" />
+          <input type="text" name="storage-name" placeholder="Preferred storage" />
+          <input type="submit" value="Notify Me" />
+        </form>
+        <div class="tip">Alternative storage examples: iCloud, Google Drive, Amazon S3, Box, Adobe Creative Cloud, local drive</div>
+      </div>
+    </div>
+  </body>
+</html>
