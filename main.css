@@ -1,6 +1,6 @@
 body										{ font-family: 'Droid Sans', sans-serif; font-size: 12pt; background: #fafafa; margin: 5%; padding: 0; text-align: center; }
 .container							{ position: relative; text-align: left; margin: auto; padding: 3em; box-sizing: border-box; max-width: 800px; background: white; border: 0.1em #e7e7e7 solid; border-top-color: #ededed; border-left-color: #ededed; }
-h1											{ font-size: 2em; margin: 0 0 0.3em 0; padding: 0; font-weight: bold; }
+h1											{ font-size: 2.5em; margin: 0 0 0.3em 0; padding: 0; font-weight: bold; }
 h2											{ font-size: 1.1em; font-weight: bold; line-height: 1.4em; }
 p												{ line-height: 1.6em; }
 a												{ color: #0078ff; font-weight: bold; text-decoration: none; }
@@ -9,9 +9,18 @@ a:visited								{ color: #0078ff; }
 hr											{ border: none; border-top: 1px solid #dadada; margin: 2em 0 2em 0; }
 form										{ margin: 0 0 1.5em 0; }
 
+label										{ cursor: pointer; }
 input[type=text]				{ font-size: 1em; border: 1px solid #dadada; padding: 0.5em; border-radius: 0.2em; width: 16em; }
+input[type=checkbox]		{ cursor: pointer; }
 
 .button,
-input[type=submit]			{ background: #0078ff; color: white; border-radius: 0.3em; text-align: center; font-size: 1em; font-weight: normal; box-sizing: border-box; padding: 0.5em 1em 0.5em 1em; cursor: pointer; border: 0; }
+input[type=submit]			{ background: #0078ff; box-shadow: 1px 1px 0 #0057b8; color: white; border-radius: 0.3em; text-align: center; font-size: 1em; font-weight: normal; box-sizing: border-box; padding: 0.5em 1em 0.5em 1em; cursor: pointer; border: 0; display: inline-block; }
 .tip										{ font-size: .8em; color: #6a6a6a; }
 .tip em									{ color: black; font-style: italic; font-weight: bold; }
+
+.notice									{ position: relative; text-align: left; margin: auto; max-width: 800px; padding: 0.8em 1em 0.8em 3em; margin-bottom: 1.5em; box-sizing: border-box; }
+.notice-success					{ color: white; border: 0.1em solid #61e47c; border-bottom: 1px solid #3acd59; border-right: 1px solid #3acd59; background: #61e47c url(images/icon-check.png) 0.6em 0.5em no-repeat; }
+
+table										{ width: 100%; }
+th											{ text-align: left; font-weight: normal; opacity: 0.5; font-size: 0.9em; border-bottom: 1px solid #a8a8a8; padding-bottom: 0.5em; }
+td											{ vertical-align: top; padding: 0.5em 0 0.5em 0; }
