@@ -15,11 +15,13 @@ input[type=checkbox]		{ cursor: pointer; }
 
 .button,
 input[type=submit]			{ background: #0078ff; box-shadow: 1px 1px 0 #0057b8; color: white; border-radius: 0.3em; text-align: center; font-size: 1em; font-weight: normal; box-sizing: border-box; padding: 0.5em 1em 0.5em 1em; cursor: pointer; border: 0; display: inline-block; }
+.button:hover,
+input[type=submit]:hover	{ background: #228aff; }
 .tip										{ font-size: .8em; color: #6a6a6a; }
 .tip em									{ color: black; font-style: italic; font-weight: bold; }
 
 .notice									{ position: relative; text-align: left; margin: auto; max-width: 800px; padding: 0.8em 1em 0.8em 3em; margin-bottom: 1.5em; box-sizing: border-box; }
-.notice-success					{ color: white; border: 0.1em solid #61e47c; border-bottom: 1px solid #3acd59; border-right: 1px solid #3acd59; background: #61e47c url(images/icon-check.png) 0.6em 0.5em no-repeat; }
+.notice-success					{ color: white; border: 0.1em solid #47d564; border-bottom: 1px solid #2dc04b; border-right: 1px solid #2dc04b; background: #47d564 url(images/icon-check.png) 0.6em 0.5em no-repeat; }
 
 table										{ width: 100%; }
 th											{ text-align: left; font-weight: normal; opacity: 0.5; font-size: 0.9em; border-bottom: 1px solid #a8a8a8; padding-bottom: 0.5em; }
