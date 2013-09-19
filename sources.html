@@ -4,14 +4,17 @@
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="main.css" />
     <style type="text/css">
+      body                          { margin-bottom: 10%; }
       td                            { border-bottom: 1px solid #ececec; }
       td ul                         { list-style: none; padding: 0; margin: 0; }
-      td li                         { padding: 0; margin: 0; font-size: 0.9em; }
+      td li                         { padding: 0; margin: 0; font-size: 0.8em; }
       #content-type-options         { float: right; font-size: 0.8em; }
+      #continue-area                { position: fixed; bottom: 0; left: 0; z-index: 10; background: url(images/backgrounds/white-gradient1.png) top left repeat-x; background-size: 100% 100%; width: 100%; height: 5em; box-shadow: 0px -1px 4px #d8dee5; box-sizing: border-box; padding: 1.8em; color: #08b92c; font-size: 1em; }
+      #continue-area .button        { margin-top: -0.5em; font-size: 1.05em; }
     </style>
   </head>
   <body>
-    <div class="notice notice-success">Dropbox connected successfully!</div>
+    <div class="notice notice-success"><img src="images/icon-check.png" />Dropbox connected successfully!</div>
     <div class="container">
       <h1>Connect social networks</h1>
       <p>Now that you've connected your Dropbox account, we need you to connect at least one social network so we can start backing up your content from it.</p>
@@ -31,7 +34,7 @@
         </thead>
         <tr>
           <td>Facebook</td>
-          <td><span class="button">Connect Facebook</span></td>
+          <td><span class="button" style="font-size: 0.8em;">Connect Facebook</span></td>
           <td>
             <ul style="float: left;">
               <li><input type="checkbox" checked="checked" id="facebook-status-updates" /> <label for="facebook-status-updates">Status Updates</label></li>
@@ -72,7 +75,7 @@
         </tr>
         <tr>
           <td>Twitter</td>
-          <td><span class="button">Connect Twitter</span></td>
+          <td><span class="button" style="font-size: 0.8em;">Connect Twitter</span></td>
           <td>
             <ul>
               <li><input type="checkbox" checked="checked" id="twitter-status-updates" /> <label for="twitter-status-updates">Status Updates</label></li>
@@ -84,7 +87,7 @@
         </tr>
         <tr>
           <td>Instagram</td>
-          <td><span class="button">Connect Instagram</span></td>
+          <td><span class="button" style="font-size: 0.8em;">Connect Instagram</span></td>
           <td>
             <ul>
               <li><input type="checkbox" checked="checked" id="instagram-photos" /> <label for="instagram-photos">Instagram</label></li>
@@ -95,7 +98,7 @@
         </tr>
         <tr>
           <td>Foursquare</td>
-          <td><span class="button">Connect Foursquare</span></td>
+          <td><span class="button" style="font-size: 0.8em;">Connect Foursquare</span></td>
           <td>
             <ul>
               <li><input type="checkbox" checked="checked" id="foursquare-checkins" /> <label for="foursquare-checkins">Checkins</label></li>
@@ -105,5 +108,10 @@
           </td>
         </tr>
       </table>
+    </div>
+    <div id="continue-area">
+      <span>You've connected 2 networks and selected 15 content types.</span>
+      <span class="button" style="margin-left: 1em;">Start Backing Up &#187;</span>
+    </div>
   </body>
 </html>
