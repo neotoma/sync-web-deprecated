@@ -4,23 +4,24 @@
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="main.css" />
     <style type="text/css">
-      body                          { margin-bottom: 10%; }
+      body                          { }
       td                            { border-bottom: 1px solid #ececec; }
       td ul                         { list-style: none; padding: 0; margin: 0; }
       td li                         { padding: 0; margin: 0; font-size: 0.8em; }
+      .container                    { padding-bottom: 10em; }
       #content-type-options         { float: right; font-size: 0.8em; }
-      #continue-area                { position: fixed; bottom: 0; left: 0; z-index: 10; background: url(images/backgrounds/white-gradient1.png) top left repeat-x; background-size: 100% 100%; width: 100%; height: 5em; box-shadow: 0px -1px 4px #d8dee5; box-sizing: border-box; padding: 1.8em; color: #08b92c; font-size: 1em; }
-      #continue-area .button        { margin-top: -0.5em; font-size: 1.05em; }
+      #continue-area                { position: fixed; bottom: 0; left: 0; z-index: 10; height: 5em; width: 100%; box-sizing: border-box; text-align: center; }
+      #continue-area-interior       { margin: auto; max-width: 1000px; background: white; background-size: 100% 100%; height: 100%; box-sizing: border-box; padding: 1.6em; color: #08b92c; font-weight: bold; border-top: 1px solid #e2e5e7; text-align: right; }
+      #continue-area .button        { margin-top: -0.5em; font-size: 1em; }
     </style>
   </head>
   <body>
-    <div class="notice notice-success"><img src="images/icon-check.png" />Dropbox connected successfully!</div>
     <div class="container">
+      <div class="notice notice-success"><img src="images/icon-check.png" />Dropbox connected successfully!</div>
       <h1>Connect social networks</h1>
       <p>Now that you've connected your Dropbox account, we need you to connect at least one social network so we can start backing up your content from it.</p>
       <p>After connecting a network, select the types of content you want to backup from it as well.</p>
       <div class="tip">Note: We will <em>not</em> post anything to these social networks without your explicit permission. We simply need you to connect them so we have permission to access your content.</div>
-      <hr />
       <table>
         <thead>
           <tr>
@@ -110,8 +111,10 @@
       </table>
     </div>
     <div id="continue-area">
-      <span>You've connected 2 networks and selected 15 content types.</span>
-      <span class="button" style="margin-left: 1em;">Start Backing Up &#187;</span>
+      <div id="continue-area-interior">
+        <span class="continue-area-message">You've connected 2 networks and selected 15 content types.</span>
+        <span class="button" style="margin-left: 1em;">Start Backing Up</span>
+      </div>
     </div>
   </body>
 </html>
