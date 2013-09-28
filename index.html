@@ -4,6 +4,8 @@
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="main.css" />
     <style type="text/css">
+      #top-area                 { opacity: 0.5; float: right; font-size: 0.8em; border-bottom: 1px solid #dadada; padding-bottom: 1em; margin-bottom: 1em; transition: opacity 0.2s ease; }
+      #top-area:hover           { opacity: 1; }
       #left-area                { float: left; width: 65%; margin-right: 10%; }
       #right-area               { float: right; width: 25%; }
       #right-area .button       { width: 100%; font-size: 1.1em; }
@@ -12,7 +14,9 @@
   </head>
   <body>
     <div class="container">
-      <h1>Asheville</h1>
+      <div id="top-area">Already using Asheville? <a href="#" onclick="return false;">Sign in with Dropbox</a></div>
+      <h1>Introducing Asheville</h1>
+      <div style="clear: both;"></div>
       <div id="left-area">
         <p>Asheville is a service that automatically backs up the content you post on social networks to your Dropbox account.</p>
         <p>You'll get direct access to the files that constitute your photos, status updates, and other types of posts. And you won't have to worry about losing memories should these social networks ever change or restrict access to your content.</p>
@@ -24,15 +28,16 @@
           <form>
             <input type="text" name="email" placeholder="Your email address" autocomplete="off" spellcheck="false" />
             <input type="text" name="storage-name" placeholder="Your preferred service" autocomplete="off" spellcheck="false" />
-            <input type="submit" class="" value="Notify Me" />
+            <input type="submit" value="Notify Me" />
           </form>
           <div class="tip">Alternative storage examples: iCloud, Google Drive, Amazon S3, Box, Adobe Creative Cloud, local drive</div>
         </div>
       </div>
       <div id="right-area">
+        <h2>Get Started</h2>
         <div class="button" onclick="window.location.href = 'sources.html';">Connect Dropbox</div>
         <div class="tip">
-          <p>Note: By connecting Dropbox, you are <em>not</em> giving us access to any of the files currently stored in your account.<p>
+          <p><strong>Note:</strong> By connecting Dropbox, you are <em>not</em> giving us access to any of the files currently stored in your account.<p>
           <p>Connecting will simply allow us to start storing data in a new folder on Dropbox for you. We will be able to read and change files only in that specific folder.</p>
         </div>
       </div>

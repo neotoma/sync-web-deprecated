@@ -6,22 +6,35 @@
     <style type="text/css">
       body                          { }
       td                            { border-bottom: 1px solid #ececec; }
+      td:first-child                { font-weight: bold; }
       td ul                         { list-style: none; padding: 0; margin: 0; }
-      td li                         { padding: 0; margin: 0; font-size: 0.8em; }
+      td li                         { padding: 0; margin: 0 0 0.2em 0; font-size: 0.8em; }
+      label                         { font-size: 1.2em; }
       .container                    { padding-bottom: 10em; }
-      #content-type-options         { float: right; font-size: 0.8em; }
+      #content-type-options         { float: right; font-size: 0.8em; opacity: 0.5; transition: opacity 0.2s ease; }
+      #content-type-options:hover   { opacity: 1; }
+      
+      .source-connected             { color: #08b92c; font-weight: bold; }
+      .source-disconnect            { opacity: 0.5; font-size: 0.7em; padding-left: 0.8em; }
+      .source-disconnect:hover      { opacity: 1; }
+      
+      .content-types-disabled       { opacity: 0.5; }
+      .content-types-disabled input[type=checkbox],
+      .content-types-disabled label { cursor: default; }
+      
       #continue-area                { position: fixed; bottom: 0; left: 0; z-index: 10; height: 5em; width: 100%; box-sizing: border-box; text-align: center; }
-      #continue-area-interior       { margin: auto; max-width: 1000px; background: white; background-size: 100% 100%; height: 100%; box-sizing: border-box; padding: 1.6em; color: #08b92c; font-weight: bold; border-top: 1px solid #e2e5e7; text-align: right; }
+      #continue-area-interior       { margin: auto; max-width: 1000px; background: white; background-size: 100% 100%; height: 100%; box-sizing: border-box; padding: 1.6em; color: #08b92c; font-weight: bold; border-top: 1px solid #dadada; text-align: right; }
+      #continue-area-message        { font-weight: bold; font-size: 1.1em; }
       #continue-area .button        { margin-top: -0.5em; font-size: 1em; }
     </style>
   </head>
   <body>
     <div class="container">
-      <div class="notice notice-success"><img src="images/icon-check.png" />Dropbox connected successfully!</div>
+      <div class="notice notice-success"><img src="images/icon-check.png" />Your Dropbox account is now connected to Asheville.</div>
       <h1>Connect social networks</h1>
       <p>Now that you've connected your Dropbox account, we need you to connect at least one social network so we can start backing up your content from it.</p>
       <p>After connecting a network, select the types of content you want to backup from it as well.</p>
-      <div class="tip">Note: We will <em>not</em> post anything to these social networks without your explicit permission. We simply need you to connect them so we have permission to access your content.</div>
+      <div class="tip"><strong>Note:</strong> We will <em>not</em> post anything to these social networks without your explicit permission. We simply need you to connect them so we have permission to access your content.</div>
       <table>
         <thead>
           <tr>
@@ -35,7 +48,7 @@
         </thead>
         <tr>
           <td>Facebook</td>
-          <td><span class="button" style="font-size: 0.8em;">Connect Facebook</span></td>
+          <td><span class="source-connected">Connected!</span> <a href="#" class="source-disconnect">Disconnect</a></td>
           <td>
             <ul style="float: left;">
               <li><input type="checkbox" checked="checked" id="facebook-status-updates" /> <label for="facebook-status-updates">Status Updates</label></li>
@@ -78,7 +91,7 @@
           <td>Twitter</td>
           <td><span class="button" style="font-size: 0.8em;">Connect Twitter</span></td>
           <td>
-            <ul>
+            <ul class="content-types-disabled">
               <li><input type="checkbox" checked="checked" id="twitter-status-updates" /> <label for="twitter-status-updates">Status Updates</label></li>
               <li><input type="checkbox" checked="checked" id="twitter-favorites" /> <label for="twitter-favorites">Favorites</label></li>
               <li><input type="checkbox" checked="checked" id="twitter-retweets" /> <label for="twitter-retweets">Retweets</label></li>
@@ -90,8 +103,8 @@
           <td>Instagram</td>
           <td><span class="button" style="font-size: 0.8em;">Connect Instagram</span></td>
           <td>
-            <ul>
-              <li><input type="checkbox" checked="checked" id="instagram-photos" /> <label for="instagram-photos">Instagram</label></li>
+            <ul class="content-types-disabled">
+              <li><input type="checkbox" checked="checked" id="instagram-photos" /> <label for="instagram-photos">Photos</label></li>
               <li><input type="checkbox" checked="checked" id="instagram-videos" /> <label for="instagram-videos">Videos</label></li>
               <li><input type="checkbox" checked="checked" id="instagram-likes" /> <label for="instagram-likes">Likes</label></li>
             </ul>
@@ -101,7 +114,7 @@
           <td>Foursquare</td>
           <td><span class="button" style="font-size: 0.8em;">Connect Foursquare</span></td>
           <td>
-            <ul>
+            <ul class="content-types-disabled">
               <li><input type="checkbox" checked="checked" id="foursquare-checkins" /> <label for="foursquare-checkins">Checkins</label></li>
               <li><input type="checkbox" checked="checked" id="foursquare-tips" /> <label for="foursquare-tips">Tips</label></li>
               <li><input type="checkbox" checked="checked" id="foursquare-likes" /> <label for="foursquare-likes">Likes</label></li>
@@ -112,8 +125,8 @@
     </div>
     <div id="continue-area">
       <div id="continue-area-interior">
-        <span class="continue-area-message">You've connected 2 networks and selected 15 content types.</span>
-        <span class="button" style="margin-left: 1em;">Start Backing Up</span>
+        <span id="continue-area-message">You've connected 2 networks and selected 15 content types.</span>
+        <span class="button" style="margin-left: 1em;">Start Backing Them Up</span>
       </div>
     </div>
   </body>
