@@ -1,7 +1,9 @@
 body										{ cursor: default; font-family: 'Droid Sans', sans-serif; font-size: 12pt; background: url(images/backgrounds/gray-gradient1.png) fixed top left repeat-x #e2e5e7; color: #242424; margin: 0; padding: 0; text-align: center; }
 .container							{ position: relative; text-align: left; margin: auto; padding: 3em 4em 5em 4em; box-sizing: border-box; min-height: 100%; max-width: 1000px; background: url(images/backgrounds/white-opacity95.png); box-shadow: 0px 0px 50px #c8d3df; }
-h1											{ cursor: default; font-size: 2.5em; margin: 0 0 0.3em 0; padding: 0; font-weight: bold; color: black; }
-h2											{ cursor: default; font-size: 1.2em; font-weight: bold; line-height: 1.4em; border-bottom: 2px solid #ededed; padding-bottom: 5px; color: black; }
+h1											{ font-size: 2.5em; margin: 0 0 0.3em 0; padding: 0; font-weight: bold; color: black; }
+h2											{ font-size: 1.2em; font-weight: bold; line-height: 1.4em; border-bottom: 2px solid #ededed; padding-bottom: 5px; color: black; }
+h3											{ font-size: 1em; font-weight: bold; }
+h4											{ font-size: 1em; font-weight: bold; margin: 0; padding: 0; }
 p												{ line-height: 1.6em; }
 a												{ color: #0066d8; font-weight: bold; text-decoration: none; }
 a:hover									{ color: #0078ff !important; }
@@ -51,6 +53,6 @@ input[type=submit]:hover	{ background: -webkit-gradient(linear, left top, left b
 .notice-success img			{ position: absolute; left: 0.6em; top: 0.5em; opacity: 0.8; }
 
 table										{ width: 100%; }
-th											{ text-align: left; font-weight: normal; font-size: 0.9em; border-bottom: 1px solid #a8a8a8; padding-bottom: 0.5em; color: #aeaeae; }
+th											{ text-align: left; font-weight: normal; font-size: 0.9em; border-bottom: 1px solid #d5d5d5; padding-bottom: 0.5em; color: #aeaeae; }
 td											{ vertical-align: top; padding: 0.5em 0 0.5em 0; }
 

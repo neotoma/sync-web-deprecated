@@ -15,7 +15,7 @@
       #content-type-options:hover   { opacity: 1; }
       
       .source-connected             { color: #08b92c; font-weight: bold; }
-      .source-disconnect            { opacity: 0.5; font-size: 0.7em; padding-left: 0.8em; }
+      .source-disconnect            { opacity: 0.5; font-size: 0.7em; padding-left: 0.8em; transition: opacity 0.2s ease; }
       .source-disconnect:hover      { opacity: 1; }
       
       .content-types-disabled       { opacity: 0.5; }
@@ -42,7 +42,7 @@
             <th>Connect</th>
             <th>
               <div id="content-type-options"><a href="#" onclick="return false;">Select All</a> | <a href="#" onclick="return false;">Deselect All</a></div>
-              Select Content Types
+              Select Content Types to Back Up
             </th>
           </tr>
         </thead>
@@ -92,10 +92,10 @@
           <td><span class="button" style="font-size: 0.8em;">Connect Twitter</span></td>
           <td>
             <ul class="content-types-disabled">
-              <li><input type="checkbox" checked="checked" id="twitter-status-updates" /> <label for="twitter-status-updates">Status Updates</label></li>
-              <li><input type="checkbox" checked="checked" id="twitter-favorites" /> <label for="twitter-favorites">Favorites</label></li>
-              <li><input type="checkbox" checked="checked" id="twitter-retweets" /> <label for="twitter-retweets">Retweets</label></li>
-              <li><input type="checkbox" checked="checked" id="twitter-direct-messages" /> <label for="twitter-direct-messages">Direct Messages</label></li>
+              <li><input type="checkbox" id="twitter-status-updates" disabled="true" /> <label for="twitter-status-updates">Status Updates</label></li>
+              <li><input type="checkbox" id="twitter-favorites" disabled="true" /> <label for="twitter-favorites">Favorites</label></li>
+              <li><input type="checkbox" id="twitter-retweets" disabled="true" /> <label for="twitter-retweets">Retweets</label></li>
+              <li><input type="checkbox" id="twitter-direct-messages" disabled="true" /> <label for="twitter-direct-messages">Direct Messages</label></li>
             </ul>
           </td>
         </tr>
@@ -104,9 +104,9 @@
           <td><span class="button" style="font-size: 0.8em;">Connect Instagram</span></td>
           <td>
             <ul class="content-types-disabled">
-              <li><input type="checkbox" checked="checked" id="instagram-photos" /> <label for="instagram-photos">Photos</label></li>
-              <li><input type="checkbox" checked="checked" id="instagram-videos" /> <label for="instagram-videos">Videos</label></li>
-              <li><input type="checkbox" checked="checked" id="instagram-likes" /> <label for="instagram-likes">Likes</label></li>
+              <li><input type="checkbox" id="instagram-photos" disabled="true" /> <label for="instagram-photos">Photos</label></li>
+              <li><input type="checkbox" id="instagram-videos" disabled="true" /> <label for="instagram-videos">Videos</label></li>
+              <li><input type="checkbox" id="instagram-likes" disabled="true" /> <label for="instagram-likes">Likes</label></li>
             </ul>
           </td>
         </tr>
@@ -115,9 +115,9 @@
           <td><span class="button" style="font-size: 0.8em;">Connect Foursquare</span></td>
           <td>
             <ul class="content-types-disabled">
-              <li><input type="checkbox" checked="checked" id="foursquare-checkins" /> <label for="foursquare-checkins">Checkins</label></li>
-              <li><input type="checkbox" checked="checked" id="foursquare-tips" /> <label for="foursquare-tips">Tips</label></li>
-              <li><input type="checkbox" checked="checked" id="foursquare-likes" /> <label for="foursquare-likes">Likes</label></li>
+              <li><input type="checkbox" id="foursquare-checkins" disabled="true" /> <label for="foursquare-checkins">Checkins</label></li>
+              <li><input type="checkbox" id="foursquare-tips" disabled="true" /> <label for="foursquare-tips">Tips</label></li>
+              <li><input type="checkbox" id="foursquare-likes" disabled="true" /> <label for="foursquare-likes">Likes</label></li>
             </ul>
           </td>
         </tr>
@@ -126,7 +126,7 @@
     <div id="continue-area">
       <div id="continue-area-interior">
         <span id="continue-area-message">You've connected 2 networks and selected 15 content types.</span>
-        <span class="button" style="margin-left: 1em;">Start Backing Them Up</span>
+        <span class="button" style="margin-left: 1em;" onclick="window.location.href = 'sync.html'">Start Backing Them Up</span>
       </div>
     </div>
   </body>
