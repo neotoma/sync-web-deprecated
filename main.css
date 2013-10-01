@@ -2,7 +2,7 @@ body										{ cursor: default; font-family: 'Droid Sans', sans-serif; font-siz
 .container							{ position: relative; text-align: left; margin: auto; padding: 3em 4em 5em 4em; box-sizing: border-box; min-height: 100%; max-width: 1000px; background: url(images/backgrounds/white-opacity95.png); box-shadow: 0px 0px 50px #c8d3df; }
 h1											{ font-size: 2.5em; margin: 0 0 0.3em 0; padding: 0; font-weight: bold; color: black; }
 h2											{ font-size: 1.2em; font-weight: bold; line-height: 1.4em; border-bottom: 2px solid #ededed; padding-bottom: 5px; color: black; }
-h3											{ font-size: 1em; font-weight: bold; }
+h3											{ font-size: 1em; font-weight: bold; margin-bottom: 0.5em; }
 h4											{ font-size: 1em; font-weight: bold; margin: 0; padding: 0; }
 p												{ line-height: 1.6em; }
 a												{ color: #0066d8; font-weight: bold; text-decoration: none; }
@@ -22,6 +22,9 @@ input[type=text]:focus::-webkit-input-placeholder { color: #a29b77; }
 input[type=text]:focus:-moz-placeholder 					{ color: #a29b77; }
 input[type=text]:focus::-moz-placeholder 					{ color: #a29b77; }
 input[type=text]:focus:-ms-input-placeholder 			{ color: #a29b77; }
+
+#top-area                 { opacity: 0.5; float: right; font-size: 0.8em; border-bottom: 1px solid #dadada; padding-bottom: 1em; margin-bottom: 1em; transition: opacity 0.2s ease; }
+#top-area:hover           { opacity: 1; }
 
 .valid-text-input																		{ color: #3ca953 !important; }
 .valid-text-input:focus 														{ border: 1px solid #48d765 !important; background: #ebfcef !important; box-shadow: 0px 0px 10px #d1f0d7 !important; }
