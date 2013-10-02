@@ -1,0 +1,3 @@
+[submodule "python-dropbox"]
+	path = python-dropbox
+	url = git@github.com:snarfed/python-dropbox.git
