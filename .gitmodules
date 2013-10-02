@@ -1,3 +1,6 @@
 [submodule "python-dropbox"]
 	path = python-dropbox
 	url = git@github.com:snarfed/python-dropbox.git
+[submodule "webutil"]
+	path = webutil
+	url = git@github.com:snarfed/webutil.git

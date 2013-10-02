@@ -32,7 +32,9 @@
       </div>
       <div id="right-area">
         <h2>Get Started</h2>
-        <div class="button" onclick="window.location.href = 'sources.html';">Connect Dropbox</div>
+        <form method="post" action="/dropbox/dest/add">
+          <input type="submit" class="button" value="Connect Dropbox" />
+        </form>
         <div class="tip">
           <p><strong>Note:</strong> By connecting Dropbox, you are <em>not</em> giving us access to any of the files currently stored in your account.<p>
           <p>Connecting will simply allow us to start storing data in a new folder on Dropbox for you. We will be able to read and change files only in that specific folder.</p>

@@ -22,6 +22,12 @@ handlers:
 - url: /
   static_files: index.html
   upload: index.html
+  secure: always
+
+- url: /(.*\.html)
+  static_files: \1
+  upload: (.*)\.html
+  secure: always
 
 - url: /favicon.ico
   static_files: static/favicon.ico
@@ -38,28 +44,28 @@ handlers:
 # dynamic
 - url: /dropbox/.*
   script: dropbox.application
-  secure: optional
+  secure: always
 
 - url: /facebook/.*
   script: facebook.application
-  secure: optional
+  secure: always
 
 - url: /instagram/.*
   script: instagram.application
-  secure: optional
+  secure: always
 
 - url: /googleplus/.*
   script: googleplus.application
-  secure: optional
+  secure: always
   login: required
 
 - url: /twitter/.*
   script: twitter.application
-  secure: optional
+  secure: always
 
 - url: /(migrate|migration/.*)
   script: migrations.application
-  secure: optional
+  secure: always
 
 - url: /_ah/queue/.*
   script: tasks.application
