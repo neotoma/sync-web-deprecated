@@ -20,16 +20,20 @@
           <p>You'll get direct access to the files that constitute your photos, status updates, and other types of posts. And you won't have to worry about losing memories should these social networks ever change or restrict access to your content.</p>
           <p>To get started, simply connect your Dropbox account to the right. Or <a href="http://github.com/asheville/spec">learn more</a> about this service on Github.</p>
           <hr />
-          <div id="index-solicitation">
-            <h2>Interested in Asheville but would prefer to use a different storage service than Dropbox?</h2>
-            <p>Enter your email address and preferred storage service below so we can notify you when it's available.</p>
-            <form>
-              <input type="text" name="email" placeholder="Your email address" autocomplete="off" spellcheck="false" />
-              <input type="text" name="storage-name" placeholder="Your preferred service" autocomplete="off" spellcheck="false" />
-              <input type="submit" value="Notify Me" />
-            </form>
-            <div class="tip">Alternative storage examples: iCloud, Google Drive, Amazon S3, Box, Adobe Creative Cloud, local drive</div>
-          </div>
+          {{#unless saved}}
+            <div id="index-survey">
+              <h2>Interested in Asheville but would prefer to use a different storage service than Dropbox?</h2>
+              <p>Enter your email address and preferred storage service below so we can notify you when it's available.</p>
+              <form id="storage-survey-form">
+                {{input type=email value=email placeholder="Your email address" autocomplete="off" spellcheck="false" pattern=validation.email.pattern required=validation.email.required}}
+                {{input value=preference placeholder="Your preferred service" autocomplete="off" spellcheck="false" pattern=validation.preference.pattern required=validation.preference.required}}
+                <input type="submit" value="Notify Me" {{action 'submitSurvey'}} />
+              </form>
+              <div class="tip">Alternative storage examples: iCloud, Google Drive, Amazon S3, Box, Adobe Creative Cloud, local drive</div>
+            </div>
+          {{else}}
+            <div id="index-survey-submitted">Thanks for submitting the storage survey!</div>
+          {{/unless}}
         </div>
         <div id="index-right-area">
           <h2>Get Started</h2>
@@ -721,6 +725,7 @@
     <script src="js/libs/jquery-1.9.1.js"></script>
     <script src="js/libs/handlebars-1.0.0.js"></script>
     <script src="js/libs/ember-1.0.0.js"></script>
+    <script src="js/libs/ember-validations-1.0.0.beta.1.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
