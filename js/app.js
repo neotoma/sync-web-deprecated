@@ -1,3 +1,7 @@
+var patterns = {
+	email: '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}'
+}
+
 App = Ember.Application.create();
 
 App.StorageSurvey = Ember.Object.extend({
@@ -6,7 +10,7 @@ App.StorageSurvey = Ember.Object.extend({
 	saved: false,
 	validation: {
 		email: {
-			pattern: '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}',
+			pattern: patterns.email,
 			required: true
 		},
 		preference: {
@@ -50,14 +54,34 @@ App.StorageSurvey = Ember.Object.extend({
 				console.log('failed to save storage survey');
 			}
 		);
-	}
+	},
+
+	isValid: function() {
+		var regex;
+
+		// Email
+		regex = new RegExp(this.get('validation').email.pattern);
+		if ((this.get('validation').email.required && !this.get('email')) || !regex.exec(this.get('email'))) {
+			return false;
+		}
+
+		// Preference
+		regex = new RegExp(this.get('validation').preference.pattern);
+		console.log('regex: ' + regex.toString());
+		if ((this.get('validation').preference.required && !this.get('preference')) || !regex.exec(this.get('preference'))) {
+			return false;
+		}
+
+		return true;
+	}.property('email', 'preference'),
+
+	isInvalid: function() {
+		return !this.get('isValid');
+	}.property('isValid')
 });
 
 Ember.TextField.reopen({
-	attributeBindings: ['spellcheck', 'autocomplete', 'pattern', 'required'],
-	change: function(event) {
-		console.log('!');
-	}
+	attributeBindings: ['spellcheck', 'autocomplete', 'pattern', 'required']
 });
 
 App.Router.map(function() {

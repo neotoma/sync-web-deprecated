@@ -27,7 +27,7 @@
               <form id="storage-survey-form">
                 {{input type=email value=email placeholder="Your email address" autocomplete="off" spellcheck="false" pattern=validation.email.pattern required=validation.email.required}}
                 {{input value=preference placeholder="Your preferred service" autocomplete="off" spellcheck="false" pattern=validation.preference.pattern required=validation.preference.required}}
-                <input type="submit" value="Notify Me" {{action 'submitSurvey'}} />
+                <button {{action 'submitSurvey'}} {{bind-attr disabled=isInvalid}}>Notify Me</button>
               </form>
               <div class="tip">Alternative storage examples: iCloud, Google Drive, Amazon S3, Box, Adobe Creative Cloud, local drive</div>
             </div>
