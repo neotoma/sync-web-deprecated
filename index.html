@@ -23,7 +23,7 @@
           {{#unless saved}}
             <div id="index-survey">
               <h2>Interested in Asheville but would prefer to use a different storage service than Dropbox?</h2>
-              <p>Enter your email address and preferred storage service below so we can notify you when it's available.</p>
+              <p>Enter your email address and preferred storage service below so we can notify you when it becomes available.</p>
               <form id="storage-survey-form">
                 {{input type=email value=email placeholder="Your email address" autocomplete="off" spellcheck="false" pattern=validation.email.pattern required=validation.email.required}}
                 {{input value=preference placeholder="Your preferred service" autocomplete="off" spellcheck="false" pattern=validation.preference.pattern required=validation.preference.required}}
@@ -723,6 +723,7 @@
     </script>
     
     <script src="js/libs/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script src="js/libs/handlebars-1.0.0.js"></script>
     <script src="js/libs/ember-1.0.0.js"></script>
     <script src="js/libs/ember-validations-1.0.0.beta.1.js"></script>

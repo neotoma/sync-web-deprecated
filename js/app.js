@@ -52,6 +52,7 @@ App.StorageSurvey = Ember.Object.extend({
 			}, 
 			function(error) {
 				console.log('failed to save storage survey');
+				$("#storage-survey-form").effect('shake', { distance: 15 });
 			}
 		);
 	},
@@ -67,7 +68,6 @@ App.StorageSurvey = Ember.Object.extend({
 
 		// Preference
 		regex = new RegExp(this.get('validation').preference.pattern);
-		console.log('regex: ' + regex.toString());
 		if ((this.get('validation').preference.required && !this.get('preference')) || !regex.exec(this.get('preference'))) {
 			return false;
 		}
