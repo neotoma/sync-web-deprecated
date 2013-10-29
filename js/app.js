@@ -1,5 +1,5 @@
 var patterns = {
-	email: '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}'
+	email: '[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}'
 }
 
 App = Ember.Application.create();
@@ -8,6 +8,7 @@ App.StorageSurvey = Ember.Object.extend({
 	email: null,
 	preference: null,
 	saved: false,
+	isSaving: false,
 	validation: {
 		email: {
 			pattern: patterns.email,
@@ -22,13 +23,14 @@ App.StorageSurvey = Ember.Object.extend({
 		console.log('initializing storage survey');
 		target = this;
 
-		$.get("http://dashboard.asheville.io/storage-survey").then(
+		$.ajax({ url: '/storage-survey', dataType: 'json' }).then(
 			function(response) {
-				this.set('email', response['email']);
-				this.set('preference', response['preference']);
+				console.log(response);
 				console.log('initialized storage survey');
 
 				if (response.email && response.preference) {
+					target.set('email', response.email);
+					target.set('preference', response.preference);
 					target.set('saved', true);
 				}
 			}, 
@@ -43,15 +45,24 @@ App.StorageSurvey = Ember.Object.extend({
 			preference: 	this.get('preference')
 		};
 
+		target = this;
+
 		console.log('saving storage survey');
 		console.log(data);
 
-		$.post("http://dashboard.asheville.io/storage-survey", data).then(
+		this.set('isSaving', true);
+
+		$.ajax({ url: '/storage-survey', dataType: 'json', type: 'post', data: data }).then(
 			function(response) {
+				// why is response undefined with mockjax here?
+				console.log('response: ' + response.stringify)
 				console.log('saved storage survey');
+				target.set('isSaving', false);
+				target.set('saved', true);
 			}, 
 			function(error) {
 				console.log('failed to save storage survey');
+				target.set('isSaving', false);
 				$("#storage-survey-form").effect('shake', { distance: 15 });
 			}
 		);
@@ -75,9 +86,19 @@ App.StorageSurvey = Ember.Object.extend({
 		return true;
 	}.property('email', 'preference'),
 
-	isInvalid: function() {
-		return !this.get('isValid');
-	}.property('isValid')
+	disabled: function() {
+		return (!this.get('isValid') || this.get('isSaving'));
+	}.property('isValid', 'isSaving'),
+
+	submitLabel: function() {
+		if (this.get('isSaving')) {
+			return 'Submitting...';
+		} else if (this.get('saved')) {
+			return '&#10003; Submitted';
+		} else {
+			return 'Notify Me';
+		}
+	}.property('isSaving', 'saved')
 });
 
 Ember.TextField.reopen({
