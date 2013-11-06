@@ -16,16 +16,16 @@
         <div id="top-area">Already using Asheville? {{#link-to 'sources'}}Sign in with Dropbox{{/link-to}}</div>
         <h1>Introducing Asheville</h1>
         <div id="index-left-area">
-          <p>Asheville is a source that automatically backs up the content you post on social networks to your Dropbox account.</p>
+          <p>Asheville is a service that automatically backs up the content you post on social networks to your Dropbox account.</p>
           <p>You'll get direct access to the files that constitute your photos, status updates, and other types of posts. And you won't have to worry about losing memories should these social networks ever change or restrict access to your content.</p>
-          <p>To get started, simply connect your Dropbox account to the right. Or <a href="http://github.com/asheville/spec">learn more</a> about this source on Github.</p>
+          <p>To get started, simply connect your Dropbox account to the right. Or <a href="http://github.com/asheville/spec">learn more</a> about this service on Github.</p>
           <hr />
           <div id="index-survey" {{bind-attr class="saved"}}>
-            <h2>Interested in Asheville but would prefer to use a different storage source than Dropbox?</h2>
-            <p>Enter your email address and preferred storage source below so we can notify you when support for it becomes available.</p>
+            <h2>Interested in Asheville but would prefer to use a different storage service than Dropbox?</h2>
+            <p>Enter your email address and preferred storage service below so we can notify you when support for it becomes available.</p>
             <form id="storage-survey-form">
               {{input type=email value=email placeholder="Your email address" autocomplete="off" spellcheck="false" pattern=validation.email.pattern required=validation.email.required}}
-              {{input value=preference placeholder="Your preferred source" autocomplete="off" spellcheck="false" pattern=validation.preference.pattern required=validation.preference.required}}
+              {{input value=preference placeholder="Your preferred service" autocomplete="off" spellcheck="false" pattern=validation.preference.pattern required=validation.preference.required}}
               <button {{action 'submitSurvey'}} {{bind-attr disabled=disabled}}>{{{submitLabel}}}</button>
             </form>
             <div class="tip">Alternative storage examples: iCloud, Google Drive, Amazon S3, Box, Adobe Creative Cloud, local drive</div>
