@@ -16,16 +16,16 @@
         <div id="top-area">Already using Asheville? {{#link-to 'sources'}}Sign in with Dropbox{{/link-to}}</div>
         <h1>Introducing Asheville</h1>
         <div id="index-left-area">
-          <p>Asheville is a service that automatically backs up the content you post on social networks to your Dropbox account.</p>
+          <p>Asheville is a source that automatically backs up the content you post on social networks to your Dropbox account.</p>
           <p>You'll get direct access to the files that constitute your photos, status updates, and other types of posts. And you won't have to worry about losing memories should these social networks ever change or restrict access to your content.</p>
-          <p>To get started, simply connect your Dropbox account to the right. Or <a href="http://github.com/asheville/spec">learn more</a> about this service on Github.</p>
+          <p>To get started, simply connect your Dropbox account to the right. Or <a href="http://github.com/asheville/spec">learn more</a> about this source on Github.</p>
           <hr />
           <div id="index-survey" {{bind-attr class="saved"}}>
-            <h2>Interested in Asheville but would prefer to use a different storage service than Dropbox?</h2>
-            <p>Enter your email address and preferred storage service below so we can notify you when support for it becomes available.</p>
+            <h2>Interested in Asheville but would prefer to use a different storage source than Dropbox?</h2>
+            <p>Enter your email address and preferred storage source below so we can notify you when support for it becomes available.</p>
             <form id="storage-survey-form">
               {{input type=email value=email placeholder="Your email address" autocomplete="off" spellcheck="false" pattern=validation.email.pattern required=validation.email.required}}
-              {{input value=preference placeholder="Your preferred service" autocomplete="off" spellcheck="false" pattern=validation.preference.pattern required=validation.preference.required}}
+              {{input value=preference placeholder="Your preferred source" autocomplete="off" spellcheck="false" pattern=validation.preference.pattern required=validation.preference.required}}
               <button {{action 'submitSurvey'}} {{bind-attr disabled=disabled}}>{{{submitLabel}}}</button>
             </form>
             <div class="tip">Alternative storage examples: iCloud, Google Drive, Amazon S3, Box, Adobe Creative Cloud, local drive</div>
@@ -52,100 +52,58 @@
         <p>Now that you've connected your Dropbox account, we need you to connect at least one social network so we can start backing up your content from it.</p>
         <p>After connecting a network, select the types of content you want to backup from it as well.</p>
         <div class="tip"><strong>Note:</strong> We will <em>not</em> post anything to these social networks without your explicit permission. We simply need you to connect them so we have permission to access your content.</div>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Connect</th>
-              <th>
-                <div id="sources-content-type-options"><a href="#" onclick="return false;">Select All</a> | <a href="#" onclick="return false;">Deselect All</a></div>
-                Select Content Types to Back Up
-              </th>
-            </tr>
-          </thead>
-          <tr>
-            <td>Facebook</td>
-            <td><span class="source-connected">Connected!</span> <a href="#" class="source-disconnect">Disconnect</a></td>
-            <td>
-              <ul style="float: left;">
-                <li><input type="checkbox" checked="checked" id="facebook-status-updates" /> <label for="facebook-status-updates">Status Updates</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-links" /> <label for="facebook-links">Links</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-checkins" /> <label for="facebook-checkins">Checkins</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-photos" /> <label for="facebook-photos">Photos</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-videos" /> <label for="facebook-videos">Videos</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-books" /> <label for="facebook-books">Books</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-music" /> <label for="facebook-music">Music</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-games-activity" /> <label for="facebook-games-activity">Games Activity</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-interests" /> <label for="facebook-interests">Interests</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-notes" /> <label for="facebook-notes">Notes</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-activities" /> <label for="facebook-activities">Activities</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-events" /> <label for="facebook-events">Events</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-groups" /> <label for="facebook-groups">Groups</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-likes" /> <label for="facebook-likes">Likes</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-friends" /> <label for="facebook-friends">Friends</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-subscriptions" /> <label for="facebook-subscriptions">Subscriptions</label></li>
-              </ul>
-              <ul style="float: left; margin-left: 2em;">
-                <li><input type="checkbox" checked="checked" id="facebook-news" /> <label for="facebook-news">News</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-questions-and-answers" /> <label for="facebook-questions-and-answers">Questions &amp; Answers</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-email-addresses" /> <label for="facebook-email-addresses">Email Addresses</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-education-history" /> <label for="facebook-education-history">Education History</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-religion" /> <label for="facebook-religion">Religion</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-politics" /> <label for="facebook-politics">Politics</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-birthday" /> <label for="facebook-birthday">Birthday</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-hometown" /> <label for="facebook-hometown">Hometown</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-location" /> <label for="facebook-location">Location</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-websites" /> <label for="facebook-websites">Websites</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-work-history" /> <label for="facebook-work-history">Work History</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-biography" /> <label for="facebook-biography">Biography</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-relationship-details" /> <label for="facebook-relationship-details">Relationship Details</label></li>
-                <li><input type="checkbox" checked="checked" id="facebook-relationships" /> <label for="facebook-relationships">Relationships</label></li>
-              </ul>
-              <div style="clear: both;"></div>
-            </td>
-          </tr>
-          <tr>
-            <td>Twitter</td>
-            <td><span class="button" style="font-size: 0.8em;">Connect Twitter</span></td>
-            <td>
-              <ul class="content-types-disabled">
-                <li><input type="checkbox" id="twitter-status-updates" disabled="true" /> <label for="twitter-status-updates">Status Updates</label></li>
-                <li><input type="checkbox" id="twitter-favorites" disabled="true" /> <label for="twitter-favorites">Favorites</label></li>
-                <li><input type="checkbox" id="twitter-retweets" disabled="true" /> <label for="twitter-retweets">Retweets</label></li>
-                <li><input type="checkbox" id="twitter-direct-messages" disabled="true" /> <label for="twitter-direct-messages">Direct Messages</label></li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>Instagram</td>
-            <td><span class="button" style="font-size: 0.8em;">Connect Instagram</span></td>
-            <td>
-              <ul class="content-types-disabled">
-                <li><input type="checkbox" id="instagram-photos" disabled="true" /> <label for="instagram-photos">Photos</label></li>
-                <li><input type="checkbox" id="instagram-videos" disabled="true" /> <label for="instagram-videos">Videos</label></li>
-                <li><input type="checkbox" id="instagram-likes" disabled="true" /> <label for="instagram-likes">Likes</label></li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>Foursquare</td>
-            <td><span class="button" style="font-size: 0.8em;">Connect Foursquare</span></td>
-            <td>
-              <ul class="content-types-disabled">
-                <li><input type="checkbox" id="foursquare-checkins" disabled="true" /> <label for="foursquare-checkins">Checkins</label></li>
-                <li><input type="checkbox" id="foursquare-tips" disabled="true" /> <label for="foursquare-tips">Tips</label></li>
-                <li><input type="checkbox" id="foursquare-likes" disabled="true" /> <label for="foursquare-likes">Likes</label></li>
-              </ul>
-            </td>
-          </tr>
-        </table>
+        {{#if loaded}}
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Connect</th>
+                <th>
+                  <div id="sources-content-type-options"><a href="#" onclick="return false;">Select All</a> | <a href="#" onclick="return false;">Deselect All</a></div>
+                  Select Content Types to Back Up
+                </th>
+              </tr>
+            </thead>
+            {{#each sources}}
+              <tr>
+                <td>{{name}}</td>
+                <td>
+                  {{#if connected}}
+                    <span class="source-connected">Connected!</span> <a href="#" class="source-disconnect">Disconnect</a>
+                  {{else}}
+                    <span class="button" style="font-size: 0.8em;">Connect {{name}}</span>
+                  {{/if}}
+                </td>
+                <td>
+                <ul style="float: left;">
+                  {{#each contentTypes}}
+                    <li>
+                      <input type="checkbox" id="{{label}}-{{label}}" {{bind-attr checked=enabled}} {{bind-attr disabled=disabled}} /> 
+                      <label for="{{label}}-{{label}}">{{namePlural}}</label>
+                    </li>
+                  {{/each}}
+                </ul>
+                <div style="clear: both;"></div>
+              </td>
+              </tr>
+            {{/each}}
+          </table>
+        {{/if}}
       </div>
-      <div id="sources-continue-area">
-        <div id="sources-continue-area-interior">
-          <span id="sources-continue-area-message">You've connected 2 networks and selected 15 content types.</span>
-          <button {{action 'sync'}}>Start Backing Them Up</button>
+      {{#if loaded}}
+        <div id="sources-continue-area">
+          <div id="sources-continue-area-interior">
+            <span id="sources-continue-area-message">
+              {{#if hasConnectedSources}}
+                You've connected {{totalConnectedSources}} networks and selected {{totalEnabledContentTypes}} content types.
+              {{else}}
+                <span id="sources-continue-area-message-no-connected-sources">Connect some networks to proceed...</span>
+              {{/if}}
+            </span>
+            <button {{action 'sync'}} {{bind-attr disabled=disabled}}>Start Backing Them Up</button>
+          </div>
         </div>
-      </div>
+      {{/if}}
     </script>
     
     <script type="text/x-handlebars" data-template-name="sync">

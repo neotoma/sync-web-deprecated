@@ -4,11 +4,15 @@ var patterns = {
 
 App = Ember.Application.create();
 
+Ember.TextField.reopen({
+	attributeBindings: ['spellcheck', 'autocomplete', 'pattern', 'required']
+});
+
 App.StorageSurvey = Ember.Object.extend({
-	email: null,
-	preference: null,
-	saved: false,
-	isSaving: false,
+	email: 			null,
+	preference: 	null,
+	saved: 			false,
+	isSaving: 		false,
 	validation: {
 		email: {
 			pattern: patterns.email,
@@ -20,14 +24,10 @@ App.StorageSurvey = Ember.Object.extend({
 		}
 	},
 	init: function() {
-		console.log('initializing storage survey');
 		target = this;
 
 		$.ajax({ url: '/storage-survey', dataType: 'json' }).then(
 			function(response) {
-				console.log(response);
-				console.log('initialized storage survey');
-
 				if (response.email && response.preference) {
 					target.set('email', response.email);
 					target.set('preference', response.preference);
@@ -35,7 +35,7 @@ App.StorageSurvey = Ember.Object.extend({
 				}
 			}, 
 			function(error) {
-				console.log('failed to initialize storage survey');
+
 			}
 		);
 	},
@@ -47,21 +47,14 @@ App.StorageSurvey = Ember.Object.extend({
 
 		target = this;
 
-		console.log('saving storage survey');
-		console.log(data);
-
 		this.set('isSaving', true);
 
 		$.ajax({ url: '/storage-survey', dataType: 'json', type: 'post', data: data }).then(
 			function(response) {
-				// why is response undefined with mockjax here?
-				console.log('response: ' + response.stringify)
-				console.log('saved storage survey');
 				target.set('isSaving', false);
 				target.set('saved', true);
 			}, 
 			function(error) {
-				console.log('failed to save storage survey');
 				target.set('isSaving', false);
 				$("#storage-survey-form").effect('shake', { distance: 15 });
 			}
@@ -101,8 +94,108 @@ App.StorageSurvey = Ember.Object.extend({
 	}.property('isSaving', 'saved')
 });
 
-Ember.TextField.reopen({
-	attributeBindings: ['spellcheck', 'autocomplete', 'pattern', 'required']
+App.Sources = Ember.Object.extend({
+	sources: 		[],
+	status: 		0,		// 0: pending load, 1: loaded, 2: error loading
+
+	init: function() {
+		target = this;
+
+		$.ajax({ url: '/sources', dataType: 'json' }).then(
+			function(responseJSON) {
+				var sources = [];
+
+				$.each(responseJSON, function(key, sourceJSON) {
+					var source = App.Source.create({ 
+						ID: 				sourceJSON.ID,
+						name:   			sourceJSON.name,
+						contentTypes: 		[],
+						connected: 			sourceJSON.connected
+					});
+
+					var contentTypes = [];
+
+					$.each(sourceJSON.contentTypes, function(key, contentTypeJSON) {
+						contentTypes.push(
+							App.ContentType.create({
+								ID: 			contentTypeJSON.ID,
+								name: 			contentTypeJSON.name,
+								namePlural: 	contentTypeJSON.namePlural,
+								enabled: 		contentTypeJSON.enabled,
+								source: 		source
+							})
+						);
+					});
+
+					source.contentTypes = contentTypes;
+					sources.push(source);
+				});
+
+				target.set('sources', sources);
+				target.set('status', 1);
+			}, 
+			function(error) {
+				target.set('status', 2);
+			}
+		);
+	},
+
+	totalConnectedSources: function() {
+		var total = 0;
+
+		$.each(this.get('sources'), function(key, source) {
+			if (source.connected) {
+				total++;
+			}
+		});
+
+		return total;
+	}.property('s'),
+
+	hasConnectedSources: function() {
+		return (this.get('totalConnectedSources') > 0);
+	}.property('totalConnectedSources'),
+
+	totalEnabledContentTypes: function() {
+		var total = 0;
+
+		$.each(this.get('sources'), function(key, source) {
+			$.each(source.get('contentTypes'), function(key, contentType) {
+				if (contentType.enabled) {
+					total++;
+				}
+			});
+		});
+
+		return total;
+	}.property('sources'),
+
+	loaded: function() {
+		return this.get('status') == 1 ? true : false
+	}.property('status'),
+
+	disabled: function() {
+		return (!this.get('hasConnectedSources'));
+	}.property('hasConnectedSources')
+});
+
+App.Source = Ember.Object.extend({
+	ID: 			null,	// string
+	name: 			null,	// string
+	contentTypes: 	null,	// array
+	connected: 		false	// boolean
+});
+
+App.ContentType = Ember.Object.extend({
+	ID: 			null,	// string		
+	name: 			null, 	// string
+	namePlural: 	null,	// string
+	enabled: 		false,	// boolean
+	source: 		null,	// App.Source
+
+	disabled: function() {
+		return (!this.get('source').connected);
+	}.property('source')
 });
 
 App.Router.map(function() {
@@ -112,9 +205,7 @@ App.Router.map(function() {
 
 App.IndexRoute = Ember.Route.extend({
 	setupController: function(controller, model) {
-		console.log('setting up controller');
-		var storageSurvey = App.StorageSurvey.create({
-		});
+		var storageSurvey = App.StorageSurvey.create({});
 		controller.set('model', storageSurvey);
 	}
 });
@@ -125,9 +216,15 @@ App.IndexController = Ember.ObjectController.extend({
 			this.transitionTo('sources');
 		},
 		submitSurvey: function() {
-			console.log('submitting survey');
 			this.get('model').save();
 		}
+	}
+});
+
+App.SourcesRoute = Ember.Route.extend({
+	setupController: function(controller, model) {
+		var sources = App.Sources.create({});
+		controller.set('model', sources);
 	}
 });
 

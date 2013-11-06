@@ -15,6 +15,7 @@ p::selection      							{ background: #e8f1fb; }
 
 label										{ cursor: pointer; }
 input[type=checkbox]						{ cursor: pointer; }
+input[type=checkbox]:disabled				{ cursor: default; }
 
 input[type=text],
 input[type=email]													{ font-size: 1em; border: 1px solid #dadada; padding: 0.5em; border-radius: 0.2em; width: 15em; box-sizing: border-box; height: 2.5em; color: #2e2e2e; transition: all 0.5s ease; }
@@ -150,6 +151,7 @@ td											{ vertical-align: top; padding: 0.5em 0 0.5em 0; }
 #sources td ul                         	{ list-style: none; padding: 0; margin: 0; }
 #sources td li                         	{ padding: 0; margin: 0 0 0.2em 0; font-size: 0.8em; }
 #sources label                         	{ font-size: 1.2em; }
+#sources input[type="checkbox"]:disabled+label { opacity: 0.5; cursor: default; }
 
 #sources-content-type-options         	{ float: right; font-size: 0.8em; opacity: 0.5; transition: opacity 0.2s ease; }
 #sources-content-type-options:hover   	{ opacity: 1; }
@@ -158,13 +160,10 @@ td											{ vertical-align: top; padding: 0.5em 0 0.5em 0; }
 #sources .source-disconnect            	{ opacity: 0.5; font-size: 0.7em; padding-left: 0.8em; transition: opacity 0.2s ease; }
 #sources .source-disconnect:hover      	{ opacity: 1; }
 
-#sources .content-types-disabled       	{ opacity: 0.5; }
-#sources .content-types-disabled input[type=checkbox],
-#sources .content-types-disabled label 	{ cursor: default; }
-
 #sources-continue-area                	{ position: fixed; bottom: 0; left: 0; z-index: 10; height: 5em; width: 100%; box-sizing: border-box; text-align: center; }
-#sources-continue-area-interior       	{ margin: auto; max-width: 1000px; background: white; background-size: 100% 100%; height: 100%; box-sizing: border-box; padding: 1em; color: #08b92c; font-weight: bold; border-top: 1px solid #dadada; text-align: right; }
-#sources-continue-area-message        	{ font-weight: bold; font-size: 1.1em; margin-right: 1em; }
+#sources-continue-area-interior       	{ margin: auto; max-width: 1000px; background: white; background-size: 100% 100%; height: 100%; box-sizing: border-box; padding: 1em; font-weight: bold; border-top: 1px solid #dadada; text-align: right; }
+#sources-continue-area-message        	{ font-weight: bold; font-size: 1.1em; margin-right: 1em; color: #08b92c; }
+#sources-continue-area-message-no-connected-sources { color: #c9c9c9; font-weight: normal; font-style: italic; }
 #sources-continue-area button        	{ margin-left: -0.5em 0 0 1em; font-size: 1em; }
 
 /* Sync */
