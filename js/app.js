@@ -8,11 +8,61 @@ Ember.TextField.reopen({
 	attributeBindings: ['spellcheck', 'autocomplete', 'pattern', 'required']
 });
 
+App.CheckboxView = Ember.View.extend({
+	tagName: 'checkboxset'
+})
+
+Ember.Handlebars.registerBoundHelper('pluralize', function(number, opts) {
+  var single = opts.hash['s'];
+  Ember.assert('pluralize requires a singular string (s)', single);
+  var plural = opts.hash['p'] || single + 's';
+  return (number == 1) ? single : plural;
+});
+
+App.User = Ember.Object.extend({
+	ID: 			null,
+	email: 			null,
+	status: 		0,		// 0: pending load, 1: loaded, 2: error loading
+	init: function() {
+		target = this;
+
+		$.ajax({ url: '/user', dataType: 'json', async: false }).then(
+			function(response) {
+				target.set('ID', response.ID);
+				target.set('email', response.email);
+				target.set('status', 1);
+			}, 
+			function(error) {
+				target.set('status', 2);
+			}
+		);
+	}
+});
+
+App.Storages = Ember.Object.extend({
+	collection: 	[],
+	status: 		0,		// 0: pending load, 1: loaded, 2: error loading
+	init: function() {
+		target = this;
+
+		$.ajax({ url: '/storages', dataType: 'json', async: false }).then(
+			function(response) {
+				target.set('collection', response);
+				target.set('status', 1);
+			}, 
+			function(error) {
+				target.set('status', 2);
+			}
+		);
+	}
+});
+
 App.StorageSurvey = Ember.Object.extend({
 	email: 			null,
 	preference: 	null,
 	saved: 			false,
 	isSaving: 		false,
+	status: 		0,		// 0: pending load, 1: loaded, 2: error loading
 	validation: {
 		email: {
 			pattern: patterns.email,
@@ -27,15 +77,16 @@ App.StorageSurvey = Ember.Object.extend({
 		target = this;
 
 		$.ajax({ url: '/storage-survey', dataType: 'json' }).then(
-			function(response) {
+			function(response) { 
 				if (response.email && response.preference) {
 					target.set('email', response.email);
 					target.set('preference', response.preference);
 					target.set('saved', true);
 				}
+				target.set('status', 1);
 			}, 
 			function(error) {
-
+				target.set('status', 2);
 			}
 		);
 	},
@@ -83,6 +134,10 @@ App.StorageSurvey = Ember.Object.extend({
 		return (!this.get('isValid') || this.get('isSaving'));
 	}.property('isValid', 'isSaving'),
 
+	loaded: function() {
+		return this.get('status') == 1 ? true : false
+	}.property('status'),
+
 	submitLabel: function() {
 		if (this.get('isSaving')) {
 			return 'Submitting...';
@@ -95,15 +150,15 @@ App.StorageSurvey = Ember.Object.extend({
 });
 
 App.Sources = Ember.Object.extend({
-	sources: 		[],
+	collection: 	[],
 	status: 		0,		// 0: pending load, 1: loaded, 2: error loading
 
 	init: function() {
 		target = this;
 
-		$.ajax({ url: '/sources', dataType: 'json' }).then(
+		$.ajax({ url: '/sources', dataType: 'json', async: false }).then(
 			function(responseJSON) {
-				var sources = [];
+				var collection = [];
 
 				$.each(responseJSON, function(key, sourceJSON) {
 					var source = App.Source.create({ 
@@ -127,11 +182,11 @@ App.Sources = Ember.Object.extend({
 						);
 					});
 
-					source.contentTypes = contentTypes;
-					sources.push(source);
+					source.set('contentTypes', contentTypes);
+					collection.push(source);
 				});
 
-				target.set('sources', sources);
+				target.set('collection', collection);
 				target.set('status', 1);
 			}, 
 			function(error) {
@@ -143,14 +198,14 @@ App.Sources = Ember.Object.extend({
 	totalConnectedSources: function() {
 		var total = 0;
 
-		$.each(this.get('sources'), function(key, source) {
+		$.each(this.get('collection'), function(key, source) {
 			if (source.connected) {
 				total++;
 			}
 		});
 
 		return total;
-	}.property('s'),
+	}.property('collection.@each.connected'),
 
 	hasConnectedSources: function() {
 		return (this.get('totalConnectedSources') > 0);
@@ -159,31 +214,49 @@ App.Sources = Ember.Object.extend({
 	totalEnabledContentTypes: function() {
 		var total = 0;
 
-		$.each(this.get('sources'), function(key, source) {
-			$.each(source.get('contentTypes'), function(key, contentType) {
-				if (contentType.enabled) {
-					total++;
-				}
-			});
+		$.each(this.get('collection'), function(key, source) {
+			if (this.get('connected')) {
+				total += source.get('totalEnabledContentTypes');
+			}
 		});
 
 		return total;
-	}.property('sources'),
+	}.property('collection.@each.totalEnabledContentTypes', 'collection.@each.connected'),
 
 	loaded: function() {
 		return this.get('status') == 1 ? true : false
 	}.property('status'),
 
 	disabled: function() {
-		return (!this.get('hasConnectedSources'));
-	}.property('hasConnectedSources')
+		return (!this.get('totalEnabledContentTypes'));
+	}.property('totalEnabledContentTypes')
 });
 
 App.Source = Ember.Object.extend({
 	ID: 			null,	// string
 	name: 			null,	// string
 	contentTypes: 	null,	// array
-	connected: 		false	// boolean
+	connected: 		false,	// boolean
+
+	totalEnabledContentTypes: function() {
+		var total = 0;
+
+		$.each(this.get('contentTypes'), function(key, contentType) {
+			if (contentType.enabled) {
+				total++;
+			}
+		});
+
+		return total;
+	}.property('contentTypes.@each.enabled'),
+
+	connectLabel: function() {
+		if (this.get('connected')) {
+			return '&#10003; Connected';
+		} else {
+			return 'Connected';
+		}
+	}.property('connected')
 });
 
 App.ContentType = Ember.Object.extend({
@@ -193,9 +266,13 @@ App.ContentType = Ember.Object.extend({
 	enabled: 		false,	// boolean
 	source: 		null,	// App.Source
 
+	comboID: function() {
+		return this.get('source').get('ID') + '-' + this.get('ID');
+	}.property('source', 'ID'),
+
 	disabled: function() {
 		return (!this.get('source').connected);
-	}.property('source')
+	}.property('source.connected')
 });
 
 App.Router.map(function() {
@@ -205,8 +282,22 @@ App.Router.map(function() {
 
 App.IndexRoute = Ember.Route.extend({
 	setupController: function(controller, model) {
-		var storageSurvey = App.StorageSurvey.create({});
-		controller.set('model', storageSurvey);
+		var storages 		= App.Storages.create({});
+		var storageSurvey 	= App.StorageSurvey.create({});
+
+		if(storages.collection.length) {
+			var sources = App.Sources.create({});
+
+			if(sources.get('hasConnectedSources')) {
+				this.transitionTo('sync');
+			} else {
+				this.transitionTo('sources');
+			}
+		}
+
+		controller.set('model', {
+			storageSurvey: storageSurvey 
+		});
 	}
 });
 
@@ -216,7 +307,7 @@ App.IndexController = Ember.ObjectController.extend({
 			this.transitionTo('sources');
 		},
 		submitSurvey: function() {
-			this.get('model').save();
+			this.get('model').storageSurvey.save();
 		}
 	}
 });
@@ -232,6 +323,18 @@ App.SourcesController = Ember.ObjectController.extend({
 	actions: {
 		sync: function() {
 			this.transitionTo('sync');
+		},
+		toggleConnection: function(source) {
+			if (source.get('connected')) {
+				if (confirm('Are you sure you want to disconnect ' + source.get('name') + '?')) {
+					source.set('connected', false);
+				}
+			} else {
+				source.set('connected', true);
+			}
+		},
+		disconnectSource: function(source) {
+			source.set('connected', false);
 		}
 	}
 });

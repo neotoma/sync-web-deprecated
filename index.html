@@ -20,16 +20,18 @@
           <p>You'll get direct access to the files that constitute your photos, status updates, and other types of posts. And you won't have to worry about losing memories should these social networks ever change or restrict access to your content.</p>
           <p>To get started, simply connect your Dropbox account to the right. Or <a href="http://github.com/asheville/spec">learn more</a> about this service on Github.</p>
           <hr />
-          <div id="index-survey" {{bind-attr class="saved"}}>
-            <h2>Interested in Asheville but would prefer to use a different storage service than Dropbox?</h2>
-            <p>Enter your email address and preferred storage service below so we can notify you when support for it becomes available.</p>
-            <form id="storage-survey-form">
-              {{input type=email value=email placeholder="Your email address" autocomplete="off" spellcheck="false" pattern=validation.email.pattern required=validation.email.required}}
-              {{input value=preference placeholder="Your preferred service" autocomplete="off" spellcheck="false" pattern=validation.preference.pattern required=validation.preference.required}}
-              <button {{action 'submitSurvey'}} {{bind-attr disabled=disabled}}>{{{submitLabel}}}</button>
-            </form>
-            <div class="tip">Alternative storage examples: iCloud, Google Drive, Amazon S3, Box, Adobe Creative Cloud, local drive</div>
-          </div>
+          {{#if storageSurvey.loaded}}
+            <div id="index-survey" {{bind-attr class="storageSurvey.saved"}}>
+              <h2>Interested in Asheville but would prefer to use a different storage service than Dropbox?</h2>
+              <p>Enter your email address and preferred storage service below so we can notify you when support for it becomes available.</p>
+              <form id="storage-survey-form">
+                {{input type=email value=storageSurvey.email placeholder="Your email address" autocomplete="off" spellcheck="false" pattern=storageSurvey.validation.email.pattern required=storageSurvey.validation.email.required}}
+                {{input value=storageSurvey.preference placeholder="Your preferred service" autocomplete="off" spellcheck="false" pattern=storageSurvey.validation.preference.pattern required=storageSurvey.validation.preference.required}}
+                <button {{action 'submitSurvey'}} {{bind-attr disabled=storageSurvey.disabled}}>{{{storageSurvey.submitLabel}}}</button>
+              </form>
+              <div class="tip">Alternative storage examples: iCloud, Google Drive, Amazon S3, Box, Adobe Creative Cloud, local drive</div>
+            </div>
+          {{/if}}
         </div>
         <div id="index-right-area">
           <h2>Get Started</h2>
@@ -64,22 +66,20 @@
                 </th>
               </tr>
             </thead>
-            {{#each sources}}
-              <tr>
+            {{#each collection}}
+              <tr {{bind-attr class="connected"}}>
                 <td>{{name}}</td>
-                <td>
-                  {{#if connected}}
-                    <span class="source-connected">Connected!</span> <a href="#" class="source-disconnect">Disconnect</a>
-                  {{else}}
-                    <span class="button" style="font-size: 0.8em;">Connect {{name}}</span>
-                  {{/if}}
+                <td class="source-connect-area">
+                  <button {{action 'toggleConnection' this}}>{{{connectLabel}}}</button>
                 </td>
                 <td>
                 <ul style="float: left;">
                   {{#each contentTypes}}
                     <li>
-                      <input type="checkbox" id="{{label}}-{{label}}" {{bind-attr checked=enabled}} {{bind-attr disabled=disabled}} /> 
-                      <label for="{{label}}-{{label}}">{{namePlural}}</label>
+                      {{#view App.CheckboxView}}
+                        {{input type="checkbox" viewName="checkbox" checked=enabled disabled=disabled}}
+                        <label {{bind-attr for="view.checkbox.elementId"}}>{{namePlural}}</label>
+                      {{/view}}
                     </li>
                   {{/each}}
                 </ul>
@@ -95,12 +95,12 @@
           <div id="sources-continue-area-interior">
             <span id="sources-continue-area-message">
               {{#if hasConnectedSources}}
-                You've connected {{totalConnectedSources}} networks and selected {{totalEnabledContentTypes}} content types.
+                <span>You've connected {{totalConnectedSources}} {{pluralize totalConnectedSources s="network"}} and selected {{totalEnabledContentTypes}} {{pluralize totalEnabledContentTypes s="content type"}}.</span>
               {{else}}
                 <span id="sources-continue-area-message-no-connected-sources">Connect some networks to proceed...</span>
               {{/if}}
             </span>
-            <button {{action 'sync'}} {{bind-attr disabled=disabled}}>Start Backing Them Up</button>
+            <button {{action 'sync'}} {{bind-attr disabled="disabled"}}>Start Backing Them Up</button>
           </div>
         </div>
       {{/if}}
