@@ -20,18 +20,18 @@
           <p>You'll get direct access to the files that constitute your photos, status updates, and other types of posts. And you won't have to worry about losing memories should these social networks ever change or restrict access to your content.</p>
           <p>To get started, simply connect your Dropbox account to the right. Or <a href="http://github.com/asheville/spec">learn more</a> about this service on Github.</p>
           <hr />
-          {{#if storageSurvey.loaded}}
-            <div id="index-survey" {{bind-attr class="storageSurvey.saved"}}>
+          {{#unless storageSurvey.isLoading}}
+            <div id="index-survey" {{bind-attr class="storageSurvey.submitted"}}>
               <h2>Interested in Asheville but would prefer to use a different storage service than Dropbox?</h2>
               <p>Enter your email address and preferred storage service below so we can notify you when support for it becomes available.</p>
               <form id="storage-survey-form">
                 {{input type=email value=storageSurvey.email placeholder="Your email address" autocomplete="off" spellcheck="false" pattern=storageSurvey.validation.email.pattern required=storageSurvey.validation.email.required}}
                 {{input value=storageSurvey.preference placeholder="Your preferred service" autocomplete="off" spellcheck="false" pattern=storageSurvey.validation.preference.pattern required=storageSurvey.validation.preference.required}}
-                <button {{action 'submitSurvey'}} {{bind-attr disabled=storageSurvey.disabled}}>{{{storageSurvey.submitLabel}}}</button>
+                <button {{action 'submitSurvey'}} {{bind-attr disabled="storageSurvey.isDisabled"}}>{{{storageSurvey.submitLabel}}}</button>
               </form>
               <div class="tip">Alternative storage examples: iCloud, Google Drive, Amazon S3, Box, Adobe Creative Cloud, local drive</div>
             </div>
-          {{/if}}
+          {{/unless}}
         </div>
         <div id="index-right-area">
           <h2>Get Started</h2>
@@ -50,11 +50,12 @@
     <script type="text/x-handlebars" data-template-name="sources">
       <div id="sources" class="container">
         <div class="notice notice-success"><img src="images/icon-check.png" />Your Dropbox account is now connected to Asheville.</div>
+        <div id="top-area">{{#link-to 'index'}}Sign Out{{/link-to}}</div>
         <h1>Connect social networks</h1>
         <p>Now that you've connected your Dropbox account, we need you to connect at least one social network so we can start backing up your content from it.</p>
         <p>After connecting a network, select the types of content you want to backup from it as well.</p>
         <div class="tip"><strong>Note:</strong> We will <em>not</em> post anything to these social networks without your explicit permission. We simply need you to connect them so we have permission to access your content.</div>
-        {{#if loaded}}
+        {{#unless sources.isLoading}}
           <table>
             <thead>
               <tr>
@@ -66,7 +67,7 @@
                 </th>
               </tr>
             </thead>
-            {{#each collection}}
+            {{#each sources.collection}}
               <tr {{bind-attr class="connected"}}>
                 <td>{{name}}</td>
                 <td class="source-connect-area">
@@ -77,7 +78,7 @@
                   {{#each contentTypes}}
                     <li>
                       {{#view App.CheckboxView}}
-                        {{input type="checkbox" viewName="checkbox" checked=enabled disabled=disabled}}
+                        {{input type="checkbox" viewName="checkbox" checked=enabled disabled=isDisabled}}
                         <label {{bind-attr for="view.checkbox.elementId"}}>{{namePlural}}</label>
                       {{/view}}
                     </li>
@@ -88,22 +89,22 @@
               </tr>
             {{/each}}
           </table>
-        {{/if}}
+        {{/unless}}
       </div>
-      {{#if loaded}}
+      {{#unless sources.isLoading}}
         <div id="sources-continue-area">
           <div id="sources-continue-area-interior">
             <span id="sources-continue-area-message">
-              {{#if hasConnectedSources}}
-                <span>You've connected {{totalConnectedSources}} {{pluralize totalConnectedSources s="network"}} and selected {{totalEnabledContentTypes}} {{pluralize totalEnabledContentTypes s="content type"}}.</span>
+              {{#if sources.hasConnectedSources}}
+                <span>You've connected {{sources.totalConnectedSources}} {{pluralize totalConnectedSources s="network"}} and selected {{sources.totalEnabledContentTypes}} {{pluralize totalEnabledContentTypes s="content type"}}.</span>
               {{else}}
-                <span id="sources-continue-area-message-no-connected-sources">Connect some networks to proceed...</span>
+                <span id="sources-continue-area-message-no-connected-sources">Connect at least one network to proceed...</span>
               {{/if}}
             </span>
-            <button {{action 'sync'}} {{bind-attr disabled="disabled"}}>Start Backing Them Up</button>
+            <button {{action 'saveSources'}} {{bind-attr disabled="sources.isDisabled"}}>{{{sources.saveLabel}}}</button>
           </div>
         </div>
-      {{/if}}
+      {{/unless}}
     </script>
     
     <script type="text/x-handlebars" data-template-name="sync">

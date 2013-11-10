@@ -64,18 +64,18 @@ input[type=email]:valid:focus::-moz-placeholder 					{ color: #8eab94 !important
 input[type=text]:valid:focus:-ms-input-placeholder,
 input[type=email]:valid:focus:-ms-input-placeholder 				{ color: #8eab94 !important; }
 
-.saved input[type=text]:valid:not(:focus),
-.saved input[type=email]:valid:not(:focus)												{ color: #2e2e2e !important; }
-.saved input[type=text]:valid:not(:focus),
-.saved input[type=email]:valid:not(:focus) 												{ border: 1px solid #dadada !important; background: none !important; }
-.saved input[type=text]:valid:not(:focus)::-webkit-input-placeholder,
-.saved input[type=email]:valid:not(:focus)::-webkit-input-placeholder 					{ color: #c2c2c2 !important; }
-.saved input[type=text]:valid:not(:focus):-moz-placeholder,
-.saved input[type=email]:valid:not(:focus):-moz-placeholder 							{ color: #c2c2c2 !important; }
-.saved input[type=text]:valid:not(:focus)::-moz-placeholder,
-.saved input[type=email]:valid:not(:focus)::-moz-placeholder 							{ color: #c2c2c2 !important; }
-.saved input[type=text]:valid:not(:focus):-ms-input-placeholder,
-.saved input[type=email]:valid:not(:focus):-ms-input-placeholder 						{ color: #c2c2c2 !important; }
+.submitted input[type=text]:valid:not(:focus),
+.submitted input[type=email]:valid:not(:focus)												{ color: #2e2e2e !important; }
+.submitted input[type=text]:valid:not(:focus),
+.submitted input[type=email]:valid:not(:focus) 												{ border: 1px solid #dadada !important; background: none !important; }
+.submitted input[type=text]:valid:not(:focus)::-webkit-input-placeholder,
+.submitted input[type=email]:valid:not(:focus)::-webkit-input-placeholder 					{ color: #c2c2c2 !important; }
+.submitted input[type=text]:valid:not(:focus):-moz-placeholder,
+.submitted input[type=email]:valid:not(:focus):-moz-placeholder 							{ color: #c2c2c2 !important; }
+.submitted input[type=text]:valid:not(:focus)::-moz-placeholder,
+.submitted input[type=email]:valid:not(:focus)::-moz-placeholder 							{ color: #c2c2c2 !important; }
+.submitted input[type=text]:valid:not(:focus):-ms-input-placeholder,
+.submitted input[type=email]:valid:not(:focus):-ms-input-placeholder 						{ color: #c2c2c2 !important; }
 
 /*input[type=text]:invalid:not(:focus),
 input[type=email]:invalid:not(:focus)									{ color: #a93c3c !important; }
@@ -92,7 +92,7 @@ input[type=email]:invalid:not(:focus):-ms-input-placeholder 			{ color: #ab8e8e 
 
 button,
 .button,
-input[type=submit]										{ background: #3e96f9; color: white; text-shadow: 0px 0px 2px #075ebf; border-radius: 0.3em; text-align: center; font-size: 0.9em; letter-spacing: 0.05em; font-weight: bold; box-sizing: border-box; padding: 0.7em 1em 0.7em 1em; cursor: default; border: 0; display: inline-block; transition: all 0.5s ease; }
+input[type=submit]										{ background: #3e96f9; border: 1px solid #3e96f9; color: white; text-shadow: 0px 0px 2px #075ebf; border-radius: 0.3em; text-align: center; font-size: 0.9em; letter-spacing: 0.05em; font-weight: bold; box-sizing: border-box; padding: 0.7em 1em 0.7em 1em; cursor: default; display: inline-block; transition: all 0.5s ease; }
 button:focus											{ outline-width: 0; }
 button:not(:disabled),
 .button:not(:disabled),
@@ -107,15 +107,15 @@ button:not(:disabled):active,
 .button:not(:disabled):active,
 input[type=submit]:not(:disabled):active				{ background: #398ae5; }
 
-.saved button,
-.saved .button,
-.saved input[type=submit] 							{ background: #f0f9f2; cursor: default; box-shadow: none; border: 1px solid #e0f2e4; text-shadow: none; color: #00ba27; font-weight: medium; }
+.submitted button,
+.submitted .button,
+.submitted input[type=submit] 							{ background: #f0f9f2; cursor: default; box-shadow: none; border: 1px solid #e0f2e4; text-shadow: none; color: #00ba27; font-weight: medium; }
 
-.saved button:not(:disabled):hover,
-.saved .button:not(:disabled):hover,
-.saved input[type=submit]:not(:disabled):hover 		{ background: #f0f9f2; }
+.submitted button:not(:disabled):hover,
+.submitted .button:not(:disabled):hover,
+.submitted input[type=submit]:not(:disabled):hover 		{ background: #f0f9f2; }
 
-#top-area                 { opacity: 0.5; float: right; font-size: 0.8em; border-bottom: 1px solid #dadada; padding-bottom: 1em; margin-bottom: 1em; transition: opacity 0.2s ease; }
+#top-area                 { opacity: 0.5; float: right; font-size: 0.8em; transition: opacity 0.2s ease; }
 #top-area:hover           { opacity: 1; }
 
 .tip										{ font-size: .8em; color: #6a6a6a; background: #fafafa; padding: 1em; border: 1px solid #f4f4f4; margin-bottom: 2em; }

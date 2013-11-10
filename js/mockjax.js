@@ -335,3 +335,11 @@ $.mockjax({
 	type: 'get',
 	responseText: server.get('sources')
 });
+
+// POST Sources
+$.mockjax({
+	url: '/sources',
+	dataType: 'json',
+	type: 'post',
+	responseText: server.get('sources')
+});
