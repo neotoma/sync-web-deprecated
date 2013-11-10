@@ -104,16 +104,40 @@ App.User = Ember.Object.extend({
 App.Storages = Ember.Object.extend({
 	resource: 		'/storages',
 	collection: 	[],
-	init: function() {
-		target = this;
 
+	init: function() {
 		this.GET(
 			this.get('resource'),
-			function(response) {
-				target.set('collection', response);
+			function(responseJSON) {
+				var collection = [];
+
+				$.each(responseJSON, function(key, storageJSON) {
+					collection.push(App.Storage.create(storageJSON));
+				});
+
+				target.set('collection', collection);
 			}
 		);
-	}
+	},
+
+	observeCollection: function() {
+		console.log('Collection: ' + this.get('collection').length);
+	}.observes('collection')
+});
+
+App.Storage = Ember.Object.extend({
+	ID: 	null,
+	name: 	null,
+	size: 	null,
+	allocations: {
+		available: 	null,
+		occupied: 	null,
+		other: 		null
+	},
+
+	resource: function() {
+		return '/storages/' + self.get('ID');
+	}.property('ID'),
 });
 
 App.StorageSurvey = Ember.Object.extend({
@@ -378,11 +402,10 @@ App.IndexController = Ember.ObjectController.extend({
 });
 
 App.SourcesRoute = Ember.Route.extend({
-	setupController: function(controller, model) {
-		var sources = App.Sources.create({});
-		controller.set('model', {
-			sources: sources
-		});
+	model: function() { 
+		return {
+			sources: App.Sources.create({})
+		};
 	}
 });
 
@@ -407,5 +430,13 @@ App.SourcesController = Ember.ObjectController.extend({
 			this.get('model').sources.save();
 			this.transitionToRoute('sync');
 		}
+	}
+});
+
+App.SyncRoute = Ember.Route.extend({
+	model: function() { 
+		return {
+			storages: App.Storages.create({})
+		};
 	}
 });

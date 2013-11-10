@@ -37,7 +37,16 @@ App.Server = Ember.Object.extend({
 			this.set('storages', []);
 		} else {
 			this.set('storages', [
-				'dropbox'
+				{
+					ID: 'dropbox',
+					name: 'Dropbox',
+					size: 4000000000, // 4 GB
+					allocations: {
+						available: 2000000000, // 2 GB
+						occupied: 1250000000, // 1.25 GB
+						other: 1750000000 // 1.75 GB
+					}
+				}
 			]);
 		}
 
@@ -290,7 +299,7 @@ App.Server = Ember.Object.extend({
 var server = App.Server.create({ presets: {
 	storageSurvey: 	false,
 	user: 			false,
-	storages: 		false,
+	storages: 		true,
 	sources: 		false
 }});
 

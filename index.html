@@ -117,33 +117,34 @@
         <p>We will automatically back up any new content you post to these networks in the future as well unless you pause them.</p>
         <hr />
 
-        <!-- Dropbox Account -->
-        <h3>Your Dropbox Account <span>2.1 out of 5 GB free (40%) &middot; Last Completed Backup: Never</span></h3>
-        <ul class="options">
-          <li style="color: #616161;">Options:</li>
-          <li><a href="#">Increase Available Space</a></li>
-          <li><a href="#">Pause All Backup</a></li>
-          <li><a href="#">Restart All Backup</a></li>
-          <li><a href="#">Disconnect</a></li>
-        </ul>
-        <div class="bar-base">
-          <div class="bar-fill" style="width: 30%; background: #535353;"></div><div class="bar-fill" style="width: 30%; background: #48d765;"></div><div class="bar-fill" style="width: 40%; background: #f6f6f6;"></div>
-        </div>
-        <ul class="legends">
-          <li>
-            <div class="legend-color"><div class="legend-color-interior" style="background: #535353;"></div></div> 
-            <div class="legend-label">Other Data (1.75 GB / 35%)</div>
-          </li>
-          <li>
-            <div class="legend-color"><div class="legend-color-interior" style="background: #48d765;"></div></div> 
-            <div class="legend-label">Backed Up Social Data (1.25 GB / 25%)</div>
-          </li>
-          <li>
-            <div class="legend-color"><div class="legend-color-interior" style="background: #f6f6f6;"></div></div> 
-            <div class="legend-label">Available Space (2 GB / 40%)</div>
-          </li>
-        </ul>
-        <hr />
+        {{#each storages.collection}}
+          <h3>Your {{name}} Account <span>2.1 out of 5 GB free (40%) &middot; Last Completed Backup: Never</span></h3>
+          <ul class="options">
+            <li style="color: #616161;">Options:</li>
+            <li><a href="#">Increase Available Space</a></li>
+            <li><a href="#">Pause All Backup</a></li>
+            <li><a href="#">Restart All Backup</a></li>
+            <li><a href="#">Disconnect</a></li>
+          </ul>
+          <div class="bar-base">
+            <div class="bar-fill" style="width: 30%; background: #535353;"></div><div class="bar-fill" style="width: 30%; background: #48d765;"></div><div class="bar-fill" style="width: 40%; background: #f6f6f6;"></div>
+          </div>
+          <ul class="legends">
+            <li>
+              <div class="legend-color"><div class="legend-color-interior" style="background: #535353;"></div></div> 
+              <div class="legend-label">Other Data (1.75 GB / 35%)</div>
+            </li>
+            <li>
+              <div class="legend-color"><div class="legend-color-interior" style="background: #48d765;"></div></div> 
+              <div class="legend-label">Backed Up Social Data (1.25 GB / 25%)</div>
+            </li>
+            <li>
+              <div class="legend-color"><div class="legend-color-interior" style="background: #f6f6f6;"></div></div> 
+              <div class="legend-label">Available Space (2 GB / 40%)</div>
+            </li>
+          </ul>
+          <hr />
+        {{/each}}
 
         <!-- Facebook -->
         <h3>Facebook <span>523 out of 1,302 pieces of content backed up (40%) &middot; Last Completed Backup: Never</span></h3>
