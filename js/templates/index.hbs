@@ -1,0 +1,33 @@
+<div id="index" class="container">
+  <div id="top-area">Already using Asheville? {{#link-to 'sources'}}Sign in with Dropbox{{/link-to}}</div>
+  <h1>Introducing Asheville</h1>
+  <div id="index-left-area">
+    <p>Asheville is a service that automatically backs up the content you post on social networks to your Dropbox account.</p>
+    <p>You'll get direct access to the files that constitute your photos, status updates, and other types of posts. And you won't have to worry about losing memories should these social networks ever change or restrict access to your content.</p>
+    <p>To get started, simply connect your Dropbox account to the right. Or <a href="http://github.com/asheville/spec">learn more</a> about this service on Github.</p>
+    <hr />
+    {{#unless storageSurvey.isLoading}}
+      <div id="index-survey" {{bind-attr class="storageSurvey.submitted"}}>
+        <h2>Interested in Asheville but would prefer to use a different storage service than Dropbox?</h2>
+        <p>Enter your email address and preferred storage service below so we can notify you when support for it becomes available.</p>
+        <form id="storage-survey-form">
+          {{input type=email value=storageSurvey.email placeholder="Your email address" autocomplete="off" spellcheck="false" pattern=storageSurvey.validation.email.pattern required=storageSurvey.validation.email.required}}
+          {{input value=storageSurvey.preference placeholder="Your preferred service" autocomplete="off" spellcheck="false" pattern=storageSurvey.validation.preference.pattern required=storageSurvey.validation.preference.required}}
+          <button {{action 'submitSurvey'}} {{bind-attr disabled="storageSurvey.isDisabled"}}>{{{storageSurvey.submitLabel}}}</button>
+        </form>
+        <div class="tip">Alternative storage examples: iCloud, Google Drive, Amazon S3, Box, Adobe Creative Cloud, local drive</div>
+      </div>
+    {{/unless}}
+  </div>
+  <div id="index-right-area">
+    <h2>Get Started</h2>
+    <form method="post" action="/dropbox/dest/add">
+      <button {{action 'connectDropbox'}}>Connect Dropbox</button>
+    </form>
+    <div class="tip">
+      <p><strong>Note:</strong> By connecting Dropbox, you are <em>not</em> giving us access to any of the files currently stored in your account.<p>
+      <p>Connecting will simply allow us to start storing data in a new folder on Dropbox for you. We will be able to read and change files only in that specific folder.</p>
+    </div>
+  </div>
+  <div style="clear: both;"></div>
+</div>
