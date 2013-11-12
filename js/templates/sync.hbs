@@ -7,33 +7,8 @@
   <p>We will automatically back up any new content you post to these networks in the future as well unless you pause them.</p>
   <hr />
 
-  {{#each storages.collection}}
-    <h3>Your {{name}} Account <span>{{storageSize this size="available"}} out of {{storageSize this size="total"}} free ({{storagePercentage this size="available"}}) &middot; Last Completed Backup: {{storageTimestamp this timestamp="lastCompletedSync"}}</span></h3>
-    <ul class="options">
-      <li style="color: #616161;">Options:</li>
-      <li><a href="#">Increase Available Space</a></li>
-      <li><a href="#">Pause All Backup</a></li>
-      <li><a href="#">Restart All Backup</a></li>
-      <li><a href="#">Disconnect</a></li>
-    </ul>
-    <div class="bar-base">
-      <div class="bar-fill" style="width: {{availablePercentage}}%; background: #535353;"></div><div class="bar-fill" style="width: {{occupiedPercentage}}%; background: #48d765;"></div><div class="bar-fill" style="width: {{otherPercentage}}%; background: #f6f6f6;"></div>
-    </div>
-    <ul class="legends">
-      <li>
-        <div class="legend-color"><div class="legend-color-interior" style="background: #535353;"></div></div> 
-        <div class="legend-label">Other Data ({{storageSize this size="other"}} / {{storagePercentage this size="other"}})</div>
-      </li>
-      <li>
-        <div class="legend-color"><div class="legend-color-interior" style="background: #48d765;"></div></div> 
-        <div class="legend-label">Backed Up Social Data ({{storageSize this size="occupied"}} / {{storagePercentage this size="occupied"}})</div>
-      </li>
-      <li>
-        <div class="legend-color"><div class="legend-color-interior" style="background: #f6f6f6;"></div></div> 
-        <div class="legend-label">Available Space ({{storageSize this size="available"}} / {{storagePercentage this size="available"}})</div>
-      </li>
-    </ul>
-    <hr />
+  {{#each storage in storages.collection}}
+    {{view App.SyncStorageView storageBinding=storage}}
   {{/each}}
 
   <!-- Facebook -->

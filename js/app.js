@@ -6,7 +6,8 @@ var templates = [
   'application', 
   'index', 
   'sources', 
-  'sync'
+  'sync',
+  'sync_storage'
 ];
 
 for (var i = 0; i < templates.length; i++) {
