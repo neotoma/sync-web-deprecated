@@ -3,46 +3,55 @@
   <head>
     <title>Asheville</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="styles/general.css" />
+    <link rel="stylesheet" type="text/css" href="styles/forms.css" />
+    <link rel="stylesheet" type="text/css" href="styles/application.css" />
+    <link rel="stylesheet" type="text/css" href="styles/index.css" />
+    <link rel="stylesheet" type="text/css" href="styles/sources.css" />
+    <link rel="stylesheet" type="text/css" href="styles/sync.css" />
     <link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
   </head>
-  <body>    
+  <body>
     <!-- Libraries -->
-    <script src="js/libraries/jquery-1.10.2.js"></script>
-    <script src="js/libraries/jquery.mockjax.js"></script>
-    <script src="js/libraries/jquery-ui.js"></script>
-    <script src="js/libraries/handlebars-1.0.0.js"></script>
-    <script src="js/libraries/ember-1.0.0.js"></script>
+    <script src="libraries/jquery-1.10.2.js"></script>
+    <script src="libraries/jquery.mockjax.js"></script>
+    <script src="libraries/jquery-ui.js"></script>
+    <script src="libraries/handlebars-1.0.0.js"></script>
+    <script src="libraries/ember-1.0.0.js"></script>
 
     <!-- App -->
-    <script src="js/app.js"></script>
-    <script src="js/server-simulation.js"></script>
+    <script src="app-config.js"></script>
+    <script src="app.js"></script>
 
     <!-- Controllers -->
-    <script src="js/controllers/index.js"></script>
-    <script src="js/controllers/sources.js"></script>
-    <script src="js/controllers/sync.js"></script>
+    <script src="controllers/application.js"></script>
+    <script src="controllers/index.js"></script>
+    <script src="controllers/sources.js"></script>
+    <script src="controllers/sync.js"></script>
 
     <!-- Helpers -->
-    <script src="js/helpers/general.js"></script>
+    <script src="helpers/general.js"></script>
 
     <!-- Models -->
-    <script src="js/models/content_type.js"></script>
-    <script src="js/models/source.js"></script>
-    <script src="js/models/sources.js"></script>
-    <script src="js/models/storage.js"></script>
-    <script src="js/models/storages.js"></script>
-    <script src="js/models/storage_survey.js"></script>
-    <script src="js/models/user.js"></script>
+    <script src="models/simulated_server.js"></script>
+    <script src="models/content_type.js"></script>
+    <script src="models/source.js"></script>
+    <script src="models/sources.js"></script>
+    <script src="models/storage.js"></script>
+    <script src="models/storages.js"></script>
+    <script src="models/storage_survey.js"></script>
+    <script src="models/user.js"></script>
 
     <!-- Routes -->
-    <script src="js/routes/index.js"></script>
-    <script src="js/routes/sources.js"></script>
-    <script src="js/routes/sync.js"></script>
+    <script src="routes/index.js"></script>
+    <script src="routes/sources.js"></script>
+    <script src="routes/sync.js"></script>
 
     <!-- Views -->
-    <script src="js/views/checkbox_area.js"></script>
-    <script src="js/views/sync_storage.js"></script>
-    <script src="js/views/textfield.js"></script>
+    <script src="views/checkbox_area.js"></script>
+    <script src="views/sources_source.js"></script>
+    <script src="views/sync_storage.js"></script>
+    <script src="views/sync_source.js"></script>
+    <script src="views/textfield.js"></script>
   </body>
 </html>

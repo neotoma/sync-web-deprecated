@@ -1,0 +1,53 @@
+#sync h3 span                 { font-size: 0.8em; font-weight: normal; margin-left: 1em; color: #616161; }
+
+#sync .options                { margin: 0 0 1em 0; padding: 0; }
+#sync .options li             { margin: 0 1em 0 0; padding: 0; display: inline-block; font-size: 0.75em; }
+#sync .options li a           { font-weight: normal; }
+
+#sync .bar-base                     { width: 100%; height: 2em; border: 1px solid #c4c4c4; padding: 1px; overflow: hidden; white-space: nowrap; }
+#sync .bar-base div                 { height: 100%; display: inline-block; text-align: center; padding-top: 0.5em; font-size: 0.8em; transition: width 2s; }
+#sync .bar-base div:nth-child(1)    { background: #535353; }
+#sync .bar-base div:nth-child(2)    { background: #48d765; }
+#sync .bar-base div:nth-child(3)    { background: #f6f6f6; }
+
+#sync .legends                { list-style: none; margin: 1em 0 0 0; padding: 0; }
+#sync .legends li             { margin: 0; padding: 0; display: inline-block; margin-right: 1em; height: 20px; }
+#sync .legends li:last-child  { margin-right: 0; }
+#sync .legend-color           { float: left; display: inline-block; height: 100%; width: 20px; padding: 1px; border: 1px solid #c4c4c4; }
+#sync .legend-color-interior  { width: 100%; height: 100%; }
+#sync .legend-label           { float: left; display: inline-block; font-size: 0.8em; color: #616161; margin: 0.2em 0 0 0.5em; height: 100%; }
+
+#sync .preview-arrow          { position: absolute; top: -11px; left: 15em; border: 1px solid #f4f4f4; background: #fafafa; border-radius: 9999px 9999px 0 0; height: 10px; width: 10px; }
+#sync .preview                { position: relative; background: #fafafa; border: 1px solid #f4f4f4; padding: 1em; margin-top: 1em;  }
+#sync .preview td,
+#sync .preview th             { font-size: 0.8em; padding: 0.2em; }
+
+#sync .preview-status-updates td:nth-child(1),
+.preview-status-updates th:nth-child(1) { width: 15%; }
+.preview-status-updates td:nth-child(2),
+.preview-status-updates th:nth-child(2) { width: 55%; }
+.preview-status-updates td:nth-child(3),
+.preview-status-updates th:nth-child(3) { width: 10%; }
+.preview-status-updates td:nth-child(4),
+.preview-status-updates th:nth-child(4) { width: 10%; }
+.preview-status-updates td:nth-child(5),
+.preview-status-updates th:nth-child(5) { width: 10%; }
+
+#sync .preview-photos td:nth-child(1),
+.preview-photos th:nth-child(1) { width: 15%; }
+.preview-photos td:nth-child(2),
+.preview-photos th:nth-child(2) { width: 10%; }
+.preview-photos td:nth-child(3),
+.preview-photos th:nth-child(3) { width: 30%; }
+.preview-photos td:nth-child(4),
+.preview-photos th:nth-child(4) { width: 15%; }
+.preview-photos td:nth-child(5),
+.preview-photos th:nth-child(5) { width: 10%; }
+.preview-photos td:nth-child(6),
+.preview-photos th:nth-child(6) { width: 10%; }
+.preview-photos td:nth-child(7),
+.preview-photos th:nth-child(7) { width: 10%; }
+
+#sync .preview-items          { max-height: 10em; overflow-y: auto; }
+
+#sync .photo-thumb            { display: inline-block; width: 5em; height: 5em; background: #d2d2d2; }

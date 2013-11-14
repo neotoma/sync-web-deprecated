@@ -1,0 +1,30 @@
+<div id="sources">
+  <h1>Connect social networks</h1>
+  <p>Now that you've connected your Dropbox account, we need you to connect at least one social network so we can start backing up your content from it.</p>
+  <p>After connecting a network, select the types of content you want to backup from it as well.</p>
+  <div class="tip"><strong>Note:</strong> We will <em>not</em> post anything to these social networks without your explicit permission. We simply need you to connect them so we have permission to access your content.</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Connect</th>
+        <th>Select Content Types to Back Up</th>
+      </tr>
+    </thead>
+    {{#each source in sources.collection}}
+      {{view App.SourcesSourceView sourceBinding=source}}
+    {{/each}}
+  </table>
+</div>
+<div id="sources-continue-area">
+  <div id="sources-continue-area-interior">
+    <span id="sources-continue-area-message">
+      {{#if sources.hasConnectedSources}}
+        <span>You've connected {{sources.totalConnectedSources}} {{pluralize totalConnectedSources s="network"}} and selected {{sources.totalEnabledContentTypes}} {{pluralize totalEnabledContentTypes s="content type"}}.</span>
+      {{else}}
+        <span id="sources-continue-area-message-no-connected-sources">Connect at least one network to proceed...</span>
+      {{/if}}
+    </span>
+    <button {{action 'saveSources'}} {{bind-attr disabled="sources.isDisabled"}}>{{{sources.saveLabel}}}</button>
+  </div>
+</div>
