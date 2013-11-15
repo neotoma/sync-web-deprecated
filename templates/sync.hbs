@@ -1,17 +1,16 @@
 <div id="sync">
-  <div id="top-area">{{#link-to 'index'}}Sign Out{{/link-to}}</div>
-  
   <h1>Backing up your content</h1>
-  <p>We've begun the process of backing up your content. You can see the status of your Dropbox account and each social network below, updated live so there's no need to refresh this page.</p>
-  <p>Closing or navigating away from this page will not stop the backup process. You can pause or restart each network's backup individually by using their respective controls below, or <a {{action 'pauseAllSources'}}>pause them all</a>.</p>
-  <p>We will automatically back up any new content you post to these networks in the future as well unless you pause them.</p>
+  <p>We've begun backing up your content. The statuses of your Dropbox and social network accounts are updated live below.</p>
+  <div class="tip">
+    <p><strong>Note:</strong> Closing or navigating away from this page will not stop the backup process. You can pause or restart each network's backup individually by using their respective controls below, or <a {{action 'pauseAllSources'}}>pause them all</a>. We will automatically back up any new content you post to these networks in the future as well unless you pause them.</p>
+  </div>
   <hr />
 
-  {{#each storage in storages.collection}}
+  {{#each storage in storages}}
     {{view App.SyncStorageView storageBinding=storage}}
   {{/each}}
 
-  {{#each source in sources.collection}}
+  {{#each source in sources}}
     {{view App.SyncSourceView sourceBinding=source}}
   {{/each}}
 </div>

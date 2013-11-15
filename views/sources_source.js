@@ -1,5 +1,7 @@
 App.SourcesSourceView = Ember.View.extend({
   templateName: 'sources_source',
+  tagName: 'tr',
+  classNameBindings: ['source.connected'],
 
   connectLabel: function() {
     if (this.get('source').get('connected')) {

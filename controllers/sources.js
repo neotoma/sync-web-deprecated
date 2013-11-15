@@ -9,7 +9,7 @@ App.SourcesController = Ember.ObjectController.extend({
     if (this.get('isSubmitting')) {
         return 'Loading...';
     } else {
-        return 'Start Backing Them Up';
+        return 'Start Backing Up';
     }
   }.property('isSubmitting'),
 
@@ -19,11 +19,14 @@ App.SourcesController = Ember.ObjectController.extend({
       target = this;
 
       App.Sources.post(
-        this.get('model'), 
+        this.get('model'),
+
         function(response) {
-          target.set('isSubmitting', false);
-          this.transitionToRoute('sync');
-        }, 
+          target.transitionToRoute('sync').then(function() {
+            target.set('isSubmitting', false);
+          });
+        },
+         
         function(reason) {
           target.set('isSubmitting', false);
         }

@@ -23,33 +23,35 @@
     <div class="legend-label">Checkins (0 / 4,779)</div>
   </li>
 </ul>
-<div class="preview preview-status-updates">
-  <div class="preview-arrow"></div>
-  <table>
-    <thead>
-      <tr>
-        {{#each source.itemAttributes}}
-          <th>Date</th>
-          <th>Status Update</th>
-          <th>Likes</th>
-          <th>Comments</th>
-          <th>Shares</th>
-        {{/each}}
-      </tr>
-    </thead>
-  </table>
-  <div class="preview-items">
+{{#if source.itemAttributes}}
+  <div class="preview preview-status-updates">
+    <div class="preview-arrow"></div>
     <table>
-      {{#each source.item in items}}
+      <thead>
         <tr>
-          <td>January 19, 2008</td>
-          <td>Anybody have any camera recommendations?</td>
-          <td>3</td>
-          <td>0</td>
-          <td>1</td>
+          {{#each source.itemAttributes}}
+            <th>Date</th>
+            <th>Status Update</th>
+            <th>Likes</th>
+            <th>Comments</th>
+            <th>Shares</th>
+          {{/each}}
         </tr>
-      {{/each}}
+      </thead>
     </table>
+    <div class="preview-items">
+      <table>
+        {{#each source.item in items}}
+          <tr>
+            <td>January 19, 2008</td>
+            <td>Anybody have any camera recommendations?</td>
+            <td>3</td>
+            <td>0</td>
+            <td>1</td>
+          </tr>
+        {{/each}}
+      </table>
+    </div>
   </div>
-</div>
+{{/if}}
 <hr />

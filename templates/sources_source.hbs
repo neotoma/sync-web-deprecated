@@ -1,19 +1,17 @@
-<tr {{bind-attr class="source.connected"}}>
-  <td>{{view.source.name}} {{view.source.connected}}</td>
-  <td class="source-connect-area">
-    <button {{action 'toggleConnection' target="view"}}>{{{view.connectLabel}}}</button>
-  </td>
-  <td>
-    <ul style="float: left;">
-      {{#each source.contentTypes}}
-        <li>
-          {{#view App.CheckboxAreaView}}
-            {{input type="checkbox" viewName="checkbox" checked=enabled disabled=isDisabled}}
-            <label {{bind-attr for="view.checkbox.elementId"}}>{{namePlural}}</label>
-          {{/view}}
-        </li>
-      {{/each}}
-    </ul>
-    <div style="clear: both;"></div>
-  </td>
-</tr>
+<td>{{view.source.name}}</td>
+<td class="source-connect-area">
+  <button {{action 'toggleConnection' target="view"}}>{{{view.connectLabel}}}</button>
+</td>
+<td>
+  <ul style="float: left;">
+    {{#each view.source.contentTypes}}
+      <li>
+        {{#view App.CheckboxAreaView}}
+          {{input type="checkbox" viewName="checkbox" checked=enabled disabled=isDisabled}}
+          <label {{bind-attr for="view.checkbox.elementId"}}>{{namePlural}}</label>
+        {{/view}}
+      </li>
+    {{/each}}
+  </ul>
+  <div style="clear: both;"></div>
+</td>

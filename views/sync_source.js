@@ -1,6 +1,10 @@
 App.SyncSourceView = Ember.View.extend({
   templateName: 'sync_source',
 
+  percentageCompleted: function() {
+    return Math.round(this.get('source').get('totalItemsSynced') / this.get('source').get('totalItemsAvailable') * 100) + '%';
+  }.property('totalItemsSynced', 'totalItemsAvailable'),
+
   /* Timestamps */
 
   timestamp: function(value) {

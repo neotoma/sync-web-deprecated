@@ -1,8 +1,4 @@
 App.Storage = Ember.Object.extend({
-	init: function() {
-		//this.set('sizes', Ember.Object.create(this.get('sizes'));
-	},
-
 	availablePercentage: function(size) {
 		return (this.get('sizes').available / this.get('sizes').total * 100);
 	}.property('sizes.available'),

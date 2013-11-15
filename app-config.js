@@ -7,8 +7,8 @@ var APP_CONFIGURATION = {
     enabled: true,
     presets: {
       storageSurvey:    false,
-      user:             false,
-      storages:         false,
+      user:             true,
+      storages:         true,
       sources:          true
     }
   }

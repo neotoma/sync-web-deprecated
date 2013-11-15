@@ -1,6 +1,7 @@
+#sync h3                      { margin-bottom: 1em; }
 #sync h3 span                 { font-size: 0.8em; font-weight: normal; margin-left: 1em; color: #616161; }
 
-#sync .options                { margin: 0 0 1em 0; padding: 0; }
+#sync .options                { display: none; margin: 0 0 1em 0; padding: 0; }
 #sync .options li             { margin: 0 1em 0 0; padding: 0; display: inline-block; font-size: 0.75em; }
 #sync .options li a           { font-weight: normal; }
 

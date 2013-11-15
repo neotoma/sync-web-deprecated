@@ -19,13 +19,15 @@ App.User.reopenClass({
 
       	// Incorporate all returned values
 				for (var key in response) {
-					user.set(key, responseUser[key]);
+					user.set(key, response[key]);
 				}
 				
 				// Init App.Storage objects from basic objects
 				var storages = response.storages;
 				for(var i = 0; i < storages.length; i++) {
-					storages[i] = App.Storage.create(storages[i]);
+          var storage = App.Storage.create(storages[i]);
+          storage.set('sizes', Ember.Object.create(storages[i].sizes));
+					storages[i] = storage;
 				}
 
 				user.set('storages', storages);
@@ -38,9 +40,6 @@ App.User.reopenClass({
 				user.set('sources', sources);
 
         return user;
-      },
-      function(reason) {
-      	console.log('user get failed: ' + reason);
       }
     );
 	}

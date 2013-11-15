@@ -3,7 +3,7 @@ App.Sources = Ember.Object.extend({
 		return {
 			// ?
 		};
-	},
+	}.property(),
 
 	totalConnectedSources: function() {
 		var total = 0;
@@ -22,12 +22,10 @@ App.Sources = Ember.Object.extend({
 	}.property('totalConnectedSources'),
 
 	totalEnabledContentTypes: function() {
-		var total = 0;
+    var total = 0;
 
 		$.each(this.get('collection'), function(key, source) {
-			if (source.get('connected')) {
-				total += source.get('totalEnabledContentTypes');
-			}
+			total += source.get('totalEnabledContentTypes');
 		});
 
 		return total;
@@ -64,6 +62,7 @@ App.Sources.reopenClass({
       }
     );
 	},
+	
 	post: function(sources, doneFilter, failFilter) {
 		return $.ajax({ 
 			url: '/sources', 

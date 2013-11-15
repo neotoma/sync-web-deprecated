@@ -26,4 +26,3 @@
 #sources-continue-area-message span                     { display: inline-block; padding-top: 0.6em; }
 #sources-continue-area-message-no-connected-sources     { color: #717171; }
 #sources-continue-area button                           { margin-left: -0.5em 0 0 1em; font-size: 1em; }
-#sources-continue-area button:disabled                  { display: none; }

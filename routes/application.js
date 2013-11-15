@@ -11,6 +11,6 @@ App.ApplicationRoute = Ember.Route.extend({
     },
     signIn: function() {
       console.log('App.ApplicationRoute.actions.signIn');
-    }
+    },
   }
 });
