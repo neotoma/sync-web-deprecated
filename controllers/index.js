@@ -35,11 +35,7 @@ App.IndexController = Ember.ObjectController.extend({
   }.property('isSubmitting', 'isSubmitted'),
 
 	actions: {
-		connectDropbox: function() {
-			this.transitionToRoute('sources');
-		},
-
-    submit: function() {
+		submit: function() {
       this.set('isSubmitting', true);
       target = this;
 

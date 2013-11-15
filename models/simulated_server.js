@@ -1,5 +1,3 @@
-/* Simulated Server Model */
-
 App.SimulatedServer = Ember.Object.extend({
 	init: function() {
 		if (!this.get('presets').storageSurvey) {

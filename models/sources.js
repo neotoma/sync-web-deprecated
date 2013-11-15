@@ -25,7 +25,7 @@ App.Sources = Ember.Object.extend({
 		var total = 0;
 
 		$.each(this.get('collection'), function(key, source) {
-			if (this.get('connected')) {
+			if (source.get('connected')) {
 				total += source.get('totalEnabledContentTypes');
 			}
 		});
@@ -45,8 +45,18 @@ App.Sources.reopenClass({
 
 				// Init App.Source objects from basic objects
 				var collection = response;
-				for(var i = 0; i < sources.length; i++) {
-					collection[i] = App.Source.create(collection[i]);
+				for(var i = 0; i < collection.length; i++) {
+					var source = App.Source.create(collection[i]);
+					
+					// Init App.ContentType objects from basic objects
+					var contentTypes = [];
+					$.each(collection[i].contentTypes, function(key, contentTypeJSON) {
+						contentTypeJSON.source = source;
+						contentTypes.push(App.ContentType.create(contentTypeJSON));
+					});
+					source.set('contentTypes', contentTypes);
+
+					collection[i] = source;
 				}
 				sources.set('collection', collection);
 

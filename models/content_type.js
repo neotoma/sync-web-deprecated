@@ -1,9 +1,9 @@
 App.ContentType = Ember.Object.extend({
-	ID: 			null,	// string		
-	name: 			null, 	// string
+	ID: 					null,	// string		
+	name: 				null, 	// string
 	namePlural: 	null,	// string
-	enabled: 		false,	// boolean
-	source: 		null,	// App.Source
+	enabled: 			false,	// boolean
+	source: 			null,	// App.Source
 
 	comboID: function() {
 		return this.get('source').get('ID') + '-' + this.get('ID');

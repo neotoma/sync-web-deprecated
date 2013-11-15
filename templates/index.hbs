@@ -1,4 +1,14 @@
 <div id="index">
+  <div id="right-area">
+    <h2>Get Started</h2>
+    <form method="post" action="/dropbox/dest/add">
+      <button {{action 'connectDropbox'}}>Connect Dropbox</button>
+    </form>
+    <div class="tip">
+      <p><strong>Note:</strong> By connecting Dropbox, you are <em>not</em> giving us access to any of the files currently stored in your account.<p>
+      <p>Connecting will simply allow us to start storing data in a new folder on Dropbox for you. We will be able to read and change files only in that specific folder.</p>
+    </div>
+  </div>
   <div id="left-area">
     <h1>Introducing Asheville</h1>
     <p>Asheville is a service that automatically backs up the content you post on social networks to your Dropbox account.</p>
@@ -13,16 +23,6 @@
       <button {{action 'submit'}} {{bind-attr disabled="isDisabled"}}>{{{submitLabel}}}</button>
     </form>
     <div class="tip">Alternative storage examples: iCloud, Google Drive, Amazon S3, Box, Adobe Creative Cloud, local drive</div>
-  </div>
-  <div id="right-area">
-    <h2>Get Started</h2>
-    <form method="post" action="/dropbox/dest/add">
-      <button {{action 'connectDropbox'}}>Connect Dropbox</button>
-    </form>
-    <div class="tip">
-      <p><strong>Note:</strong> By connecting Dropbox, you are <em>not</em> giving us access to any of the files currently stored in your account.<p>
-      <p>Connecting will simply allow us to start storing data in a new folder on Dropbox for you. We will be able to read and change files only in that specific folder.</p>
-    </div>
   </div>
   <div style="clear: both;"></div>
 </div>

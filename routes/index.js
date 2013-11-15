@@ -9,5 +9,11 @@ App.IndexRoute = Ember.Route.extend({
 		}
     
 		controller.set('model', model);
-	}
+	},
+
+  actions: {
+    connectDropbox: function() {
+      this.transitionTo('sources');
+    }
+  },
 });
