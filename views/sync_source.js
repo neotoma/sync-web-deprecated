@@ -1,8 +1,28 @@
 App.SyncSourceView = Ember.View.extend({
   templateName: 'sync_source',
 
-  percentageCompleted: function() {
-    return Math.round(this.get('source').get('totalItemsSynced') / this.get('source').get('totalItemsAvailable') * 100) + '%';
+  totalItemsSynced: function() {
+    var total = 0;
+
+    $.each(this.get('source').get('contentTypes'), function(key, contentType) {
+      total = total + contentType.get('totalItemsSynced');
+    });
+
+    return total;
+  }.property('contentTypes.@each.totalItemsSynced'),
+
+  totalItemsAvailable: function() {
+    var total = 0;
+
+    $.each(this.get('source').get('contentTypes'), function(key, contentType) {
+      total = total + contentType.get('totalItemsAvailable');
+    });
+
+    return total;
+  }.property('contentTypes.@each.totalItemsAvailable'),
+
+  percentageItemsSynced: function() {
+    return Math.round(this.get('totalItemsSynced') / this.get('totalItemsAvailable') * 100) + '%';
   }.property('totalItemsSynced', 'totalItemsAvailable'),
 
   /* Timestamps */

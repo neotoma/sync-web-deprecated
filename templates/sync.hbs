@@ -6,11 +6,15 @@
   </div>
   <hr />
 
-  {{#each storage in storages}}
-    {{view App.SyncStorageView storageBinding=storage}}
-  {{/each}}
+  <div id="sync-storages">
+    {{#each storage in storages}}
+      {{view App.SyncStorageView storageBinding=storage}}
+    {{/each}}
+  </div>
 
-  {{#each source in sources}}
-    {{view App.SyncSourceView sourceBinding=source}}
-  {{/each}}
+  <div id="sync-sources">
+    {{#each source in sources}}
+      {{view App.SyncSourceView sourceBinding=source}}
+    {{/each}}
+  </div>
 </div>

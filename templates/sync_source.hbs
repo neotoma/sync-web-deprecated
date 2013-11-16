@@ -1,4 +1,4 @@
-<h3>{{source.name}} <span>{{source.totalItemsSynced}} out of {{source.totalItemsAvailable}} pieces of content backed up ({{view.percentageCompleted}}) &middot; Last Completed Backup: {{view.lastCompletedSyncTimestamp}}</span></h3>
+<h3>{{source.name}} <span>{{view.totalItemsSynced}} out of {{view.totalItemsAvailable}} pieces of content backed up ({{view.percentageItemsSynced}}) &middot; Last Completed Backup: {{view.lastCompletedSyncTimestamp}}</span></h3>
 <ul class="options">
   <li style="color: #616161;">Options:</li>
   <li><a href="#">Pause</a></li>
@@ -7,21 +7,14 @@
   <li><a href="#">Disconnect</a></li>
 </ul>
 <div class="bar-base">
-  <div class="bar-fill" style="width: 15%; background: #c000ff;"></div><div class="bar-fill" style="width: 25%; background: #ff7e00;"></div><div class="bar-fill" style="width: 14%; background: #f7e3ce;"></div><div class="bar-fill" style="width: 46%; background: #d2e0f1;"></div>
+  {{#each contentType in source.contentTypes}}
+    {{view App.SyncSourceContentTypeBarView contentTypeBinding=contentType}}
+  {{/each}}
 </div>
 <ul class="legends">
-  <li>
-    <div class="legend-color"><div class="legend-color-interior" style="background: #c000ff;"></div></div> 
-    <div class="legend-label">Photos (204 / 204)</div>
-  </li>
-  <li>
-    <div class="legend-color"><div class="legend-color-interior" style="background: #ff7e00;"></div></div> 
-    <div class="legend-label" style="font-weight: bold; color: black;">Status Updates (319 / 502)</div>
-  </li>
-  <li>
-    <div class="legend-color"><div class="legend-color-interior" style="background: #0072ff;"></div></div> 
-    <div class="legend-label">Checkins (0 / 4,779)</div>
-  </li>
+  {{#each contentType in source.contentTypes}}
+    {{view App.SyncSourceContentTypeLegendView contentTypeBinding=contentType}}
+  {{/each}}
 </ul>
 {{#if source.itemAttributes}}
   <div class="preview preview-status-updates">

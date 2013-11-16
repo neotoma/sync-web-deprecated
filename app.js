@@ -12,7 +12,9 @@ App.TemplateNames = [
   'sources_source',
   'sync',
   'sync_storage',
-  'sync_source'
+  'sync_source',
+  'sync_source_content_type_bar',
+  'sync_source_content_type_legend'
 ];
 
 for (var i = 0; i < App.TemplateNames.length; i++) {

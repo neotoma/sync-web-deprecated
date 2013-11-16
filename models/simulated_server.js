@@ -205,8 +205,6 @@ App.SimulatedServer = Ember.Object.extend({
 				{ 
 					ID: 	'facebook',
 					name:   'Facebook',
-					totalItemsSynced: 121,
-					totalItemsAvailable: 10032,
 					timestamps: {
 						lastCompletedSync: null,
 					},
@@ -214,25 +212,29 @@ App.SimulatedServer = Ember.Object.extend({
 						{
 							ID: 			'status-update',
 							name: 			'Status Update',
-							namePlural: 	'Status Updates'
+							namePlural: 	'Status Updates',
+							totalItemsAvailable: 2010,
+							totalItemsSynced: 2010
 						},
 						{
 							ID: 			'link',
 							name: 			'Link',
-							namePlural: 	'Links'
+							namePlural: 	'Links',
+							totalItemsAvailable: 5000,
+							totalItemsSynced: 1530
 						},
 						{
 							ID: 			'checkin',
 							name: 			'Check-in',
-							namePlural: 	'Check-ins'
+							namePlural: 	'Check-ins',
+							totalItemsAvailable: 7010,
+							totalItemsSynced: 0
 						}
 					]
 				},
 				{ 
 					ID: 	'twitter',
 					name:   'Twitter',
-					totalItemsSynced: 329,
-					totalItemsAvailable: 2023,
 					timestamps: {
 						lastCompletedSync: null,
 					},
@@ -240,17 +242,23 @@ App.SimulatedServer = Ember.Object.extend({
 						{
 							ID: 			'tweet',
 							name: 			'Tweet',
-							namePlural: 	'Tweets'
+							namePlural: 	'Tweets',
+							totalItemsAvailable: 1823,
+							totalItemsSynced: 1010
 						},
 						{
 							ID: 			'retweet',
 							name: 			'Retweet',
-							namePlural: 	'Retweets'
+							namePlural: 	'Retweets',
+							totalItemsAvailable: 301,
+							totalItemsSynced: 0
 						},
 						{
 							ID: 			'direct-messages',
 							name: 			'Direct Message',
-							namePlural: 	'Direct Messages'
+							namePlural: 	'Direct Messages',
+							totalItemsAvailable: 150,
+							totalItemsSynced: 0
 						}
 					]
 				}
@@ -260,11 +268,6 @@ App.SimulatedServer = Ember.Object.extend({
 				{ 
 					ID: 	'facebook',
 					name:   'Facebook',
-					totalItemsSynced: 121,
-					totalItemsAvailable: 10032,
-					timestamps: {
-						lastCompletedSync: null,
-					},
 					contentTypes: [
 						{
 							ID: 			'status-update',
@@ -302,11 +305,6 @@ App.SimulatedServer = Ember.Object.extend({
 				{ 
 					ID: 	'twitter',
 					name:   'Twitter',
-					totalItemsSynced: 329,
-					totalItemsAvailable: 2023,
-					timestamps: {
-						lastCompletedSync: null,
-					},
 					contentTypes: [
 						{
 							ID: 			'tweet',
@@ -338,11 +336,6 @@ App.SimulatedServer = Ember.Object.extend({
 				{ 
 					ID: 	'instagram',
 					name:   'Instagram',
-					totalItemsSynced: 0,
-					totalItemsAvailable: 102,
-					timestamps: {
-						lastCompletedSync: null,
-					},
 					contentTypes: [
 						{
 							ID: 			'photo',
@@ -368,11 +361,6 @@ App.SimulatedServer = Ember.Object.extend({
 				{ 
 					ID: 	'foursquare',
 					name:   'Foursquare',
-					totalItemsSynced: 392,
-					totalItemsAvailable: 400,
-					timestamps: {
-						lastCompletedSync: null,
-					},
 					contentTypes: [
 						{
 							ID: 			'checkin',

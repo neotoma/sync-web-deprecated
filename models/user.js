@@ -36,6 +36,14 @@ App.User.reopenClass({
 				var sources = response.sources;
 				for(var i = 0; i < sources.length; i++) {
 					sources[i] = App.Source.create(sources[i]);
+
+          // Init App.ContentType objects from basic objects
+          var contentTypes = [];
+          $.each(sources[i].contentTypes, function(key, contentTypeJSON) {
+            contentTypeJSON.source = sources[i];
+            contentTypes.push(App.ContentType.create(contentTypeJSON));
+          });
+          sources[i].set('contentTypes', contentTypes);
 				}
 				user.set('sources', sources);
 
