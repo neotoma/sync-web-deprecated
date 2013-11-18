@@ -1,7 +1,7 @@
-#sources                                                { padding-bottom: 5em; }
+#sources                                                { padding-bottom: 6em; }
 #sources td                                             { border-bottom: 1px solid #ececec; }
 #sources td:first-child                                 { font-weight: bold; }
-#sources tr:last-of-type td                               { border-bottom: none; }
+#sources tr:last-of-type td                             { border-bottom: none; }
 #sources td ul                                          { list-style: none; padding: 0; margin: 0; }
 #sources td li                                          { padding: 0; margin: 0 0 0.2em 0; font-size: 0.8em; }
 #sources label                                          { font-size: 1.2em; }
@@ -21,7 +21,7 @@
 
 #sources .connected button                              { background: #f0f9f2; cursor: default; box-shadow: none; border: 1px solid #e0f2e4; text-shadow: none; color: #00ba27; font-weight: medium; }
 
-#sources-continue-area                                  { position: fixed; bottom: 0; left: 0; z-index: 10; height: 5em; width: 100%; text-align: center; }
+#sources-continue-area                                  { position: fixed; bottom: 0; left: 0; z-index: 10; height: 6em; width: 100%; text-align: center; }
 #sources-continue-area-interior                         { margin: auto; max-width: 960px; border-top: 1px solid #e9ebed; background: #fbfcfd; height: 100%; padding: 1em; font-weight: bold; text-align: right; }
 #sources-continue-area-message                          { font-weight: bold; font-size: 1.1em; margin-right: 1em; color: #08b92c; }
 #sources-continue-area-message span                     { display: inline-block; padding-top: 0.6em; }

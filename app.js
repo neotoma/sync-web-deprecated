@@ -3,22 +3,6 @@ App = Ember.Application.create({
   LOG_TRANSITIONS_INTERNAL: APP_CONFIGURATION.initialization.logTransitionsInternal,
 });
 
-Ember.Route.reopen({
-  events: {
-    willTransition: function(transition) {
-      console.log(transition);
-
-      if (transition.targetName != this.controllerFor('application').currentPath) {
-        this.controllerFor('application').handleTransitionStart();
-      }
-    }
-  },
-
-  afterModel: function() {
-    this.controllerFor('application').handleTransitionStop();
-  }
-});
-
 App.Config = Ember.Object.create();
 
 App.TemplateNames = [
@@ -48,4 +32,23 @@ App.Router.map(function() {
   this.route('index', { path: '/' });
   this.route('sources', { path: '/sources' });
   this.route('sync', { path: '/sync' });
+});
+
+Ember.Route.reopen({
+  events: {
+    willTransition: function(transition) {
+      console.log(transition);
+
+      this.controllerFor('application').set('targetPath', transition.targetName);
+
+      if (transition.targetName != this.controllerFor('application').get('currentPath')) {
+        this.controllerFor('application').handleTransitionStart();
+      }
+    }
+  },
+
+  afterModel: function() {
+    this.controllerFor('application').set('targetPath', null);
+    this.controllerFor('application').handleTransitionStop();
+  }
 });

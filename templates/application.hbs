@@ -1,9 +1,9 @@
 <div id="app">
   <div id="app-nav">
     <ul>
-      <li {{action 'goToHome'}}><img src="images/asheville_logo.png" /></li>
-      <li {{action 'goToSources'}}><span>Social Networks</span></li>
-      <li {{action 'goToSync'}}><span>Status</span></li>
+      <li {{action 'goToHome'}} {{bind-attr class="indexSelected:selected"}}><img src="images/asheville_logo.png" /></li>
+      <li {{action 'goToSources'}} {{bind-attr class="sourcesSelected:selected"}}><span>Social Networks</span></li>
+      <li {{action 'goToSync'}} {{bind-attr class="syncSelected:selected"}}><span>Status</span></li>
     </ul>
     <ul>
       <li {{action 'signIn'}}><span>Sign In</span></li>
