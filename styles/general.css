@@ -15,7 +15,7 @@ hr											            { border: none; border-top: 1px solid #e9ebed; margin: 
 form										            { margin: 0 0 1.5em 0; }
 ::selection      							      { background: transparent; } 
 p::selection      							    { background: #e8f1fb; } 
-table										            { width: 100%; }
+table										            { border-spacing: 0; width: 100%; }
 th											            { text-align: left; font-weight: normal; font-size: 0.9em; border-bottom: 1px solid #e9ebed; padding-bottom: 0.5em; color: #aeaeae; }
 td											            { vertical-align: top; padding: 0.5em 0 0.5em 0; }
 

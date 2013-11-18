@@ -1,6 +1,7 @@
-#sources                                                { }
+#sources                                                { padding-bottom: 5em; }
 #sources td                                             { border-bottom: 1px solid #ececec; }
 #sources td:first-child                                 { font-weight: bold; }
+#sources tr:last-of-type td                               { border-bottom: none; }
 #sources td ul                                          { list-style: none; padding: 0; margin: 0; }
 #sources td li                                          { padding: 0; margin: 0 0 0.2em 0; font-size: 0.8em; }
 #sources label                                          { font-size: 1.2em; }
