@@ -1,2 +1,2 @@
-{{input type="checkbox" viewName="checkbox" checked=contentType.enabled disabled=isDisabled}}
-<label {{bind-attr for="view.checkbox.elementId"}}>{{namePlural}}</label>
+{{input type="checkbox" viewName="checkbox" checked=contentType.enabled disabled=view.isDisabled}}
+<label {{bind-attr for="view.checkbox.elementId"}}>{{pluralize contentType.name}}</label>

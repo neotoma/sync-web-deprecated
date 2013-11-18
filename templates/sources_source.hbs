@@ -4,7 +4,7 @@
 </td>
 <td>
   <ul style="float: left;">
-    {{#each view.source.contentTypes}}
+    {{#each contentType in view.source.contentTypes}}
       {{view App.SourcesSourceContentTypeView contentTypeBinding=contentType}}
     {{/each}}
   </ul>

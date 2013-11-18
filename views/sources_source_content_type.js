@@ -3,6 +3,6 @@ App.SourcesSourceContentTypeView = Ember.View.extend({
   templateName: 'sources_source_content_type',
 
   isDisabled: function() {
-    return (!this.get('contentType').get('connected'));
-  }.property('contentType.connected')
+    return (!this.get('contentType').get('source').get('connected'));
+  }.property('contentType.source.connected')
 })

@@ -19,7 +19,7 @@
   <div id="sources-continue-area-interior">
     <span id="sources-continue-area-message">
       {{#if hasConnectedSources}}
-        <span>You've connected {{totalConnectedSources}} {{pluralize totalConnectedSources s="network"}} and selected {{totalEnabledContentTypes}} {{pluralize totalEnabledContentTypes s="content type"}}.</span>
+        <span>You've connected {{totalConnectedSources}} {{conditionalPluralize totalConnectedSources s="network"}} and selected {{totalEnabledContentTypes}} {{conditionalPluralize totalEnabledContentTypes s="content type"}}.</span>
       {{else}}
         <span id="sources-continue-area-message-no-connected-sources">Connect at least one network to proceed...</span>
       {{/if}}

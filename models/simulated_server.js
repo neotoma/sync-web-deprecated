@@ -73,31 +73,26 @@ App.SimulatedServer = Ember.Object.extend({
 						{
 							ID: 			'status-update',
 							name: 			'Status Update',
-							namePlural: 	'Status Updates',
 							enabled: 		false
 						},
 						{
 							ID: 			'link',
 							name: 			'Link',
-							namePlural: 	'Links',
 							enabled: 		false
 						},
 						{
 							ID: 			'checkin',
 							name: 			'Check-in',
-							namePlural: 	'Check-ins',
 							enabled: 		false
 						},
 						{
 							ID: 			'photo',
 							name: 			'Photo',
-							namePlural: 	'Photos',
 							enabled: 		false
 						},
 						{
 							ID: 			'video',
 							name: 			'Video',
-							namePlural: 	'Videos',
 							enabled: 		false
 						}
 					],
@@ -115,25 +110,21 @@ App.SimulatedServer = Ember.Object.extend({
 						{
 							ID: 			'tweet',
 							name: 			'Tweet',
-							namePlural: 	'Tweets',
 							enabled: 		false
 						},
 						{
-							ID: 			'favorites',
+							ID: 			'favorite',
 							name: 			'Favorite',
-							namePlural: 	'Favorites',
 							enabled: 		false
 						},
 						{
 							ID: 			'retweet',
 							name: 			'Retweet',
-							namePlural: 	'Retweets',
 							enabled: 		false
 						},
 						{
-							ID: 			'direct-messages',
+							ID: 			'direct-message',
 							name: 			'Direct Message',
-							namePlural: 	'Direct Messages',
 							enabled: 		false
 						}
 					],
@@ -151,19 +142,16 @@ App.SimulatedServer = Ember.Object.extend({
 						{
 							ID: 			'photo',
 							name: 			'Photo',
-							namePlural: 	'Photos',
 							enabled: 		false
 						},
 						{
 							ID: 			'video',
 							name: 			'Video',
-							namePlural: 	'Videos',
 							enabled: 		false
 						},
 						{
 							ID: 			'like',
 							name: 			'Like',
-							namePlural: 	'Likes',
 							enabled: 		false
 						}
 					],
@@ -181,19 +169,16 @@ App.SimulatedServer = Ember.Object.extend({
 						{
 							ID: 			'checkin',
 							name: 			'Check-in',
-							namePlural: 	'Check-ins',
 							enabled: 		false
 						},
 						{
 							ID: 			'tip',
 							name: 			'Tip',
-							namePlural: 	'Tips',
 							enabled: 		false
 						},
 						{
 							ID: 			'like',
 							name: 			'Like',
-							namePlural: 	'Likes',
 							enabled: 		false
 						}
 					],
@@ -212,21 +197,18 @@ App.SimulatedServer = Ember.Object.extend({
 						{
 							ID: 			'status-update',
 							name: 			'Status Update',
-							namePlural: 	'Status Updates',
 							totalItemsAvailable: 2010,
 							totalItemsSynced: 2010
 						},
 						{
 							ID: 			'link',
 							name: 			'Link',
-							namePlural: 	'Links',
 							totalItemsAvailable: 5000,
 							totalItemsSynced: 1530
 						},
 						{
 							ID: 			'checkin',
 							name: 			'Check-in',
-							namePlural: 	'Check-ins',
 							totalItemsAvailable: 7010,
 							totalItemsSynced: 0
 						}
@@ -242,21 +224,18 @@ App.SimulatedServer = Ember.Object.extend({
 						{
 							ID: 			'tweet',
 							name: 			'Tweet',
-							namePlural: 	'Tweets',
 							totalItemsAvailable: 1823,
 							totalItemsSynced: 1010
 						},
 						{
 							ID: 			'retweet',
 							name: 			'Retweet',
-							namePlural: 	'Retweets',
 							totalItemsAvailable: 301,
 							totalItemsSynced: 0
 						},
 						{
-							ID: 			'direct-messages',
+							ID: 			'direct-message',
 							name: 			'Direct Message',
-							namePlural: 	'Direct Messages',
 							totalItemsAvailable: 150,
 							totalItemsSynced: 0
 						}
@@ -272,31 +251,26 @@ App.SimulatedServer = Ember.Object.extend({
 						{
 							ID: 			'status-update',
 							name: 			'Status Update',
-							namePlural: 	'Status Updates',
 							enabled: 		true
 						},
 						{
 							ID: 			'link',
 							name: 			'Link',
-							namePlural: 	'Links',
 							enabled: 		true
 						},
 						{
 							ID: 			'checkin',
 							name: 			'Check-in',
-							namePlural: 	'Check-ins',
 							enabled: 		true
 						},
 						{
 							ID: 			'photo',
 							name: 			'Photo',
-							namePlural: 	'Photos',
 							enabled: 		false
 						},
 						{
 							ID: 			'video',
 							name: 			'Video',
-							namePlural: 	'Videos',
 							enabled: 		false
 						}
 					],
@@ -309,25 +283,21 @@ App.SimulatedServer = Ember.Object.extend({
 						{
 							ID: 			'tweet',
 							name: 			'Tweet',
-							namePlural: 	'Tweets',
 							enabled: 		true
 						},
 						{
-							ID: 			'favorites',
+							ID: 			'favorite',
 							name: 			'Favorite',
-							namePlural: 	'Favorites',
 							enabled: 		false
 						},
 						{
 							ID: 			'retweet',
 							name: 			'Retweet',
-							namePlural: 	'Retweets',
 							enabled: 		true
 						},
 						{
-							ID: 			'direct-messages',
+							ID: 			'direct-message',
 							name: 			'Direct Message',
-							namePlural: 	'Direct Messages',
 							enabled: 		true
 						}
 					],
@@ -340,19 +310,16 @@ App.SimulatedServer = Ember.Object.extend({
 						{
 							ID: 			'photo',
 							name: 			'Photo',
-							namePlural: 	'Photos',
 							enabled: 		false
 						},
 						{
 							ID: 			'video',
 							name: 			'Video',
-							namePlural: 	'Videos',
 							enabled: 		false
 						},
 						{
 							ID: 			'like',
 							name: 			'Like',
-							namePlural: 	'Likes',
 							enabled: 		false
 						}
 					],
@@ -365,19 +332,16 @@ App.SimulatedServer = Ember.Object.extend({
 						{
 							ID: 			'checkin',
 							name: 			'Check-in',
-							namePlural: 	'Check-ins',
 							enabled: 		false
 						},
 						{
 							ID: 			'tip',
 							name: 			'Tip',
-							namePlural: 	'Tips',
 							enabled: 		false
 						},
 						{
 							ID: 			'like',
 							name: 			'Like',
-							namePlural: 	'Likes',
 							enabled: 		false
 						}
 					],
