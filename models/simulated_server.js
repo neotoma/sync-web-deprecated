@@ -4,20 +4,22 @@ App.SimulatedServer = Ember.Object.extend({
 			this.set('storageSurvey', Ember.Object.create({}));
 		} else {
 			this.set('storageSurvey', Ember.Object.create({
-				email: 			'example@example.com',
-				preference: 	'Amazon S3'
+				email: 'example@example.com',
+				preference: 'Amazon S3'
 			}));
 		}
 
 		if (!this.get('presets').user) {
 			this.set('user', Ember.Object.create({
-				ID: 		null,
-				email: 		null
+				ID: null,
+				email: null,
+				name: null
 			}));
 		} else {
 			this.set('user', Ember.Object.create({
-				ID: 		1,
-				email: 		'example@example.org'
+				ID: 1,
+				email: 'example@example.org',
+				name: 'Saul Goodman'
 			}));
 		}
 

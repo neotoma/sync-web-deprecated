@@ -37,8 +37,6 @@ App.Router.map(function() {
 Ember.Route.reopen({
   events: {
     willTransition: function(transition) {
-      console.log(transition);
-
       this.controllerFor('application').set('targetPath', transition.targetName);
 
       if (transition.targetName != this.controllerFor('application').get('currentPath')) {

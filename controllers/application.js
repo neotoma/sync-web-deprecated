@@ -1,10 +1,10 @@
 App.ApplicationController = Ember.Controller.extend({
   handleTransitionStart: function() {
-    $('#app-loading-indicator').show(500);
+    this.startLoadingIndicator();
   },
 
   handleTransitionStop: function() {
-    $('#app-loading-indicator').hide(500);
+    this.stopLoadingIndicator();
   },
 
   indexSelected: function() {
@@ -21,5 +21,13 @@ App.ApplicationController = Ember.Controller.extend({
 
   isSelected: function(path) {
     return this.get('currentPath') == path || this.get('targetPath') == path;
-  }
+  },
+
+  startLoadingIndicator: function() {
+    $('#app-loading-indicator').show(500);
+  },
+
+  stopLoadingIndicator: function() {
+    $('#app-loading-indicator').hide(500);
+  },
 });

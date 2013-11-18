@@ -22,6 +22,10 @@
 #app-nav ul:last-child                                      { float: right; }
 #app-nav ul:last-child li                                   { float: right; border-left-width: 1px; }
 
+#app-nav-user-name                                          { color: #b5b5b5 !important; cursor: default !important; border-left: 0 !important; }
+#app-nav-user-name:hover                                    { color: #b5b5b5 !important; }
+#app-nav-user-name:active                                   { background: none !important; border-bottom: none !important; }
+
 #app-nav ul li:active                                       { background: #f7f8f9; border-bottom: 1px solid #dae2e9; }
 #app-nav .selected                                          { cursor: default; color: black; border-bottom: 2px solid #dae2e9; }
 #app-nav .selected img                                      { opacity: 1 !important; }

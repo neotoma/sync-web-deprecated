@@ -1,4 +1,8 @@
 App.User = Ember.Object.extend({
+  isAuthenticated: function() {
+    return this.get('ID');
+  }.property('ID'),
+
 	hasConnectedStorage: function() {
 		return (this.get('storages') && this.get('storages').length);
 	}.property('storages.@each'),
