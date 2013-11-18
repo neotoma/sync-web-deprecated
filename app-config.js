@@ -5,6 +5,7 @@ var APP_CONFIGURATION = {
   },
   simulatedServer: {
     enabled: true,
+    responseTime: 500,
     presets: {
       storageSurvey:    false,
       user:             true,

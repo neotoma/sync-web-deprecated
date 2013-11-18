@@ -3,6 +3,22 @@ App = Ember.Application.create({
   LOG_TRANSITIONS_INTERNAL: APP_CONFIGURATION.initialization.logTransitionsInternal,
 });
 
+Ember.Route.reopen({
+  events: {
+    willTransition: function(transition) {
+      console.log(transition);
+
+      if (transition.targetName != this.controllerFor('application').currentPath) {
+        this.controllerFor('application').handleTransitionStart();
+      }
+    }
+  },
+
+  afterModel: function() {
+    this.controllerFor('application').handleTransitionStop();
+  }
+});
+
 App.Config = Ember.Object.create();
 
 App.TemplateNames = [

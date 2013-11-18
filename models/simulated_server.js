@@ -365,6 +365,7 @@ if (APP_CONFIGURATION.simulatedServer.enabled) {
 		url: '/storage-survey',
 		dataType: 'json',
 		type: 'get',
+		responseTime: APP_CONFIGURATION.simulatedServer.responseTime,
 		responseText: App.SimulatedServer.get('storageSurvey')
 	});
 
@@ -373,6 +374,7 @@ if (APP_CONFIGURATION.simulatedServer.enabled) {
 		url: '/storage-survey',
 		dataType: 'json',
 		type: 'post',
+		responseTime: APP_CONFIGURATION.simulatedServer.responseTime,
 		responseText: App.SimulatedServer.get('storageSurvey')
 	});
 
@@ -381,6 +383,7 @@ if (APP_CONFIGURATION.simulatedServer.enabled) {
 		url: '/user',
 		dataType: 'json',
 		type: 'get',
+		responseTime: APP_CONFIGURATION.simulatedServer.responseTime,
 		responseText: App.SimulatedServer.get('user')
 	});
 
@@ -389,6 +392,7 @@ if (APP_CONFIGURATION.simulatedServer.enabled) {
 		url: '/storages',
 		dataType: 'json',
 		type: 'get',
+		responseTime: APP_CONFIGURATION.simulatedServer.responseTime,
 		responseText: App.SimulatedServer.get('storages')
 	});
 
@@ -397,6 +401,7 @@ if (APP_CONFIGURATION.simulatedServer.enabled) {
 		url: '/sources',
 		dataType: 'json',
 		type: 'get',
+		responseTime: APP_CONFIGURATION.simulatedServer.responseTime,
 		responseText: App.SimulatedServer.get('sources')
 	});
 
@@ -405,6 +410,7 @@ if (APP_CONFIGURATION.simulatedServer.enabled) {
 		url: '/sources',
 		dataType: 'json',
 		type: 'post',
+		responseTime: APP_CONFIGURATION.simulatedServer.responseTime,
 		responseText: App.SimulatedServer.get('sources')
 	});
 }

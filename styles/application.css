@@ -1,5 +1,11 @@
 /* Application */
 
+@-webkit-keyframes appLoadingIndicator {
+  0%      { -webkit-filter: hue-rotate(360deg); }
+  50%     { -webkit-filter: hue-rotate(0deg); }
+  100%    { -webkit-filter: hue-rotate(360deg); }
+}
+
 #app                                                        { min-height: 100%; position: relative; text-align: left; margin: auto; max-width: 960px; min-width: 800px; min-height: 100%; background: url(../images/backgrounds/white-opacity95.png); box-shadow: 0px 0px 50px #c8d3df; }
 
 #app-nav                                                    { position: fixed; top: 0; margin: 0; z-index: 9999; width: 100%; max-width: 960px; height: 3.1em; border-bottom: 1px solid #e9ebed; background: #fbfcfd; }
@@ -15,5 +21,7 @@
 #app-nav ul:first-child li:first-child img                  { width: 2em; height: 2em; opacity: 0.5; }
 #app-nav ul:last-child                                      { float: right; }
 #app-nav ul:last-child li                                   { float: right; border-left-width: 1px; }
+
+#app-loading-indicator                                      { display: none; position: fixed; top: 3em; height: 0.2em; z-index: 10000; width: 100%; max-width: 960px; background: linear-gradient(90deg, #7cea93, #e9ea7c); -webkit-animation: appLoadingIndicator 4s; -webkit-animation-iteration-count: infinite; }
 
 #app-main                                                   { min-height: 100%; position: relative; padding: 5.5em 3em 2em 3em; }
