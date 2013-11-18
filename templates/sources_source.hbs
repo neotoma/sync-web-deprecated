@@ -5,12 +5,7 @@
 <td>
   <ul style="float: left;">
     {{#each view.source.contentTypes}}
-      <li>
-        {{#view App.CheckboxAreaView}}
-          {{input type="checkbox" viewName="checkbox" checked=enabled disabled=isDisabled}}
-          <label {{bind-attr for="view.checkbox.elementId"}}>{{namePlural}}</label>
-        {{/view}}
-      </li>
+      {{view App.SourcesSourceContentTypeView contentTypeBinding=contentType}}
     {{/each}}
   </ul>
   <div style="clear: both;"></div>

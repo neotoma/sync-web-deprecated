@@ -10,6 +10,7 @@ App.TemplateNames = [
   'index',
   'sources',
   'sources_source',
+  'sources_source_content_type',
   'sync',
   'sync_storage',
   'sync_source',
