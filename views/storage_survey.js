@@ -9,21 +9,25 @@ App.StorageSurveyView = Ember.View.extend({
   }.property('storageSurvey.isSubmitted'),
 
   isValid: function() {
+    var validation = this.get('storageSurvey').get('validation');
+    var isValid = true;
     var regex;
 
     // Email
-    regex = new RegExp(this.get('storageSurvey').get('validation').email.pattern);
-    if ((this.get('storageSurvey').get('validation').email.required && !this.get('storageSurvey').get('email')) || !regex.exec(this.get('storageSurvey').get('email'))) {
-      return false;
+    regex = new RegExp(validation.email.pattern);
+    if ((validation.email.required && !this.get('storageSurvey').get('email')) || !regex.test(this.get('storageSurvey').get('email'))) {
+      isValid = false;
     }
 
     // Preference
-    regex = new RegExp(this.get('storageSurvey').get('validation').preference.pattern);
-    if ((this.get('storageSurvey').get('validation').preference.required && !this.get('storageSurvey').get('preference')) || !regex.exec(this.get('storageSurvey').get('preference'))) {
-      return false;
+    regex = new RegExp(validation.preference.pattern, validation.preference.modifiers);
+    if ((validation.preference.required && !this.get('storageSurvey').get('preference')) || !regex.test(this.get('storageSurvey').get('preference'))) {
+      isValid = false;
     }
 
-    return true;
+    console.log('isValid: ' + isValid);
+
+    return isValid;
   }.property('storageSurvey.email', 'storageSurvey.preference'),
 
   isDisabled: function() {
