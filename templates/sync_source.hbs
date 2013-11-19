@@ -1,11 +1,4 @@
 <h3>{{source.name}} <span>{{view.totalItemsSynced}} out of {{view.totalItemsAvailable}} pieces of content backed up ({{view.percentageItemsSynced}}) &middot; Last Completed Backup: {{view.lastCompletedSyncTimestamp}}</span></h3>
-<ul class="options">
-  <li style="color: #616161;">Options:</li>
-  <li><a href="#">Pause</a></li>
-  <li><a href="#">Restart</a></li>
-  <li><a href="#">Modify Content Types</a></li>
-  <li><a href="#">Disconnect</a></li>
-</ul>
 <div class="bar-base">
   {{#each contentType in source.contentTypes}}
     {{view App.SyncSourceContentTypeBarView contentTypeBinding=contentType}}
