@@ -47,6 +47,7 @@ Ember.Route.reopen({
   },
 
   afterModel: function() {
+    window.scrollTo(0, 0);
     this.controllerFor('application').set('targetPath', null);
     this.controllerFor('application').handleTransitionStop();
   }
