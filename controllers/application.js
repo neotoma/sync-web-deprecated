@@ -29,5 +29,5 @@ App.ApplicationController = Ember.Controller.extend({
 
   stopLoadingIndicator: function() {
     $('#app-loading-indicator').hide(500);
-  },
+  }
 });

@@ -8,6 +8,7 @@ App.Config = Ember.Object.create();
 App.TemplateNames = [
   'application',
   'index',
+  'storage_survey',
   'sources',
   'sources_source',
   'sources_source_content_type',

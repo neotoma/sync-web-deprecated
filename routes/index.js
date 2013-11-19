@@ -5,7 +5,7 @@ App.IndexRoute = Ember.Route.extend({
 
 	setupController: function(controller, model) {
 		if (model.get('email') && model.get('preference')) {
-			controller.set('isSubmitted', true);
+			model.set('isSubmitted', true);
 		}
     
 		controller.set('model', model);

@@ -1,0 +1,6 @@
+<h2>Interested in Asheville but would prefer to use a different storage service than Dropbox?</h2>
+<p>Enter your email address and preferred storage service below so we can notify you when support for it becomes available.</p>
+{{input type=email value=email placeholder="Your email address" autocomplete="off" spellcheck="false" pattern=validation.email.pattern required=validation.email.required}}
+{{input value=preference placeholder="Your preferred service" autocomplete="off" spellcheck="false" pattern=validation.preference.pattern required=validation.preference.required}}
+<button {{action "submit" target="view"}} {{bind-attr disabled="view.isDisabled"}}>{{{view.submitLabel}}}</button>
+<div class="tip">Alternative storage examples: iCloud, Google Drive, Amazon S3, Box, Adobe Creative Cloud, local drive</div>

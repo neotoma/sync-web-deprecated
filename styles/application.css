@@ -27,9 +27,9 @@
 #app-nav-user-name:active                                   { background: none !important; border-bottom: none !important; }
 
 #app-nav ul li:active                                       { background: #f7f8f9; border-bottom: 1px solid #dae2e9; }
-#app-nav .selected                                          { cursor: default; color: black; border-bottom: 2px solid #dae2e9; }
+#app-nav .selected                                          { cursor: default; color: black; border-bottom: 2px solid #cdd4db; }
 #app-nav .selected img                                      { opacity: 1 !important; }
 
 #app-loading-indicator                                      { display: none; position: fixed; top: 3em; height: 0.2em; z-index: 10000; width: 100%; max-width: 960px; background: linear-gradient(90deg, #7cea93, #e9ea7c); -webkit-animation: appLoadingIndicator 4s; -webkit-animation-iteration-count: infinite; }
 
-#app-main                                                   { min-height: 100%; position: relative; padding: 5.5em 3em 2em 3em; }
+#app-main                                                   { min-height: 100%; position: relative; padding: 6em 3em 2em 3em; }

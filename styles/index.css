@@ -27,3 +27,5 @@
 #index #storage-survey.is-submitted button:not(:disabled):hover,
 #index #storage-survey.is-submitted .button:not(:disabled):hover,
 #index #storage-survey.is-submitted input[type=submit]:not(:disabled):hover     { background: #f0f9f2; }
+
+#index #storage-survey .tip             { margin-top: 1.5em; }
