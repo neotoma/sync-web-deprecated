@@ -1,14 +1,14 @@
 App.Storage = Ember.Object.extend({
 	availablePercentage: function(size) {
-		return (this.get('sizes').available / this.get('sizes').total * 100);
+		return (this.get('sizes').get('available') / this.get('sizes').get('total') * 100);
 	}.property('sizes.available'),
 
 	occupiedPercentage: function(size) {
-		return (this.get('sizes').occupied / this.get('sizes').total * 100);
+		return (this.get('sizes').get('occupied') / this.get('sizes').get('total') * 100);
 	}.property('sizes.occupied'),
 
 	otherPercentage: function(size) {
-		return (this.get('sizes').other / this.get('sizes').total * 100);
+		return (this.get('sizes').get('other') / this.get('sizes').get('total') * 100);
 	}.property('sizes.other'),
 
 	resource: function() {

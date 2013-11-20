@@ -17,11 +17,11 @@ App.ApplicationRoute = Ember.Route.extend({
     },
 
     signIn: function() {
-      console.log('App.ApplicationRoute.actions.signIn');
+      this.controllerFor('application').authenticateUser();
     },
 
     signOut: function() {
-      console.log('App.ApplicationRoute.actions.signOut');
+      this.controllerFor('application').deauthenticateUser();
     }
   }
 });

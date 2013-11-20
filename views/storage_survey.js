@@ -25,8 +25,6 @@ App.StorageSurveyView = Ember.View.extend({
       isValid = false;
     }
 
-    console.log('isValid: ' + isValid);
-
     return isValid;
   }.property('storageSurvey.email', 'storageSurvey.preference'),
 
@@ -45,6 +43,7 @@ App.StorageSurveyView = Ember.View.extend({
   }.property('isSubmitting', 'storageSurvey.isSubmitted'),
 
   submit: function(event) {
+    $('#storage-survey').find('input').blur();
     this.set('isSubmitting', true);
     target = this;
 

@@ -29,6 +29,8 @@ App.SyncSourceView = Ember.View.extend({
 
   timestamp: function(value) {
     if (!value) {
+      formattedTimestamp = '?';
+    } else if (value == 'Never') {
       formattedTimestamp = 'Never';
     }
 

@@ -8,9 +8,9 @@ var APP_CONFIGURATION = {
     responseTime: 500,
     presets: {
       storageSurvey:    false,
-      user:             true,
-      storages:         true,
-      sources:          true
+      user:             false,
+      storages:         false,
+      sources:          false
     }
   }
 }

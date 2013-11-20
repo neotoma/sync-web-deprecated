@@ -1,7 +1,7 @@
 App.SimulatedServer = Ember.Object.extend({
 	init: function() {
 		if (!this.get('presets').storageSurvey) {
-			this.set('storageSurvey', Ember.Object.create({}));
+			this.set('storageSurvey', Ember.Object.create());
 		} else {
 			this.set('storageSurvey', Ember.Object.create({
 				email: 'example@example.com',
@@ -368,7 +368,9 @@ if (APP_CONFIGURATION.simulatedServer.enabled) {
 		dataType: 'json',
 		type: 'get',
 		responseTime: APP_CONFIGURATION.simulatedServer.responseTime,
-		responseText: App.SimulatedServer.get('storageSurvey')
+		response: function() { 
+			this.responseText = App.SimulatedServer.get('storageSurvey'); 
+		}
 	});
 
 	// POST Storage Survey
@@ -377,7 +379,9 @@ if (APP_CONFIGURATION.simulatedServer.enabled) {
 		dataType: 'json',
 		type: 'post',
 		responseTime: APP_CONFIGURATION.simulatedServer.responseTime,
-		responseText: App.SimulatedServer.get('storageSurvey')
+		response: function() { 
+			this.responseText = App.SimulatedServer.get('storageSurvey'); 
+		}
 	});
 
 	// GET User
@@ -386,7 +390,9 @@ if (APP_CONFIGURATION.simulatedServer.enabled) {
 		dataType: 'json',
 		type: 'get',
 		responseTime: APP_CONFIGURATION.simulatedServer.responseTime,
-		responseText: App.SimulatedServer.get('user')
+		response: function() {
+			this.responseText = App.SimulatedServer.get('user');
+		}
 	});
 
 	// GET Storages
@@ -395,7 +401,9 @@ if (APP_CONFIGURATION.simulatedServer.enabled) {
 		dataType: 'json',
 		type: 'get',
 		responseTime: APP_CONFIGURATION.simulatedServer.responseTime,
-		responseText: App.SimulatedServer.get('storages')
+		response: function() {
+			this.responseText = App.SimulatedServer.get('storages');
+		}
 	});
 
 	// GET Sources
@@ -404,7 +412,9 @@ if (APP_CONFIGURATION.simulatedServer.enabled) {
 		dataType: 'json',
 		type: 'get',
 		responseTime: APP_CONFIGURATION.simulatedServer.responseTime,
-		responseText: App.SimulatedServer.get('sources')
+		response: function() { 
+			this.responseText = App.SimulatedServer.get('sources') 
+		}
 	});
 
 	// POST Sources
@@ -413,6 +423,8 @@ if (APP_CONFIGURATION.simulatedServer.enabled) {
 		dataType: 'json',
 		type: 'post',
 		responseTime: APP_CONFIGURATION.simulatedServer.responseTime,
-		responseText: App.SimulatedServer.get('sources')
+		response: function() {
+			this.responseText = App.SimulatedServer.get('sources');
+		}
 	});
 }

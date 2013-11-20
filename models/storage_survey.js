@@ -33,6 +33,8 @@ App.StorageSurvey.reopenClass({
     );
 	},
 	post: function(storageSurvey, doneFilter, failFilter) {
+		App.SimulatedServer.set('storageSurvey', storageSurvey);
+		
 		return $.ajax({ 
 			url: '/storage-survey', 
 			dataType: 'json', 
