@@ -42,6 +42,8 @@ App.SyncStorageView = Ember.View.extend({
   percentage: function(value) {
     if (value && this.get('storage').get('sizes').get('total')) {
       return (Math.round(value / this.get('storage').get('sizes').get('total') * 100 * 100) / 100).toFixed(2) + '%';
+    } else if (value === 0) {
+      return '0%';
     } else {
       return '?';
     }
