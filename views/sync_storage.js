@@ -48,7 +48,7 @@ App.SyncStorageView = Ember.View.extend({
   },
 
   availablePercentage: function() {
-    return this.percentage(this.get('storage').get('sizes').get('availabe'));
+    return this.percentage(this.get('storage').get('sizes').get('available'));
   }.property('storage.sizes.available', 'storage.sizes.total'),
 
   filledPercentage: function() {
