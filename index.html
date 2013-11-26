@@ -3,22 +3,27 @@
   <head>
     <title>Asheville</title>
     <meta charset="utf-8">
+    
+    <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="styles/general.css" />
     <link rel="stylesheet" type="text/css" href="styles/forms.css" />
     <link rel="stylesheet" type="text/css" href="styles/application.css" />
     <link rel="stylesheet" type="text/css" href="styles/index.css" />
     <link rel="stylesheet" type="text/css" href="styles/sources.css" />
     <link rel="stylesheet" type="text/css" href="styles/sync.css" />
+
+    <!-- Fonts -->
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans">
   </head>
   <body>
     <!-- Libraries -->
-    <script src="libraries/jquery-1.10.2.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <script src="libraries/jquery.mockjax.js"></script>
-    <script src="libraries/jquery-ui.js"></script>
-    <script src="libraries/handlebars-1.0.0.js"></script>
-    <script src="libraries/ember-1.0.0.js"></script>
+    <script src="libraries/handlebars.js"></script>
     <script src="libraries/spin.js"></script>
+    <script src="http://builds.emberjs.com/release/ember.js"></script>
+    <script src="http://builds.emberjs.com/beta/ember-data.js"></script>
 
     <!-- App -->
     <script src="app-config.js"></script>
@@ -34,10 +39,8 @@
     <script src="helpers/general.js"></script>
 
     <!-- Models -->
-    <script src="models/simulated_server.js"></script>
     <script src="models/content_type.js"></script>
     <script src="models/source.js"></script>
-    <script src="models/sources.js"></script>
     <script src="models/storage.js"></script>
     <script src="models/storage_survey.js"></script>
     <script src="models/user.js"></script>
@@ -57,5 +60,11 @@
     <script src="views/sync_source_content_type_bar.js"></script>
     <script src="views/sync_source_content_type_legend.js"></script>
     <script src="views/textfield.js"></script>
+
+    <!-- Simulations -->
+    <script src="simulation/config.js"></script>
+    <script src="simulation/simulation.js"></script>
+    <script src="simulation/server.js"></script>
+    <script src="simulation/models/storage.js"></script>
   </body>
 </html>

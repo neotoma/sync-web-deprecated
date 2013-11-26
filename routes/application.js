@@ -1,10 +1,6 @@
 App.ApplicationRoute = Ember.Route.extend({
-  model: function() {
-    return App.User.get();
-  },
-
   actions: {
-    goToHome: function() {
+    goToIndex: function() {
       this.transitionTo('index');
     },
 

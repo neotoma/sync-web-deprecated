@@ -1,66 +1,40 @@
-App.User = Ember.Object.extend({
+App.User = DS.Model.extend({
+  name:       DS.attr('string'),
+  email:      DS.attr('string'),
+  storages:   DS.hasMany('storage'),
+  sources:    DS.hasMany('source'),
+
   isAuthenticated: function() {
-    return this.get('ID');
+    return (this.get('ID'));
   }.property('ID'),
 
-	hasConnectedStorage: function() {
-		return (this.get('storages') && this.get('storages').length);
-	}.property('storages.@each'),
+  totalStorages: function() {
+    return this.get('storages').length;
+  }.property('storages.@each'),
 
-	hasConnectedSources: function() {
-		return (this.get('sources') && this.get('sources').length);
-	}.property('sources.@each')
-});
+	hasStorage: function() {
+		return (this.get('totalStorages'));
+	}.property('totalStorages'),
 
-App.User.reopenClass({
-	get: function() {
-		return $.ajax({ 
-			url: '/user', 
-			dataType: 'json' 
-		}).then(
-      function(response) {
-      	var user = App.User.create();
+  totalSources: function() {
+    return this.get('sources').length;
+  }.property('sources.@each'),
 
-      	// Incorporate all returned values
-				for (var key in response) {
-					user.set(key, response[key]);
-				}
-				
-				// Init App.Storage objects from basic objects
-				var storages = response.storages;
+  hasSource: function() {
+    return (this.get('totalSources'));
+  }.property('totalSources'),
 
-        if (storages) {
-  				for(var i = 0; i < storages.length; i++) {
-            var storage = App.Storage.create(storages[i]);
-            storage.set('sizes', Ember.Object.create(storages[i].sizes));
-            storage.set('timestamps', Ember.Object.create(storages[i].timestamps));
-  					storages[i] = storage;
-  				}
-        }
+  totalContentTypes: function() {
+    var total = 0;
 
-				user.set('storages', storages);
+    $.each(this.get('sources'), function(key, source) {
+      total += source.get('totalContentTypes');
+    });
 
-				// Init App.Source objects from basic objects
-				var sources = response.sources;
+    return total;
+  }.property('sources.@each.totalContentTypes'),
 
-        if (sources) {
-  				for(var i = 0; i < sources.length; i++) {
-  					sources[i] = App.Source.create(sources[i]);
-
-            // Init App.ContentType objects from basic objects
-            var contentTypes = [];
-            $.each(sources[i].contentTypes, function(key, contentTypeJSON) {
-              contentTypeJSON.source = sources[i];
-              contentTypes.push(App.ContentType.create(contentTypeJSON));
-            });
-            sources[i].set('contentTypes', contentTypes);
-  				}
-        }
-
-				user.set('sources', sources);
-
-        return user;
-      }
-    );
-	}
+  hasContentType: function() {
+    return (this.get('totalContentTypes'));
+  }.property('totalContentTypes')
 });

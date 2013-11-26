@@ -47,8 +47,7 @@ App.StorageSurveyView = Ember.View.extend({
     this.set('isSubmitting', true);
     target = this;
 
-    App.StorageSurvey.post(
-      this.get('storageSurvey'), 
+    this.get('storageSurvey').save().then(
       function(response) {
         target.set('isSubmitting', false);
         target.get('storageSurvey').set('isSubmitted', true);

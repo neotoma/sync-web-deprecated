@@ -1,7 +1,7 @@
 <div id="app">
   <div id="app-nav">
     <ul>
-      <li {{action 'goToHome'}} {{bind-attr class="indexSelected:selected"}}><img src="images/asheville_logo.png" /></li>
+      <li {{action 'goToIndex'}} {{bind-attr class="indexSelected:selected"}}><img src="images/asheville_logo.png" /></li>
       {{#if model.isAuthenticated}}
         <li {{action 'goToSources'}} {{bind-attr class="sourcesSelected:selected"}}><span>Social Networks</span></li>
         {{#if model.hasConnectedSources}}

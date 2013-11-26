@@ -5,21 +5,21 @@
 #sync .options li                      { margin: 0 1em 0 0; padding: 0; display: inline-block; font-size: 0.75em; }
 #sync .options li a                    { font-weight: normal; }
 
-#sync .bar-base                        { white-space-collapsing: discard; width: 100%; height: 2em; border: 1px solid #c4c4c4; padding: 1px; overflow: hidden; white-space: nowrap; }
+#sync .bar-base                        { white-space-collapsing: discard; width: 100%; height: 2em; border: 1px solid #c4c4c4; padding: 1px; overflow: hidden; white-space: nowrap; background: #fafafa; }
 #sync .bar-base > div                  { height: 100%; display: inline-block; text-align: center; font-size: 0.8em; transition: width 2s; }
 
 #sync-storages .bar-base div:nth-of-type(1),
-#sync-storages .legends li:nth-of-type(1) .legend-color-interior    { background: #e1e1e1; }
+#sync-storages .legends li:nth-of-type(1) .legend-color-interior    { background: #a2a7ab; }
 #sync-storages .bar-base div:nth-of-type(2),
 #sync-storages .legends li:nth-of-type(2) .legend-color-interior    { background: #7bee8e; }
 #sync-storages .bar-base div:nth-of-type(3),
-#sync-storages .legends li:nth-of-type(3) .legend-color-interior    { background: white; }
+#sync-storages .legends li:nth-of-type(3) .legend-color-interior    { background: #fafafa; }
 
 #sync-sources .bar-base > div                             { margin-left: -4px; }
 #sync-sources .bar-base > div:nth-of-type(1)              { margin-left: 0px; }
 #sync-sources .bar-base div:nth-of-type(1)                { background: #ffefef; }
 #sync-sources .bar-base div:nth-of-type(2)                { background: #fffdec; }
-#sync-sources .bar-base div:nth-of-type(3)                { background: #f4f0fe; }
+#sync-sources .bar-base div:nth-of-type(3)                { background: #fafafa; }
 #sync-sources .bar-base .bar-filled                       { height: 100%; }
 
 #sync .legends                { list-style: none; margin: 1em 0 0 0; padding: 0; }

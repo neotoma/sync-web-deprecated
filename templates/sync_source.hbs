@@ -1,4 +1,18 @@
-<h3>{{source.name}} <span>{{view.totalItemsSynced}} out of {{view.totalItemsAvailable}} pieces of content backed up ({{view.percentageItemsSynced}}) &middot; Last Completed Backup: {{view.lastCompletedSyncTimestamp}}</span></h3>
+<h3>
+  {{source.name}}
+  {{#if view.hasHeaderInformation}}
+    <span>
+      {{#if view.hasTotalItems}}
+        {{view.totalItemsSynced}} out of {{view.totalItemsAvailable}} pieces of content backed up
+        ({{view.percentageItemsSynced}})
+      {{/if}} 
+      &middot;
+      {{#if view.lastCompletedSyncTimestamp}}
+        Last Completed Backup: {{view.lastCompletedSyncTimestamp}}
+      {{/if}}
+    </span>
+  {{/if}}
+</h3>
 <div class="bar-base">
   {{#each contentType in source.contentTypes}}
     {{view App.SyncSourceContentTypeBarView contentTypeBinding=contentType}}

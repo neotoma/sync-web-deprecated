@@ -1,26 +1,27 @@
 App.ApplicationController = Ember.Controller.extend({
   authenticateUser: function() {
-    App.SimulatedServer.set('user', { 
+    App.SimulatedServer.set('user', Ember.Object.create({ 
       'ID': 1,
       'email': 'example@example.org',
-      'name': 'Saul Goodman',
-      'storages': [
-        {
-          ID: 'dropbox',
-          name: 'Dropbox',
-          connected: false,
-          sizes: {
-            total: 5000000000, // 5 GB
-            available: 2000000000, // 2 GB
-            occupied: 1250000000, // 1.25 GB
-            other: 1750000000 // 1.75 GB
-          },
-          timestamps: {
-            lastCompletedSync: 'Never'
-          }
-        }
-      ]
-    });
+      'name': 'Saul Goodman'
+    }));
+
+    App.SimulatedServer.get('user').set('storages', [
+      {
+        ID: 'dropbox',
+        name: 'Dropbox',
+        connected: false,
+        sizes: Ember.Object.create({
+          total: 5000000000, // 5 GB
+          available: 2000000000, // 2 GB
+          occupied: 1250000000, // 1.25 GB
+          other: 1750000000 // 1.75 GB
+        }),
+        timestamps: Ember.Object.create({
+          lastCompletedSync: 'Never'
+        })
+      }
+    ]);
 
     this.set('model', App.User.create(App.SimulatedServer.get('user')));
   },

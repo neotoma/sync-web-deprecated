@@ -1,4 +1,11 @@
-App.StorageSurvey = Ember.Object.extend({
+App.StorageSurvey = DS.Model.extend({
+	email:   			DS.attr('string'),
+	preference: 	DS.attr('string'),
+
+	isSubmitted: function() {
+		if (this.get('id'));
+	}.property('id'),
+
 	validation: {
 		email: {
 			pattern: 		'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}',
@@ -8,38 +15,5 @@ App.StorageSurvey = Ember.Object.extend({
 			pattern: 		'.{3,}',
 			required: 	true
 		}
-	},
-
-	toJSON: function() {
-		return {
-			email: 				this.get('email'),
-			preference: 	this.get('preference')
-		};
-	}.property('email', 'preference')
-});
-
-App.StorageSurvey.reopenClass({
-	get: function() {
-		return $.ajax({ 
-			url: '/storage-survey', 
-			dataType: 'json' 
-		}).then(
-      function(response) {
-        return App.StorageSurvey.create(response);
-      },
-      function(reason) {
-      	console.log('storage survey get failed: ' + reason);
-      }
-    );
-	},
-	post: function(storageSurvey, doneFilter, failFilter) {
-		App.SimulatedServer.set('storageSurvey', storageSurvey);
-		
-		return $.ajax({ 
-			url: '/storage-survey', 
-			dataType: 'json', 
-			type: 'post', 
-			data: storageSurvey.toJSON 
-		}).then(doneFilter, failFilter);
-	},
+	}
 });

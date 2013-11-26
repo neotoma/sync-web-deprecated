@@ -1,4 +1,4 @@
-button                                                        { background: #cdcdcd; border: 1px solid #cdcdcd; color: white; border-radius: 0.2em; text-align: center; font-size: 0.9em; letter-spacing: 0.05em; font-weight: bold; padding: 0.7em 1em 0.7em 1em; cursor: default; display: inline-block; transition: all 0.5s ease; }
+button                                                        { background: #c6c9cc; border: 1px solid #cdcdcd; color: white; border-radius: 0.2em; text-align: center; font-size: 0.9em; letter-spacing: 0.05em; font-weight: bold; padding: 0.7em 1em 0.7em 1em; cursor: default; display: inline-block; transition: all 0.5s ease; }
 button:focus                                                  { outline-width: 0; }
 button:not(:disabled)                                         { background: #3e96f9; border: 1px solid #3e96f9; cursor: pointer; }
 button:not(:disabled):hover                                   { background: #51a3ff; }

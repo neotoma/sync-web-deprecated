@@ -11,7 +11,7 @@ App.SyncStorageView = Ember.View.extend({
     } else if (value) {
       formattedValue = (value / 1000000000).toFixed(2) + ' GB';
     } else {
-      formattedValue = '?';
+      formattedValue = 'N/A';
     }
 
     return formattedValue;
@@ -45,7 +45,7 @@ App.SyncStorageView = Ember.View.extend({
     } else if (value === 0) {
       return '0%';
     } else {
-      return '?';
+      return 'N/A';
     }
   },
 
@@ -69,14 +69,12 @@ App.SyncStorageView = Ember.View.extend({
 
   timestamp: function(value) {
     if (!value) {
-      formattedTimestamp = '?';
+      return null;
     } else if (value == 'Never') {
-      formattedTimestamp = 'Never';
+      return 'Never';
     }
 
     // add code for formatting value
-
-    return formattedTimestamp;
   },
 
   lastCompletedSyncTimestamp: function() {

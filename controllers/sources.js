@@ -20,13 +20,11 @@ App.SourcesController = Ember.ObjectController.extend({
 
       App.Sources.post(
         this.get('model'),
-
         function(response) {
           target.transitionToRoute('sync').then(function() {
             target.set('isSubmitting', false);
           });
         },
-         
         function(reason) {
           target.set('isSubmitting', false);
         }

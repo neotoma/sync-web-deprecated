@@ -1,16 +1,8 @@
-var APP_CONFIGURATION = {
-  initialization: {
-    logTransitions: false,
-    logTransitionsInternal: false,
-  },
-  simulatedServer: {
-    enabled: true,
-    responseTime: 500,
-    presets: {
-      storageSurvey:    false,
-      user:             false,
-      storages:         false,
-      sources:          false
-    }
+/* General application configuration */
+
+var APP_CONFIG = {
+  INIT: {
+    LOG_TRANSITIONS:            false,
+    LOG_TRANSITIONS_INTERNAL:   false,
   }
 }

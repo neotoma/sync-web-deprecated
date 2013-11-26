@@ -7,7 +7,7 @@ App.SourcesSourceView = Ember.View.extend({
     if (this.get('source').get('connected')) {
       return '&#10003; Connected';
     } else {
-      return 'Connected';
+      return 'Connect';
     }
   }.property('source.connected'),
 
