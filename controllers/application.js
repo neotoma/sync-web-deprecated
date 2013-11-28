@@ -3,11 +3,12 @@ App.ApplicationController = Ember.Controller.extend({
     var controller = this;
 
     var user = this.store.createRecord('user', {
+      id: 3,
       name: 'Saul Goodman',
       email: 'saul@bettercallsaul.com'  
     });
 
-    var promise = user.save().then(function() {
+    return user.save().then(function(user) {
       controller.set('sessionUser', user);
 
       var storage = controller.store.createRecord('storage', {
@@ -20,14 +21,14 @@ App.ApplicationController = Ember.Controller.extend({
         user: user
       });
 
-      return storage.save();
+      return storage.save().then(function(storage) {
+        user.get('storages').addObject(storage);
+      });
     });
-
-    return promise;
   },
 
   authenticateUser: function() {
-    this.registerUser();
+    return this.registerUser();
   },
 
   deauthenticateUser: function() {

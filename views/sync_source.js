@@ -4,7 +4,7 @@ App.SyncSourceView = Ember.View.extend({
   totalItemsSynced: function() {
     var total = 0;
 
-    $.each(this.get('source').get('contentTypes'), function(key, contentType) {
+    this.get('source').get('contentTypes').forEach(function(contentType) {
       if (contentType.get('totalItemsSynced')) {
         total = total + contentType.get('totalItemsSynced');
       }
@@ -16,7 +16,7 @@ App.SyncSourceView = Ember.View.extend({
   totalItemsAvailable: function() {
     var total = 0;
 
-    $.each(this.get('source').get('contentTypes'), function(key, contentType) {
+    this.get('source').get('contentTypes').forEach(function(contentType) {
       if (contentType.get('totalItemsAvailable')) {
         total = total + contentType.get('totalItemsAvailable');
       }
@@ -26,7 +26,7 @@ App.SyncSourceView = Ember.View.extend({
   }.property('contentTypes.@each.totalItemsAvailable'),
 
   hasTotalItems: function() {
-    return (this.totalItemsSynced && this.totalItemsAvailable);
+    return (this.get('totalItemsSynced') && this.get('totalItemsAvailable'));
   }.property('totalItemsSynced', 'totalItemsAvailable'),
 
   percentageItemsSynced: function() {
@@ -50,10 +50,10 @@ App.SyncSourceView = Ember.View.extend({
   },
 
   lastCompletedSyncTimestamp: function() {
-    return this.timestamp(this.get('source').timestamps.lastCompletedSync);
-  }.property('source.timestamps.lastCompletedSync'),
+    return this.timestamp(this.get('source').get('lastCompletedSync'));
+  }.property('source.lastCompletedSync'),
 
   hasHeaderInformation: function() {
-    return (this.hasTotalItems || this.lastCompletedSyncTimestamp);
+    return (this.get('hasTotalItems') || this.get('lastCompletedSync'));
   }.property('hasTotalItems', 'lastCompletedSyncTimestamp')
 })

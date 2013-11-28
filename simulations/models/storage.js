@@ -20,8 +20,8 @@ if (APP_CONFIG.SIMULATIONS_ENABLED) {
         decrease = this.get('occupiedSize');
       }
 
-      this.set('occupied', this.get('occupiedSize') - decrease);
-      this.set('available', this.get('availableSize') + decrease);
+      this.set('occupiedSize', this.get('occupiedSize') - decrease);
+      this.set('availableSize', this.get('availableSize') + decrease);
     },
 
     simulateTotalSizeIncrease: function() {

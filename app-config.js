@@ -12,7 +12,8 @@ var APP_CONFIG = {
       STORAGE_SURVEYS:  false,
       USERS:            false,
       STORAGES:         false,
-      SOURCES:          false
+      SOURCES:          false,
+      CONTENT_TYPES:    false
     }
   },
   SIMULATIONS_ENABLED: true

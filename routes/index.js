@@ -1,15 +1,13 @@
 App.IndexRoute = Ember.Route.extend({
-	model: function() {
+  model: function() {
     var store = this.store;
-    var promise = this.store.find('storageSurvey').then(function(storageSurveys) {
+    return this.store.find('storageSurvey').then(function(storageSurveys) {
       if (Ember.empty(storageSurveys)) {
         return store.createRecord('storageSurvey');
       } else {
         return storageSurveys.get('firstObject');
       }
     });
-
-    return promise;
   },
 
 	setupController: function(controller, model) {

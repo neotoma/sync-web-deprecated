@@ -1,10 +1,12 @@
 App.ApplicationRoute = Ember.Route.extend({
-  setupController: function(controller, model) {
-    var promise = this.store.find('user').then(function(users) {
-      controller.set('sessionUser', users.get('firstObject'));
+  model: function() {
+    return this.store.find('user').then(function(users) {
+      return users.get('firstObject');
     });
+  },
 
-    return promise
+  setupController: function(controller, model) {
+    controller.set('sessionUser', model);
   },
 
   actions: {
@@ -21,7 +23,16 @@ App.ApplicationRoute = Ember.Route.extend({
     },
 
     signIn: function() {
-      this.controller.authenticateUser();
+      var route = this;
+      this.controller.authenticateUser().then(function() {
+        var sessionUser = route.controller.get('sessionUser');
+
+        if (!sessionUser.get('hasSource')) {
+          route.transitionTo('sources');
+        } else {
+          route.transitionTo('sync');
+        }
+      });
     },
 
     signOut: function() {

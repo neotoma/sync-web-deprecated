@@ -5,16 +5,16 @@ App.User = DS.Model.extend({
   sources:    DS.hasMany('source'),
 
   totalStorages: function() {
-    return this.get('storages').length;
-  }.property('storages.@each'),
+    return this.get('storages').get('length');
+  }.property('storages.length'),
 
 	hasStorage: function() {
 		return (this.get('totalStorages'));
 	}.property('totalStorages'),
 
   totalSources: function() {
-    return this.get('sources').length;
-  }.property('sources.@each'),
+    return this.get('sources').get('length');
+  }.property('sources.length'),
 
   hasSource: function() {
     return (this.get('totalSources'));
@@ -38,9 +38,11 @@ App.User = DS.Model.extend({
 if (APP_CONFIG.DATA.FIXTURES_ENABLED.USERS) {
   App.User.FIXTURES = [
     {
-      id: 'fixture-1',
+      id: 3,
       name: 'Saul Goodman',
-      email: 'saul@bettercallsaul.com'
+      email: 'saul@bettercallsaul.com',
+      storages: [1],
+      sources: [4,5]
     }
   ];
 } else {

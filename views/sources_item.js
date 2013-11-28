@@ -13,23 +13,27 @@ App.SourcesItemView = Ember.View.extend({
 
   actions: {
     toggleConnection: function() {
-       if (this.get('item').get('connected')) {
-          if (!confirm('Are you sure you want to disconnect ' + this.get('item').get('name') + '?')) {
-            return false;
-          }
-          
-          this.get('item').set('connected', false);
+      if (this.get('controller').get('isSaving')) {
+        return;
+      }
 
-          $.each(this.get('item').get('contentTypes'), function(key, contentType) {
-            contentType.set('enabled', false);
-          });
-       } else {
-          this.get('item').set('connected', true);
+      if (this.get('item').get('connected')) {
+        if (!confirm('Are you sure you want to disconnect ' + this.get('item').get('name') + '?')) {
+          return false;
+        }
+        
+        this.get('item').set('connected', false);
 
-          $.each(this.get('item').get('contentTypes'), function(key, contentType) {
-            contentType.set('enabled', true);
-          });
-       }
+        $.each(this.get('item').get('contentTypes'), function(key, contentType) {
+          contentType.set('enabled', false);
+        });
+      } else {
+        this.get('item').set('connected', true);
+
+        $.each(this.get('item').get('contentTypes'), function(key, contentType) {
+          contentType.set('enabled', true);
+        });
+      }
     }
   }
 })

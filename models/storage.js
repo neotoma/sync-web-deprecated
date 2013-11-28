@@ -24,7 +24,7 @@ App.Storage = DS.Model.extend({
 if (APP_CONFIG.DATA.FIXTURES_ENABLED.STORAGES) {
   App.Storage.FIXTURES = [
     {
-      id: 'fixture-1',
+      id: 1,
       type: 'dropbox',
       name: 'Dropbox',
       totalSize: 5000000000, // 5 GB
@@ -32,7 +32,7 @@ if (APP_CONFIG.DATA.FIXTURES_ENABLED.STORAGES) {
       occupiedSize: 1250000000, // 1.25 GB
       otherSize: 1750000000, // 1.75 GB
       lastCompletedSync: null,
-      user: 1
+      user: 3
     }
   ];
 } else {

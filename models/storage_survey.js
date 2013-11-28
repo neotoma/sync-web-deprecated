@@ -21,7 +21,7 @@ App.StorageSurvey = DS.Model.extend({
 if (APP_CONFIG.DATA.FIXTURES_ENABLED.STORAGE_SURVEYS) {
   App.StorageSurvey.FIXTURES = [
     {
-      id:         'fixture-1',
+      id:         2,
       email:      'example@example.com',
       preference: 'Amazon S3'
     }
