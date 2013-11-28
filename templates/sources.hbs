@@ -10,8 +10,8 @@
         <th>Select Content Types to Back Up</th>
       </tr>
     </thead>
-    {{#each source in collection}}
-      {{view App.SourcesSourceView sourceBinding=source}}
+    {{#each item in items}}
+      {{view App.SourcesItemView itemBinding=item}}
     {{/each}}
   </table>
 </div>

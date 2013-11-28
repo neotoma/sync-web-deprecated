@@ -1,4 +1,12 @@
 App.ApplicationRoute = Ember.Route.extend({
+  setupController: function(controller, model) {
+    var promise = this.store.find('user').then(function(users) {
+      controller.set('sessionUser', users.get('firstObject'));
+    });
+
+    return promise
+  },
+
   actions: {
     goToIndex: function() {
       this.transitionTo('index');
@@ -13,11 +21,12 @@ App.ApplicationRoute = Ember.Route.extend({
     },
 
     signIn: function() {
-      this.controllerFor('application').authenticateUser();
+      this.controller.authenticateUser();
     },
 
     signOut: function() {
-      this.controllerFor('application').deauthenticateUser();
+      this.controller.deauthenticateUser();
+      this.transitionTo('index');
     }
   }
 });

@@ -2,17 +2,17 @@
   <div id="app-nav">
     <ul>
       <li {{action 'goToIndex'}} {{bind-attr class="indexSelected:selected"}}><img src="images/asheville_logo.png" /></li>
-      {{#if model.isAuthenticated}}
+      {{#if sessionUser}}
         <li {{action 'goToSources'}} {{bind-attr class="sourcesSelected:selected"}}><span>Social Networks</span></li>
-        {{#if model.hasConnectedSources}}
+        {{#if sessionUser.hasSource}}
           <li {{action 'goToSync'}} {{bind-attr class="syncSelected:selected"}}><span>Backup Status</span></li>
         {{/if}}
       {{/if}}
     </ul>
     <ul>
-      {{#if model.isAuthenticated}}
+      {{#if sessionUser}}
         <li {{action 'signOut'}}><span>Sign Out</span></li>
-        <li id="app-nav-user-name"><span>{{model.name}}</span></li>
+        <li id="app-nav-user-name"><span>{{sessionUser.name}}</span></li>
       {{else}}
         <li {{action 'signIn'}}><span>Sign In</span></li>
       {{/if}}

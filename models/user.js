@@ -4,10 +4,6 @@ App.User = DS.Model.extend({
   storages:   DS.hasMany('storage'),
   sources:    DS.hasMany('source'),
 
-  isAuthenticated: function() {
-    return (this.get('ID'));
-  }.property('ID'),
-
   totalStorages: function() {
     return this.get('storages').length;
   }.property('storages.@each'),
@@ -27,7 +23,7 @@ App.User = DS.Model.extend({
   totalContentTypes: function() {
     var total = 0;
 
-    $.each(this.get('sources'), function(key, source) {
+    this.get('sources').forEach(function(source) {
       total += source.get('totalContentTypes');
     });
 
@@ -38,3 +34,15 @@ App.User = DS.Model.extend({
     return (this.get('totalContentTypes'));
   }.property('totalContentTypes')
 });
+
+if (APP_CONFIG.DATA.FIXTURES_ENABLED.USERS) {
+  App.User.FIXTURES = [
+    {
+      id: 'fixture-1',
+      name: 'Saul Goodman',
+      email: 'saul@bettercallsaul.com'
+    }
+  ];
+} else {
+  App.User.FIXTURES = [];
+}

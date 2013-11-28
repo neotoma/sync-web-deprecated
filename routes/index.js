@@ -1,14 +1,11 @@
 App.IndexRoute = Ember.Route.extend({
 	model: function() {
-    var promise = Ember.Deferred.create();
     var store = this.store;
-
-    this.store.find('storageSurvey').then(function(results) {
-      if (Ember.empty(results)) {
-        var storage_survey = store.createRecord('storageSurvey');
-        promise.resolve(storage_survey);
+    var promise = this.store.find('storageSurvey').then(function(storageSurveys) {
+      if (Ember.empty(storageSurveys)) {
+        return store.createRecord('storageSurvey');
       } else {
-        promise.resolve(results.objectAt(0));
+        return storageSurveys.get('firstObject');
       }
     });
 
@@ -22,9 +19,11 @@ App.IndexRoute = Ember.Route.extend({
 
   actions: {
     connectDropbox: function() {
-      this.controllerFor('application').authenticateUser();
+      var route = this;
       this.controller.set('isConnectingDropbox', true);
-      this.transitionTo('sources');
+      this.controllerFor('application').registerUser().then(function() {
+        route.transitionTo('sources')
+      });
     }
   },
 });

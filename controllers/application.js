@@ -1,42 +1,37 @@
 App.ApplicationController = Ember.Controller.extend({
-  authenticateUser: function() {
-    App.SimulatedServer.set('user', Ember.Object.create({ 
-      'ID': 1,
-      'email': 'example@example.org',
-      'name': 'Saul Goodman'
-    }));
+  registerUser: function() {
+    var controller = this;
 
-    App.SimulatedServer.get('user').set('storages', [
-      {
-        ID: 'dropbox',
+    var user = this.store.createRecord('user', {
+      name: 'Saul Goodman',
+      email: 'saul@bettercallsaul.com'  
+    });
+
+    var promise = user.save().then(function() {
+      controller.set('sessionUser', user);
+
+      var storage = controller.store.createRecord('storage', {
+        type: 'dropbox',
         name: 'Dropbox',
-        connected: false,
-        sizes: Ember.Object.create({
-          total: 5000000000, // 5 GB
-          available: 2000000000, // 2 GB
-          occupied: 1250000000, // 1.25 GB
-          other: 1750000000 // 1.75 GB
-        }),
-        timestamps: Ember.Object.create({
-          lastCompletedSync: 'Never'
-        })
-      }
-    ]);
+        totalSize: 5000000000, // 5 GB
+        availableSize: 3250000000, // 2 GB
+        occupiedSize: 0,
+        otherSize: 1750000000, // 1.75 GB
+        user: user
+      });
 
-    this.set('model', App.User.create(App.SimulatedServer.get('user')));
+      return storage.save();
+    });
+
+    return promise;
+  },
+
+  authenticateUser: function() {
+    this.registerUser();
   },
 
   deauthenticateUser: function() {
-    App.SimulatedServer.set('user', App.User.create());
-    this.set('model', App.User.create(App.SimulatedServer.get('user')));
-  },
-
-  handleTransitionStart: function() {
-    this.startLoadingIndicator();
-  },
-
-  handleTransitionStop: function() {
-    this.stopLoadingIndicator();
+    this.set('sessionUser', null);
   },
 
   indexSelected: function() {
@@ -53,6 +48,14 @@ App.ApplicationController = Ember.Controller.extend({
 
   isSelected: function(path) {
     return this.get('currentPath') == path || this.get('targetPath') == path;
+  },
+
+  handleTransitionStart: function() {
+    this.startLoadingIndicator();
+  },
+
+  handleTransitionStop: function() {
+    this.stopLoadingIndicator();
   },
 
   startLoadingIndicator: function() {

@@ -1,32 +1,32 @@
 App.SourcesController = Ember.ObjectController.extend({
-  isSubmitting: null,
+  isSaving: null,
 
   isDisabled: function() {
-    return (!this.get('model').get('totalEnabledContentTypes') || this.get('isSubmitting'));
-  }.property('totalEnabledContentTypes', 'isSubmitting'),
+    return (!this.get('model').get('totalEnabledContentTypes') || this.get('isSaving'));
+  }.property('totalEnabledContentTypes', 'isSaving'),
 
   saveLabel: function() {
-    if (this.get('isSubmitting')) {
+    if (this.get('isSaving')) {
         return 'Loading...';
     } else {
         return 'Start Backing Up';
     }
-  }.property('isSubmitting'),
+  }.property('isSaving'),
 
   actions: {
     saveSources: function() {
-      this.set('isSubmitting', true);
+      this.set('isSaving', true);
       target = this;
 
       App.Sources.post(
         this.get('model'),
         function(response) {
           target.transitionToRoute('sync').then(function() {
-            target.set('isSubmitting', false);
+            target.set('isSaving', false);
           });
         },
         function(reason) {
-          target.set('isSubmitting', false);
+          target.set('isSaving', false);
         }
       );
     }
