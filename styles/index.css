@@ -23,7 +23,7 @@
 
 #index #storage-survey.is-submitted button,
 #index #storage-survey.is-submitted .button,
-#index #storage-survey.is-submitted input[type=submit]                          { background: #f0f9f2; cursor: default; box-shadow: none; border: 1px solid #e0f2e4; text-shadow: none; color: #00ba27; font-weight: medium; }
+#index #storage-survey.is-submitted input[type=submit]                          { background: #f0f9f2; cursor: default; box-shadow: none; border: 1px solid #e0f2e4; text-shadow: none; color: #00ba27; font-weight: normal; }
 #index #storage-survey.is-submitted button:not(:disabled):hover,
 #index #storage-survey.is-submitted .button:not(:disabled):hover,
 #index #storage-survey.is-submitted input[type=submit]:not(:disabled):hover     { background: #f0f9f2; }
