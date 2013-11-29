@@ -4,7 +4,7 @@ App.SyncSourceView = Ember.View.extend({
   totalItemsSynced: function() {
     var total = 0;
 
-    this.get('source').get('contentTypes').forEach(function(contentType) {
+    this.get('source.contentTypes').forEach(function(contentType) {
       if (contentType.get('totalItemsSynced')) {
         total = total + contentType.get('totalItemsSynced');
       }
@@ -16,7 +16,7 @@ App.SyncSourceView = Ember.View.extend({
   totalItemsAvailable: function() {
     var total = 0;
 
-    this.get('source').get('contentTypes').forEach(function(contentType) {
+    this.get('source.contentTypes').forEach(function(contentType) {
       if (contentType.get('totalItemsAvailable')) {
         total = total + contentType.get('totalItemsAvailable');
       }
@@ -50,7 +50,7 @@ App.SyncSourceView = Ember.View.extend({
   },
 
   lastCompletedSyncTimestamp: function() {
-    return this.timestamp(this.get('source').get('lastCompletedSync'));
+    return this.timestamp(this.get('source.lastCompletedSync'));
   }.property('source.lastCompletedSync'),
 
   hasHeaderInformation: function() {

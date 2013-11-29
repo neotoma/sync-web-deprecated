@@ -8,12 +8,12 @@
   <hr />
   <div id="sync-storages">
     {{#each storage in storages}}
-      {{view App.SyncStorageView storageBinding=storage}}
+      {{view App.SyncStorageView storageBinding="storage"}}
     {{/each}}
   </div>
   <div id="sync-sources">
     {{#each source in sources}}
-      {{view App.SyncSourceView sourceBinding=source}}
+      {{view App.SyncSourceView sourceBinding="source"}}
     {{/each}}
   </div>
 </div>

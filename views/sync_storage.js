@@ -18,30 +18,30 @@ App.SyncStorageView = Ember.View.extend({
   },
 
   availableSize: function() {
-    return this.size(this.get('storage').get('availableSize'));
+    return this.size(this.get('storage.availableSize'));
   }.property('storage.availableSize'),
 
   filledSize: function() {
-    return this.size(this.get('storage').get('totalSize') - this.get('storage').get('availableSize'));
+    return this.size(this.get('storage.totalSize') - this.get('storage.availableSize'));
   }.property('storage.availableSize', 'storage.totalSize'),
 
   totalSize: function() {
-    return this.size(this.get('storage').get('totalSize'));
+    return this.size(this.get('storage.totalSize'));
   }.property('storage.totalSize'),
 
   occupiedSize: function() {
-    return this.size(this.get('storage').get('occupiedSize'));
+    return this.size(this.get('storage.occupiedSize'));
   }.property('storage.occupiedSize'),
 
   otherSize: function() {
-    return this.size(this.get('storage').get('otherSize'));
+    return this.size(this.get('storage.otherSize'));
   }.property('storage.otherSize'),
 
   /* Percentages */
 
   percentage: function(value) {
-    if (value && this.get('storage').get('totalSize')) {
-      return (Math.round(value / this.get('storage').get('totalSize') * 100 * 100) / 100).toFixed(2) + '%';
+    if (value && this.get('storage.totalSize')) {
+      return (Math.round(value / this.get('storage.totalSize') * 100 * 100) / 100).toFixed(2) + '%';
     } else if (value === 0) {
       return '0%';
     } else {
@@ -50,19 +50,19 @@ App.SyncStorageView = Ember.View.extend({
   },
 
   availablePercentage: function() {
-    return this.percentage(this.get('storage').get('availableSize'));
+    return this.percentage(this.get('storage.availableSize'));
   }.property('storage.availableSize', 'storage.totalSize'),
 
   filledPercentage: function() {
-    return this.percentage(this.get('storage').get('totalSize') - this.get('storage').get('availableSize'));
+    return this.percentage(this.get('storage.totalSize') - this.get('storage.availableSize'));
   }.property('storage.availableSize', 'storage.totalSize'),
 
   occupiedPercentage: function() {
-    return this.percentage(this.get('storage').get('occupiedSize'));
+    return this.percentage(this.get('storage.occupiedSize'));
   }.property('storage.occupiedSize', 'storage.totalSize'),
 
   otherPercentage: function() {
-    return this.percentage(this.get('storage').get('otherSize'));
+    return this.percentage(this.get('storage.otherSize'));
   }.property('storage.otherSize', 'storage.totalSize'),
 
   /* Timestamps */
@@ -78,7 +78,7 @@ App.SyncStorageView = Ember.View.extend({
   },
 
   lastCompletedSyncTimestamp: function() {
-    return this.timestamp(this.get('storage').get('lastCompletedSync'));
+    return this.timestamp(this.get('storage.lastCompletedSync'));
   }.property('storage.lastCompletedSync'),
 
   /* Bar Width Styles */

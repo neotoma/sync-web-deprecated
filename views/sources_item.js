@@ -4,7 +4,7 @@ App.SourcesItemView = Ember.View.extend({
   classNameBindings: ['item.connected'],
 
   connectLabel: function() {
-    if (this.get('item').get('connected')) {
+    if (this.get('item.connected')) {
       return '&#10003; Connected';
     } else {
       return 'Connect';
@@ -13,24 +13,24 @@ App.SourcesItemView = Ember.View.extend({
 
   actions: {
     toggleConnection: function() {
-      if (this.get('controller').get('isSaving')) {
+      if (this.get('controller.isSaving')) {
         return;
       }
 
-      if (this.get('item').get('connected')) {
-        if (!confirm('Are you sure you want to disconnect ' + this.get('item').get('name') + '?')) {
+      if (this.get('item.connected')) {
+        if (!confirm('Are you sure you want to disconnect ' + this.get('item.name') + '?')) {
           return false;
         }
         
         this.get('item').set('connected', false);
 
-        $.each(this.get('item').get('contentTypes'), function(key, contentType) {
+        $.each(this.get('item.contentTypes'), function(key, contentType) {
           contentType.set('enabled', false);
         });
       } else {
         this.get('item').set('connected', true);
 
-        $.each(this.get('item').get('contentTypes'), function(key, contentType) {
+        $.each(this.get('item.contentTypes'), function(key, contentType) {
           contentType.set('enabled', true);
         });
       }

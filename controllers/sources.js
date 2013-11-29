@@ -1,12 +1,13 @@
 App.SourcesController = Ember.ObjectController.extend({
+  needs: 'application',
   isSaving: null,
 
   hasConnectedSources: function() {
-    return (this.get('model').get('totalConnectedSources'));
+    return (this.get('model.totalConnectedSources'));
   }.property('model.totalConnectedSources'),
 
   isDisabled: function() {
-    return (!this.get('model').get('totalEnabledContentTypes') || this.get('isSaving'));
+    return (!this.get('model.totalEnabledContentTypes') || this.get('isSaving'));
   }.property('totalEnabledContentTypes', 'isSaving'),
 
   saveLabel: function() {
@@ -22,10 +23,10 @@ App.SourcesController = Ember.ObjectController.extend({
       this.set('isSaving', true);
       var controller = this;
 
-      var session_user = this.controllerFor('application').get('sessionUser');
+      var session_user = this.get('controllers.application.sessionUser');
       var sources = [];
 
-      $.each(this.get('model').get('items'), function(key, item) {
+      $.each(this.get('model.items'), function(key, item) {
         if (item.get('connected')) {
           var source = controller.store.createRecord('source', {
             type: item.get('type'),

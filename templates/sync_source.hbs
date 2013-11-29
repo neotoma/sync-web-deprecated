@@ -15,12 +15,12 @@
 </h3>
 <div class="bar-base">
   {{#each contentType in source.contentTypes}}
-    {{view App.SyncSourceContentTypeBarView contentTypeBinding=contentType}}
+    {{view App.SyncSourceContentTypeBarView contentTypeBinding="contentType"}}
   {{/each}}
 </div>
 <ul class="legends">
   {{#each contentType in source.contentTypes}}
-    {{view App.SyncSourceContentTypeLegendView contentTypeBinding=contentType}}
+    {{view App.SyncSourceContentTypeLegendView contentTypeBinding="contentType"}}
   {{/each}}
 </ul>
 {{#if source.itemAttributes}}

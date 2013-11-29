@@ -5,23 +5,23 @@ App.StorageSurveyView = Ember.View.extend({
   classNameBindings: ['isSubmitted'],
 
   isSubmitted: function() {
-    return this.get('storageSurvey').get('isSubmitted');
+    return this.get('storageSurvey.isSubmitted');
   }.property('storageSurvey.isSubmitted'),
 
   isValid: function() {
-    var validation = this.get('storageSurvey').get('validation');
+    var validation = this.get('storageSurvey.validation');
     var isValid = true;
     var regex;
 
     // Email
     regex = new RegExp(validation.email.pattern);
-    if ((validation.email.required && !this.get('storageSurvey').get('email')) || !regex.test(this.get('storageSurvey').get('email'))) {
+    if ((validation.email.required && !this.get('storageSurvey.email')) || !regex.test(this.get('storageSurvey.email'))) {
       isValid = false;
     }
 
     // Preference
     regex = new RegExp(validation.preference.pattern, validation.preference.modifiers);
-    if ((validation.preference.required && !this.get('storageSurvey').get('preference')) || !regex.test(this.get('storageSurvey').get('preference'))) {
+    if ((validation.preference.required && !this.get('storageSurvey.preference')) || !regex.test(this.get('storageSurvey.preference'))) {
       isValid = false;
     }
 
@@ -35,7 +35,7 @@ App.StorageSurveyView = Ember.View.extend({
   submitLabel: function() {
     if (this.get('isSubmitting')) {
       return 'Submitting...';
-    } else if (this.get('storageSurvey').get('isSubmitted')) {
+    } else if (this.get('storageSurvey.isSubmitted')) {
       return '&#10003; Submitted';
     } else {
       return 'Notify Me';
