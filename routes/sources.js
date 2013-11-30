@@ -1,12 +1,12 @@
 App.SourcesRoute = Ember.Route.extend({
-  beforeModel: function(transition) {
-    var sessionUser = this.controllerFor('application').get('sessionUser');
-
+  beforeModel: function() {
+    var sessionUser = this.modelFor('application');
+    
     if (!sessionUser) {
       this.transitionTo('index');
     }
   },
-  
+
   model: function() {
     return App.SourcesMenu.create();
   }

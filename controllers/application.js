@@ -1,4 +1,6 @@
 App.ApplicationController = Ember.Controller.extend({
+  sessionUser: Ember.computed.alias('model'),
+
   registerUser: function() {
     var controller = this;
 
@@ -9,7 +11,7 @@ App.ApplicationController = Ember.Controller.extend({
     });
 
     return user.save().then(function(user) {
-      controller.set('sessionUser', user);
+      controller.set('model', user);
 
       var storage = controller.store.createRecord('storage', {
         type: 'dropbox',

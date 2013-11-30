@@ -5,7 +5,7 @@ App.Source = DS.Model.extend({
   totalItemsAvailable:  DS.attr('string'),
   lastCompletedSync:    DS.attr('date'),
   user:                 DS.belongsTo('user'),
-  contentTypes:         DS.hasMany('contentType'),
+  contentTypes:         DS.hasMany('contentType', { async: true }),
 
   totalContentTypes: function() {
     return this.get('contentTypes').get('length');
@@ -24,10 +24,13 @@ if (APP_CONFIG.DATA.FIXTURES_ENABLED.SOURCES) {
       id: 5,
       name: 'instagram',
       type: 'Instagram',
-      user: 3,
-      contentTypes: [10,11,12]
+      user: 3
     }
   ];
+
+  if (APP_CONFIG.DATA.FIXTURES_ENABLED.CONTENT_TYPES) {
+    App.Source.FIXTURES[0].contentTypes = [10,11,12];
+  }
 } else {
   App.Source.FIXTURES = [];
 }

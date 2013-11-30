@@ -5,10 +5,6 @@ App.ApplicationRoute = Ember.Route.extend({
     });
   },
 
-  setupController: function(controller, model) {
-    controller.set('sessionUser', model);
-  },
-
   actions: {
     goToIndex: function() {
       this.transitionTo('index');
