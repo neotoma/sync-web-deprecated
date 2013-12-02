@@ -38,11 +38,13 @@ App.SourcesController = Ember.ObjectController.extend({
 
             $.each(item.get('contentTypes'), function(key, itemContentType) {
               if (itemContentType.get('enabled')) {
-                content_type_save_promises.push(controller.store.createRecord('contentType', {
+                var content_type = controller.store.createRecord('contentType', {
                   type: itemContentType.get('type'),
                   name: itemContentType.get('name'),
                   source: source
-                }).save());
+                });
+
+                content_type_save_promises.push(content_type.save());
               }
             });
 
@@ -51,11 +53,9 @@ App.SourcesController = Ember.ObjectController.extend({
         }
       });
 
-      return $.when.apply($, source_save_promises).then(function(sources) {
-        session_user.save().then(function() {
-            controller.transitionToRoute('sync').then(function() {
-            controller.set('isSaving', false);
-          });
+      return $.when.apply($, source_save_promises).then(function() {
+        controller.transitionToRoute('sync').then(function() {
+          controller.set('isSaving', false);
         });
       });
     }
