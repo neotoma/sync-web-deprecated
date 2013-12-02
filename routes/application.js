@@ -1,10 +1,4 @@
 App.ApplicationRoute = Ember.Route.extend({
-  model: function() {
-    return this.store.find('user').then(function(users) {
-      return users.get('firstObject');
-    });
-  },
-
   actions: {
     goToIndex: function() {
       this.transitionTo('index');
@@ -20,10 +14,8 @@ App.ApplicationRoute = Ember.Route.extend({
 
     signIn: function() {
       var route = this;
-      this.controller.authenticateUser().then(function() {
-        var sessionUser = route.controller.get('sessionUser');
-
-        if (!sessionUser.get('hasSource')) {
+      this.controllerFor('session').authenticate().then(function(user) {
+        if (!user.get('hasSource')) {
           route.transitionTo('sources');
         } else {
           route.transitionTo('sync');
@@ -32,8 +24,9 @@ App.ApplicationRoute = Ember.Route.extend({
     },
 
     signOut: function() {
-      this.controller.deauthenticateUser();
-      this.transitionTo('index');
+      this.controller.get('controllers.session').deauthenticate().then(function() {
+        this.transitionTo('index');
+      });
     }
   }
 });

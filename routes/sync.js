@@ -1,21 +1,17 @@
 App.SyncRoute = Ember.Route.extend({
+  needs: ['session'],
+  
   beforeModel: function() {
-    var sessionUser = this.modelFor('application');
+    var sessionUser = this.controllerFor('session').get('user');
 
     if (!sessionUser) {
       this.transitionTo('index');
-    } else {
-      var route = this;
-
-      return sessionUser.get('sources').then(function() {
-        if(!sessionUser.get('hasSource')) {
-          route.transitionTo('sources');
-        }
-      });
+    } else if(!sessionUser.get('hasSource')) {
+      this.transitionTo('sources');
     }
   },
 
   model: function() {
-    return this.modelFor('application');
+    return this.controllerFor('session').get('user');
   },
 });

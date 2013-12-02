@@ -1,9 +1,5 @@
 App.SyncController = Ember.ObjectController.extend({
 	actions: {
-		pauseAllSources: function() {
-			console.log('controller.pauseAllSources called');
-		},
-
 		/* Simulation Methods */
 
 		simulateOccupiedSizeIncrease: function(view) {

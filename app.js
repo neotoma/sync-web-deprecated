@@ -51,3 +51,26 @@ Ember.Route.reopen({
     this.controllerFor('application').handleTransitionStop();
   }
 });
+
+Ember.Application.initializer({
+  name: 'session',
+
+  initialize: function(container) {
+    App.deferReadiness();
+    var store = container.lookup('store:main');
+
+    return store.find('user').then(function(users) {
+      var user = users.get('firstObject');
+
+      if (user) {
+        container.lookup('controller:session').set('user', user);
+
+        return user.get('sources').then(function(users) {
+          App.advanceReadiness();
+        });
+      } else {
+        App.advanceReadiness();
+      }
+    });
+  }
+});

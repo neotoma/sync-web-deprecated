@@ -42,20 +42,22 @@ App.StorageSurveyView = Ember.View.extend({
     }
   }.property('isSubmitting', 'storageSurvey.isSubmitted'),
 
-  submit: function(event) {
-    $('#storage-survey').find('input').blur();
-    this.set('isSubmitting', true);
-    target = this;
+  actions: {
+    submit: function(event) {
+      $('#storage-survey').find('input').blur();
+      this.set('isSubmitting', true);
+      target = this;
 
-    this.get('storageSurvey').save().then(
-      function(response) {
-        target.set('isSubmitting', false);
-        target.get('storageSurvey').set('isSubmitted', true);
-      }, 
-      function(reason) {
-        target.set('isSubmitting', false);
-        $("#storage-survey form").effect('shake', { distance: 15 });
-      }
-    );
+      this.get('storageSurvey').save().then(
+        function(response) {
+          target.set('isSubmitting', false);
+          target.get('storageSurvey').set('isSubmitted', true);
+        }, 
+        function(reason) {
+          target.set('isSubmitting', false);
+          $("#storage-survey form").effect('shake', { distance: 15 });
+        }
+      );
+    }
   }
 });

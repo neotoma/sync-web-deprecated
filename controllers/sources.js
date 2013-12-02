@@ -1,5 +1,5 @@
 App.SourcesController = Ember.ObjectController.extend({
-  needs: 'application',
+  needs: 'session',
   isSaving: null,
 
   hasConnectedSources: function() {
@@ -23,7 +23,7 @@ App.SourcesController = Ember.ObjectController.extend({
       this.set('isSaving', true);
       var controller = this;
 
-      var session_user = this.get('controllers.application.sessionUser');
+      var session_user = this.get('controllers.session.user');
       var sources = [];
 
       $.each(this.get('model.items'), function(key, item) {

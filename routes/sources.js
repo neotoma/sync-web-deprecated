@@ -1,6 +1,8 @@
 App.SourcesRoute = Ember.Route.extend({
+  needs: ['session'],
+
   beforeModel: function() {
-    var sessionUser = this.modelFor('application');
+    var sessionUser = this.controllerFor('session').get('user');
     
     if (!sessionUser) {
       this.transitionTo('index');
