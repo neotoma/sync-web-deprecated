@@ -24,9 +24,8 @@ App.ApplicationRoute = Ember.Route.extend({
     },
 
     signOut: function() {
-      this.controller.get('controllers.session').deauthenticate().then(function() {
-        this.transitionTo('index');
-      });
+      this.controllerFor('session').deauthenticate();
+      this.transitionTo('index');
     }
   }
 });
