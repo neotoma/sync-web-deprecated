@@ -22,9 +22,8 @@ App.SourcesController = Ember.ObjectController.extend({
     saveSources: function() {
       this.set('isSaving', true);
       var controller = this;
-
       var session_user = this.get('controllers.session.user');
-      var sources = [];
+      var source_save_promises = [];
 
       $.each(this.get('model.items'), function(key, item) {
         if (item.get('connected')) {
@@ -33,31 +32,30 @@ App.SourcesController = Ember.ObjectController.extend({
             name: item.get('name'),
             user: session_user
           });
-          var contentTypes = [];
 
-          $.each(item.get('contentTypes'), function(key, itemContentType) {
-            if (itemContentType.get('enabled')) {
-              var contentType = controller.store.createRecord('contentType', {
-                type: itemContentType.get('type'),
-                name: itemContentType.get('name'),
-                source: source
-              });
-              contentType.save();
-              contentTypes.push(contentType);
-            }
-          });
+          source_save_promises.push(source.save().then(function(source) {
+            var content_type_save_promises = [];
 
-          source.set('contentTypes', contentTypes);
-          source.save();
-          sources.push(source);
+            $.each(item.get('contentTypes'), function(key, itemContentType) {
+              if (itemContentType.get('enabled')) {
+                content_type_save_promises.push(controller.store.createRecord('contentType', {
+                  type: itemContentType.get('type'),
+                  name: itemContentType.get('name'),
+                  source: source
+                }).save());
+              }
+            });
+
+            return $.when.apply($, content_type_save_promises);
+          }));
         }
       });
 
-      session_user.set('sources', sources);
-
-      return session_user.save().then(function() {
-        controller.transitionToRoute('sync').then(function() {
-          controller.set('isSaving', false);
+      return $.when.apply($, source_save_promises).then(function(sources) {
+        session_user.save().then(function() {
+            controller.transitionToRoute('sync').then(function() {
+            controller.set('isSaving', false);
+          });
         });
       });
     }
