@@ -19,7 +19,7 @@ App.IndexRoute = Ember.Route.extend({
     connectDropbox: function() {
       var route = this;
       this.controller.set('isConnectingDropbox', true);
-      this.controllerFor('session').register().then(function() {
+      this.controllerFor('session').authenticate().then(function() {
         route.transitionTo('sources')
       });
     }
