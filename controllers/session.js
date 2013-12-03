@@ -6,6 +6,7 @@ App.SessionController = Ember.Controller.extend({
   },
 
   deauthenticate: function() {
+    this.get('user').destroyRecord();
     this.set('user', null);
   },
 

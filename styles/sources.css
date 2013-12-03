@@ -14,7 +14,7 @@
 #sources-content-type-options                           { float: right; font-size: 0.8em; opacity: 0.5; transition: opacity 0.2s ease; }
 #sources-content-type-options:hover                     { opacity: 1; }
 
-#sources .source-connect-area button                    { font-size: 0.8em; }
+#sources .source-connect-area button                    { font-size: 0.8em; min-width: 10em; }
 #sources .source-connect-area-connected                 { color: #08b92c; }
 #sources .source-connect-area-disconnect                { opacity: 0.5; font-size: 0.7em; padding-left: 0.8em; transition: opacity 0.2s ease; }
 #sources .source-connect-area-disconnect:hover          { opacity: 1; }
@@ -26,4 +26,4 @@
 #sources-continue-area-message                          { font-size: 1.1em; margin-right: 1em; color: #08b92c; }
 #sources-continue-area-message span                     { display: inline-block; padding-top: 0.6em; }
 #sources-continue-area-message-no-connected-sources     { color: #717171; }
-#sources-continue-area button                           { font-size: 1em; }
+#sources-continue-area button                           { font-size: 1em; min-width: 12em; }

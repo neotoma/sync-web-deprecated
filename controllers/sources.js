@@ -22,19 +22,23 @@ App.SourcesController = Ember.ObjectController.extend({
     saveSources: function() {
       this.set('isSaving', true);
       var controller = this;
-      var session_user = this.get('controllers.session.user');
-      var source_save_promises = [];
+      var sessionUser = this.get('controllers.session.user');
+      var sourceSavePromises = [];
+
+      sessionUser.set('sources', []);
 
       $.each(this.get('model.items'), function(key, item) {
         if (item.get('connected')) {
           var source = controller.store.createRecord('source', {
             type: item.get('type'),
             name: item.get('name'),
-            user: session_user
+            user: sessionUser
           });
 
-          source_save_promises.push(source.save().then(function(source) {
-            var content_type_save_promises = [];
+          sourceSavePromises.push(source.save().then(function(source) {
+            sessionUser.get('sources').pushObject(source);
+
+            var contentTypeSavePromises = [];
 
             $.each(item.get('contentTypes'), function(key, itemContentType) {
               if (itemContentType.get('enabled')) {
@@ -44,18 +48,20 @@ App.SourcesController = Ember.ObjectController.extend({
                   source: source
                 });
 
-                content_type_save_promises.push(content_type.save());
+                contentTypeSavePromises.push(content_type.save());
               }
             });
 
-            return $.when.apply($, content_type_save_promises);
+            return $.when.apply($, contentTypeSavePromises);
           }));
         }
       });
 
-      return $.when.apply($, source_save_promises).then(function() {
-        controller.transitionToRoute('sync').then(function() {
-          controller.set('isSaving', false);
+      return $.when.apply($, sourceSavePromises).then(function() {
+        sessionUser.save().then(function() {
+          controller.transitionToRoute('sync').then(function() {
+            controller.set('isSaving', false);
+          });
         });
       });
     }
