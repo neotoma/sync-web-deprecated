@@ -38,12 +38,6 @@ if (APP_CONFIG.DATA.FIXTURES_ENABLED.CONTENT_TYPES) {
     },
     {
       id: 11,
-      type: 'video',
-      name: 'Video',
-      source: 5
-    },
-    {
-      id: 12,
       type: 'like',
       name: 'Like',
       source: 5

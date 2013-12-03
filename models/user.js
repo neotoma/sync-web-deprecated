@@ -20,6 +20,12 @@ App.User = DS.Model.extend({
     return this.get('totalSources') ? true : false;
   }.property('totalSources'),
 
+  sourceConnected: function(type) {
+    return (this.get('sources').filter(function(source) { 
+      return (source.get('type') == type); 
+    }).length) ? true : false;
+  },
+
   totalContentTypes: function() {
     var total = 0;
 
@@ -32,7 +38,19 @@ App.User = DS.Model.extend({
 
   hasContentType: function() {
     return this.get('totalContentTypes') ? true : false;
-  }.property('totalContentTypes')
+  }.property('totalContentTypes'),
+
+  contentTypeEnabled: function(sourceType, contentTypeType) {
+    return (this.get('sources').filter(function(source) {
+      if (source.get('type') == sourceType) { 
+        return (source.get('contentTypes').filter(function(contentType) {
+          return (contentType.get('type') == contentTypeType);
+        }).length) ? true : false; 
+      } else {
+        return false;
+      }
+    }).length) ? true : false;
+  }
 });
 
 if (APP_CONFIG.DATA.FIXTURES_ENABLED.USERS) {

@@ -20,28 +20,36 @@ App.SourcesMenu = Ember.Object.extend({
   }.property('this.items.@each.totalEnabledContentTypes'),
 
   init: function() {
+    this._super();
+
+    var user = this.get('user');
     var items = [];
 
     items.push(App.SourcesMenuItem.create(
       { 
         type: 'facebook',
         name: 'Facebook',
+        connected: user.sourceConnected('facebook'),
         contentTypes: [
           Ember.Object.create({
             type: 'status_update',
-            name: 'Status Update'
+            name: 'Status Update',
+            enabled: user.contentTypeEnabled('facebook', 'status_update')
           }),
           Ember.Object.create({
             type: 'link',
-            name: 'Link'
+            name: 'Link',
+            enabled: user.contentTypeEnabled('facebook', 'link')
           }),
           Ember.Object.create({
             type: 'check_in',
-            name: 'Check-in'
+            name: 'Check-in',
+            enabled: user.contentTypeEnabled('facebook', 'check_in')
           }),
           Ember.Object.create({
             type: 'photo',
-            name: 'Photo'
+            name: 'Photo',
+            enabled: user.contentTypeEnabled('facebook', 'photo')
           })
         ]
       }
@@ -51,22 +59,27 @@ App.SourcesMenu = Ember.Object.extend({
       { 
         type: 'twitter',
         name: 'Twitter',
+        connected: user.sourceConnected('twitter'),
         contentTypes: [
           Ember.Object.create({
             type: 'tweet',
-            name: 'Tweet'
+            name: 'Tweet',
+            enabled: user.contentTypeEnabled('twitter', 'tweet')
           }),
           Ember.Object.create({
             type: 'favorite',
-            name: 'Favorite'
+            name: 'Favorite',
+            enabled: user.contentTypeEnabled('twitter', 'favorite')
           }),
           Ember.Object.create({
             type: 'retweet',
-            name: 'Retweet'
+            name: 'Retweet',
+            enabled: user.contentTypeEnabled('twitter', 'retweet')
           }),
           Ember.Object.create({
             type: 'direct_message',
-            name: 'Direct Message'
+            name: 'Direct Message',
+            enabled: user.contentTypeEnabled('twitter', 'direct_message')
           })
         ]
       }
@@ -76,18 +89,22 @@ App.SourcesMenu = Ember.Object.extend({
       { 
         type: 'instagram',
         name: 'Instagram',
+        connected: user.sourceConnected('instagram'),
         contentTypes: [
           Ember.Object.create({
             type: 'photo',
-            name: 'Photo'
+            name: 'Photo',
+            enabled: user.contentTypeEnabled('instagram', 'photo')
           }),
           Ember.Object.create({
             type: 'video',
-            name: 'Video'
+            name: 'Video',
+            enabled: user.contentTypeEnabled('instagram', 'video')
           }),
           Ember.Object.create({
             type: 'like',
-            name: 'Like'
+            name: 'Like',
+            enabled: user.contentTypeEnabled('instagram', 'like')
           })
         ]
       }
@@ -97,18 +114,22 @@ App.SourcesMenu = Ember.Object.extend({
       { 
         type: 'foursquare',
         name: 'Foursquare',
+        connected: user.sourceConnected('foursquare'),
         contentTypes: [
           Ember.Object.create({
             type: 'check_in',
-            name: 'Check-in'
+            name: 'Check-in',
+            enabled: user.contentTypeEnabled('foursquare', 'check_in')
           }),
           Ember.Object.create({
             type: 'tip',
-            name: 'Tip'
+            name: 'Tip',
+            enabled: user.contentTypeEnabled('foursquare', 'tip')
           }),
           Ember.Object.create({
             type: 'like',
-            name: 'Like'
+            name: 'Like',
+            enabled: user.contentTypeEnabled('foursquare', 'like')
           })
         ]
       }

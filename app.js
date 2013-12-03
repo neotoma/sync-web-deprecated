@@ -58,14 +58,58 @@ Ember.Application.initializer({
   initialize: function(container) {
     App.deferReadiness();
     var store = container.lookup('store:main');
+    var initializer = this;
+    var user;
+
+    var loadSources = function() {
+      var deferred = $.Deferred();
+      var promises = [];
+
+      var sources = user.get('sources').then(function(sources) {
+        console.log('sources loaded');
+        loadContentTypes(sources).then(function() {
+          deferred.resolve();
+        });
+      });
+
+      return deferred.promise();
+    };
+
+    var loadContentTypes = function(sources) {
+      var deferred = $.Deferred();
+      var promises = [];
+      
+      sources.forEach(function(source) {
+        promises.push(loadContentTypesForSource(source));
+      });
+
+      $.when.apply($, promises).then(function() {
+        console.log('content types loaded');
+        deferred.resolve();
+      });
+
+      return deferred.promise();
+    };
+
+    var loadContentTypesForSource = function(source) {
+      var deferred = $.Deferred();
+
+      source.get('contentTypes').then(function(contentTypes) {
+        console.log('content types loaded for %s (%s)', source.get('type'), contentTypes.get('length'));
+        deferred.resolve();
+      });
+
+      return deferred.promise();
+    };
 
     return store.find('user').then(function(users) {
-      var user = users.get('firstObject');
+      user = users.get('firstObject');
 
       if (user) {
         container.lookup('controller:session').set('user', user);
 
-        return user.get('sources').then(function(users) {
+        loadSources(user).then(function() {
+          console.log('advance readiness');
           App.advanceReadiness();
         });
       } else {

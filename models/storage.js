@@ -8,15 +8,15 @@ App.Storage = DS.Model.extend({
   lastCompletedSync:    DS.attr('date'),
   user:                 DS.belongsTo('user'),
 
-  availablePercentage: function(size) {
+  availablePercentage: function() {
     return (this.get('availableSize') / this.get('totalSize') * 100);
   }.property('availableSize', 'totalSize'),
 
-  occupiedPercentage: function(size) {
+  occupiedPercentage: function() {
     return (this.get('occupiedSize') / this.get('totalSize') * 100);
   }.property('occupiedSize', 'totalSize'),
 
-  otherPercentage: function(size) {
+  otherPercentage: function() {
     return (this.get('otherSize') / this.get('totalSize') * 100);
   }.property('otherSize', 'totalSize'),
 });

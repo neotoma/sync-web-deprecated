@@ -30,7 +30,7 @@ if (APP_CONFIG.DATA.FIXTURES_ENABLED.SOURCES) {
 
   if (APP_CONFIG.DATA.FIXTURES_ENABLED.CONTENT_TYPES) {
     App.Source.FIXTURES[0].contentTypes = [6,7,8,9];
-    App.Source.FIXTURES[1].contentTypes = [10,11,12];
+    App.Source.FIXTURES[1].contentTypes = [10,11];
   }
 } else {
   App.Source.FIXTURES = [];
