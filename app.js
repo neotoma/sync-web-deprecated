@@ -66,7 +66,6 @@ Ember.Application.initializer({
       var promises = [];
 
       var sources = user.get('sources').then(function(sources) {
-        console.log('sources loaded');
         loadContentTypes(sources).then(function() {
           deferred.resolve();
         });
@@ -84,7 +83,6 @@ Ember.Application.initializer({
       });
 
       $.when.apply($, promises).then(function() {
-        console.log('content types loaded');
         deferred.resolve();
       });
 
@@ -95,7 +93,6 @@ Ember.Application.initializer({
       var deferred = $.Deferred();
 
       source.get('contentTypes').then(function(contentTypes) {
-        console.log('content types loaded for %s (%s)', source.get('type'), contentTypes.get('length'));
         deferred.resolve();
       });
 
@@ -109,7 +106,6 @@ Ember.Application.initializer({
         container.lookup('controller:session').set('user', user);
 
         loadSources(user).then(function() {
-          console.log('advance readiness');
           App.advanceReadiness();
         });
       } else {

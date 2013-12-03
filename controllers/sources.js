@@ -20,7 +20,22 @@ App.SourcesController = Ember.ObjectController.extend({
 
   clearSources: function() {
     var user = this.get('controllers.session.user');
-    sessionUser.set('sources', []);
+    var sources = user.get('sources');
+    var i = sources.get('length');
+
+    while(i--) {
+      var source = sources.objectAt(i);
+      var contentTypes = source.get('contentTypes');
+      var k = contentTypes.get('length');
+
+      while(k--) {
+        contentTypes.objectAt(k).destroyRecord();
+      };
+
+      source.destroyRecord();
+    };
+
+    user.set('sources', []);
   },
 
   saveItem: function(item) {
@@ -37,7 +52,6 @@ App.SourcesController = Ember.ObjectController.extend({
 
     var controller = this;
     source.save().then(function(source) {
-      console.log('source saved (%s)', source.get('type'));
       user.get('sources').pushObject(source);
 
       controller.saveItemContentTypes(item).then(function() {
@@ -66,7 +80,6 @@ App.SourcesController = Ember.ObjectController.extend({
     });
 
     $.when.apply($, promises).then(function(schemas) {
-      console.log('content types saved (%s)', item.get('type'));
       deferred.resolve();
     });
 
@@ -75,6 +88,7 @@ App.SourcesController = Ember.ObjectController.extend({
 
   actions: {
     saveItems: function() {
+      this.clearSources();
       this.set('isSaving', true);
 
       var items = this.get('model.items');
@@ -88,7 +102,6 @@ App.SourcesController = Ember.ObjectController.extend({
       });
 
       $.when.apply($, promises).then(function() {
-        console.log('sources saved');
         return controller.get('controllers.session.user').save();
       }).then(function() {
         controller.transitionToRoute('sync').then(function() {
