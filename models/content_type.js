@@ -4,7 +4,7 @@ App.ContentType = DS.Model.extend({
   source:   DS.belongsTo('source')
 });
 
-if (APP_CONFIG.DATA.FIXTURES_ENABLED.CONTENT_TYPE) {
+if (APP_CONFIG.DATA.FIXTURES_ENABLED.CONTENT_TYPES) {
   App.ContentType.FIXTURES = [
     {
       id: 6,

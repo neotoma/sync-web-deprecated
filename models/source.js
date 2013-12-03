@@ -16,20 +16,21 @@ if (APP_CONFIG.DATA.FIXTURES_ENABLED.SOURCES) {
   App.Source.FIXTURES = [
     {
       id: 4,
-      name: 'facebook',
-      type: 'Facebook',
+      type: 'facebook',
+      name: 'Facebook',
       user: 3
     },
     {
       id: 5,
-      name: 'instagram',
-      type: 'Instagram',
+      type: 'instagram',
+      name: 'Instagram',
       user: 3
     }
   ];
 
   if (APP_CONFIG.DATA.FIXTURES_ENABLED.CONTENT_TYPES) {
-    App.Source.FIXTURES[0].contentTypes = [10,11,12];
+    App.Source.FIXTURES[0].contentTypes = [6,7,8,9];
+    App.Source.FIXTURES[1].contentTypes = [10,11,12];
   }
 } else {
   App.Source.FIXTURES = [];
