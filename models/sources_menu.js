@@ -22,6 +22,8 @@ App.SourcesMenu = Ember.Object.extend({
   init: function() {
     this._super();
 
+    this.set('isDirty', false);
+
     var user = this.get('user');
     var items = [];
 

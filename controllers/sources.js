@@ -2,19 +2,31 @@ App.SourcesController = Ember.ObjectController.extend({
   needs: 'session',
   isSaving: null,
 
-  hasConnectedSources: function() {
-    return (this.get('model.totalConnectedSources'));
-  }.property('model.totalConnectedSources'),
+  hasEnabledContentType: function() {
+    return (this.get('model.totalEnabledContentTypes')) ? true : false;
+  }.property('model.totalEnabledContentTypes'),
 
   isDisabled: function() {
-    return (!this.get('model.totalEnabledContentTypes') || this.get('isSaving'));
-  }.property('totalEnabledContentTypes', 'isSaving'),
+    if (!this.get('controllers.session.user.hasSource')) {
+      return (!this.get('model.totalEnabledContentTypes') || this.get('isSaving'));
+    } else {
+      return (!this.get('model.totalEnabledContentTypes') || this.get('isSaving') || !this.get('model.isDirty'));
+    }
+  }.property('totalEnabledContentTypes', 'isSaving', 'model.isDirty'),
 
   saveLabel: function() {
-    if (this.get('isSaving')) {
-        return 'Loading...';
+    if (!this.get('controllers.session.user.hasSource')) {
+      if (this.get('isSaving')) {
+          return 'Loading...';
+      } else {
+          return 'Start Backing Up';
+      }
     } else {
-        return 'Start Backing Up';
+      if (this.get('isSaving')) {
+          return 'Saving...';
+      } else {
+          return 'Save Changes';
+      }
     }
   }.property('isSaving'),
 
@@ -65,6 +77,10 @@ App.SourcesController = Ember.ObjectController.extend({
 
     return deferred.promise();
   },
+
+  userHasNoSource: function() {
+    return this.get('controllers.session.user.hasSource') ? false : true;
+  }.property('controllers.session.user.hasSource'),
 
   actions: {
     saveItems: function() {

@@ -4,5 +4,9 @@ App.SourcesItemContentTypeView = Ember.View.extend({
 
   isDisabled: function() {
     return (!this.get('item.connected'));
-  }.property('item.connected')
+  }.property('item.connected'),
+
+  change: function() {
+    this.get('controller.model').set('isDirty', true);
+  }.observes('item.connected')
 })

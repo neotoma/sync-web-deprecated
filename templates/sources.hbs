@@ -1,6 +1,11 @@
 <div id="sources">
-  <h1>Choose social networks and content types</h1>
-  <p>Please connect at least one social network and select the types of content that you'd like us to back up below.</p>
+  {{#if userHasNoSource}}
+    <h1>Choose social networks and content types</h1>
+    <p>Please connect at least one social network and select the types of content that you'd like us to back up from it below.</p>
+  {{else}}
+    <h1>Change social networks and content types</h1>
+    <p>You can change the social networks you've connected and the types of content you'd like us to back up from them below.</p>
+  {{/if}}
   <div class="tip"><strong>Note:</strong> We will <em>not</em> post anything to these social networks without your explicit permission. We simply need you to connect them so we have permission to access your content.</div>
   <table>
     <thead>
@@ -18,10 +23,8 @@
 <div id="sources-continue-area">
   <div id="sources-continue-area-interior">
     <span id="sources-continue-area-message">
-      {{#if hasConnectedSources}}
+      {{#if hasEnabledContentType}}
         <span>You've connected {{totalConnectedSources}} {{conditionalPluralize totalConnectedSources s="network"}} and selected {{totalEnabledContentTypes}} {{conditionalPluralize totalEnabledContentTypes s="content type"}}.</span>
-      {{else}}
-        <span id="sources-continue-area-message-no-connected-sources">Connect at least one network to proceed...</span>
       {{/if}}
     </span>
     <button {{action 'saveItems'}} {{bind-attr disabled="isDisabled"}}>{{{saveLabel}}}</button>
