@@ -50,6 +50,25 @@ App.User = DS.Model.extend({
         return false;
       }
     }).length) ? true : false;
+  },
+
+  deleteSources: function() {
+    var sources = this.get('sources');
+    var i = sources.get('length');
+
+    while(i--) {
+      var source = sources.objectAt(i);
+      var contentTypes = source.get('contentTypes');
+      var k = contentTypes.get('length');
+
+      while(k--) {
+        contentTypes.objectAt(k).destroyRecord();
+      };
+
+      source.destroyRecord();
+    };
+
+    this.set('sources', []);
   }
 });
 

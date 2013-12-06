@@ -18,26 +18,6 @@ App.SourcesController = Ember.ObjectController.extend({
     }
   }.property('isSaving'),
 
-  clearSources: function() {
-    var user = this.get('controllers.session.user');
-    var sources = user.get('sources');
-    var i = sources.get('length');
-
-    while(i--) {
-      var source = sources.objectAt(i);
-      var contentTypes = source.get('contentTypes');
-      var k = contentTypes.get('length');
-
-      while(k--) {
-        contentTypes.objectAt(k).destroyRecord();
-      };
-
-      source.destroyRecord();
-    };
-
-    user.set('sources', []);
-  },
-
   saveItem: function(item) {
     var deferred = $.Deferred();
     var user = this.get('controllers.session.user');
@@ -88,7 +68,7 @@ App.SourcesController = Ember.ObjectController.extend({
 
   actions: {
     saveItems: function() {
-      this.clearSources();
+      this.get('controllers.session.user').deleteSources();
       this.set('isSaving', true);
 
       var items = this.get('model.items');

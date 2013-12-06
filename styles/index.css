@@ -1,8 +1,10 @@
-#index #left-area                     { margin-right: 2em; margin-right: 17em; }
+#index #left-area                             { margin-right: 2em; margin-right: 17em; }
 
-#index #right-area                    { float: right; width: 15em;  }
-#index #right-area button             { width: 100%; font-size: 1.1em; }
-#index #right-area .tip               { margin-top: 1.5em; }
+#index #right-area                            { float: right; width: 15em;  }
+#index #right-area button                     { width: 100%; font-size: 1.1em; }
+#index #right-area .tip                       { margin-top: 1.5em; }
+
+#index #right-area button.has-storage         { background: #f0f9f2; cursor: default; box-shadow: none; border: 1px solid #e0f2e4; text-shadow: none; color: #00ba27; font-weight: normal; }
 
 #index #storage-survey                { font-size: 0.9em; }
 #index #storage-survey-submitted      { background: #48d765; padding: 1em; color: white; }

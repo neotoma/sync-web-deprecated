@@ -38,4 +38,9 @@ App.SessionController = Ember.Controller.extend({
       });
     });
   },
+
+  deleteUser: function() {
+    this.get('user').deleteRecord();
+    this.deauthenticate();
+  }
 });

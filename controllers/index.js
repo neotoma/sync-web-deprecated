@@ -1,15 +1,15 @@
 App.IndexController = Ember.ObjectController.extend({
-  isConnectingDropbox: false,
+  needs: ['session'],
 
-  connectDropboxLabel: function() {
-    if (this.get('isConnectingDropbox')) {
-      return 'Loading...';
+  toggleDropboxLabel: function() {
+    if (this.get('hasStorage')) {
+      return '&#10003; Connected';
     } else {
       return 'Connect Dropbox';
     }
-  }.property('isConnectingDropbox'),
+  }.property('hasStorage'),
 
-  isDisabled: function() {
-    return this.get('isConnectingDropbox');
-  }.property('isConnectingDropbox')
+  hasStorage: function() {
+    return this.get('controllers.session.user.storages.length') ? true : false;
+  }.property('controllers.session.user.storages')
 });

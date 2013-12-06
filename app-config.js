@@ -10,10 +10,10 @@ var APP_CONFIG = {
     ADAPTER: 'fixture', // or, rest
     FIXTURES_ENABLED: {
       STORAGE_SURVEYS:  false,
-      USERS:            true,
-      STORAGES:         true,
-      SOURCES:          true,
-      CONTENT_TYPES:    true
+      USERS:            false,
+      STORAGES:         false,
+      SOURCES:          false,
+      CONTENT_TYPES:    false
     }
   },
   SIMULATIONS_ENABLED: true
