@@ -23,35 +23,4 @@
     {{view App.SyncSourceContentTypeLegendView contentTypeBinding="contentType"}}
   {{/each}}
 </ul>
-{{#if source.itemAttributes}}
-  <div class="preview preview-status-updates">
-    <div class="preview-arrow"></div>
-    <table>
-      <thead>
-        <tr>
-          {{#each source.itemAttributes}}
-            <th>Date</th>
-            <th>Status Update</th>
-            <th>Likes</th>
-            <th>Comments</th>
-            <th>Shares</th>
-          {{/each}}
-        </tr>
-      </thead>
-    </table>
-    <div class="preview-items">
-      <table>
-        {{#each source.item in items}}
-          <tr>
-            <td>January 19, 2008</td>
-            <td>Anybody have any camera recommendations?</td>
-            <td>3</td>
-            <td>0</td>
-            <td>1</td>
-          </tr>
-        {{/each}}
-      </table>
-    </div>
-  </div>
-{{/if}}
 <hr />

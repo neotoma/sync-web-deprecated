@@ -7,6 +7,7 @@
 
 #sync .bar-base                        { width: 100%; height: 2em; border: 1px solid #c4c4c4; padding: 1px; overflow: hidden; white-space: nowrap; background: #fafafa; }
 #sync .bar-base > div                  { height: 100%; display: inline-block; text-align: center; font-size: 0.8em; transition: width 2s; }
+#sync .bar-base > div > div            { transition: width 2s; }
 
 #sync-storages .bar-base div:nth-of-type(1),
 #sync-storages .legends li:nth-of-type(1) .legend-color-interior    { background: #a2a7ab; }
@@ -19,7 +20,9 @@
 #sync-sources .bar-base > div:nth-of-type(1)              { margin-left: 0px; }
 #sync-sources .bar-base div:nth-of-type(1)                { background: #ffefef; }
 #sync-sources .bar-base div:nth-of-type(2)                { background: #fffdec; }
-#sync-sources .bar-base div:nth-of-type(3)                { background: #fafafa; }
+#sync-sources .bar-base div:nth-of-type(3)                { background: #f7f3ff; }
+#sync-sources .bar-base div:nth-of-type(4)                { background: #f4ffed; }
+#sync-sources .bar-base div:nth-of-type(5)                { background: #eef7ff; }
 #sync-sources .bar-base .bar-filled                       { height: 100%; }
 
 #sync .legends                { list-style: none; margin: 1em 0 0 0; padding: 0; }
@@ -35,6 +38,10 @@
 #sync-sources li:nth-of-type(2) .legend-color-interior    { background: #f2e67e; }
 #sync-sources .bar-base div:nth-of-type(3) .bar-filled,
 #sync-sources li:nth-of-type(3) .legend-color-interior    { background: #9c7cef; }
+#sync-sources .bar-base div:nth-of-type(4) .bar-filled,
+#sync-sources li:nth-of-type(4) .legend-color-interior    { background: #a7ef7c; }
+#sync-sources .bar-base div:nth-of-type(5) .bar-filled,
+#sync-sources li:nth-of-type(5) .legend-color-interior    { background: #7cb8ef; }
 
 #sync .preview-arrow          { position: absolute; top: -11px; left: 15em; border: 1px solid #f4f4f4; background: #fafafa; border-radius: 9999px 9999px 0 0; height: 10px; width: 10px; }
 #sync .preview                { position: relative; background: #fafafa; border: 1px solid #f4f4f4; padding: 1em; margin-top: 1em;  }

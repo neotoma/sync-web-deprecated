@@ -1,7 +1,8 @@
 App.ContentType = DS.Model.extend({
   type:     DS.attr('string'),
   name:     DS.attr('string'),
-  source:   DS.belongsTo('source')
+  source:   DS.belongsTo('source'),
+  totalItemsAvailable: 100
 });
 
 if (APP_CONFIG.DATA.FIXTURES_ENABLED.CONTENT_TYPES) {
