@@ -40,10 +40,9 @@ App.SourcesController = Ember.ObjectController.extend({
       user: user
     });
 
-    item.set('source', source);
-
     var controller = this;
     source.save().then(function(source) {
+      item.set('source', source);
       user.get('sources').pushObject(source);
 
       controller.saveItemContentTypes(item).then(function() {
@@ -67,7 +66,14 @@ App.SourcesController = Ember.ObjectController.extend({
           source: item.get('source')
         });
 
-        promises.push(contentType.save());
+        var deferredContentType = $.Deferred();
+
+        contentType.save().then(function() {
+          item.get('source.contentTypes').pushObject(contentType);
+          deferredContentType.resolve();
+        });
+
+        promises.push(deferredContentType.promise());
       }
     });
 

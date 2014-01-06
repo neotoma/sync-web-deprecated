@@ -13,7 +13,9 @@
   </div>
   <div id="sync-sources">
     {{#each source in sources}}
-      {{view App.SyncSourceView sourceBinding="source"}}
+      {{#if source.totalContentTypes}}
+        {{view App.SyncSourceView sourceBinding="source"}}
+      {{/if}}
     {{/each}}
   </div>
 </div>
