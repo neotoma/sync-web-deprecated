@@ -1,6 +1,13 @@
 App.SyncSourceContentTypeLegendView = Ember.View.extend({
   tagName: 'li',
   templateName: 'sync_source_content_type_legend',
+  attributeBindings: ['style'],
+
+  style: function() {
+    if (!this.get('contentType.totalItemsAvailable')) {
+      return 'opacity: 0.5';
+    }
+  }.property('contentType.totalItemsAvailable'),
 
   totalItemsSynced: function() {
     if (this.get('contentType.totalItemsSynced') >= 0) {
@@ -18,9 +25,13 @@ App.SyncSourceContentTypeLegendView = Ember.View.extend({
     }
   }.property('contentType.totalItemsAvailable'),
 
-  hasTotalItems: function() {
-    return (this.get('contentType').totalItemsSynced && this.get('contentType').totalItemsAvailable);
-  }.property('contentType.totalItemsSynced', 'contentType.totalItemsAvailable'),
+  hasTotalItemsAvailable: function() {
+    return (this.get('contentType').get('totalItemsAvailable'));
+  }.property('contentType.totalItemsAvailable'),
+
+  hasTotalItemsSynced: function() {
+    return (this.get('contentType').get('totalItemsSynced'));
+  }.property('contentType.totalItemsSynced'),
 
   syncedPercentage: function() {
     if (this.get('contentType.totalItemsSynced') && this.get('contentType.totalItemsAvailable')) {

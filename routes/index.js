@@ -10,10 +10,6 @@ App.IndexRoute = Ember.Route.extend({
     });
   },
 
-	setupController: function(controller, model) {
-		controller.set('model', model);
-	},
-
   actions: {
     toggleDropbox: function() {
       if (!this.controllerFor('session').get('user.hasStorage')) {

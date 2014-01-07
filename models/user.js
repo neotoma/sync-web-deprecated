@@ -5,7 +5,7 @@ App.User = DS.Model.extend({
   sources:    DS.hasMany('source', { async: true }),
 
   totalStorages: function() {
-    return this.get('storages').get('length');
+    return this.get('storages.length');
   }.property('storages.length'),
 
 	hasStorage: function() {
@@ -13,7 +13,7 @@ App.User = DS.Model.extend({
 	}.property('totalStorages'),
 
   totalSources: function() {
-    return this.get('sources').get('length');
+    return this.get('sources.length');
   }.property('sources.length'),
 
   hasSource: function() {
