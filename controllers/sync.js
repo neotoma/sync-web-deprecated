@@ -1,10 +1,18 @@
 App.SyncController = Ember.ObjectController.extend({
-  actions: {
-    simulateUserUpdate: function() {
-      for (var i = 0; i < App.ContentType.FIXTURES.length; i++) {
-        App.ContentType.FIXTURES[i]['totalItemsAvailable'] = 100;
-        App.ContentType.FIXTURES[i]['totalItemsSynced'] = App.ContentType.FIXTURES[i]['totalItemsSynced'] + 10;
-      }
-    }
+  needs: 'session',
+
+  refreshSources: function() {
+    console.log('Refreshing...');
+
+    var sessionUser = this.get('controllers.session').get('user');
+
+    //sessionUser.reload();
+    sessionUser.get('sources').forEach(function(source) {
+      source.get('contentTypes').forEach(function(contentType) {
+        contentType.reload();
+      });
+    });
+
+    console.log('Refreshed!');
   }
 });

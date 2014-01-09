@@ -10,7 +10,6 @@ App.SourcesRoute = Ember.Route.extend({
   },
 
   model: function() {
-    var user = this.controllerFor('session').get('user');
-    return App.SourcesMenu.create({ user: user });
+    return App.SourcesMenu.create({ user: this.controllerFor('session').get('user') });
   }
 });

@@ -16,18 +16,11 @@ App.SyncRoute = Ember.Route.extend({
   },
 
   setupController: function(controller, model) {
-    var sessionUser = this.controllerFor('session').get('user');
-
-    this.set('refreshInterval', window.setInterval(function() {
-      sessionUser.reload();
-      sessionUser.get('sources').forEach(function(source) {
-        source.get('contentTypes').forEach(function(contentType) {
-          contentType.reload();
-        });
-      });
-
-      console.log('Refreshed!');
-    }, 2000));
+    var refreshInterval = window.setInterval(function() {
+      controller.refreshSources();
+    }, 2000);
+    
+    this.set('refreshInterval', refreshInterval);
 
     controller.set('model', model);
   }

@@ -6,9 +6,8 @@
         {{view.totalItemsSynced}} out of {{view.totalItemsAvailable}} pieces of content backed up
         ({{view.percentageItemsSynced}})
       {{/if}} 
-      &middot;
       {{#if view.lastCompletedSyncTimestamp}}
-        Last Completed Backup: {{view.lastCompletedSyncTimestamp}}
+        &middot; Last Completed Backup: {{view.lastCompletedSyncTimestamp}}
       {{/if}}
     </span>
   {{/if}}
