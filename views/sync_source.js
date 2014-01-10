@@ -23,7 +23,7 @@ App.SyncSourceView = Ember.View.extend({
     });
 
     return total;
-  }.property('contentTypes.@each.totalItemsAvailable'),
+  }.property('source.contentTypes.@each.totalItemsAvailable'),
 
   hasTotalItems: function() {
     return (this.get('totalItemsSynced') && this.get('totalItemsAvailable'));

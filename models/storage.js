@@ -1,10 +1,10 @@
 App.Storage = DS.Model.extend({
   type:                 DS.attr('string'),
   name:                 DS.attr('string'),
-  totalSize:            DS.attr('number'),
-  availableSize:        DS.attr('number'),
-  occupiedSize:         DS.attr('number'),
-  otherSize:            DS.attr('number'),
+  totalSize:            DS.attr('number', { defaultValue: 0 }),
+  availableSize:        DS.attr('number', { defaultValue: 0 }),
+  occupiedSize:         DS.attr('number', { defaultValue: 0 }),
+  otherSize:            DS.attr('number', { defaultValue: 0 }),
   lastCompletedSync:    DS.attr('date'),
   user:                 DS.belongsTo('user'),
 

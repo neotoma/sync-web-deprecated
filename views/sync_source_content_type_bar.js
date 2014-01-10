@@ -16,7 +16,7 @@ App.SyncSourceContentTypeBarView = Ember.View.extend({
     var percentage = 0;
 
     if (this.get('contentType.totalItemsSynced')) {
-      percentage = Math.round(this.get('contentType.totalItemsSynced') / this.get('contentType.totalItemsAvailable') * 100);
+      percentage = Math.ceil(this.get('contentType.totalItemsSynced') / this.get('contentType.totalItemsAvailable') * 100);
     }
     
     return 'width: ' + percentage + '%';

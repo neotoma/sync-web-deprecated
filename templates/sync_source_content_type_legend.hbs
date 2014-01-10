@@ -2,6 +2,6 @@
 <div class="legend-label" {{action 'simulateContentTypeDecrease' view}}>
   {{pluralize contentType.name}}
   {{#if view.hasTotalItemsAvailable}}
-    ({{view.totalItemsSynced}} out of {{view.totalItemsAvailable}}{{#if view.hasTotalItemsSynced}}, {{view.syncedPercentage}}{{/if}})
+    ({{view.totalItemsSynced}} out of {{view.totalItemsAvailable}}{{#if view.hasTotalItemsSynced}}, or {{view.syncedPercentage}}{{/if}})
   {{/if}}
 </div>

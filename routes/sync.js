@@ -16,11 +16,18 @@ App.SyncRoute = Ember.Route.extend({
   },
 
   setupController: function(controller, model) {
-    var refreshInterval = window.setInterval(function() {
+    var updateRefreshInterval = window.setInterval(function() {
       controller.refreshSources();
+      //controller.refreshStorages();
     }, 2000);
     
-    this.set('refreshInterval', refreshInterval);
+    this.set('updateRefreshInterval', updateRefreshInterval);
+
+    var serverSimulationRefreshInterval = window.setInterval(function() {
+      controller.simulateUpdate();
+    }, 2100);
+    
+    this.set('serverSimulationRefreshInterval', serverSimulationRefreshInterval);
 
     controller.set('model', model);
   }
