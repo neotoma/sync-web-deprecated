@@ -9,6 +9,11 @@ This front-end web application is intended to work with a server-side API hosted
 
 This facilitates development and enables user experience testing without reliance on the API's availability. But it also means that the application is solely ready for development and testing purposes at this time.
 
+Preview
+=========
+
+The dashboard is still undergoing initial development and is therefore not fully functional yet. However, latest versions of the code are pushed to Parse and can be previewed at [asheville.parseapp.com](http://asheville.parseapp.com). Built-in simulations make it possible to experience what it might be like to set up a real account with Asheville.
+
 Todos
 =========
 
