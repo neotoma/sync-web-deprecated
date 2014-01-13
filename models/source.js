@@ -4,6 +4,7 @@ App.Source = DS.Model.extend({
   totalItemsSynced:     DS.attr('string'),
   totalItemsAvailable:  DS.attr('string'),
   lastCompletedSync:    DS.attr('date'),
+  isSyncing:            DS.attr('boolean', { defaultValue: false }),
   user:                 DS.belongsTo('user'),
   contentTypes:         DS.hasMany('contentType', { async: true }),
 

@@ -6,6 +6,7 @@ App.Storage = DS.Model.extend({
   occupiedSize:         DS.attr('number', { defaultValue: 0 }),
   otherSize:            DS.attr('number', { defaultValue: 0 }),
   lastCompletedSync:    DS.attr('date'),
+  isSyncing:            DS.attr('boolean', { defaultValue: false }),
   user:                 DS.belongsTo('user'),
 
   availablePercentage: function() {
