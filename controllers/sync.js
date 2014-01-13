@@ -10,10 +10,8 @@ App.SyncController = Ember.ObjectController.extend({
   },
 
   refreshStorages: function() {
-    this.get('controllers.session').get('user.storages').forEach(function(source) {
-      source.get('storages').forEach(function(storage) {
-        storage.reload();
-      });
+    this.get('controllers.session').get('user.storages').forEach(function(storage) {
+      storage.reload();
     });
   }
 });

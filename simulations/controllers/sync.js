@@ -9,14 +9,24 @@ if (APP_CONFIG.SIMULATIONS_ENABLED) {
         }
 
         if (lastUpdatedSource != App.ContentType.FIXTURES[i]['source'] && App.ContentType.FIXTURES[i]['totalItemsSynced'] < App.ContentType.FIXTURES[i]['totalItemsAvailable']) {
-          var increment = Math.getRandomInt(1, 100);
+          // Update content type
+          var contentTypeIncrement = Math.getRandomInt(1, 100);
 
-          if (App.ContentType.FIXTURES[i]['totalItemsSynced'] + increment > App.ContentType.FIXTURES[i]['totalItemsAvailable']) {
-            increment = App.ContentType.FIXTURES[i]['totalItemsAvailable'] - App.ContentType.FIXTURES[i]['totalItemsSynced'];
+          if (App.ContentType.FIXTURES[i]['totalItemsSynced'] + contentTypeIncrement > App.ContentType.FIXTURES[i]['totalItemsAvailable']) {
+            contentTypeIncrement = App.ContentType.FIXTURES[i]['totalItemsAvailable'] - App.ContentType.FIXTURES[i]['totalItemsSynced'];
           }
 
-          App.ContentType.FIXTURES[i]['totalItemsSynced'] = App.ContentType.FIXTURES[i]['totalItemsSynced'] + increment;
-          //App.Storage.FIXTURES[0]['occupiedSize'] = App.Storage.FIXTURES[i]['occupiedSize'] + 1000000;
+          App.ContentType.FIXTURES[i]['totalItemsSynced'] = App.ContentType.FIXTURES[i]['totalItemsSynced'] + contentTypeIncrement;
+          
+          // Update storage
+          var storageIncrement = Math.getRandomInt(1000, 1000000);
+          
+          if (App.Storage.FIXTURES[0]['occupiedSize'] + storageIncrement > App.Storage.FIXTURES[0]['totalSize']) {
+            storageIncrement = App.Storage.FIXTURES[0]['totalSize'] - App.Storage.FIXTURES[0]['occupiedSize'];
+          }
+
+          App.Storage.FIXTURES[0]['occupiedSize'] = App.Storage.FIXTURES[0]['occupiedSize'] + storageIncrement;
+
           lastUpdatedSource = App.ContentType.FIXTURES[i]['source'];
         }
       }
