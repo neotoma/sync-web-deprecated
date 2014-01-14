@@ -40,7 +40,7 @@ App.SyncSourceView = Ember.View.extend({
   totalContentTypesSyncing: function() {
     var total = 0;
 
-    $.each(this.get('source.contentTypes'), function(key, contentType) {
+    this.get('source.contentTypes').forEach(function(contentType) {
       if (contentType.get('isSyncing')) {
         total = total + 1;
       }
@@ -49,39 +49,38 @@ App.SyncSourceView = Ember.View.extend({
     return total;
   }.property('source.contentTypes.@each.isSyncing'),
 
+  hasContentTypesSyncing: function() {
+    return (this.get('totalContentTypesSyncing') > 0);
+  }.property('totalContentTypesSyncing'),
+
+  headerInfoSyncingStyle: function() {
+    return (this.get('hasContentTypesSyncing')) ? 'display: inline-block' : 'display: none';
+  }.property('hasContentTypesSyncing'),
+
   toggleSpinner: function() {
-    console.log('Total Content Types Syncing: ', this.get('totalContentTypesSyncing'));
+    if (this.get('hasContentTypesSyncing')) {
+      if (!this.get('spinner')) {
+        var opts = {
+          lines: 11, // The number of lines to draw
+          length: 3, // The length of each line
+          width: 2, // The line thickness
+          radius: 2, // The radius of the inner circle
+          color: '#a7b4c1', // #rgb or #rrggbb or array of colors
+          speed: 1.5, // Rounds per second
+          top: '2', // Top position relative to parent in px
+          left: '-25' // Left position relative to parent in px
+        };
 
-    if (this.get('totalContentTypesSyncing') > 0) {
-      var opts = {
-        lines: 13, // The number of lines to draw
-        length: 20, // The length of each line
-        width: 10, // The line thickness
-        radius: 30, // The radius of the inner circle
-        corners: 1, // Corner roundness (0..1)
-        rotate: 0, // The rotation offset
-        direction: 1, // 1: clockwise, -1: counterclockwise
-        color: '#000', // #rgb or #rrggbb or array of colors
-        speed: 1, // Rounds per second
-        trail: 60, // Afterglow percentage
-        shadow: false, // Whether to render a shadow
-        hwaccel: false, // Whether to use hardware acceleration
-        className: 'spinner', // The CSS class to assign to the spinner
-        zIndex: 2e9, // The z-index (defaults to 2000000000)
-        top: 'auto', // Top position relative to parent in px
-        left: 'auto' // Left position relative to parent in px
-      };
+        var target = $('#' + this.get('elementId')).find('.header_info_syncing');
+        var spinner = new Spinner(opts).spin();
+        target.append(spinner.el);
 
-      var target = document.getElementById(this.get('elementId'));
-      var spinner = new Spinner(opts).spin(target);
-
-      this.set('spinner', spinner);
-    } else {
-      if (this.get('spinner')) {
-        this.get('spinner').stop();
+        this.set('spinner', spinner);
       }
+    } else if (this.get('spinner')) {
+      this.get('spinner').stop();
     }
-  }.observes('totalContentTypesSyncing'),
+  }.observes('hasContentTypesSyncing'),
 
   timestamp: function(value) {
     if (!value) {
@@ -95,9 +94,5 @@ App.SyncSourceView = Ember.View.extend({
 
   lastCompletedSyncTimestamp: function() {
     return this.timestamp(this.get('source.lastCompletedSync'));
-  }.property('source.lastCompletedSync'),
-
-  hasHeaderInformation: function() {
-    return (this.get('hasTotalItems') || this.get('lastCompletedSync'));
-  }.property('hasTotalItems', 'lastCompletedSyncTimestamp')
+  }.property('source.lastCompletedSync')
 })

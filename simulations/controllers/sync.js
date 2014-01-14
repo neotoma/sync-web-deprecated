@@ -17,7 +17,13 @@ if (APP_CONFIG.SIMULATIONS_ENABLED) {
           }
 
           App.ContentType.FIXTURES[i]['totalItemsSynced'] = App.ContentType.FIXTURES[i]['totalItemsSynced'] + contentTypeIncrement;
-          App.ContentType.FIXTURES[i]['isSyncing'] = true;
+          
+          if (contentTypeIncrement > 0) {
+            App.ContentType.FIXTURES[i]['isSyncing'] = true;
+          } else {
+            App.ContentType.FIXTURES[i]['isSyncing'] = false;
+          }
+
           lastUpdatedSource = App.ContentType.FIXTURES[i]['source'];
 
           // Update storage
@@ -29,6 +35,12 @@ if (APP_CONFIG.SIMULATIONS_ENABLED) {
 
           App.Storage.FIXTURES[0]['occupiedSize'] = App.Storage.FIXTURES[0]['occupiedSize'] + storageIncrement;
           App.Storage.FIXTURES[0]['isSyncing'] = true;
+
+           if (storageIncrement > 0) {
+            App.Storage.FIXTURES[0]['isSyncing'] = true;
+          } else {
+            App.Storage.FIXTURES[0]['isSyncing'] = false;
+          }
         }
       }
     },
