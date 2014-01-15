@@ -5,7 +5,7 @@ if (APP_CONFIG.SIMULATIONS_ENABLED) {
 
       for (var i = 0; i < App.ContentType.FIXTURES.length; i++) {
         if (!App.ContentType.FIXTURES[i]['totalItemsAvailable']) {
-          App.ContentType.FIXTURES[i]['totalItemsAvailable'] = Math.getRandomInt(10, 5000);
+          App.ContentType.FIXTURES[i]['totalItemsAvailable'] = Math.getRandomInt(10, 100);
         }
 
         if (lastUpdatedSource != App.ContentType.FIXTURES[i]['source'] && App.ContentType.FIXTURES[i]['totalItemsSynced'] < App.ContentType.FIXTURES[i]['totalItemsAvailable']) {
@@ -20,8 +20,6 @@ if (APP_CONFIG.SIMULATIONS_ENABLED) {
           
           if (contentTypeIncrement > 0) {
             App.ContentType.FIXTURES[i]['isSyncing'] = true;
-          } else {
-            App.ContentType.FIXTURES[i]['isSyncing'] = false;
           }
 
           lastUpdatedSource = App.ContentType.FIXTURES[i]['source'];
@@ -41,6 +39,8 @@ if (APP_CONFIG.SIMULATIONS_ENABLED) {
           } else {
             App.Storage.FIXTURES[0]['isSyncing'] = false;
           }
+        } else {
+          App.ContentType.FIXTURES[i]['isSyncing'] = false;
         }
       }
     },
