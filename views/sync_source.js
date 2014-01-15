@@ -11,7 +11,7 @@ App.SyncSourceView = App.SyncSectionView.extend({
     });
 
     return total;
-  }.property('contentTypes.@each.totalItemsSynced'),
+  }.property('source.contentTypes.@each.totalItemsSynced'),
 
   totalItemsAvailable: function() {
     var total = 0;
