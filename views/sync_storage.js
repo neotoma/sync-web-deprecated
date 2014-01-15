@@ -1,5 +1,9 @@
-App.SyncStorageView = Ember.View.extend({
+App.SyncStorageView = App.SyncSectionView.extend({
   templateName: 'sync_storage',
+
+  isSyncing: function() {
+    return this.get('storage.isSyncing');
+  }.property('storage.isSyncing'),
 
   /* Sizes */
 
@@ -64,18 +68,6 @@ App.SyncStorageView = Ember.View.extend({
   otherPercentage: function() {
     return this.percentage(this.get('storage.otherSize'));
   }.property('storage.otherSize', 'storage.totalSize'),
-
-  /* Timestamps */
-
-  timestamp: function(value) {
-    if (!value) {
-      return null;
-    } else if (value == 'Never') {
-      return 'Never';
-    }
-
-    // add code for formatting value
-  },
 
   lastCompletedSyncTimestamp: function() {
     return this.timestamp(this.get('storage.lastCompletedSync'));

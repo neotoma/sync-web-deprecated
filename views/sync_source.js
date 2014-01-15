@@ -1,4 +1,4 @@
-App.SyncSourceView = Ember.View.extend({
+App.SyncSourceView = App.SyncSectionView.extend({
   templateName: 'sync_source',
 
   totalItemsSynced: function() {
@@ -49,39 +49,9 @@ App.SyncSourceView = Ember.View.extend({
     return total;
   }.property('source.contentTypes.@each.isSyncing'),
 
-  hasContentTypesSyncing: function() {
+  isSyncing: function() {
     return (this.get('totalContentTypesSyncing') > 0);
   }.property('totalContentTypesSyncing'),
-
-  headerInfoSyncingStyle: function() {
-    return (this.get('hasContentTypesSyncing')) ? 'display: inline-block' : 'display: none';
-  }.property('hasContentTypesSyncing'),
-
-  toggleSpinner: function() {
-    if (this.get('hasContentTypesSyncing')) {
-      if (!this.get('spinner')) {
-        var options = { lines: 11, length: 3, width: 2, radius: 2, color: '#a7b4c1', speed: 1.5, top: '-4', left: '-25' };
-        var target = $('#' + this.get('elementId')).find('.header_info_syncing');
-        var spinner = new Spinner(options).spin();
-        target.append(spinner.el);
-        this.set('spinner', spinner);
-      }
-    } else if (this.get('spinner')) {
-      this.get('spinner').stop();
-      $(this.get('spinner').el).remove();
-      this.set('spinner', null);
-    }
-  }.observes('hasContentTypesSyncing'),
-
-  timestamp: function(value) {
-    if (!value) {
-      return null;
-    } else if (value == 'Never') {
-      return 'Never';
-    }
-
-    // add code for formatting value
-  },
 
   lastCompletedSyncTimestamp: function() {
     return this.timestamp(this.get('source.lastCompletedSync'));

@@ -2,6 +2,7 @@ if (APP_CONFIG.SIMULATIONS_ENABLED) {
   App.SyncController.reopen({
     simulateUpdate: function() {
       var lastUpdatedSource;
+      var totalSyncingSources = 0;
 
       for (var i = 0; i < App.ContentType.FIXTURES.length; i++) {
         if (!App.ContentType.FIXTURES[i]['totalItemsAvailable']) {
@@ -9,6 +10,8 @@ if (APP_CONFIG.SIMULATIONS_ENABLED) {
         }
 
         if (lastUpdatedSource != App.ContentType.FIXTURES[i]['source'] && App.ContentType.FIXTURES[i]['totalItemsSynced'] < App.ContentType.FIXTURES[i]['totalItemsAvailable']) {
+          totalSyncingSources = totalSyncingSources + 1;
+
           // Update content type
           var contentTypeIncrement = Math.getRandomInt(1, 100);
 
@@ -32,7 +35,6 @@ if (APP_CONFIG.SIMULATIONS_ENABLED) {
           }
 
           App.Storage.FIXTURES[0]['occupiedSize'] = App.Storage.FIXTURES[0]['occupiedSize'] + storageIncrement;
-          App.Storage.FIXTURES[0]['isSyncing'] = true;
 
            if (storageIncrement > 0) {
             App.Storage.FIXTURES[0]['isSyncing'] = true;
@@ -42,6 +44,13 @@ if (APP_CONFIG.SIMULATIONS_ENABLED) {
         } else {
           App.ContentType.FIXTURES[i]['isSyncing'] = false;
         }
+      }
+
+      // Determine storage syncing status
+      if (totalSyncingSources > 0) {
+        App.Storage.FIXTURES[0]['isSyncing'] = true;
+      } else {
+        App.Storage.FIXTURES[0]['isSyncing'] = false;
       }
     },
     

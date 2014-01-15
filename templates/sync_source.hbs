@@ -1,16 +1,15 @@
-<h3>
-  {{source.name}}
-  <span class="header_info">
+<div class="sync-section-header">
+  <div class="sync-section-header-name">{{source.name}}</div>
+  <ul class="sync-section-header-info">
     {{#if view.hasTotalItems}}
-      {{view.totalItemsSynced}} out of {{view.totalItemsAvailable}} pieces of content backed up
-      ({{view.percentageItemsSynced}})
+      <li>{{view.totalItemsSynced}} out of {{view.totalItemsAvailable}} pieces of content backed up ({{view.percentageItemsSynced}})</li>
     {{/if}} 
     {{#if view.lastCompletedSyncTimestamp}}
-      &middot; Last Completed Backup: {{view.lastCompletedSyncTimestamp}}
+      <li>&middot; Last Completed Backup: {{view.lastCompletedSyncTimestamp}}</li>
     {{/if}}
-    <span class="header_info_syncing" {{bind-attr style="view.headerInfoSyncingStyle"}}>{{#if view.hasContentTypesSyncing}}Backing up...{{/if}}</span>
-  </span>
-</h3>
+    <li class="sync-section-header-info-syncing">{{#if view.isSyncing}}Backing up...{{/if}}</li>
+  </ul>
+</div>
 <div class="bar-base">
   {{#each contentType in source.contentTypes}}
     {{view App.SyncSourceContentTypeBarView contentTypeBinding="contentType"}}

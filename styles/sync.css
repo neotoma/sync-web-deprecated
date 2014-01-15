@@ -1,11 +1,9 @@
-#sync h3                               { margin-bottom: 1em; }
-#sync h3 .header_info                  { font-size: 0.8em; font-weight: normal; margin-left: 1em; color: #616161; }
-#sync h3 .header_info_syncing          { position: relative; padding-left: 1em; }
-#sync h3 .header_info_syncing .spinner { position: absolute !important; left: 0; top: 50%; }
-
-#sync .options                         { display: none; margin: 0 0 1em 0; padding: 0; }
-#sync .options li                      { margin: 0 1em 0 0; padding: 0; display: inline-block; font-size: 0.75em; }
-#sync .options li a                    { font-weight: normal; }
+#sync .sync-section-header                               { margin-bottom: 1em; }
+#sync .sync-section-header-name                          { display: inline-block; font-weight: bold; }
+#sync .sync-section-header-info                          { display: inline-block; font-size: 0.8em; font-weight: normal; color: #616161; }
+#sync .sync-section-header-info li                       { display: inline-block; margin-left: 1em; }
+#sync .sync-section-header-info-syncing                  { position: relative; padding-left: 1.5em; margin-left: 1em; }
+#sync .sync-section-header-info-syncing .spinner         { position: absolute !important; left: 0.6em; top: 50%; }
 
 #sync .bar-base                        { width: 100%; height: 2em; border: 1px solid #c4c4c4; padding: 1px; overflow: hidden; white-space: nowrap; background: #fafafa; }
 #sync .bar-base > div                  { height: 100%; display: inline-block; text-align: center; font-size: 0.8em; transition: width 2s; }

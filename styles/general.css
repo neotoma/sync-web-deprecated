@@ -18,6 +18,7 @@ p::selection      							    { background: #e8f1fb; }
 table										            { border-spacing: 0; width: 100%; }
 th											            { text-align: left; font-weight: normal; font-size: 0.9em; border-bottom: 1px solid #e9ebed; padding-bottom: 0.5em; color: #aeaeae; }
 td											            { vertical-align: top; padding: 0.5em 0 0.5em 0; }
+ul, li                              { margin: 0; padding: 0; }
 
 .tip                                { font-size: .8em; color: #6a6a6a; background: #fbfcfd; padding: 1em; border: 1px solid #e9ebed; margin-bottom: 2em; border-radius: 0.2em; }
 .tip p                              { cursor: default; margin-top: 0; }
