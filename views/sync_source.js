@@ -61,14 +61,14 @@ App.SyncSourceView = Ember.View.extend({
     if (this.get('hasContentTypesSyncing')) {
       if (!this.get('spinner')) {
         var opts = {
-          lines: 11, // The number of lines to draw
-          length: 3, // The length of each line
-          width: 2, // The line thickness
-          radius: 2, // The radius of the inner circle
-          color: '#a7b4c1', // #rgb or #rrggbb or array of colors
-          speed: 1.5, // Rounds per second
-          top: '2', // Top position relative to parent in px
-          left: '-25' // Left position relative to parent in px
+          lines: 11,
+          length: 3,
+          width: 2,
+          radius: 2,
+          color: '#a7b4c1',
+          speed: 1.5,
+          top: '-4',
+          left: '-25'
         };
 
         var target = $('#' + this.get('elementId')).find('.header_info_syncing');
