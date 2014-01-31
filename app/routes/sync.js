@@ -34,5 +34,15 @@ App.SyncRoute = Ember.Route.extend({
     }
 
     controller.set('model', model);
+  },
+
+  actions: {
+    willTransition: function(transition) {
+      window.clearInterval(this.get('updateRefreshInterval'));
+      window.clearInterval(this.get('serverSimulationRefreshInterval'));
+
+      this.set('updateRefreshInterval', null);
+      this.set('serverSimulationRefreshInterval', null);
+    }
   }
 });

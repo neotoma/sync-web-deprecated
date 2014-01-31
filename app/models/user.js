@@ -56,19 +56,35 @@ App.User = DS.Model.extend({
     var sources = this.get('sources');
     var i = sources.get('length');
 
+    console.log('Deleting ' + i + ' sources');
+
     while(i--) {
       var source = sources.objectAt(i);
+      console.log('Deleting source: ', source.get('id'));
+
       var contentTypes = source.get('contentTypes');
       var k = contentTypes.get('length');
 
       while(k--) {
-        contentTypes.objectAt(k).destroyRecord();
+        try {
+          var contentType = contentTypes.objectAt(k);
+          console.log('Deleting content type: ', contentType.get('id'));
+          contentType.destroyRecord();
+        } catch (e) {
+          console.log('Failed to destroy content type:', e);
+        }
       };
 
-      source.destroyRecord();
+      //source.set('contentTypes', null);
+      
+      try {
+        source.destroyRecord();
+      } catch (e) {
+        console.log('Failed to destroy source:', e);
+      }
     };
 
-    this.set('sources', []);
+    //this.set('sources', null);
   }
 });
 
