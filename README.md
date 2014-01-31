@@ -22,7 +22,7 @@ The application code is stored in the `app` directory. To build it for either de
 
 Then run [Grunt](https://github.com/gruntjs/grunt) depending on what you want to do:
 
-- **Development Dry Run**: run `grunt dev-dry` to compile the code for development
+- **Development Dry Run**: run `grunt dev-dry` to compile the code for development.
 
 - **Development**: run `grunt dev` to compile the code for development and start a web server to view it locally on your machine. See the grunt output for the address and port to use.
 
