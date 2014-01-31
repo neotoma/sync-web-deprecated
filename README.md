@@ -1,27 +1,29 @@
-Dashboard
-=========
+## Dashboard
 
 This repository contains code and markup for Asheville's main user interface, built within the [EmberJS framework](http://emberjs.com/) and intended primarily for hosting at [asheville.io](http://asheville.io).
 
 The interface enables Asheville users to connect their Dropbox accounts, select content sources and types for synchronization, and monitor the progress of that synchronization.
 
-This front-end web application is intended to work with a server-side API hosted on the same domain. However, since that API is still in development, the application currently relies  on a client-side model that simulates the server-side one with [Mockjax](https://github.com/appendto/jquery-mockjax).
+This front-end web application is intended to work with a server-side API hosted on the same domain. However, since that API is still in development, the application currently relies on a client-side model that simulates the server-side one.
 
 This facilitates development and enables user experience testing without reliance on the API's availability. But it also means that the application is solely ready for development and testing purposes at this time.
 
-Preview
-=========
+## Preview
 
-The dashboard is still undergoing initial development and is therefore not fully functional yet. However, latest versions of the code are pushed to Parse and can be previewed at [asheville.parseapp.com](http://asheville.parseapp.com). Built-in simulations make it possible to experience what it might be like to set up a real account with Asheville.
+The dashboard is still undergoing initial development and is therefore not fully functional yet. However, latest versions of the code are pushed to Parse and can be previewed at [asheville.github.io/dashboard](http://asheville.github.io/asheville). Built-in simulations make it possible to experience what it might be like to set up a real account with Asheville.
 
-Todos
-=========
+## Todos
 
 Todo items for this code base are organized in [a public pivotal tracker project](https://www.pivotaltracker.com/s/projects/951914).
 
-Running
-=========
+## Building with Grunt
 
-Since this repository consists almost entirely of client-side files such as HTML templates and JavaScript scripts, the running procedure is *almost* as simple as opening the root index.html file.
+The application code is stored in the `app` directory. To build it for either debugging or release purposes, first install [Node](http://nodejs.org/) and run `npm install` in the root directory to install Grunt and other node modules on which it depends.
 
-However, since the EmberJS code triggers Ajax calls to local files for compilation purposes, the application must be run with a web server. [Connect](https://github.com/senchalabs/connect) provides a simple web server that can be used this purpose, and its dependencies are already included in the .gitignore file. You can consult [quick-start instructions for Connect](http://stackoverflow.com/questions/6084360/node-js-as-a-simple-web-server).
+Then run [Grunt](https://github.com/gruntjs/grunt) depending on what you want to do:
+
+- **Debugging**: run `grunt debug` from within the root directory to compile the code and start a web server to view it locally on your machine. See the grunt output for the address and port to use.
+
+-  **Deployment Dry Run**: run `grunt public` to compile fully minified code and styling that can be pushed to a server manually or simply checked for accuracy before deployment below.
+
+-  **Deployment**: run `grunt deploy` to compile, commit and push everything in the `public` directory to the `gh-pages` branch for hosting on GitHub Pages.

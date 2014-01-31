@@ -223,6 +223,6 @@ module.exports = function(grunt) {
   // Deploy to GitHub Pages
   grunt.registerTask('deploy', [
     'deploy-dry',
-    //'githubPages:deploy'
+    'githubPages:deploy'
   ]);
 };
