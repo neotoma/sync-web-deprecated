@@ -6,7 +6,7 @@ if (APP_CONFIG.SIMULATIONS_ENABLED) {
 
       for (var i = 0; i < App.ContentType.FIXTURES.length; i++) {
         if (!App.ContentType.FIXTURES[i]['totalItemsAvailable']) {
-          App.ContentType.FIXTURES[i]['totalItemsAvailable'] = Math.getRandomInt(10, 5000);
+          App.ContentType.FIXTURES[i]['totalItemsAvailable'] = Math.getRandomInt(10, 10);
         }
 
         if (lastUpdatedSource != App.ContentType.FIXTURES[i]['source'] && App.ContentType.FIXTURES[i]['totalItemsSynced'] < App.ContentType.FIXTURES[i]['totalItemsAvailable']) {
@@ -51,6 +51,11 @@ if (APP_CONFIG.SIMULATIONS_ENABLED) {
         App.Storage.FIXTURES[0]['isSyncing'] = true;
       } else {
         App.Storage.FIXTURES[0]['isSyncing'] = false;
+
+        if (!App.Storage.FIXTURES[0]['lastCompletedSync']) {
+          var currentDate = new Date();
+          App.Storage.FIXTURES[0]['lastCompletedSync'] = currentDate.toString();
+        }
       }
     },
     

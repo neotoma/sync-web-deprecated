@@ -4,8 +4,8 @@
     {{#if view.hasTotalItems}}
       <li>{{view.totalItemsSynced}} out of {{view.totalItemsAvailable}} pieces of content backed up ({{view.percentageItemsSynced}})</li>
     {{/if}} 
-    {{#if view.lastCompletedSyncTimestamp}}
-      <li>&middot; Last Completed Backup: {{view.lastCompletedSyncTimestamp}}</li>
+    {{#if source.lastCompletedSync}}
+      <li>Last Completed Backup: {{source.lastCompletedSync}}</li>
     {{/if}}
     <li class="sync-section-header-info-syncing">{{#if view.isSyncing}}Backing up...{{/if}}</li>
   </ul>

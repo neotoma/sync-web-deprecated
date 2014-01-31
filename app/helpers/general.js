@@ -8,3 +8,5 @@ Ember.Handlebars.registerBoundHelper('conditionalPluralize', function(number, op
 Ember.Handlebars.registerBoundHelper('pluralize', function(string, opts) {
   return string + 's';
 });
+
+Swag.registerHelpers(Ember.Handlebars);

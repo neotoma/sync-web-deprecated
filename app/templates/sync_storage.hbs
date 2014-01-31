@@ -2,8 +2,8 @@
   <div class="sync-section-header-name">{{storage.name}}</div>
   <ul class="sync-section-header-info">
     <li>{{view.filledSize}} out of {{view.totalSize}} filled ({{view.filledPercentage}})</li>
-    {{#if view.lastCompletedSyncTimestamp}}
-      <li>&middot; Last Completed Backup: {{view.lastCompletedSyncTimestamp}}</li>
+    {{#if storage.lastCompletedSync}}
+      <li>Last Completed Backup: {{storage.lastCompletedSync}}</li>
     {{/if}}
     <li class="sync-section-header-info-syncing">{{#if view.isSyncing}}Backing up...{{/if}}</li>
   </ul>

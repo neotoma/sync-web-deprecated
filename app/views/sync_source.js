@@ -51,9 +51,5 @@ App.SyncSourceView = App.SyncSectionView.extend({
 
   isSyncing: function() {
     return (this.get('totalContentTypesSyncing') > 0);
-  }.property('totalContentTypesSyncing'),
-
-  lastCompletedSyncTimestamp: function() {
-    return this.timestamp(this.get('source.lastCompletedSync'));
-  }.property('source.lastCompletedSync')
+  }.property('totalContentTypesSyncing')
 })

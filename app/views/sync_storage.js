@@ -69,10 +69,6 @@ App.SyncStorageView = App.SyncSectionView.extend({
     return this.percentage(this.get('storage.otherSize'));
   }.property('storage.otherSize', 'storage.totalSize'),
 
-  lastCompletedSyncTimestamp: function() {
-    return this.timestamp(this.get('storage.lastCompletedSync'));
-  }.property('storage.lastCompletedSync'),
-
   /* Bar Width Styles */
 
   availableBarWidthStyle: function() {
