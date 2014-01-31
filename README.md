@@ -10,7 +10,7 @@ This facilitates development and enables user experience testing without relianc
 
 ## Preview
 
-The dashboard is still undergoing initial development and is therefore not fully functional yet. However, latest versions of the code are pushed to Parse and can be previewed at [asheville.github.io/dashboard](http://asheville.github.io/asheville). Built-in simulations make it possible to experience what it might be like to set up a real account with Asheville.
+The dashboard is still undergoing initial development and is therefore not fully functional yet. However, latest versions of the code are pushed to GitHub Pages and can be previewed at [asheville.github.io/dashboard](http://asheville.github.io/asheville). Built-in simulations make it possible to experience what it might be like to set up a real account with Asheville.
 
 ## Todos
 
