@@ -2,7 +2,7 @@
   <div class="sync-section-header-name">{{source.name}}</div>
   <ul class="sync-section-header-info">
     {{#if view.hasTotalItems}}
-      <li>{{view.totalItemsSynced}} out of {{view.totalItemsAvailable}} pieces of content backed up ({{view.percentageItemsSynced}})</li>
+      <li>{{digitGrouping view.totalItemsSynced}} out of {{digitGrouping view.totalItemsAvailable}} pieces of content backed up ({{view.percentageItemsSynced}})</li>
     {{/if}} 
     {{#if source.lastCompletedSync}}
       <li>Last Completed Backup: {{source.lastCompletedSync}}</li>
