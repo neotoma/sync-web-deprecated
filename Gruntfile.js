@@ -125,13 +125,13 @@ module.exports = function(grunt) {
     connect: {
       dev: {
         options: {
-          port: 9090,
+          port: 9091,
           base: 'dev'
         }
       },
       deploy: {
         options: {
-          port: 9091,
+          port: 9092,
           base: 'public'
         }
       }
@@ -158,11 +158,6 @@ module.exports = function(grunt) {
       images: {
         files: ['app/images/*'],
         tasks: ['clean:dev', 'copy:dev']
-      },
-      // Hack: doesn't do anything but keep connect server alive
-      deploy: {
-        files: ['app/images/*'],
-        tasks: []
       }
     },
     githubPages: {

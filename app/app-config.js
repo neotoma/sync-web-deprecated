@@ -6,8 +6,9 @@ var APP_CONFIG = {
     LOG_TRANSITIONS_INTERNAL:   false,
   },
   DATA: {
-    API_NAMESPACE: 'v1',
-    ADAPTER: 'fixture', // or, rest
+    HOST:               'http://127.0.0.1:9090',
+    NAMESPACE:          null, // e.g. 'v1'
+    ADAPTER:            'rest', // or fixture
     FIXTURES_ENABLED: {
       STORAGE_SURVEYS:  false,
       USERS:            false,
@@ -16,5 +17,5 @@ var APP_CONFIG = {
       CONTENT_TYPES:    false
     }
   },
-  SIMULATIONS_ENABLED: true
+  SIMULATIONS_ENABLED: false
 }

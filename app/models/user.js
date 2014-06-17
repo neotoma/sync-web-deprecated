@@ -3,6 +3,7 @@ App.User = DS.Model.extend({
   email:      DS.attr('string'),
   storages:   DS.hasMany('storage', { async: true }),
   sources:    DS.hasMany('source', { async: true }),
+  sessions:   DS.hasMany('session', { async: true }),
 
   totalStorages: function() {
     return this.get('storages.length');
@@ -50,6 +51,23 @@ App.User = DS.Model.extend({
         return false;
       }
     }).length) ? true : false;
+  },
+
+  loadSources: function() {
+    var deferred = $.Deferred();
+    var promises = [];
+
+    var sources = user.get('sources').then(function(sources) {
+      sources.forEach(function(source) {
+        promises.push(source.get('contentTypes'));
+      });
+
+      $.when.apply($, promises).then(function() {
+        deferred.resolve();
+      });
+    });
+
+    return deferred.promise();
   },
 
   deleteSources: function() {
