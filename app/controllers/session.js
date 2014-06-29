@@ -1,11 +1,11 @@
 App.SessionController = Ember.Controller.extend({
-  session: null,
+  model: null,
 
   populate: function() {
     var controller = this;
 
     return this.store.find('session').then(function(sessions) {
-      controller.set('session', sessions.get('firstObject'));
+      controller.set('model', sessions.get('firstObject'));
     });
   },
 
@@ -15,8 +15,8 @@ App.SessionController = Ember.Controller.extend({
   },
 
   deauthenticate: function() {
-    this.get('session').destroyRecord();
-    this.set('session', null);
+    this.get('model').destroyRecord();
+    this.set('model', null);
   }
 });
 

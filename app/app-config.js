@@ -8,14 +8,6 @@ var APP_CONFIG = {
   DATA: {
     HOST:               'http://127.0.0.1:9090',
     NAMESPACE:          null, // e.g. 'v1'
-    ADAPTER:            'rest', // or fixture
-    FIXTURES_ENABLED: {
-      STORAGE_SURVEYS:  false,
-      USERS:            false,
-      STORAGES:         false,
-      SOURCES:          false,
-      CONTENT_TYPES:    false
-    }
   },
   SIMULATIONS_ENABLED: false
 }

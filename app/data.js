@@ -4,15 +4,9 @@ $.ajaxSetup({
   }
 });
 
-App.ApplicationAdapter = DS.RESTAdapter.reopen({
+App.ApplicationAdapter = DS.RESTAdapter.extend({
   host: APP_CONFIG.DATA.HOST,
   namespace: APP_CONFIG.DATA.NAMESPACE
-});
-
-App.FixtureAdapter = DS.FixtureAdapter.extend({});
-
-App.Store = DS.Store.extend({
-  adapter: APP_CONFIG.DATA.ADAPTER
 });
 
 /* Ember Data bug fix to enable successful saving of one-to-many relationships. 

@@ -21,21 +21,3 @@ App.Storage = DS.Model.extend({
     return (this.get('otherSize') / this.get('totalSize') * 100);
   }.property('otherSize', 'totalSize'),
 });
-
-if (APP_CONFIG.DATA.FIXTURES_ENABLED.STORAGES) {
-  App.Storage.FIXTURES = [
-    {
-      id: 1,
-      type: 'dropbox',
-      name: 'Dropbox',
-      totalSize: 5000000000, // 5 GB
-      availableSize: 2000000000, // 2 GB
-      occupiedSize: 1250000000, // 1.25 GB
-      otherSize: 1750000000, // 1.75 GB
-      lastCompletedSync: null,
-      user: 3
-    }
-  ];
-} else {
-  App.Storage.FIXTURES = [];
-}

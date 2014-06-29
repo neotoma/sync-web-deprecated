@@ -12,15 +12,15 @@
       <tr>
         <th>Name</th>
         <th>Connect</th>
-        <th>Select Content Types to Back Up</th>
+        <th>Pick Content to Back Up</th>
       </tr>
     </thead>
-    {{#each item in items}}
-      {{view App.SourcesItemView itemBinding="item"}}
+    {{#each source in model}}
+      {{view App.SourceMenuView source=source}}
     {{/each}}
   </table>
 </div>
-<div id="sources-continue-area">
+{{!-- <div id="sources-continue-area">
   <div id="sources-continue-area-interior">
     <span id="sources-continue-area-message">
       {{#if hasEnabledContentType}}
@@ -29,4 +29,4 @@
     </span>
     <button {{action 'saveItems'}} {{bind-attr disabled="isDisabled"}}>{{{saveLabel}}}</button>
   </div>
-</div>
+</div> --}}

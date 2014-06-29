@@ -2,8 +2,8 @@ App.ApplicationController = Ember.Controller.extend({
   needs: ['session'],
 
   sessionUser: function() {
-    return this.get('controllers.session.session.user');
-  }.property('controllers.session.session.user'),
+    return this.get('controllers.session.model.user');
+  }.property('controllers.session.model.user'),
 
   indexSelected: function() {
     return this.isSelected('index');

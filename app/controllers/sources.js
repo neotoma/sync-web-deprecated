@@ -1,21 +1,43 @@
-App.SourcesController = Ember.ObjectController.extend({
+App.SourcesController = Ember.ArrayController.extend({
   needs: 'session',
   isSaving: null,
 
+  totalConnectedSources: function() {
+    var total = 0;
+    $.each(this.get('model'), function(key, source) {
+      if (source.get('authenticated')) {
+        total = total + 1;
+      }
+    });
+    return total;
+  }.property('model.@each.authenticated'),
+
+  totalEnabledContentTypes: function() {
+    var total = 0;
+    $.each(this.get('model'), function(key, source) {
+      if (source.get('totalEnabledContentTypes')) {
+        total = total + source.get('totalEnabledContentTypes');
+      }
+    });
+    return total;
+  }.property('model.@each.totalEnabledContentTypes'),
+
   hasEnabledContentType: function() {
-    return (this.get('model.totalEnabledContentTypes')) ? true : false;
-  }.property('model.totalEnabledContentTypes'),
+    return (this.get('totalEnabledContentTypes')) ? true : false;
+  }.property('totalEnabledContentTypes'),
 
   isDisabled: function() {
-    if (!this.get('controllers.session.user.hasSource')) {
-      return (!this.get('model.totalEnabledContentTypes') || this.get('isSaving'));
+    return false;
+
+    if (!this.get('controllers.session.model.user.hasSource')) {
+      return (!this.get('totalEnabledContentTypes') || this.get('isSaving'));
     } else {
-      return (!this.get('model.totalEnabledContentTypes') || this.get('isSaving') || !this.get('model.isDirty'));
+      return (!this.get('totalEnabledContentTypes') || this.get('isSaving') || !this.get('model.isDirty'));
     }
   }.property('totalEnabledContentTypes', 'isSaving', 'model.isDirty'),
 
   saveLabel: function() {
-    if (!this.get('controllers.session.user.hasSource')) {
+    if (!this.get('controllers.session.model.user.hasSource')) {
       if (this.get('isSaving')) {
           return 'Loading...';
       } else {
@@ -85,8 +107,8 @@ App.SourcesController = Ember.ObjectController.extend({
   },
 
   userHasNoSource: function() {
-    return this.get('controllers.session.user.hasSource') ? false : true;
-  }.property('controllers.session.user.hasSource'),
+    return this.get('controllers.session.model.user.hasSource') ? false : true;
+  }.property('controllers.session.model.user.hasSource'),
 
   actions: {
     saveItems: function() {

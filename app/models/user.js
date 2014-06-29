@@ -105,23 +105,3 @@ App.User = DS.Model.extend({
     //this.set('sources', null);
   }
 });
-
-if (APP_CONFIG.DATA.FIXTURES_ENABLED.USERS) {
-  App.User.FIXTURES = [
-    {
-      id: 3,
-      name: 'Saul Goodman',
-      email: 'saul@bettercallsaul.com'
-    }
-  ];
-
-  if (APP_CONFIG.DATA.FIXTURES_ENABLED.STORAGES) {
-    App.User.FIXTURES[0].storages = [1];
-  }
-
-  if (APP_CONFIG.DATA.FIXTURES_ENABLED.SOURCES) {
-    App.User.FIXTURES[0].sources = [4,5];
-  }
-} else {
-  App.User.FIXTURES = [];
-}

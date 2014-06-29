@@ -1,11 +1,11 @@
-<td>{{item.name}}</td>
+<td>{{source.name}}</td>
 <td class="source-connect-area">
   <button {{action 'toggleConnection' target="view"}}>{{{view.connectLabel}}}</button>
 </td>
 <td>
   <ul style="float: left;">
-    {{#each contentType in view.item.contentTypes}}
-      {{view App.SourcesItemContentTypeView contentTypeBinding="contentType" itemBinding="item"}}
+    {{#each contentType in view.source.contentTypes}}
+      {{view App.SourceMenuContentTypeView contentType=contentType source=source}}
     {{/each}}
   </ul>
   <div style="clear: both;"></div>

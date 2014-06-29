@@ -1,38 +1,25 @@
 App.Source = DS.Model.extend({
-  type:                 DS.attr('string'),
   name:                 DS.attr('string'),
-  totalItemsSynced:     DS.attr('string'),
-  totalItemsAvailable:  DS.attr('string'),
+  authenticated:        DS.attr('boolean', { defaultValue: false }),
+  totalItemsAvailable:  DS.attr('number'),
+  totalItemsSynced:     DS.attr('number'),
   lastCompletedSync:    DS.attr('date'),
   isSyncing:            DS.attr('boolean', { defaultValue: false }),
   user:                 DS.belongsTo('user'),
-  contentTypes:         DS.hasMany('contentType', { async: true }),
+  contentTypes:         DS.hasMany('contentType', { embedded: 'always' }),
 
   totalContentTypes: function() {
     return this.get('contentTypes').get('length');
 	}.property('contentTypes.@each')
 });
 
-if (APP_CONFIG.DATA.FIXTURES_ENABLED.SOURCES) {
-  App.Source.FIXTURES = [
-    {
-      id: 4,
-      type: 'facebook',
-      name: 'Facebook',
-      user: 3
-    },
-    {
-      id: 5,
-      type: 'instagram',
-      name: 'Instagram',
-      user: 3
-    }
-  ];
-
-  if (APP_CONFIG.DATA.FIXTURES_ENABLED.CONTENT_TYPES) {
-    App.Source.FIXTURES[0].contentTypes = [6,7,8,9];
-    App.Source.FIXTURES[1].contentTypes = [10,11];
+/**
+ * See the following to learn about the below embedded records support:
+ *
+ * http://stackoverflow.com/questions/20823019/how-to-handle-nested-json-responses-with-ember
+ */
+App.SourceSerializer = DS.ActiveModelSerializer.extend(DS.EmbeddedRecordsMixin, {
+  attrs: {
+    contentTypes: { embedded: 'always' }
   }
-} else {
-  App.Source.FIXTURES = [];
-}
+});
