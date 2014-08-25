@@ -19,7 +19,7 @@
 #sources .source-connect-area-disconnect                { opacity: 0.5; font-size: 0.7em; padding-left: 0.8em; transition: opacity 0.2s ease; }
 #sources .source-connect-area-disconnect:hover          { opacity: 1; }
 
-#sources .connected button                              { background: #f0f9f2; cursor: default; box-shadow: none; border: 1px solid #e0f2e4; text-shadow: none; color: #00ba27; font-weight: normal; }
+#sources button.authed                                  { background: #f0f9f2; cursor: default; box-shadow: none; border: 1px solid #e0f2e4; text-shadow: none; color: #00ba27; font-weight: normal; }
 
 #sources-continue-area                                  { position: fixed; bottom: 0; left: 0; z-index: 10; height: 6em; width: 100%; text-align: center; }
 #sources-continue-area-interior                         { margin: auto; max-width: 960px; border-top: 1px solid #e9ebed; background: #fbfcfd; height: 100%; padding: 1em; text-align: right; }

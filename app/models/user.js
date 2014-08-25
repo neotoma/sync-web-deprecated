@@ -1,9 +1,8 @@
 App.User = DS.Model.extend({
-  name:       DS.attr('string'),
-  email:      DS.attr('string'),
-  storages:   DS.hasMany('storage', { async: true }),
-  sources:    DS.hasMany('source', { async: true }),
-  sessions:   DS.hasMany('session', { async: true }),
+  name:             DS.attr('string'),
+  email:            DS.attr('string'),
+  userSourceAuths:  DS.hasMany('userSourceAuth'),
+  sessions:         DS.hasMany('session'),
 
   totalStorages: function() {
     return this.get('storages.length');

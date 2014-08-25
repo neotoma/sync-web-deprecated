@@ -1,12 +1,11 @@
 <td>{{source.name}}</td>
 <td class="source-connect-area">
-  <button {{action 'toggleConnection' target="view"}}>{{{view.connectLabel}}}</button>
+  {{view App.SourceMenuAuthButtonView source=source}}
 </td>
 <td>
-  <ul style="float: left;">
+  <ul>
     {{#each contentType in view.source.contentTypes}}
       {{view App.SourceMenuContentTypeView contentType=contentType source=source}}
     {{/each}}
   </ul>
-  <div style="clear: both;"></div>
 </td>

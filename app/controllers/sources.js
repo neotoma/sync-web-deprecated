@@ -4,23 +4,23 @@ App.SourcesController = Ember.ArrayController.extend({
 
   totalConnectedSources: function() {
     var total = 0;
-    $.each(this.get('model'), function(key, source) {
+    $.each(this.get('model.sources'), function(key, source) {
       if (source.get('authenticated')) {
         total = total + 1;
       }
     });
     return total;
-  }.property('model.@each.authenticated'),
+  }.property('model.sources.@each.authenticated'),
 
   totalEnabledContentTypes: function() {
     var total = 0;
-    $.each(this.get('model'), function(key, source) {
+    $.each(this.get('model.sources'), function(key, source) {
       if (source.get('totalEnabledContentTypes')) {
         total = total + source.get('totalEnabledContentTypes');
       }
     });
     return total;
-  }.property('model.@each.totalEnabledContentTypes'),
+  }.property('model.sources.@each.totalEnabledContentTypes'),
 
   hasEnabledContentType: function() {
     return (this.get('totalEnabledContentTypes')) ? true : false;

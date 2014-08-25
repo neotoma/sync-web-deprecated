@@ -1,5 +1,3 @@
-/* Ember Init */
-
 App = Ember.Application.create(APP_CONFIG.INIT);
 
 App.Router.map(function() {

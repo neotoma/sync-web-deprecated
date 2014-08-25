@@ -4,6 +4,7 @@ var APP_CONFIG = {
   INIT: {
     LOG_TRANSITIONS:            false,
     LOG_TRANSITIONS_INTERNAL:   false,
+    LOG_RESOLVER:               true
   },
   DATA: {
     HOST:               'http://127.0.0.1:9090',
