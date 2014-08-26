@@ -1,5 +1,5 @@
 <div id="sources">
-  {{#if userHasNoSource}}
+  {{#if noAuthedSources}}
     <h1>Choose social networks and content types</h1>
     <p>Please connect at least one social network and select the types of content that you'd like us to back up from it below.</p>
   {{else}}
@@ -12,7 +12,7 @@
       <tr>
         <th>Name</th>
         <th>Connect</th>
-        <th>Pick Content to Back Up</th>
+        <th>Supported Content Types</th>
       </tr>
     </thead>
     {{#each source in model}}
@@ -20,13 +20,13 @@
     {{/each}}
   </table>
 </div>
-{{!-- <div id="sources-continue-area">
+<div id="sources-continue-area">
   <div id="sources-continue-area-interior">
     <span id="sources-continue-area-message">
       {{#if hasEnabledContentType}}
-        <span>You've connected {{totalConnectedSources}} {{conditionalPluralize totalConnectedSources s="network"}} and selected {{totalEnabledContentTypes}} {{conditionalPluralize totalEnabledContentTypes s="content type"}}.</span>
+        <span>You've connected {{totalAuthedSources}} {{conditionalPluralize totalAuthedSources s="network"}} and selected {{totalEnabledContentTypes}} {{conditionalPluralize totalEnabledContentTypes s="content type"}}.</span>
       {{/if}}
     </span>
-    <button {{action 'saveItems'}} {{bind-attr disabled="isDisabled"}}>{{{saveLabel}}}</button>
+    <button {{action 'syncSources'}} {{bind-attr disabled="isDisabled"}}>{{{syncSourcesLabel}}}</button>
   </div>
-</div> --}}
+</div>
