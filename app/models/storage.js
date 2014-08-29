@@ -19,5 +19,5 @@ App.Storage = DS.Model.extend({
 
   otherPercentage: function() {
     return (this.get('otherSize') / this.get('totalSize') * 100);
-  }.property('otherSize', 'totalSize'),
+  }.property('otherSize', 'totalSize')
 });

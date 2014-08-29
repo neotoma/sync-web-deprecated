@@ -1,4 +1,4 @@
 App.UserStorageAuth = DS.Model.extend({
-  user:               DS.belongsTo('user'),
-  storage:            DS.belongsTo('storage')
+  storage:            DS.attr('string'),
+  user:               DS.belongsTo('user')
 });

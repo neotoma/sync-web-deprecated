@@ -23,7 +23,7 @@ App.IndexController = Ember.ObjectController.extend({
           
           this.get('sessionUser.userStorageAuths').forEach(function(userStorageAuth) {
             if (userStorageAuth.get('storage') == 'dropbox') {
-              console.log('delete userStorageAuth', userStorageAuth);
+              userStorageAuth.destroyRecord();
             }
           });
         }
