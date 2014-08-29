@@ -1,5 +1,5 @@
 App.SessionController = Ember.Controller.extend({
-  model: null,
+  user: Ember.computed.alias('model.users.firstObject'),
 
   populate: function() {
     var controller = this;

@@ -1,7 +1,7 @@
 <div id="index">
   <div id="right-area">
     <h2>Get Started</h2>
-    <button {{action 'toggleDropbox'}} {{bind-attr class="hasStorage"}}>{{{toggleDropboxLabel}}}</button>
+    <button {{action 'toggleDropboxUserStorageAuth'}} {{bind-attr class="toggleDropboxUserStorageAuthClass"}}>{{{toggleDropboxUserStorageAuthLabel}}}</button>
     <div class="tip">
       <p><strong>Note:</strong> By connecting Dropbox, you are <em>not</em> giving us access to any of the files currently stored in your account.<p>
       <p>Connecting will simply allow us to start storing data in a new folder on Dropbox for you. We will be able to read and change files only in that specific folder.</p>

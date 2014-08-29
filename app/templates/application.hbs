@@ -2,9 +2,9 @@
   <div id="app-nav">
     <ul>
       <li {{action 'goToIndex'}} {{bind-attr class="indexSelected:selected"}}><img src="images/asheville_logo.png" /></li>
-      {{#if sessionUser}}
+      {{#if sessionUser.hasUserStorageAuth}}
         <li {{action 'goToSources'}} {{bind-attr class="sourcesSelected:selected"}}><span>Social Networks</span></li>
-        {{#if sessionUser.hasSource}}
+        {{#if sessionUser.hasUserSourceAuth}}
           <li {{action 'goToSync'}} {{bind-attr class="syncSelected:selected"}}><span>Backup Status</span></li>
         {{/if}}
       {{/if}}
