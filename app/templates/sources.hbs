@@ -15,13 +15,14 @@
     {{/each}}
   </table>
 </div>
+
 <div id="sources-continue-area">
   <div id="sources-continue-area-interior">
     <span id="sources-continue-area-message">
-      {{#if hasEnabledContentType}}
-        <span>You've connected {{totalAuthedSources}} {{conditionalPluralize totalAuthedSources s="network"}} and selected {{totalEnabledContentTypes}} {{conditionalPluralize totalEnabledContentTypes s="content type"}}.</span>
+      {{#if sessionUser.hasUserSourceAuth}}
+        <span>You've connected {{sessionUser.userSourceAuths.length}} {{conditionalPluralize sessionUser.userSourceAuths.length s="network"}} and selected {{totalContentTypes}} {{conditionalPluralize totalContentTypes s="content type"}}.</span>
       {{/if}}
     </span>
-    <button {{action 'syncSources'}} {{bind-attr disabled="isDisabled"}}>{{{syncSourcesLabel}}}</button>
+    <button {{action 'proceed'}} {{bind-attr disabled="isDisabled"}}>Start Backing Up</button>
   </div>
 </div>
