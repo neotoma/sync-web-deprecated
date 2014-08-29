@@ -14,13 +14,7 @@ App.ApplicationRoute = Ember.Route.extend({
 
     signIn: function() {
       var route = this;
-      this.controllerFor('session').authenticate().then(function(user) {
-        if (!user.get('hasSource')) {
-          route.transitionTo('sources');
-        } else {
-          route.transitionTo('sync');
-        }
-      });
+      this.controllerFor('session').authenticate();
     },
 
     signOut: function() {

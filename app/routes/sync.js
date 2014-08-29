@@ -6,7 +6,7 @@ App.SyncRoute = Ember.Route.extend({
 
     if (!sessionUser) {
       this.transitionTo('index');
-    } else if(!sessionUser.get('hasSource')) {
+    } else if(!sessionUser.get('hasUserSourceAuth')) {
       this.transitionTo('sources');
     }
   },

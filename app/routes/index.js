@@ -1,4 +1,9 @@
 App.IndexRoute = Ember.Route.extend({
+  beforeModel: function() {
+    if (this.controllerFor('index').get('sessionUser.hasUserStorageAuth')) {
+      this.transitionTo('sources');
+    }
+  },
   model: function() {
     var store = this.store;
     return this.store.find('storageSurvey').then(function(storageSurveys) {
