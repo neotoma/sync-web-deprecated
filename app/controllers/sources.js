@@ -7,9 +7,13 @@ App.SourcesController = Ember.ArrayController.extend({
   }.property('sessionUser.hasUserSourceAuth'),
 
   totalContentTypes: function() {
-    var userSourceIds = this.get('sessionUser.userSourceAuths').map(function(userSourceAuth) { return userSourceAuth.get('source.id'); });
-
     var totalContentTypes = 0;
+
+    if (!this.get('sessionUser.userSourceAuths')) {
+      return totalContentTypes;
+    }
+
+    var userSourceIds = this.get('sessionUser.userSourceAuths').map(function(userSourceAuth) { return userSourceAuth.get('source.id'); });
 
     this.get('model').forEach(function(source) {
       if (userSourceIds.indexOf(source.id) != -1) {
