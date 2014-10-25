@@ -1,4 +1,4 @@
-## Dashboard
+## Web
 
 This repository contains code and markup for Asheville's main user interface, built within the [EmberJS framework](http://emberjs.com/) and intended primarily for hosting at [asheville.io](http://asheville.io).
 
