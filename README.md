@@ -10,7 +10,7 @@ This facilitates development and enables user experience testing without relianc
 
 ## Preview
 
-The dashboard is still undergoing initial development and is therefore not fully functional yet. However, latest versions of the code are pushed to GitHub Pages and can be previewed at [asheville.github.io/dashboard](http://asheville.github.io/dashboard). Built-in simulations make it possible to experience what it might be like to set up a real account with Asheville.
+The web app is still undergoing initial development and is therefore not fully functional yet. However, latest versions of the code are pushed to GitHub Pages and can be previewed at [asheville.github.io/web](http://asheville.github.io/web). Built-in simulations make it possible to experience what it might be like to set up a real account with Asheville.
 
 ## Todos
 
