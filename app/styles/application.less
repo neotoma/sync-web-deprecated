@@ -206,8 +206,104 @@ div, li, button, input {
       margin: 2em 0 2em 0;
     }
 
-    form { 
+    form {
       margin: 0 0 1.5em 0;
+
+      label {
+        cursor: pointer;
+      }
+
+      input[type=checkbox] {
+        cursor: pointer;
+
+        &:disabled {
+          cursor: default;
+        }
+      }
+
+      input[type=text],
+      input[type=email] {
+        font-size: 1em;
+        border: 1px solid #dadada;
+        padding: 0.5em;
+        border-radius: 0.2em;
+        width: 15em;
+        height: 2.5em;
+        color: #2e2e2e;
+        transition: border 0.5s ease, background 0.5s ease, color 0.5s ease;
+
+        &::-webkit-input-placeholder {
+          color: #c2c2c2;
+          transition: color 0.5s ease
+        }
+        
+        &:focus {
+          outline-width: 0;
+          border: 1px solid #bcbcbc;
+          background: #fafafa;
+
+          &::-webkit-input-placeholder {
+            color: #b2b2b2;
+          }
+        }
+
+        &:valid {
+          color: #28b145;
+          border: 1px solid #48d765;
+          background: #ebfcef;
+
+          &::-webkit-input-placeholder {
+            color: #c2c2c2;
+          }
+
+          &:focus {
+            color: #28b145;
+            border: 1px solid #48d765;
+            background: #ebfcef;
+
+            &::-webkit-input-placeholder {
+              color: #8eab94;
+            }
+          }
+        }
+      }
+    }
+
+    button {
+      background: #c6c9cc;
+      border: 1px solid #cdcdcd;
+      color: white;
+      border-radius: 0.2em;
+      text-align: center;
+      font-size: 0.9em;
+      letter-spacing: 0.05em;
+      padding: 0.7em 1em 0.7em 1em;
+      cursor: default;
+      display: inline-block;
+      transition: background 0.5s ease, border 0.5s ease, font-weight 0.5s ease, opacity 0.5s ease;
+
+      &:focus {
+        outline-width: 0; 
+      }
+
+      &:not(:disabled) {
+        background: #3e96f9;
+        border: 1px solid #3e96f9;
+        cursor: pointer;
+        font-weight: bold;
+
+        &:hover {
+          background: #51a3ff;
+        }
+
+        &:active {
+          background: #398ae5;
+        }
+      }
+
+      &:disabled {
+        opacity: .5;
+      }
     }
 
     table { 
