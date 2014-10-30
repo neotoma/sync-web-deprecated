@@ -81,10 +81,6 @@ module.exports = function(grunt) {
       devApp: {
         src: appFiles,
         dest:'dev/app.js'
-      },
-      devStyles: {
-        src: styleFiles,
-        dest: 'dev/app.css'
       }
     },
     copy: {
@@ -103,6 +99,21 @@ module.exports = function(grunt) {
           src: ['**'],
           dest: 'public/images/'
         }]
+      }
+    },
+    less: {
+      dev: {
+        files: {
+          'dev/app.css' : styleFiles
+        }
+      },
+      deploy: {
+        options: {
+          cleancss: true
+        },
+        files: {
+          'public/app.css' : styleFiles
+        }
       }
     },
     uglify: {
@@ -151,7 +162,7 @@ module.exports = function(grunt) {
           'ember_handlebars:dev', 
           'concat:devLib',
           'concat:devApp',
-          'concat:devStyles',
+          'less:dev',
           'copy:dev'
         ]
       },
@@ -178,6 +189,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-github-pages');
 
   // Generate files for development
@@ -186,7 +198,7 @@ module.exports = function(grunt) {
     'ember_handlebars:dev',
     'concat:devLib',
     'concat:devApp',
-    'concat:devStyles',
+    'less:dev',
     'copy:dev'
   ]);
 
