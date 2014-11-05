@@ -5,10 +5,7 @@ html, body, body > .ember-view {
 body { 
   cursor: default;
   font-family: 'Droid Sans', sans-serif;
-  background: url(../images/backgrounds/gray-gradient1.png) fixed top left repeat-x #e2e5e7;
   color: #242424;
-  margin: 0;
-  padding: 0;
   text-align: center;
 }
 
@@ -19,12 +16,6 @@ div, li, button, input {
 #app { 
   position: relative;
   text-align: left;
-  margin: auto;
-  max-width: 60em;
-  min-width: 50em;
-  min-height: 100%;
-  background: white;
-  box-shadow: 0px 0px 50px #c8d3df;
 
   ::selection { 
     background: transparent;
@@ -33,19 +24,15 @@ div, li, button, input {
   #app-nav { 
     position: fixed;
     top: 0;
-    margin: 0;
     z-index: 9999;
     width: 100%;
-    max-width: 60em;
-    height: 3.1em;
+    height: 4em;
     border-bottom: 1px solid #e9ebed;
     background: #fbfcfd;
 
     ul { 
       display: inline-block;
       list-style: none;
-      margin: 0;
-      padding: 0;
 
       &:first-child { 
         float: left;
@@ -62,8 +49,8 @@ div, li, button, input {
             }
 
             img { 
-              width: 2em;
-              height: 2em;
+              width: 3em;
+              height: 3em;
               opacity: 0.5;
               transition: 0.5s opacity;
             }
@@ -81,8 +68,8 @@ div, li, button, input {
       }
 
       li { 
-        padding: 0.9em 1.3em 1em 1.3em;
-        height: 3.1em;
+        padding: 1.5em;
+        height: 4em;
         cursor: pointer;
         color: #888888;
         font-weight: bold;
@@ -149,7 +136,7 @@ div, li, button, input {
 
     h1 { 
       font-size: 1.8em;
-      margin: 0 0 1em 0;
+      margin-bottom: 1em;
       padding: 0;
       font-weight: bold;
       color: black;
@@ -174,8 +161,6 @@ div, li, button, input {
     h4 { 
       font-size: 1em;
       font-weight: bold;
-      margin: 0;
-      padding: 0;
     }
 
     p { 
@@ -208,7 +193,7 @@ div, li, button, input {
     }
 
     form {
-      margin: 0 0 1.5em 0;
+      margin-bottom: 1.5em;
 
       label {
         cursor: pointer;
@@ -324,11 +309,6 @@ div, li, button, input {
         vertical-align: top;
         padding: 0.5em 0 0.5em 0;
       }
-    }
-
-    ul, li { 
-      margin: 0;
-      padding: 0;
     }
 
     .tip { 
