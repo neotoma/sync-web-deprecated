@@ -1,35 +1,93 @@
-#index #left-area                             { margin-right: 2em; margin-right: 17em; }
+#index {
+  #left-area { margin-right: 2em; margin-right: 17em; }
 
-#index #right-area                            { float: right; width: 15em;  }
-#index #right-area button                     { width: 100%; font-size: 1.1em; }
-#index #right-area button.authed              { background: #f0f9f2; cursor: default; box-shadow: none; border: 1px solid #e0f2e4; text-shadow: none; color: #00ba27; font-weight: normal; }
+  #right-area {
+    float: right;
+    width: 15em;
 
-#index #right-area .tip                       { margin-top: 1.5em; }
+    button {
+      width: 100%;
+      font-size: 1.1em;
 
-#index #right-area button.has-storage         { background: #f0f9f2; cursor: default; box-shadow: none; border: 1px solid #e0f2e4; text-shadow: none; color: #00ba27; font-weight: normal; }
+      &.authed {
+        background: #f0f9f2;
+        cursor: default;
+        box-shadow: none;
+        border: 1px solid #e0f2e4;
+        text-shadow: none;
+        color: #00ba27;
+        font-weight: normal;
+      }
 
-#index #storage-survey                { font-size: 0.9em; }
-#index #storage-survey-submitted      { background: #48d765; padding: 1em; color: white; }
-#index #storage-survey input          { width: 34%; }
+      &.has-storage {
+        background: #f0f9f2;
+        cursor: default;
+        box-shadow: none;
+        border: 1px solid #e0f2e4;
+        text-shadow: none;
+        color: #00ba27;
+        font-weight: normal;
+      }
+    }
 
-#index #storage-survey.is-submitted input[type=text]:valid:not(:focus),
-#index #storage-survey.is-submitted input[type=email]:valid:not(:focus)                                     { color: #2e2e2e !important; }
-#index #storage-survey.is-submitted input[type=text]:valid:not(:focus),
-#index #storage-survey.is-submitted input[type=email]:valid:not(:focus)                                     { border: 1px solid #dadada !important; background: none !important; }
-#index #storage-survey.is-submitted input[type=text]:valid:not(:focus)::-webkit-input-placeholder,
-#index #storage-survey.is-submitted input[type=email]:valid:not(:focus)::-webkit-input-placeholder          { color: #c2c2c2 !important; }
-#index #storage-survey.is-submitted input[type=text]:valid:not(:focus):-moz-placeholder,
-#index #storage-survey.is-submitted input[type=email]:valid:not(:focus):-moz-placeholder                    { color: #c2c2c2 !important; }
-#index #storage-survey.is-submitted input[type=text]:valid:not(:focus)::-moz-placeholder,
-#index #storage-survey.is-submitted input[type=email]:valid:not(:focus)::-moz-placeholder                   { color: #c2c2c2 !important; }
-#index #storage-survey.is-submitted input[type=text]:valid:not(:focus):-ms-input-placeholder,
-#index #storage-survey.is-submitted input[type=email]:valid:not(:focus):-ms-input-placeholder               { color: #c2c2c2 !important; }
+    .tip {
+      margin-top: 1.5em;
+    }
+  }
 
-#index #storage-survey.is-submitted button,
-#index #storage-survey.is-submitted .button,
-#index #storage-survey.is-submitted input[type=submit]                          { background: #f0f9f2; cursor: default; box-shadow: none; border: 1px solid #e0f2e4; text-shadow: none; color: #00ba27; font-weight: normal; }
-#index #storage-survey.is-submitted button:not(:disabled):hover,
-#index #storage-survey.is-submitted .button:not(:disabled):hover,
-#index #storage-survey.is-submitted input[type=submit]:not(:disabled):hover     { background: #f0f9f2; }
+  #storage-survey { 
+    font-size: 0.9em;
 
-#index #storage-survey .tip             { margin-top: 1.5em; }
+    #storage-survey-submitted {
+      background: #48d765;
+      padding: 1em;
+      color: white;
+    }
+
+    input {
+      width: 34%;
+    }
+
+    &.is-submitted input[type=text]:valid:not(:focus),
+    &.is-submitted input[type=email]:valid:not(:focus) {
+      color: #2e2e2e !important;
+    }
+
+    &.is-submitted input[type=text]:valid:not(:focus),
+    &.is-submitted input[type=email]:valid:not(:focus) {
+      border: 1px solid #dadada !important;
+      background: none !important;
+    }
+
+    &.is-submitted input[type=text]:valid:not(:focus)::-webkit-input-placeholder,
+    &.is-submitted input[type=email]:valid:not(:focus)::-webkit-input-placeholder {
+      color: #c2c2c2 !important;
+    }
+
+    &.is-submitted {
+      button,
+      .button,
+      input[type=submit] {
+        background: #f0f9f2;
+        cursor: default;
+        box-shadow: none;
+        border: 1px solid #e0f2e4;
+        text-shadow: none;
+        color: #00ba27;
+        font-weight: normal;
+      }
+    }
+
+    &.is-submitted {
+      button:not(:disabled):hover,
+      .button:not(:disabled):hover,
+      input[type=submit]:not(:disabled):hover {
+        background: #f0f9f2;
+      }
+    }
+
+    .tip {
+      margin-top: 1.5em;
+    }
+  }
+}
