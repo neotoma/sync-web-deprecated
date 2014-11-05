@@ -1,79 +1,145 @@
-#sync .sync-section-header                               { margin-bottom: 1em; }
-#sync .sync-section-header-name                          { display: inline-block; font-weight: bold; }
-#sync .sync-section-header-info                          { display: inline-block; font-size: 0.8em; font-weight: normal; color: #616161; }
-#sync .sync-section-header-info li                       { display: inline-block; margin-left: 1em; }
-#sync .sync-section-header-info-syncing                  { position: relative; padding-left: 1.5em; margin-left: 1em; }
-#sync .sync-section-header-info-syncing .spinner         { position: absolute !important; left: 0.6em; top: 50%; }
+#sync {
+  .sync-section-header { 
+    margin-bottom: 1em; 
+  }
 
-#sync .bar-base                        { width: 100%; height: 2em; border: 1px solid #c4c4c4; padding: 1px; overflow: hidden; white-space: nowrap; background: #fafafa; }
-#sync .bar-base > div                  { height: 100%; display: inline-block; text-align: center; font-size: 0.8em; transition: width 2s; }
-#sync .bar-base > div > div            { transition: width 2s; }
+  .sync-section-header-name { 
+    display: inline-block; 
+    font-weight: bold; 
+  }
 
-#sync-storages .bar-base div:nth-of-type(1),
-#sync-storages .legends li:nth-of-type(1) .legend-color-interior    { background: #a2a7ab; }
-#sync-storages .bar-base div:nth-of-type(2),
-#sync-storages .legends li:nth-of-type(2) .legend-color-interior    { background: #7bee8e; }
-#sync-storages .bar-base div:nth-of-type(3),
-#sync-storages .legends li:nth-of-type(3) .legend-color-interior    { background: #fafafa; }
+  .sync-section-header-info {
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: normal;
+    color: #616161;
+  }
 
-#sync-sources .bar-base > div                             { margin-left: -4px; }
-#sync-sources .bar-base > div:nth-of-type(1)              { margin-left: 0px; }
-#sync-sources .bar-base div:nth-of-type(1)                { background: #ffefef; }
-#sync-sources .bar-base div:nth-of-type(2)                { background: #fffdec; }
-#sync-sources .bar-base div:nth-of-type(3)                { background: #f7f3ff; }
-#sync-sources .bar-base div:nth-of-type(4)                { background: #f4ffed; }
-#sync-sources .bar-base div:nth-of-type(5)                { background: #eef7ff; }
-#sync-sources .bar-base .bar-filled                       { height: 100%; }
+  .sync-section-header-info li {
+    display: inline-block;
+    margin-left: 1em;
+  }
 
-#sync .legends                { list-style: none; margin: 1em 0 0 0; padding: 0; }
-#sync .legends li             { margin: 0; padding: 0; display: inline-block; margin-right: 1em; height: 20px; transition: opacity 2s; }
-#sync .legends li:last-child  { margin-right: 0; }
-#sync .legend-color           { float: left; display: inline-block; height: 100%; width: 20px; padding: 1px; border: 1px solid #c4c4c4; }
-#sync .legend-color-interior  { width: 100%; height: 100%; }
-#sync .legend-label           { float: left; display: inline-block; font-size: 0.8em; color: #616161; margin: 0.2em 0 0 0.5em; height: 100%; }
+  .sync-section-header-info-syncing {
+    position: relative;
+    padding-left: 1.5em;
+    margin-left: 1em;
+  }
 
-#sync-sources .bar-base div:nth-of-type(1) .bar-filled,
-#sync-sources li:nth-of-type(1) .legend-color-interior    { background: #ef7f7c; }
-#sync-sources .bar-base div:nth-of-type(2) .bar-filled,
-#sync-sources li:nth-of-type(2) .legend-color-interior    { background: #f2e67e; }
-#sync-sources .bar-base div:nth-of-type(3) .bar-filled,
-#sync-sources li:nth-of-type(3) .legend-color-interior    { background: #9c7cef; }
-#sync-sources .bar-base div:nth-of-type(4) .bar-filled,
-#sync-sources li:nth-of-type(4) .legend-color-interior    { background: #a7ef7c; }
-#sync-sources .bar-base div:nth-of-type(5) .bar-filled,
-#sync-sources li:nth-of-type(5) .legend-color-interior    { background: #7cb8ef; }
+  .sync-section-header-info-syncing .spinner {
+    position: absolute !important;
+    left: 0.6em;
+    top: 50%;
+  }
 
-#sync .preview-arrow          { position: absolute; top: -11px; left: 15em; border: 1px solid #f4f4f4; background: #fafafa; border-radius: 9999px 9999px 0 0; height: 10px; width: 10px; }
-#sync .preview                { position: relative; background: #fafafa; border: 1px solid #f4f4f4; padding: 1em; margin-top: 1em;  }
-#sync .preview td,
-#sync .preview th             { font-size: 0.8em; padding: 0.2em; }
+  .bar-base {
+    width: 100%;
+    height: 2em;
+    border: 1px solid #c4c4c4;
+    padding: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+    background: #fafafa;
+  }
 
-#sync .preview-status-updates td:nth-child(1),
-.preview-status-updates th:nth-child(1) { width: 15%; }
-.preview-status-updates td:nth-child(2),
-.preview-status-updates th:nth-child(2) { width: 55%; }
-.preview-status-updates td:nth-child(3),
-.preview-status-updates th:nth-child(3) { width: 10%; }
-.preview-status-updates td:nth-child(4),
-.preview-status-updates th:nth-child(4) { width: 10%; }
-.preview-status-updates td:nth-child(5),
-.preview-status-updates th:nth-child(5) { width: 10%; }
+  .bar-base > div {
+    height: 100%;
+    display: inline-block;
+    text-align: center;
+    font-size: 0.8em;
+    transition: width 2s;
+  }
 
-#sync .preview-photos td:nth-child(1),
-.preview-photos th:nth-child(1) { width: 15%; }
-.preview-photos td:nth-child(2),
-.preview-photos th:nth-child(2) { width: 10%; }
-.preview-photos td:nth-child(3),
-.preview-photos th:nth-child(3) { width: 30%; }
-.preview-photos td:nth-child(4),
-.preview-photos th:nth-child(4) { width: 15%; }
-.preview-photos td:nth-child(5),
-.preview-photos th:nth-child(5) { width: 10%; }
-.preview-photos td:nth-child(6),
-.preview-photos th:nth-child(6) { width: 10%; }
-.preview-photos td:nth-child(7),
-.preview-photos th:nth-child(7) { width: 10%; }
+  .bar-base > div > div {
+    transition: width 2s;
+  }
 
-#sync .preview-items          { max-height: 10em; overflow-y: auto; }
+  #sync-storages {
+    .bar-base div:nth-of-type(1),
+    .legends li:nth-of-type(1) .legend-color-interior    { background: #a2a7ab; }
+    .bar-base div:nth-of-type(2),
+    .legends li:nth-of-type(2) .legend-color-interior    { background: #7bee8e; }
+    .bar-base div:nth-of-type(3),
+    .legends li:nth-of-type(3) .legend-color-interior    { background: #fafafa; }
+  }
+  
+  #sync-sources {
+    .bar-base > div                             { margin-left: -4px; }
+    .bar-base > div:nth-of-type(1)              { margin-left: 0px; }
+    .bar-base div:nth-of-type(1)                { background: #ffefef; }
+    .bar-base div:nth-of-type(2)                { background: #fffdec; }
+    .bar-base div:nth-of-type(3)                { background: #f7f3ff; }
+    .bar-base div:nth-of-type(4)                { background: #f4ffed; }
+    .bar-base div:nth-of-type(5)                { background: #eef7ff; }
+    .bar-base .bar-filled                       { height: 100%; }
+  }
+  
+  .legends {
+    list-style: none;
+    margin: 1em 0 0 0;
+    padding: 0;
 
-#sync .photo-thumb            { display: inline-block; width: 5em; height: 5em; background: #d2d2d2; }
+    .legends li {
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+      margin-right: 1em;
+      height: 20px;
+      transition: opacity 2s;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      .legend-color {
+        float: left;
+        display: inline-block;
+        height: 100%;
+        width: 20px;
+        padding: 1px;
+        border: 1px solid #c4c4c4;
+
+        .legend-color-interior {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .legend-label {
+        float: left;
+        display: inline-block;
+        font-size: 0.8em;
+        color: #616161;
+        margin: 0.2em 0 0 0.5em;
+        height: 100%;
+      }
+    }
+  }
+
+  #sync-sources {
+    .bar-base div:nth-of-type(1) .bar-filled,
+    li:nth-of-type(1) .legend-color-interior {
+      background: #ef7f7c;
+    }
+
+    .bar-base div:nth-of-type(2) .bar-filled,
+    li:nth-of-type(2) .legend-color-interior {
+      background: #f2e67e;
+    }
+
+    .bar-base div:nth-of-type(3) .bar-filled,
+    li:nth-of-type(3) .legend-color-interior {
+      background: #9c7cef;
+    }
+
+    .bar-base div:nth-of-type(4) .bar-filled,
+    li:nth-of-type(4) .legend-color-interior {
+      background: #a7ef7c;
+    }
+
+    .bar-base div:nth-of-type(5) .bar-filled,
+    li:nth-of-type(5) .legend-color-interior {
+      background: #7cb8ef;
+    }
+  } 
+}
