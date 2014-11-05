@@ -20,6 +20,7 @@ var appFiles = [
 ];
 
 var styleFiles = [
+  'app/styles/reset.less',
   'app/styles/*'
 ];
 
