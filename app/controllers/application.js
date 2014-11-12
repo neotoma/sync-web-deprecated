@@ -1,5 +1,6 @@
 App.ApplicationController = Ember.Controller.extend({
   needs: ['session'],
+  elementId: "app",
 
   sessionUser: function() {
     return this.get('controllers.session.model.user');

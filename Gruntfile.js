@@ -20,6 +20,7 @@ var appFiles = [
 ];
 
 var styleFiles = [
+  'app/styles/imports.less',
   'app/styles/reset.less',
   'app/styles/*'
 ];
@@ -27,6 +28,10 @@ var styleFiles = [
 var templateFiles = [
   'app/templates/*.hbs',
   'app/templates/components/*.hbs'
+];
+
+var imageFiles = [
+  'app/images/**/*'
 ];
 
 module.exports = function(grunt) {
@@ -157,7 +162,8 @@ module.exports = function(grunt) {
           appFiles,
           libFiles,
           styleFiles,
-          templateFiles
+          templateFiles,
+          imageFiles
         ],
         tasks: [
           'ember_handlebars:dev', 

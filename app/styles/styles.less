@@ -1,0 +1,269 @@
+// Fonts
+@default-font: 'Lato', sans-serif;
+
+// Colors
+@default-color: #242424;
+@link-color: #0066d8;
+@link-hover-color: #0078ff;
+@link-visited-color: #0066d8;
+@border-color: #e9ebed;
+@light-background-color: #fbfcfd;
+
+// Styles
+
+.text {
+  font-family: @default-font;
+  color: @default-color;
+  text-align: left;
+  line-height: 1.5em;
+}
+
+.link {
+  cursor: pointer;
+  color: @link-color;
+  font-weight: bold;
+
+  &:hover { 
+    color: @link-hover-color;
+  }
+
+  &:visited { 
+    color: @link-visited-color;
+  }
+}
+
+.app-loading-indicator {
+  position: fixed;
+  top: 3em;
+  height: 0.2em;
+  z-index: 10000;
+  width: 100%;
+  max-width: 60em;
+  background: linear-gradient(90deg, #7cea93, #e9ea7c);
+  -webkit-animation: cycleColors 4s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.app {
+  .text;
+  background: @light-background-color;
+  height: 100%;
+}
+
+.app-main {
+  padding: 4em;
+}
+
+.banner {
+  .text;
+  font-size: 2.8em;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.subbanner {
+  .text;
+  font-size: 1.8em;
+  text-align: center;
+  margin-bottom: 0.5em;
+  font-weight: 300;
+}
+
+.header-large {
+  .text;
+  font-size: 1.8em;
+  margin-bottom: 1em;
+  padding: 0;
+  font-weight: bold;
+  color: black;
+}
+
+.header-medium {
+  .text;
+  font-size: 1.2em;
+  font-weight: bold;
+  line-height: 1.4em;
+  border-bottom: 2px solid #e9ebed;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  color: black;
+}
+
+.header-small {
+  .text;
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.paragraph {
+  .text;
+  line-height: 1.5em;
+  margin-bottom: 1.5em;
+
+  &::selection { 
+    background: #e8f1fb;
+  }
+}
+
+.horizontal-rule {
+  border: none;
+  border-top: 1px solid @border-color;
+  margin: 2em 0 2em 0;
+}
+
+.button {
+  .text;
+  background: #c6c9cc;
+  border: 1px solid #cdcdcd;
+  color: white;
+  border-radius: 0.3em;
+  text-align: center;
+  letter-spacing: 0.05em;
+  padding: 0.7em 1em 0.7em 1em;
+  cursor: default;
+  display: inline-block;
+  transition: background 0.5s ease, border 0.5s ease, font-weight 0.5s ease, opacity 0.5s ease;
+
+  &:focus {
+    outline-width: 0; 
+  }
+
+  &:not(:disabled) {
+    background: #3e96f9;
+    border: 1px solid #3e96f9;
+    cursor: pointer;
+    font-weight: bold;
+
+    &:hover {
+      background: #51a3ff;
+    }
+
+    &:active {
+      background: #398ae5;
+    }
+  }
+
+  &:disabled {
+    opacity: .5;
+  }
+
+  &.large {
+    font-size: 1.4em;
+  }
+}
+
+.button-large {
+  .button;
+  font-size: 1.4em;
+  padding: 1em 1.5em;
+}
+
+.fine-print {
+  .text;
+  text-align: center;
+  opacity: 0.5;
+  font-size: 0.9em;
+
+  a {
+    color: @default-color;
+
+    &:hover {
+      color: @link-hover-color;
+    }
+  }
+}
+
+.form {
+  .text;
+  margin-bottom: 1.5em;
+}
+
+.input-text {
+  .text;
+  font-size: 1em;
+  border: 1px solid #dadada;
+  padding: 0.5em;
+  border-radius: 0.2em;
+  width: 15em;
+  height: 2.5em;
+  color: #2e2e2e;
+  transition: border 0.5s ease, background 0.5s ease, color 0.5s ease;
+
+  &::-webkit-input-placeholder {
+    color: #c2c2c2;
+    transition: color 0.5s ease
+  }
+  
+  &:focus {
+    outline-width: 0;
+    border: 1px solid #bcbcbc;
+    background: #fafafa;
+
+    &::-webkit-input-placeholder {
+      color: #b2b2b2;
+    }
+  }
+
+  &:valid {
+    color: #28b145;
+    border: 1px solid #48d765;
+    background: #ebfcef;
+
+    &::-webkit-input-placeholder {
+      color: #c2c2c2;
+    }
+
+    &:focus {
+      color: #28b145;
+      border: 1px solid #48d765;
+      background: #ebfcef;
+
+      &::-webkit-input-placeholder {
+        color: #8eab94;
+      }
+    }
+  }
+}
+
+.input-boolean {
+  cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.label {
+  cursor: pointer;
+}
+
+.table {
+
+}
+
+.table-row {
+
+}
+
+.table-header {
+
+}
+
+.table-header-cell {
+  text-align: left;
+  font-weight: normal;
+  font-size: 0.9em;
+  border-bottom: 1px solid #e9ebed;
+  padding-bottom: 0.5em;
+  color: #aeaeae;
+}
+
+.table-footer {
+  
+}
+
+.table-cell {
+  vertical-align: top;
+  padding: 0.5em 0 0.5em 0;
+}

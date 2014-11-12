@@ -1,93 +1,22 @@
-#index {
-  #left-area { margin-right: 2em; margin-right: 17em; }
+@import "styles";
 
-  #right-area {
-    float: right;
-    width: 15em;
-
-    button {
-      width: 100%;
-      font-size: 1.1em;
-
-      &.authed {
-        background: #f0f9f2;
-        cursor: default;
-        box-shadow: none;
-        border: 1px solid #e0f2e4;
-        text-shadow: none;
-        color: #00ba27;
-        font-weight: normal;
-      }
-
-      &.has-storage {
-        background: #f0f9f2;
-        cursor: default;
-        box-shadow: none;
-        border: 1px solid #e0f2e4;
-        text-shadow: none;
-        color: #00ba27;
-        font-weight: normal;
-      }
-    }
-
-    .tip {
-      margin-top: 1.5em;
-    }
+.ember-view #app-main #index {
+  text-align: center;
+  max-width: 55em;
+  margin: 4em auto;
+  
+  .logo {
+    opacity: 0.8;
+    width: 8em;
+    margin-bottom: 4em;
   }
 
-  #storage-survey { 
-    font-size: 0.9em;
+  button {
+    .button-large;
+    margin-top: 2em;
+  }
 
-    #storage-survey-submitted {
-      background: #48d765;
-      padding: 1em;
-      color: white;
-    }
-
-    input {
-      width: 34%;
-    }
-
-    &.is-submitted input[type=text]:valid:not(:focus),
-    &.is-submitted input[type=email]:valid:not(:focus) {
-      color: #2e2e2e !important;
-    }
-
-    &.is-submitted input[type=text]:valid:not(:focus),
-    &.is-submitted input[type=email]:valid:not(:focus) {
-      border: 1px solid #dadada !important;
-      background: none !important;
-    }
-
-    &.is-submitted input[type=text]:valid:not(:focus)::-webkit-input-placeholder,
-    &.is-submitted input[type=email]:valid:not(:focus)::-webkit-input-placeholder {
-      color: #c2c2c2 !important;
-    }
-
-    &.is-submitted {
-      button,
-      .button,
-      input[type=submit] {
-        background: #f0f9f2;
-        cursor: default;
-        box-shadow: none;
-        border: 1px solid #e0f2e4;
-        text-shadow: none;
-        color: #00ba27;
-        font-weight: normal;
-      }
-    }
-
-    &.is-submitted {
-      button:not(:disabled):hover,
-      .button:not(:disabled):hover,
-      input[type=submit]:not(:disabled):hover {
-        background: #f0f9f2;
-      }
-    }
-
-    .tip {
-      margin-top: 1.5em;
-    }
+  .fine-print {
+    margin-top: 6em;
   }
 }
