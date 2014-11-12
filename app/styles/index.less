@@ -3,12 +3,17 @@
 .ember-view #app-main #index {
   text-align: center;
   max-width: 55em;
-  margin: 4em auto;
+  margin: 4em auto 2em auto;
   
   .logo {
     opacity: 0.8;
     width: 8em;
     margin-bottom: 4em;
+
+    @media @mobile {
+      width: 5em;
+      margin-bottom: 2em;
+    }
   }
 
   button {

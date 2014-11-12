@@ -22,6 +22,7 @@ var appFiles = [
 var styleFiles = [
   'app/styles/imports.less',
   'app/styles/reset.less',
+  'app/styles/breakpoints.less',
   'app/styles/*'
 ];
 
