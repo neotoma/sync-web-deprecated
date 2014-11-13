@@ -1,9 +1,8 @@
-<div id="index" {{action 'startIcons'}}>
+<div id="index">
   <img class="logo" src="images/logos/asheville.svg" />
   <div class="banner">Take control of your online data</div>
   <div class="subbanner">Your personal data is scattered across the Internet, out of your control and perhaps someday soon, lost forever.</div>
   <div class="subbanner">Asheville secures it within your preferred cloud storage account, giving you peace of mind and empowering you to do so much more with it.</div>
-  <button {{action 'toggleDropboxUserStorageAuth'}} {{bind-attr class="toggleDropboxUserStorageAuthClass"}}>Get started for free &gt;</button>
-  <div id="target"></div>
+  <button {{action 'toggleDropboxUserStorageAuth'}}><img id="icon-target" src="/images/icons/box-white.svg" />Set up fast and free &gt;</button>
   <div class="fine-print">Asheville is an <a href="https://github.com/asheville/spec" target="_blank">open source project</a> started by <a href="http://markmhendrickson.com" target="_blank">Mark Hendrickson</a>. Have an account already? <a {{action 'signIn'}}> Sign In</div>
 </div>
