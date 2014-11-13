@@ -17,22 +17,25 @@ App.IndexController = Ember.ObjectController.extend({
   actions: {
     startIcons: function() {
       var spawnIcon = function() {
+        var container = $('.ember-view');
         var target = $('#target');
 
-        var min_x = 1;
+        var min_x = 10;
         var min_y = 10;
-        var max_x = $('body').width();
-        var max_y = target.position().top - 10;
+        var max_x = container.width() - 10;
+        var max_y = target.offset().top - 100;
+
+        console.log(min_x, min_y, max_x, max_y);
 
         var left = (Math.floor(Math.random() * (max_x - min_x + 1) + min_x));
         var top = (Math.floor(Math.random() * (max_y - min_y + 1) + min_y));
 
-        var icon = $('<div class="icon"></div>').attr({
+        var icon = $('<div class="icon"></div>').css({
           'left': left,
           'top': top
         });
 
-        $('#index').append(icon);
+        container.append(icon);
         
         var bezier_params = {
           start: { 
@@ -41,8 +44,8 @@ App.IndexController = Ember.ObjectController.extend({
             angle: 10
           },  
           end: { 
-            x: target.position().left + target.width() / 2 - icon.width() / 2,
-            y: target.position().top + target.height() / 2 - icon.height() / 2, 
+            x: target.offset().left + target.width() / 2 - icon.width() / 2,
+            y: target.offset().top + target.height() / 2 - icon.height() / 2, 
             angle: -10, 
             length: 0.25
           }
