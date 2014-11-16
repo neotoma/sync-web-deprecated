@@ -20,7 +20,7 @@ module.exports = function(grunt) {
       'app/styles/**/*'
     ],
     style_build_files: [
-      'build/lib.css'
+      'build/**/*.css'
     ],
     template_files: [
       'app/templates/**/*.hbs'
@@ -127,7 +127,7 @@ module.exports = function(grunt) {
     less: {
       dev: {
         files: {
-          'public/app.css': [
+          'build/app.css': [
             '<%= style_source_files %>',
             '<%= style_build_files %>'
           ]
@@ -138,7 +138,7 @@ module.exports = function(grunt) {
       },
       prod: {
         files: {
-          'public/app.css': [
+          'build/app.css': [
             '<%= style_source_files %>',
             '<%= style_build_files %>'
           ]
@@ -150,6 +150,12 @@ module.exports = function(grunt) {
           strictMath: true,
           strictUnits: true
         }
+      }
+    },
+    autoprefixer: {
+      all: {
+        src: 'build/app.css',
+        dest: 'public/app.css'
       }
     },
     connect: {
@@ -193,6 +199,7 @@ module.exports = function(grunt) {
     'string-replace',
     'concat:dev',
     'less:dev',
+    'autoprefixer',
     'copy',
     'clean:post'
   ]);
@@ -212,6 +219,7 @@ module.exports = function(grunt) {
     'string-replace',
     'uglify:prod',
     'less:prod',
+    'autoprefixer',
     'copy',
     'clean:post'
   ]);

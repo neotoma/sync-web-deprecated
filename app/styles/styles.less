@@ -42,8 +42,8 @@
   width: 100%;
   max-width: 60em;
   background: linear-gradient(90deg, #7cea93, #e9ea7c);
-  -webkit-animation: cycleColors 4s;
-  -webkit-animation-iteration-count: infinite;
+  animation: cycleColors 4s;
+  animation-iteration-count: infinite;
 }
 
 .app {
@@ -206,7 +206,7 @@
   color: #2e2e2e;
   transition: border 0.5s ease, background 0.5s ease, color 0.5s ease;
 
-  &::-webkit-input-placeholder {
+  &::input-placeholder {
     color: #c2c2c2;
     transition: color 0.5s ease
   }
@@ -216,7 +216,7 @@
     border: 1px solid #bcbcbc;
     background: #fafafa;
 
-    &::-webkit-input-placeholder {
+    &::input-placeholder {
       color: #b2b2b2;
     }
   }
@@ -226,7 +226,7 @@
     border: 1px solid #48d765;
     background: #ebfcef;
 
-    &::-webkit-input-placeholder {
+    &::input-placeholder {
       color: #c2c2c2;
     }
 
@@ -235,7 +235,7 @@
       border: 1px solid #48d765;
       background: #ebfcef;
 
-      &::-webkit-input-placeholder {
+      &::input-placeholder {
         color: #8eab94;
       }
     }
