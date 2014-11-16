@@ -26,7 +26,6 @@ App.SourcesController = Ember.ArrayController.extend({
 
   actions: {
     proceed: function() {
-      //$.post(APP_CONFIG.DATA.HOST + '/sources/sync');
       this.transitionToRoute('sync');
     }
   }

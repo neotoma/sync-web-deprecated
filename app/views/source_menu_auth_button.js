@@ -12,16 +12,12 @@ App.SourceMenuAuthButtonView = Ember.View.extend({
   }.property('source.authed'),
 
   click: function() {
-    if (false && this.get('controller.isSaving')) {
-      return;
-    }
-
     if (this.get('source.authed')) {
       if (confirm('Are you sure you want to disconnect ' + this.get('source.name') + '?')) {
         this.get('source.userSourceAuth').destroyRecord();
       }
     } else {
-      window.location.href = APP_CONFIG.DATA.HOST + '/sources/' + this.get('source.id') + '/auth?redirectURL=' + encodeURIComponent(window.location.href);;
+      window.location.href = App.ApplicationAdapter.host + '/sources/' + this.get('source.id') + '/auth?redirectURL=' + encodeURIComponent(window.location.href);;
     }
   }
 })

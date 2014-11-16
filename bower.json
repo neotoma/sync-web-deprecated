@@ -1,0 +1,19 @@
+{
+  "name": "asheville-web",
+  "version": "1.0.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ember": "~1.8.1",
+    "jquery-ui": "~1.11.2",
+    "swag": "~0.7.0",
+    "jquery.path": "*",
+    "ember-data": "1.0.0-beta.11"
+  }
+}

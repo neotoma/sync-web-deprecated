@@ -1,108 +1,123 @@
-var libFiles = [
-  'app/library/jquery-1.10.2.js',
-  'app/library/handlebars-1.0.0.js',
-  'app/library/ember-1.3.2+pre.25108e91.js',
-  'app/library/ember-data-1.0.0-beta.6+canary.edbe6165.js',
-  'app/library/*.js'
-];
-
-var appFiles = [
-  'app/prototype.js',
-  'app/app-config.js',
-  'app/app.js',
-  'app/data.js',
-  'app/models/*.js', 
-  'app/controllers/*.js', 
-  'app/views/*.js', 
-  'app/routes/*.js',
-  'app/helpers/*.js',
-  'app/simulations/**/*.js'
-];
-
-var styleFiles = [
-  'app/styles/imports.less',
-  'app/styles/reset.less',
-  'app/styles/breakpoints.less',
-  'app/styles/*'
-];
-
-var templateFiles = [
-  'app/templates/*.hbs',
-  'app/templates/components/*.hbs'
-];
-
-var imageFiles = [
-  'app/images/**/*'
-];
-
 module.exports = function(grunt) {
   'use strict';
 
   grunt.initConfig({
+    index_file: 'app/index.html',
+    lib_files: [
+      'bower_components/*'
+    ],
+    app_source_files: [
+      'app/**/*.js'
+    ],
+    app_build_files: [
+      'build/lib.js',
+      'build/**/*.js'
+    ],
+    style_source_files: [
+      'app/styles/imports.less',
+      'app/styles/reset.less',
+      'app/styles/breakpoints.less',
+      'app/styles/**/*'
+    ],
+    style_build_files: [
+      'build/lib.css'
+    ],
+    template_files: [
+      'app/templates/**/*.hbs'
+    ],
+    images_dir: 'app/images',
+    image_files: [
+      '<%= images_dir %>/**/*'
+    ],
+    watch_files: [
+      '<%= index_file %>',
+      '<%= lib_files %>',
+      '<%= app_source_files %>',
+      '<%= style_source_files %>',
+      '<%= template_files %>',
+      '<%= image_files %>'
+    ],
     clean: {
-      dev: [
-        'dev/images/',
-        'dev/*.css',
-        'dev/*.js'
+      pre: [
+        'public'
       ],
-      deployPre: [
-        'public/images/',
-        'public/*.css',
-        'public/*.js'
-      ],
-      deployPost: [
-        'public/templates.js'
+      post: [
+        'build'
       ]
     },
     ember_handlebars: {
       options: {
         processName: function(fileName) {
           var arr = fileName.split("."),
-            path = arr[arr.length - 2].split("/"),
-            name = path[path.length - 1],
-            isComponents = path.indexOf('components') > -1;
+          path = arr[arr.length - 2].split("/"),
+          name = path[path.length - 1],
+          isComponents = path.indexOf('components') > -1;
+          
           if(isComponents) {
             return 'components/' + name;
-          }
-          else {
+          } else {
             return name;
           }
         }
       },
-      dev: {
+      all: {
         files: {
-          'dev/templates.js': templateFiles
+          'build/templates.js': '<%= template_files %>'
         }
-      },
-      deploy: {
+      }
+    },
+    bower_concat: {
+      all: {
+        dest: 'build/lib.js',
+        cssDest: 'build/lib.css'
+      }
+    },
+    'string-replace': {
+      env_vars: {
         files: {
-          'public/templates.js': templateFiles
+          'build/' : '<%= app_source_files %>' 
+        },
+        options: {
+          replacements: [{
+            pattern: /env\.(\w+)/g,
+            replacement: function (match, p1) {
+              var value = process.env[p1];
+
+              if (!value) {
+                return null;
+              } else if (['true', 'false', 'null'].indexOf(value) != -1) {
+                return value;
+              } else {
+                return "'" + value + "'";
+              }
+            }
+          }]
         }
       }
     },
     concat: {
-      devLib: {
-        src: libFiles,
-        dest:'dev/lib.js'
-      },
-      devApp: {
-        src: appFiles,
-        dest:'dev/app.js'
+      dev: {
+        src: '<%= app_build_files %>',
+        dest: 'public/app.js'
+      }
+    },
+    uglify: {
+      prod: {
+        src: '<%= app_build_files %>',
+        dest: 'public/app.js'
       }
     },
     copy: {
-      dev: {
+      index: {
         files: [{
-          expand: true,
-          cwd: 'app/images/',
-          src: ['**'],
-          dest: 'dev/images/'
+          src: '<%= index_file %>',
+          dest: 'public/index.html'
         }]
       },
-      deploy: {
+      images: {
         files: [{
           expand: true,
-          cwd: 'app/images/',
+          cwd: '<%= images_dir %>',
           src: ['**'],
           dest: 'public/images/'
         }]
@@ -111,45 +126,35 @@ module.exports = function(grunt) {
     less: {
       dev: {
         files: {
-          'dev/app.css' : styleFiles
+          'public/app.css': [
+            '<%= style_source_files %>',
+            '<%= style_build_files %>'
+          ]
+        },
+        options: {
+          cleancss: false
         }
       },
-      deploy: {
-        options: {
-          cleancss: true
+      prod: {
+        files: {
+          'public/app.css': [
+            '<%= style_source_files %>',
+            '<%= style_build_files %>'
+          ]
         },
-        files: {
-          'public/app.css' : styleFiles
-        }
-      }
-    },
-    uglify: {
-      deploy: {
-        src: [
-          libFiles, 
-          appFiles, 
-          'public/templates.js'
-        ],
-        dest: 'public/app.js'
-      }
-    },
-    cssmin: {
-      deploy: {
-        files: {
-          'public/app.css': styleFiles
+        options: {
+          cleancss: true,
+          compress: true,
+          strictImports: true,
+          strictMath: true,
+          strictUnits: true
         }
       }
     },
     connect: {
-      dev: {
+      all: {
         options: {
           port: 9091,
-          base: 'dev'
-        }
-      },
-      deploy: {
-        options: {
-          port: 9092,
           base: 'public'
         }
       }
@@ -158,25 +163,13 @@ module.exports = function(grunt) {
       options: {
         debounceDelay: 100
       },
-      scripts: {
-        files: [
-          appFiles,
-          libFiles,
-          styleFiles,
-          templateFiles,
-          imageFiles
-        ],
-        tasks: [
-          'ember_handlebars:dev', 
-          'concat:devLib',
-          'concat:devApp',
-          'less:dev',
-          'copy:dev'
-        ]
+      dev: {
+        files: '<%= watch_files %>',
+        tasks: ['dev-build']
       },
-      images: {
-        files: ['app/images/*'],
-        tasks: ['clean:dev', 'copy:dev']
+      prod: {
+        files: '<%= watch_files %>',
+        tasks: ['prod-build']
       }
     },
     githubPages: {
@@ -189,55 +182,49 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-ember-handlebars');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-github-pages');
+  require('load-grunt-tasks')(grunt)
 
-  // Generate files for development
-  grunt.registerTask('dev-dry', [
-    'clean:dev',
-    'ember_handlebars:dev',
-    'concat:devLib',
-    'concat:devApp',
+  // Build app for development
+  grunt.registerTask('dev-build', [
+    'clean:pre',
+    'bower_concat',
+    'ember_handlebars',
+    'string-replace',
+    'concat:dev',
     'less:dev',
-    'copy:dev'
+    'copy',
+    'clean:post'
   ]);
 
-  // Run local web server for development
+  // Build app and run local web server for development
   grunt.registerTask('dev', [
-    'dev-dry', 
-    'connect:dev', 
-    'watch'
+    'dev-build', 
+    'connect', 
+    'watch:dev'
   ]);
 
-  // Generate files for deployment
-  grunt.registerTask('deploy-dry', [
-    'clean:deployPre', 
-    'ember_handlebars:deploy',
-    'copy:deploy',
-    'uglify:deploy',
-    'cssmin:deploy',
-    'copy:deploy',
-    'clean:deployPost'
+  // Build app for production
+  grunt.registerTask('prod-build', [
+    'clean:pre', 
+    'bower_concat',
+    'ember_handlebars',
+    'string-replace',
+    'uglify:prod',
+    'less:prod',
+    'copy',
+    'clean:post'
   ]);
 
-  // Run local web server for pre-deployment testing
-  grunt.registerTask('deploy-test', [
-    'deploy-dry',
-    'connect:deploy',
-    'watch:deploy'
+  // Build app and run local web server for production
+  grunt.registerTask('prod', [
+    'prod-build',
+    'connect',
+    'watch:prod'
   ]);
 
-  // Deploy to GitHub Pages
+  // Deploy production build to GitHub Pages
   grunt.registerTask('deploy', [
-    'deploy-dry',
+    'prod-build',
     'githubPages:deploy'
   ]);
 };

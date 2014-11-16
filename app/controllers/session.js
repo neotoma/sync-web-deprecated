@@ -9,11 +9,6 @@ App.SessionController = Ember.Controller.extend({
     });
   },
 
-  authenticate: function() {
-    var URL = APP_CONFIG.DATA.HOST + '/storages/dropbox/auth?redirectURL=' + encodeURIComponent(window.location.href);
-    window.location.href = URL;
-  },
-
   deauthenticate: function() {
     this.get('model').destroyRecord();
     this.set('model', null);

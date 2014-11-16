@@ -1,5 +1,5 @@
 {
-  "name": "asheville",
+  "name": "asheville-web",
   "version": "1.0.0",
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -12,6 +12,9 @@
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-github-pages": "0.0.4",
-    "grunt-contrib-less": "^0.12.0"
+    "grunt-contrib-less": "^0.12.0",
+    "grunt-bower-concat": "^0.4.0",
+    "grunt-string-replace": "^1.0.0",
+    "load-grunt-tasks": "^1.0.0"
   }
 }

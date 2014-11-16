@@ -1,37 +1,55 @@
-## Web
+This repository contains the client-side web application for [Asheville](http://asheville.io).
 
-This repository contains code and markup for Asheville's main user interface, built within the [EmberJS framework](http://emberjs.com/) and intended primarily for hosting at [asheville.io](http://asheville.io).
+The app empowers someone to connect an online storage service, select the sources and content types they want to synchronize to that storage, and manage the state of synchronization.
 
-The interface enables Asheville users to connect their Dropbox accounts, select content sources and types for synchronization, and monitor the progress of that synchronization.
+This app is designed to work with [Asheville Sync](https://github.com/asheville/sync) for server-side data management.
 
-This front-end web application is intended to work with a server-side API hosted on the same domain. However, since that API is still in development, the application currently relies on a client-side model that simulates the server-side one.
+## Product Management
 
-This facilitates development and enables user experience testing without reliance on the API's availability. But it also means that the application is solely ready for development and testing purposes at this time.
+Product initiatives for this app are organized on the [Asheville Product Sprints](https://trello.com/b/gN599TRG/product-sprints) board on Trello, and development tasks are organized in the [Asheville Web](https://www.pivotaltracker.com/s/projects/951914) project on Pivotal Tracker.
 
-## Preview
+## Environment Variables
 
-The web app is still undergoing initial development and is therefore not fully functional yet. However, latest versions of the code are pushed to GitHub Pages and can be previewed at [asheville.github.io/web](http://asheville.github.io/web). Built-in simulations make it possible to experience what it might be like to set up a real account with Asheville.
+The application uses the following environment variables for its configuration during the build process.
 
-## Todos
+#### Required
 
-Todo items for this code base are organized in [a public pivotal tracker project](https://www.pivotaltracker.com/s/projects/951914).
+```
+export ASHEVILLE_WEB_ADAPTER_HOST=XXXX
+```
 
-## Building with Grunt
+Set the host for the Asheville Sync service here (see Ember's [DS.RESTAdapter](http://emberjs.com/api/data/classes/DS.RESTAdapter.html#toc_host-customization) documentation).
 
-The application code is stored in the `app` directory. To build it for either development or deployment purposes, first install [Node](http://nodejs.org/) and run `npm install` in the root directory to install Grunt and other node modules on which it depends.
+#### Optional
 
-Then install the [Grunt](https://github.com/gruntjs/grunt) command line interface:
+```
+export ASHEVILLE_WEB_ADAPTER_NAMESPACE=XXXX
+export ASHEVILLE_WEB_LOG_TRANSITIONS=XXXX
+export ASHEVILLE_WEB_LOG_TRANSITIONS_INTERNAL=XXXX
+export ASHEVILLE_WEB_LOG_RESOLVER=XXXX
+```
 
-`sudo npm install -g grunt-cli`
+Set an adapter namespace here if Asheville Sync is namespaced with a base path at the host above (see Ember's [Endpoint Path Customization](http://emberjs.com/api/data/classes/DS.RESTAdapter.html#toc_endpoint-path-customization) documentation).
 
-And depending on what you want to do:
+Set any of these log variables to `true` to enable more detailed Ember logging in the console (see Ember's [Log Router Transitions](http://emberjs.com/guides/understanding-ember/debugging/#toc_log-router-transitions) and [Turn on Resolver Resolution Logging](http://emberjs.com/guides/understanding-ember/debugging/#toc_turn-on-resolver-resolution-logging) documentation).
 
-- **Development Dry Run**: run `grunt dev-dry` to compile the code for development purposes. This compiled code can be found in the `dev` directory.
+## Build, Test and Deploy
 
-- **Development**: run `grunt dev` to compile the code for development purposes and start a web server to view it locally on your machine. See the grunt output for the address and port to use.
+To build and test the app for either development or production purposes, follow these instructions from the repo's root directory:
 
--  **Deployment Dry Run**: run `grunt deploy-dry` to compile code for deployment purposes that can be pushed to a server manually or simply checked for accuracy before deployment below. This compiled code can be found in the `public` directory.
+1. Install [Node.js](http://nodejs.org/), which powers the repo's development tools such as `npm`
+2. Run `npm install` to install Grunt and other node modules on which the build and testing processes depend. 
+3. Install [Bower](http://bower.io) and run `bower install` to install application dependencies.
+4. Install the [Grunt](https://github.com/gruntjs/grunt) command line interface with `sudo npm install -g grunt-cli`
 
-- **Deployment Testing**: run `grunt deploy-test` to compile code for deployment and start a web server to view it locally on your machine. See the grunt output for the address and port to use.
+Then depending on what you want to do:
 
--  **Deployment**: run `grunt deploy` to compile code for deployment then commit and push it to the `gh-pages` branch for hosting on GitHub Pages.
+- **Development Build**: run `grunt dev-build` to build the app in the `public` directory for development purposes (i.e. code is not minified, among other things).
+
+- **Development**: run `grunt dev` to build the app and start a web server to run it locally for manual development testing purposes. See output in the console for which address and port to use.
+
+-  **Production Build**: run `grunt prod-build` to build the app in the `public` directory for production purposes (i.e. code is minified, among other things).
+
+- **Production**: run `grunt prod` to build the app and start a web server to run it locally for manual production testing purposes. See output in the console for which address and port to use.
+
+- **Deployment**: run `grunt deploy` to build the app for production then commit and push it to the remote `gh-pages` branch for hosting on GitHub Pages.
