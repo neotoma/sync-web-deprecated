@@ -1,11 +1,6 @@
 .DS_Store
 bower_components
-build/*
-dev/*
-!dev/index.html
-public/*
-!public/index.html
-!public/CNAME
-node_modules/
+build
+node_modules
 npm-debug.log
-data/*
+public

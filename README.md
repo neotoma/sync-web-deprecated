@@ -52,4 +52,4 @@ Then depending on what you want to do:
 
 - **Production**: run `grunt prod` to build the app and start a web server to run it locally for manual production testing purposes. See output in the console for which address and port to use.
 
-- **Deployment**: run `grunt deploy` to build the app for production then commit and push it to the remote `gh-pages` branch for hosting on GitHub Pages.
+- **Deployment**: run `grunt deploy` to build the app for production then commit and push it to the remote `gh-pages` branch for hosting on GitHub Pages. **Important:** You must [prepare the repository](https://github.com/thanpolas/grunt-github-pages#preparing-your-repository) for this branch before deployment.

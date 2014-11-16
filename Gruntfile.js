@@ -39,7 +39,8 @@ module.exports = function(grunt) {
     ],
     clean: {
       pre: [
-        'public'
+        'public/*',
+        '!.git'
       ],
       post: [
         'build'
@@ -175,7 +176,7 @@ module.exports = function(grunt) {
     githubPages: {
       deploy: {
         options: {
-          commitMessage: 'Push'
+          commitMessage: 'Merge latest from master'
         },
         src: 'public'
       }
