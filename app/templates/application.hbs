@@ -1,3 +1,14 @@
+<nav id="app-nav">
+  <div id="app-nav-interior">
+    {{#link-to 'index'}}<img class="logo" src="/images/logos/asheville-white.svg" draggable="false" />{{/link-to}}
+    <ul id="app-nav-right">
+      {{#if sessionUser}}
+        <li>{{sessionUser.name}}</li>
+        <li><a {{action 'deauthenticate'}}>Sign Out</a></li>
+      {{/if}}
+    </ul>
+  </div>
+</nav>
 <div id="app-main">
   {{outlet}}
 </div>

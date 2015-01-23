@@ -1,0 +1,14 @@
+<h1><img {{bind-attr src=source.logoGlyphUrl}}>{{source.name}}</h1>
+
+{{#if source.enabled}}
+  {{#if source.authed}}
+    {{#each contentType in source.contentTypes}}
+      {{view "SourceContentType" contentType=contentType}}
+    {{/each}}
+  {{else}}
+    {{view "SourceAuthButton" source=source}}
+  {{/if}}
+{{else}}
+  {{view "SourceNotifyButton" source=source}}
+  <div class="description">Not Yet Available</div>
+{{/if}}

@@ -9,19 +9,12 @@ App.SessionController = Ember.Controller.extend({
     });
   },
 
+  authenticate: function() {
+    window.location.href = this.store.adapterFor('application').get('host') + '/storages/dropbox/auth?redirectURL=' + encodeURIComponent(window.location.href);
+  },
+
   deauthenticate: function() {
     this.get('model').destroyRecord();
     this.set('model', null);
-  }
-});
-
-Ember.Application.initializer({
-  name: 'session',
-
-  initialize: function(container) {
-    App.deferReadiness();
-    container.lookup('controller:session').populate().then(function() {
-      App.advanceReadiness();
-    });
   }
 });

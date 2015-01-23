@@ -1,7 +1,0 @@
-<div class="legend-color" {{action 'simulateContentTypeIncrease' view}}><div class="legend-color-interior"></div></div> 
-<div class="legend-label" {{action 'simulateContentTypeDecrease' view}}>
-  {{pluralize contentType.name}}
-  {{#if view.hasTotalItemsAvailable}}
-    ({{digitGrouping view.totalItemsSynced}} out of {{digitGrouping view.totalItemsAvailable}}{{#if view.hasTotalItemsSynced}}, or {{view.syncedPercentage}}{{/if}})
-  {{/if}}
-</div>

@@ -6,27 +6,12 @@ App = Ember.Application.create({
 
 App.Router.map(function() {
   this.route('index', { path: '/' });
-  this.route('storages');
-  this.route('sources');
-  this.route('sync');
+  this.route('dashboard');
 });
 
 Ember.Route.reopen({
-  events: {
-    willTransition: function(transition) {
-      this.controllerFor('application').set('targetPath', transition.targetName);
-
-      if (transition.targetName != this.controllerFor('application').get('currentPath')) {
-        this.controllerFor('application').handleTransitionStart();
-      }
-    }
-  },
-
   afterModel: function() {
     window.scrollTo(0, 0);
-    
-    this.controllerFor('application').set('targetPath', null);
-    this.controllerFor('application').handleTransitionStop();
   },
 
   activate: function() {
@@ -57,6 +42,19 @@ App.ApplicationAdapter = DS.RESTAdapter.extend({
   namespace:  env.ASHEVILLE_WEB_ADAPTER_NAMESPACE
 });
 
-Math.getRandomInt = function(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+Ember.Application.initializer({
+  name: 'session',
+
+  initialize: function(container) {
+    App.deferReadiness();
+    
+    container.lookup('controller:session').populate().then(function() {
+      App.advanceReadiness();
+    }, function() {
+      console.error('Unable to load session');
+      App.advanceReadiness();
+    });
+  }
+});
+
+var socket = io.connect(env.ASHEVILLE_WEB_ADAPTER_HOST);

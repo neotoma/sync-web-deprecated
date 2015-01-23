@@ -1,23 +1,12 @@
 App.ApplicationRoute = Ember.Route.extend({
+  needs: ['session'],
+
   actions: {
-    goToIndex: function() {
-      this.transitionTo('index');
-    },
-
-    goToSources: function() {
-      this.transitionTo('sources');
-    },
-
-    goToSync: function() {
-      this.transitionTo('sync');
-    },
-
-    signIn: function() {
-      var route = this;
+    authenticate: function() {
       this.controllerFor('session').authenticate();
     },
 
-    signOut: function() {
+    deauthenticate: function() {
       this.controllerFor('session').deauthenticate();
       this.transitionTo('index');
     }

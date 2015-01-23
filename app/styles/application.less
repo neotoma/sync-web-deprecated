@@ -1,13 +1,41 @@
 @import "styles";
 
-.ember-view {
+body>.ember-view {
   .app;
+
+  #app-nav {
+    .app-nav;
+
+    #app-nav-interior {
+      .app-nav-interior;
+    }
+
+    a {
+      .app-nav-link;
+    }
+
+    img {
+      .app-nav-image;
+    }
+
+    #app-nav-right {
+      .app-nav-right;
+
+      li {
+        .app-nav-right-item;
+      }
+    }
+  }
 
   #app-main {
     .app-main;
 
     h1 { 
       .header-large;
+
+      img {
+        .header-large-icon;
+      }
     }
 
     h2 { 
@@ -22,9 +50,18 @@
       .paragraph;
     }
 
-    a { 
+    strong {
+      .bold;
+    }
+
+    a, a img { 
       .link;
     }
+
+    a:visited {
+      .link-visited;
+    }
+
 
     .fine-print {
       .fine-print;
@@ -32,6 +69,30 @@
 
     hr { 
       .horizontal-rule;
+    }
+
+    section {
+      .section;
+
+      &:first-of-type {
+        .first-section;
+      }
+
+      &.connect {
+        .connect-section;
+
+        h1 {
+          .connect-section-header;
+        }
+
+        button {
+          .connect-section-button
+        }
+
+        .description {
+          .connect-section-description;
+        }
+      }
     }
 
     form {
@@ -54,30 +115,6 @@
 
     button {
       .button;
-    }
-
-    table { 
-      .table;
-
-      tr {
-        .table-row;
-      }
-
-      thead { 
-        .table-header;
-
-        th { 
-          .table-header-cell;
-        }
-      }
-
-      tfoot { 
-        .table-header;
-      }
-
-      td { 
-        .table-cell;
-      }
     }
   }
 }

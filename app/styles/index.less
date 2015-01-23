@@ -1,51 +1,23 @@
-@import "styles";
+@import (reference) "styles";
 
-body.index .ember-view #app-main {
-  text-align: center;
-  max-width: 55em;
-  margin: 4em auto 2em auto;
-  
-  .logo {
-    opacity: 0.8;
-    width: 6em;
-    margin-bottom: 4em;
+body.index {
+  #app-main {
+    text-align: center;
+    margin: auto;
 
-    @media @mobile {
-      width: 5em;
-      margin-bottom: 2em;
+    #intro {
+      max-width: 52em;
+      margin: auto;
     }
-  }
 
-  button {
-    .button-large;
-    margin-top: 2em;
-    padding-left: 4.5em;
-    position: relative;
-
-    img {
-      position: absolute;
-      top: 0.5em;
-      left: 1em;
-      width: 2.5em;
+    section.connect {
+      .interior {
+        margin: auto;
+      }
     }
-  }
 
-  .fine-print {
-    margin-top: 6em;
-  }
-}
-
-.icon {
-  position: absolute;
-  top: 10em;
-  left: 10em;
-  width: 3em;
-  height: 3em;
-  opacity: 0.5;
-  z-index: 1000;
-
-  img {
-    width: 100%;
-    height: 100%;
+    .fine-print {
+      margin-top: 6em;
+    }
   }
 }

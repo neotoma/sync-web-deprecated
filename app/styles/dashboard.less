@@ -1,0 +1,53 @@
+@import (reference) "styles";
+
+body.dashboard {
+  #app-main {
+    text-align: center;
+
+    .source {
+      text-align: left;
+
+      .content-type {
+        margin-bottom: 2em;
+
+        .spinner {
+          position: absolute;
+          left: 0.6em;
+          top: 50%;
+        }
+
+        .content-type-sync-bar {
+          position: relative;
+          text-align: left;
+          height: 1.875em;
+          overflow: hidden;
+          white-space: nowrap;
+          background: @dark-background-color;
+        }
+
+        .content-type-sync-percentage {
+          position: absolute;
+          top: 0.15em;
+          left: 0.3em;
+          z-index: 1;
+          font-size: 1.375em;
+          color: white;
+        }
+
+        .content-type-sync-progress-bar {
+          height: 100%;
+          display: inline-block;
+          text-align: center;
+          font-size: 0.8em;
+          transition: width 2s;
+          background: #09D26F;
+        }
+
+        .content-type-sync-status {
+          margin-top: 1em;
+          font-size: 0.875em;
+        }
+      }
+    }
+  }
+}
