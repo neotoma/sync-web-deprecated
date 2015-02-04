@@ -1,14 +1,25 @@
-<h1><img {{bind-attr src=source.logoGlyphUrl}}>{{source.name}}</h1>
+<div class="interior">
+  <h1 class="has-image">
+    <div class="image-wrapper">
+      <img {{bind-attr src=source.logoGlyphUrl}} />
+    </div>
+    {{source.name}}
+  </h1>
 
-{{#if source.enabled}}
-  {{#if source.authed}}
-    {{#each contentType in source.contentTypes}}
-      {{view "SourceContentType" contentType=contentType}}
-    {{/each}}
+  {{#if source.enabled}}
+    {{#if source.authed}}
+      {{#each contentType in view.orderedContentTypes}}
+        {{view "SourceContentType" contentType=contentType}}
+      {{/each}}
+    {{else}}
+      <div class="button-area auth">
+        {{view "SourceAuthButton" source=source}}
+      </div>
+    {{/if}}
   {{else}}
-    {{view "SourceAuthButton" source=source}}
+    <div class="button-area notify">
+      {{view "SourceNotifyButton" source=source}}
+      <div class="description">Not Yet Available</div>
+    </div>
   {{/if}}
-{{else}}
-  {{view "SourceNotifyButton" source=source}}
-  <div class="description">Not Yet Available</div>
-{{/if}}
+</div>

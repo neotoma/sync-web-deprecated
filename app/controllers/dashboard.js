@@ -1,4 +1,4 @@
 App.DashboardController = Ember.ObjectController.extend({
-  needs: 'session',
+  needs: ['session'],
   sessionUser: Ember.computed.alias('controllers.session.user')
 });

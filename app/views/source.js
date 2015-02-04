@@ -3,6 +3,8 @@ App.SourceView = Ember.View.extend({
   templateName: 'source',
   classNames: ['source'],
   classNameBindings: ['connect:connect'],
+  sortProperties: ['name:asc'],
+  orderedContentTypes: Ember.computed.sort('source.contentTypes', 'sortProperties'),
 
   connect: function() {
     return !this.get('source.enabled') || !this.get('source.authed');

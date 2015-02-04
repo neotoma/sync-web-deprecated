@@ -4,11 +4,7 @@ App.ContentType = DS.Model.extend({
   sources:      DS.hasMany('source'),
   status:       DS.belongsTo('status'),
 
-  hasTotalItemsAvailable: function() {
-    return (this.get('totalItemsAvailable'));
-  }.property('this.totalItemsAvailable'),
-
-  hasTotalItemsSynced: function() {
-    return (this.get('totalItemsSynced'));
-  }.property('contentType.totalItemsSynced'),
+  percentageItemsSynced: function() {
+    return this.get('status.percentageItemsSynced');
+  }.property('status.percentageItemsSynced')
 });

@@ -6,18 +6,24 @@ body.index {
     margin: auto;
 
     #intro {
-      max-width: 52em;
+      max-width: 48em;
       margin: auto;
+
+      @media @mobile {
+        margin: 1em auto 2em auto;
+      }
     }
 
-    section.connect {
-      .interior {
-        margin: auto;
-      }
+    section.connect .interior {
+      max-width: 40em;
     }
 
     .fine-print {
       margin-top: 6em;
+
+      @media @mobile {
+        margin-top: 1em;
+      }
     }
   }
 }

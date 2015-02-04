@@ -22,7 +22,6 @@ App.DashboardRoute = App.AuthenticatedRoute.extend({
     controller.set('model', model);
 
     var store = this.store;
-
     socket.on('statusesUpdate', function(data) {
       store.pushPayload('status', data);
     });

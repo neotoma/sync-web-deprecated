@@ -1,9 +1,9 @@
 <nav id="app-nav">
-  <div id="app-nav-interior">
+  <div id="app-nav-interior" {{bind-attr class="sessionUser:authenticated"}}>
     {{#link-to 'index'}}<img class="logo" src="/images/logos/asheville-white.svg" draggable="false" />{{/link-to}}
     <ul id="app-nav-right">
       {{#if sessionUser}}
-        <li>{{sessionUser.name}}</li>
+        <li class="optional">{{sessionUser.name}}</li>
         <li><a {{action 'deauthenticate'}}>Sign Out</a></li>
       {{/if}}
     </ul>

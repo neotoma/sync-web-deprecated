@@ -1,8 +1,12 @@
-<h2 class="content-type-header">{{pluralize contentType.name}}</h2>
+<h2 class="content-type-header">{{pluralize contentType.name}} <div class="content-type-sync-spinner"></div></h2>
 <div class="content-type-sync-bar">
   <div class="content-type-sync-percentage">{{view.totalItemsSyncedPercentage}}</div>
   <div class="content-type-sync-progress-bar" {{bind-attr style="view.syncBarStyle"}}></div>
 </div>
-{{#if contentType.status.lastSyncedItem}}
-  <div class="content-type-sync-status"><strong>Synced:</strong> {{digitGrouping view.totalItemsSynced}} of {{digitGrouping view.totalItemsAvailable}} {{#if contentType.status.lastSyncedItem}}&middot; <strong>Most Recent:</strong> {{default contentType.status.lastSyncedItem.description 'N/A'}}{{/if}}</div>
+{{#if contentType.status.hasItemSynced}}
+  <div class="content-type-sync-status">
+    <div><strong>Synced:</strong> {{digitGrouping view.totalItemsSynced}} of {{digitGrouping view.totalItemsAvailable}} {{#if contentType.status.lastSyncedItem}}</div> 
+    <span>&middot;</span>
+    <div><strong>Most Recent:</strong> {{default contentType.status.lastSyncedItem.description 'N/A'}}{{/if}}</div>
+  </div>
 {{/if}}

@@ -1,4 +1,4 @@
-@import "breakpoints";
+@import (reference) "breakpoints";
 
 @max-content-width: 62em;
 
@@ -47,6 +47,7 @@
 .app {
   .text;
   height: 100%;
+  min-width: 20em;
 }
 
 .app-nav {
@@ -57,24 +58,36 @@
   text-align: center;
   transition: height @transition, padding @transition, opacity @transition;
   overflow: hidden;
+  margin-bottom: 1.5625em;
+
+  @media @mobile {
+    margin-bottom: 0;
+  }
 }
 
 .app-nav-interior {
+  position: relative;
   max-width: @max-content-width;
   height: 100%;
   padding: 0.7em;
-  text-align: left;
+  text-align: center;
   margin: auto;
 }
 
+.app-nav-interior-authenticated {
+  text-align: left;
+}
+
 .app-nav-right {
-  float: right;
+  position: absolute;
+  top: 0.7em;
+  right: 0.7em;
   text-align: right;
-  font-size: 0.85em;
-  letter-spacing: 0.05em;
 
   .app-nav-right-item {
     display: inline-block;
+    font-size: 0.85em;
+    letter-spacing: 0.05em;
     margin-left: 1em;
 
     &:first-of-type {
@@ -109,10 +122,10 @@
   .text;
   font-size: 3em;
   text-align: center;
-  margin-bottom: 0.5357em;
+  margin-bottom: 0.666em;
 
   @media @mobile {
-    font-size: 2em;
+    font-size: 1.9em;
     margin-bottom: 0.75em;
   }
 }
@@ -121,30 +134,46 @@
   .text;
   font-size: 1.5em;
   text-align: center;
-  margin-bottom: 0.8333em;
+  margin-bottom: 0.667em;
   font-weight: 300;
 
-
   @media @mobile {
-    font-size: 1.4em;
+    font-size: 1.1em;
     margin-bottom: 1.0714em;
   }
 }
 
 .header-large {
   .text;
+  position: relative;
   font-size: 3em;
   font-family: @bold-font;
   margin-bottom: 0.5em;
-  padding: 0;
   color: black;
+
+  @media @mobile {
+    font-size: 1.4em;
+  }
 }
 
-.header-large-icon {
-  max-height: 0.9em;
-  max-width: 0.9em;
-  display: inline-block;
-  margin-right: 0.75em;
+.header-large-has-image {
+  padding-left: 1.75em;
+}
+
+.header-large-image-wrapper {
+  position: absolute;
+  top: 0.25em;
+  left: 0;
+  width: 1em;
+  height: 1em;
+  text-align: center;
+}
+
+.header-large-image {
+  height: 100%;
+  max-width: 100%;
+  margin: auto;
+  display: block;
 }
 
 .header-medium {
@@ -155,6 +184,10 @@
   border-bottom: 1px solid #EAEAEA;
   padding-bottom: 0.5em;
   color: black;
+
+  @media @mobile {
+    font-size: 1em;
+  }
 }
 
 .header-small {
@@ -230,6 +263,15 @@
 .fine-print {
   .text;
   text-align: center;
+
+  @media @mobile {
+    padding: 2em;
+    font-size: 0.8em;
+  }
+}
+
+.fine-print-link {
+  color: @default-color;
 }
 
 .form {
@@ -297,38 +339,84 @@
 }
 
 .section {
-  padding: 3.125em;
+  padding: 3.125em 0 3.125em 0;
   border-top: 1px solid @border-color;
+
+  @media @mobile {
+    padding: 0;
+  }
 }
 
 .first-section {
   border-top: 0;
 }
 
+
+
+/* Connect Section */
+
+@connect-section-button-area-width: 8em;
+@connect-section-button-area-mobile-width: 7em;
+
 .connect-section {
   text-align: left;
+  padding: 3.125em;
 
-  .interior {
-    max-width: 40em;
+  @media @mobile {
+    padding: 1.5em 0 1.5em 0;
   }
 }
 
-.connect-section-header {
+.connect-section-interior {
+  position: relative;
+  margin: auto;
+}
+
+.connect-section-name {
+  padding-right: calc(@connect-section-button-area-width / 3 + 1em);
   margin-bottom: 0;
-  display: inline;
+
+  @media @mobile {
+    font-size: 1.2em;
+    padding-right: calc(@connect-section-button-area-mobile-width / 1.2 + 1em);
+  }
+}
+
+.connect-section-button-area {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: @connect-section-button-area-width;
+  text-align: center;
+  transform: translateY(-50%);
+
+  @media @mobile {
+    width: @connect-section-button-area-mobile-width;
+  }
 }
 
 .connect-section-button {
-  float: right;
-  display: inline;
-  margin-top: 0.5em;
+  width: 100%;
+
+  @media @mobile {
+    font-size: 0.8em;
+  }
 }
 
 .connect-section-description {
   .italic;
-  margin-right: 0.5em;
-  margin-bottom: -0.875em;
-  text-align: right;
   color: @light-color;
   font-size: 0.875em;
+}
+
+.connect-section-notify-button-area {
+}
+
+.connect-section-notify-button {
+  display: none;
+  margin-bottom: 1em;
+}
+
+.connect-section-notify-description {
+  .connect-section-description;
 }

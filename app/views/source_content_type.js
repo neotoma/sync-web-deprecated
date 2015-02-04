@@ -1,6 +1,11 @@
 App.SourceContentTypeView = Ember.View.extend({
   templateName: 'source_content_type',
   classNames: ['content-type'],
+  classNameBindings: ['pending:pending'],
+
+  pending: function() {
+    return this.get('contentType.status.hasItemsPending');
+  }.property('contentType.status.hasItemsPending'),
 
   syncBarStyle: function() {
     var percentage = 0;
@@ -30,7 +35,7 @@ App.SourceContentTypeView = Ember.View.extend({
 
   totalItemsSyncedPercentage: function() {
     if (this.get('contentType.status.totalItemsSynced') && this.get('contentType.status.totalItemsAvailable')) {
-      return Math.ceil(this.get('contentType.status.totalItemsSynced') / this.get('contentType.status.totalItemsAvailable') * 100) + '%';
+      return this.get('contentType.percentageItemsSynced') + '%';
     } else {
       return '0%';
     }

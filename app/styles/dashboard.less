@@ -6,14 +6,51 @@ body.dashboard {
 
     .source {
       text-align: left;
+      padding: 3.125em;
+
+      @media @mobile {
+        padding: 0;
+      }
+
+      &:not(.connect) {
+        @media @mobile {
+          margin-bottom: 2em;
+        }
+      }
 
       .content-type {
-        margin-bottom: 2em;
+        margin: 1em 0 2em 0;
 
-        .spinner {
+        @media @mobile {
+          margin-bottom: 1.5em;
+        }
+
+        .content-type-sync-spinner {
+          opacity: 0;
+          font-size: 5px;
           position: absolute;
-          left: 0.6em;
-          top: 50%;
+          text-indent: -9999em;
+          border-top: 0.6em solid #f5f6f7;
+          border-right: 0.6em solid #f5f6f7;
+          border-bottom: 0.6em solid #f5f6f7;
+          border-left: 0.6em solid #cacbcc;
+          animation: spin 0.8s infinite linear;
+          transition: opacity @transition;
+        }
+
+        .content-type-sync-spinner,
+        .content-type-sync-spinner:after {
+          top: 1.2em;
+          left: -6em;
+          margin-left: 1em;
+          border-radius: 50%;
+          width: 3em;
+          height: 3em;
+
+          @media @mobile {
+            right: 0;
+            left: inherit;
+          }
         }
 
         .content-type-sync-bar {
@@ -22,7 +59,7 @@ body.dashboard {
           height: 1.875em;
           overflow: hidden;
           white-space: nowrap;
-          background: @dark-background-color;
+          background: #f5f6f7;
         }
 
         .content-type-sync-percentage {
@@ -46,6 +83,38 @@ body.dashboard {
         .content-type-sync-status {
           margin-top: 1em;
           font-size: 0.875em;
+
+          div {
+            display: inline;
+
+            @media @mobile {
+              display: block;
+            }
+          }
+
+          span {
+            @media @mobile {
+              display: none;
+            }
+          }
+        }
+
+        &.pending {
+          .content-type-sync-spinner {
+            opacity: 1;
+          }
+
+          .content-type-sync-bar {
+            background: linear-gradient(270deg, #f5f6f7, #fbfbfb);
+            background-size: 400% 400%;
+            animation: cycleGradient @transition infinite;
+          }
+
+          .content-type-sync-progress-bar {
+            background: linear-gradient(270deg, #09D26F, #0add75);
+            background-size: 400% 400%;
+            animation: cycleGradient @transition infinite;
+          }
         }
       }
     }
