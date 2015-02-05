@@ -9,15 +9,7 @@ App.Source = DS.Model.extend({
     return env.ASHEVILLE_WEB_ADAPTER_HOST + this.get('logoGlyphPath');
   }.property('logoGlyphPath'),
 
-  totalContentTypes: function() {
-    return this.get('contentTypes.length');
-	}.property('contentTypes.@each'),
-
   authed: function() {
     return (this.get('userSourceAuths.length'));
-  }.property('userSourceAuths.@each'),
-
-  userSourceAuth: function() {
-    return this.get('userSourceAuths.firstObject');
   }.property('userSourceAuths.@each')
 });

@@ -42,6 +42,11 @@ App.ApplicationAdapter = DS.RESTAdapter.extend({
   namespace:  env.ASHEVILLE_WEB_ADAPTER_NAMESPACE
 });
 
+App.ObjectController = Ember.ObjectController.extend({
+  needs: ['session'],
+  sessionUser: Ember.computed.alias('controllers.session.user')
+});
+
 Ember.Application.initializer({
   name: 'session',
 

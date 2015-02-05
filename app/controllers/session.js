@@ -2,10 +2,10 @@ App.SessionController = Ember.Controller.extend({
   user: Ember.computed.alias('model.users.firstObject'),
 
   populate: function() {
-    var controller = this;
+    var sessionController = this;
 
     return this.store.find('session').then(function(sessions) {
-      controller.set('model', sessions.get('firstObject'));
+      sessionController.set('model', sessions.get('firstObject'));
     });
   },
 

@@ -7,37 +7,19 @@ App.SourceContentTypeView = Ember.View.extend({
     return this.get('contentType.status.hasItemsPending');
   }.property('contentType.status.hasItemsPending'),
 
-  syncBarStyle: function() {
-    var percentage = 0;
+  totalItemsSyncedPercentage: function() {
+    return (this.get('contentType.percentageItemsSynced')) ? this.get('contentType.percentageItemsSynced') + '%' : '0%';
+  }.property('contentType.percentageItemsSynced'),
 
-    if (this.get('contentType.status.totalItemsSynced')) {
-      percentage = Math.floor(this.get('contentType.status.totalItemsSynced') / this.get('contentType.status.totalItemsAvailable') * 100);
-    }
-    
-    return 'width: ' + percentage + '%';
+  syncBarStyle: function() {
+    return 'width: ' + this.get('totalItemsSyncedPercentage') + '%';
   }.property('contentType.status.totalItemsSynced', 'contentType.status.totalItemsAvailable'),
 
   totalItemsSynced: function() {
-    if (this.get('contentType.status.totalItemsSynced') >= 0) {
-      return this.get('contentType.status.totalItemsSynced');
-    } else {
-      return 0;
-    }
+    return (this.get('contentType.status.totalItemsSynced') >= 0) ? this.get('contentType.status.totalItemsSynced') : 0;
   }.property('contentType.status.totalItemsSynced'),
 
   totalItemsAvailable: function() {
-    if (this.get('contentType.status.totalItemsAvailable') >= 0) {
-      return this.get('contentType.status.totalItemsAvailable');
-    } else {
-      return 0;
-    }
-  }.property('contentType.status.totalItemsAvailable'),
-
-  totalItemsSyncedPercentage: function() {
-    if (this.get('contentType.status.totalItemsSynced') && this.get('contentType.status.totalItemsAvailable')) {
-      return this.get('contentType.percentageItemsSynced') + '%';
-    } else {
-      return '0%';
-    }
-  }.property('contentType.status.totalItemsSynced', 'contentType.status.totalItemsAvailable')
+    return (this.get('contentType.status.totalItemsAvailable') >= 0) ? this.get('contentType.status.totalItemsAvailable') : 0;
+  }.property('contentType.status.totalItemsAvailable')
 });

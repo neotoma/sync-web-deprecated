@@ -17,6 +17,6 @@ App.Status = DS.Model.extend({
   }.property('totalItemsPending'),
 
   percentageItemsSynced: function() {
-    return Math.ceil(this.get('totalItemsSynced') / this.get('totalItemsAvailable') * 100);
+    return Math.floor(this.get('totalItemsSynced') / this.get('totalItemsAvailable') * 100);
   }.property('totalItemsSynced', 'totalItemsAvailable')
 });

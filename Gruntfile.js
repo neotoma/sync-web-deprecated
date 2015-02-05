@@ -14,6 +14,7 @@ module.exports = function(grunt) {
       'build/**/*.js'
     ],
     style_source_files: [
+      '!app/styles/styles.less',
       'app/styles/imports.less',
       'app/styles/reset.less',
       'app/styles/breakpoints.less',

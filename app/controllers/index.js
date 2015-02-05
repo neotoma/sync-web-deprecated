@@ -1,3 +1,2 @@
-App.IndexController = Ember.ObjectController.extend({
-  needs: ['session']
+App.IndexController = App.ObjectController.extend({
 });
