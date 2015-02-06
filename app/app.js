@@ -38,7 +38,7 @@ $.ajaxSetup({
 });
 
 App.ApplicationAdapter = DS.RESTAdapter.extend({
-  host:       env.ASHEVILLE_WEB_ADAPTER_HOST,
+  host:       'https://WEB_ADAPTER_HOST',
   namespace:  env.ASHEVILLE_WEB_ADAPTER_NAMESPACE
 });
 

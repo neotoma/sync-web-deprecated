@@ -75,6 +75,28 @@ module.exports = function(grunt) {
       }
     },
     'string-replace': {
+      web_adapter_host: {
+        files: {
+          'build/app/app.js' : 'build/app/app.js' 
+        },
+        options: {
+          replacements: [{
+            pattern: /WEB_ADAPTER_HOST/g,
+            replacement: process.env['ASHEVILLE_WEB_ADAPTER_HOST']
+          }]
+        }
+      },
+      prod_web_adapter_host: {
+        files: {
+          'build/app/app.js' : 'build/app/app.js' 
+        },
+        options: {
+          replacements: [{
+            pattern: /WEB_ADAPTER_HOST/g,
+            replacement: process.env['ASHEVILLE_WEB_DEPLOY_ADAPTER_HOST']
+          }]
+        }
+      },
       env_vars: {
         files: {
           'build/' : '<%= app_source_files %>' 
@@ -180,12 +202,35 @@ module.exports = function(grunt) {
         tasks: ['prod-build']
       }
     },
-    githubPages: {
-      deploy: {
+    rsync: {
+      options: {
+        dest: process.env.ASHEVILLE_WEB_DEPLOY_HOST_DIR,
+        host: process.env.ASHEVILLE_WEB_DEPLOY_HOST_USERNAME + '@' + process.env.ASHEVILLE_WEB_DEPLOY_HOST
+      },
+      app: {
         options: {
-          commitMessage: 'Merge latest from master'
-        },
-        src: 'public'
+          src: ['app.js', 'package.json']
+        }
+      },
+      main: {
+        options: { 
+          recursive: true,
+          src: './public'
+        }
+      }
+    },
+    sshexec: {
+      options: {
+        host: process.env.ASHEVILLE_WEB_DEPLOY_HOST,
+        port: 22,
+        username: process.env.ASHEVILLE_WEB_DEPLOY_HOST_USERNAME,
+        agent: process.env.SSH_AUTH_SOCK
+      },
+      npmInstall: {
+        command: 'cd ' + process.env.ASHEVILLE_WEB_DEPLOY_HOST_DIR + ' && npm install --production'
+      },
+      foreverRestartAll: {
+        command: 'cd ' + process.env.ASHEVILLE_WEB_DEPLOY_HOST_DIR + ' && forever restartall'
       }
     }
   });
@@ -197,7 +242,8 @@ module.exports = function(grunt) {
     'clean:pre',
     'bower_concat',
     'ember_handlebars',
-    'string-replace',
+    'string-replace:env_vars',
+    'string-replace:web_adapter_host',
     'concat:dev',
     'less:dev',
     'autoprefixer',
@@ -217,7 +263,8 @@ module.exports = function(grunt) {
     'clean:pre', 
     'bower_concat',
     'ember_handlebars',
-    'string-replace',
+    'string-replace:env_vars',
+    'string-replace:prod_web_adapter_host',
     'uglify:prod',
     'less:prod',
     'autoprefixer',
@@ -232,9 +279,10 @@ module.exports = function(grunt) {
     'watch:prod'
   ]);
 
-  // Deploy production build to GitHub Pages
+  // Deploy production build
   grunt.registerTask('deploy', [
     'prod-build',
-    'githubPages:deploy'
+    'rsync',
+    'sshexec'
   ]);
 };
