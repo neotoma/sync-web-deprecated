@@ -77,18 +77,18 @@ module.exports = function(grunt) {
     'string-replace': {
       web_adapter_host: {
         files: {
-          'build/app/app.js' : 'build/app/app.js' 
+          'build/app/' : 'build/app/**' 
         },
         options: {
           replacements: [{
             pattern: /WEB_ADAPTER_HOST/g,
             replacement: process.env['ASHEVILLE_WEB_ADAPTER_HOST']
           }]
-        }
+        } 
       },
       prod_web_adapter_host: {
         files: {
-          'build/app/app.js' : 'build/app/app.js' 
+          'build/app/' : 'build/app/**' 
         },
         options: {
           replacements: [{
@@ -181,11 +181,10 @@ module.exports = function(grunt) {
         dest: 'public/app.css'
       }
     },
-    connect: {
-      all: {
+    express: {
+      main: {
         options: {
-          port: 9091,
-          base: 'public'
+          script: 'app.js'
         }
       }
     },
@@ -230,7 +229,7 @@ module.exports = function(grunt) {
         command: 'cd ' + process.env.ASHEVILLE_WEB_DEPLOY_HOST_DIR + ' && npm install --production'
       },
       foreverRestartAll: {
-        command: 'cd ' + process.env.ASHEVILLE_WEB_DEPLOY_HOST_DIR + ' && forever restartall'
+        command: 'cd ' + process.env.ASHEVILLE_WEB_DEPLOY_HOST_DIR + ' && forever restart app.js'
       }
     }
   });
@@ -254,7 +253,7 @@ module.exports = function(grunt) {
   // Build app and run local web server for development
   grunt.registerTask('dev', [
     'dev-build', 
-    'connect', 
+    'express',
     'watch:dev'
   ]);
 
@@ -275,7 +274,7 @@ module.exports = function(grunt) {
   // Build app and run local web server for production
   grunt.registerTask('prod', [
     'prod-build',
-    'connect',
+    'express',
     'watch:prod'
   ]);
 

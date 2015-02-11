@@ -6,7 +6,7 @@ App.Source = DS.Model.extend({
   userSourceAuths:      DS.hasMany('userSourceAuth'),
 
   logoGlyphUrl: function() {
-    return env.ASHEVILLE_WEB_ADAPTER_HOST + this.get('logoGlyphPath');
+    return 'https://WEB_ADAPTER_HOST' + this.get('logoGlyphPath');
   }.property('logoGlyphPath'),
 
   authed: function() {

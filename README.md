@@ -10,26 +10,34 @@ Product initiatives for this app are organized on the [Asheville Product Sprints
 
 ## Environment Variables
 
-The application uses the following environment variables for its configuration during the build process.
+The application requires SSL and uses the following environment variables for its configuration during build, testing, and deployment processes.
 
-#### Required
+#### Required for Local Development
 
 ```
-export ASHEVILLE_WEB_ADAPTER_HOST=XXXX
+export ASHEVILLE_WEB_PORT=<port on which to run app locally>
+export ASHEVILLE_WEB_ADAPTER_HOST=<host for the asheville sync service for local app>
+export ASHEVILLE_WEB_SSL_KEY=<path to file with SSL key>
+export ASHEVILLE_WEB_SSL_CRT=<path to file with SSL certificate>
 ```
 
-Set the host for the Asheville Sync service here (see Ember's [DS.RESTAdapter](http://emberjs.com/api/data/classes/DS.RESTAdapter.html#toc_host-customization) documentation).
+#### Required for Remote Deployment
+
+```
+export ASHEVILLE_WEB_DEPLOY_ADAPTER_HOST=<host for the asheville sync service for deployed app>
+export ASHEVILLE_WEB_DEPLOY_HOST=<host for deploying app>
+export ASHEVILLE_WEB_DEPLOY_HOST_USERNAME=<host username for deploying app>
+export ASHEVILLE_WEB_DEPLOY_HOST_DIR=<host directory for deploying app>
+```
 
 #### Optional
 
 ```
-export ASHEVILLE_WEB_ADAPTER_NAMESPACE=XXXX
-export ASHEVILLE_WEB_LOG_TRANSITIONS=XXXX
-export ASHEVILLE_WEB_LOG_TRANSITIONS_INTERNAL=XXXX
-export ASHEVILLE_WEB_LOG_RESOLVER=XXXX
+export ASHEVILLE_WEB_ADAPTER_NAMESPACE=<namespace if sync service is namespaced with a base path>
+export ASHEVILLE_WEB_LOG_TRANSITIONS=<whether to log ember transitions>
+export ASHEVILLE_WEB_LOG_TRANSITIONS_INTERNAL=<whether to log ember internal transitions>
+export ASHEVILLE_WEB_LOG_RESOLVER=<whether to log ember resolver>
 ```
-
-Set an adapter namespace here if Asheville Sync is namespaced with a base path at the host above (see Ember's [Endpoint Path Customization](http://emberjs.com/api/data/classes/DS.RESTAdapter.html#toc_endpoint-path-customization) documentation).
 
 Set any of these log variables to `true` to enable more detailed Ember logging in the console (see Ember's [Log Router Transitions](http://emberjs.com/guides/understanding-ember/debugging/#toc_log-router-transitions) and [Turn on Resolver Resolution Logging](http://emberjs.com/guides/understanding-ember/debugging/#toc_turn-on-resolver-resolution-logging) documentation).
 
@@ -52,4 +60,4 @@ Then depending on what you want to do:
 
 - **Production**: run `grunt prod` to build the app and start a web server to run it locally for manual production testing purposes. See output in the console for which address and port to use.
 
-- **Deployment**: run `grunt deploy` to build the app for production then commit and push it to the remote `gh-pages` branch for hosting on GitHub Pages. **Important:** You must [prepare the repository](https://github.com/thanpolas/grunt-github-pages#preparing-your-repository) for this branch before deployment.
+- **Deployment**: run `grunt deploy` to build the app for production and push it to a remote host.

@@ -5,7 +5,7 @@ var app = express();
 
 app.use(express.static(__dirname + '/public'));
 
-app.port = 443;
+app.port = process.env.ASHEVILLE_WEB_PORT;
 
 https.createServer({
   key: fs.readFileSync(process.env.ASHEVILLE_WEB_SSL_KEY, 'utf8'),

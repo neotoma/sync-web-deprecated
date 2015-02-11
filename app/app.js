@@ -62,4 +62,4 @@ Ember.Application.initializer({
   }
 });
 
-var socket = io.connect(env.ASHEVILLE_WEB_ADAPTER_HOST);
+var socket = io.connect('https://WEB_ADAPTER_HOST');
