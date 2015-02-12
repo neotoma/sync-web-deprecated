@@ -2,46 +2,57 @@
 
 @max-content-width: 62em;
 
-@default-font: 'Lato-Light', sans-serif;
-@bold-font: 'Lato', sans-serif;
-@bolder-font: 'Lato-Bold', sans-serif;
-@italic-font: 'Lato-LightItalic', sans-serif;
+.font {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+.font-bold {
+  .font;
+  font-weight: 400;
+}
+
+.font-bolder {
+  .font;
+  font-weight: 700;
+}
 
 @default-color: #2A2A2A;
 @light-color: #767676;
 @link-color: #3E96F9;
-@link-visited-color: #3E96F9;
 @border-color: #EAEAEA;
 @light-background-color: #fbfcfd;
 @dark-background-color: #f5f6f7;
 
-@animation-length: 1s;
+@green: #38df77;
+
+@animation-length: 0.5s;
 @transition: @animation-length ease;
 
 .text {
-  font-family: @default-font;
+  .font;
   color: @default-color;
   line-height: 1.5em;
 }
 
 .bold {
-  font-family: @bolder-font;
+  .font-bold;
 }
 
 .italic {
-  font-family: @italic-font;
+  font-style: italic;
 }
 
 .link {
+  .font-bold;
   cursor: pointer;
   color: @link-color;
-  font-family: @bold-font;
   transition: color @transition;
 }
 
-.link-visited {
+.link-active {
   .link;
-  color: @link-visited-color;
+  color: @green;
 }
 
 .app {
@@ -58,7 +69,6 @@
   text-align: center;
   transition: height @transition, padding @transition, opacity @transition;
   overflow: hidden;
-  margin-bottom: 1.5625em;
 
   @media @mobile {
     margin-bottom: 0;
@@ -67,7 +77,6 @@
 
 .app-nav-interior {
   position: relative;
-  max-width: @max-content-width;
   height: 100%;
   padding: 0.7em;
   text-align: center;
@@ -102,6 +111,10 @@
   color: white;
 }
 
+.app-nav-link-active {
+  border: 1px dotted white;
+}
+
 .app-nav-image {
   height: 100%;
 }
@@ -110,7 +123,6 @@
   padding-bottom: 4em;
   text-align: left;
   animation: fadeIn @animation-length;
-  max-width: @max-content-width;
   margin: auto;
 
   @media @mobile {
@@ -120,13 +132,15 @@
 
 .banner {
   .text;
+  .font-bold;
   font-size: 3em;
   text-align: center;
-  margin-bottom: 0.666em;
+  margin: 0.666em auto 0.666em auto;
+  color: black;
 
   @media @mobile {
     font-size: 1.9em;
-    margin-bottom: 0.75em;
+    margin: 0 auto 0.75em auto;
   }
 }
 
@@ -147,11 +161,11 @@
   .text;
   position: relative;
   font-size: 3em;
-  font-family: @bold-font;
   margin-bottom: 0.5em;
   color: black;
 
   @media @mobile {
+    .font-bold;
     font-size: 1.4em;
   }
 }
@@ -192,8 +206,8 @@
 
 .header-small {
   .text;
+  .font-bold;
   font-size: 1em;
-  font-weight: bold;
   margin-bottom: 0.5em;
 }
 
@@ -216,41 +230,20 @@
 
 .button {
   .text;
+  .font-bold;
   background: #3E96F9;
   color: white;
-  border-radius: 0.3em;
   text-align: center;
   letter-spacing: 0.05em;
   padding: 0.7em 1em 0.7em 1em;
   cursor: default;
   display: inline-block;
   transition: background @transition, border @transition, font-weight @transition, opacity @transition;
+  cursor: pointer;
 
-  &:focus {
-    outline-width: 0; 
-  }
-
-  &:not(:disabled) {
-    background: #3e96f9;
-    border: 1px solid #3e96f9;
-    cursor: pointer;
-    font-family: @bold-font;
-
-    &:hover {
-      background: #51a3ff;
-    }
-
-    &:active {
-      background: #398ae5;
-    }
-  }
-
-  &:disabled {
-    opacity: .5;
-  }
-
-  &.large {
-    font-size: 1.4em;
+  &:hover, &:focus {
+    outline-width: 0;
+    background: @green;
   }
 }
 
@@ -272,6 +265,10 @@
 
 .fine-print-link {
   color: @default-color;
+}
+
+.fine-print-link-active {
+  .link-active;
 }
 
 .form {

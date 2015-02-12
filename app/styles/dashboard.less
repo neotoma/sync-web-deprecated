@@ -2,10 +2,7 @@
 
 body.dashboard {
   #app-main {
-    text-align: center;
-
     .source {
-      text-align: left;
       padding: 3.125em;
 
       @media @mobile {
@@ -15,6 +12,13 @@ body.dashboard {
       &:not(.connect) {
         @media @mobile {
           margin-bottom: 2em;
+        }
+      }
+
+      &.connect {
+        @media @large-desktop {
+          width: 50%;
+          display: inline-block;
         }
       }
 

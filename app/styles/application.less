@@ -66,20 +66,23 @@ body>.ember-view {
       .bold;
     }
 
-    a, a img { 
+    a, a:visited, a img { 
       .link;
     }
 
-    a:visited {
-      .link-visited;
+    a:hover, a:focus {
+      .link-active;
     }
-
 
     .fine-print {
       .fine-print;
 
       a {
         .fine-print-link;
+
+        &:hover, &:focus {
+          .fine-print-link-active;
+        }
       }
     }
 
