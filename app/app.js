@@ -9,6 +9,10 @@ App.Router.map(function() {
   this.route('dashboard');
 });
 
+App.Router.reopen({ 
+  location: 'history'
+});
+
 Ember.Route.reopen({
   afterModel: function() {
     window.scrollTo(0, 0);
