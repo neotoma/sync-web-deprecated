@@ -2,7 +2,10 @@ var express = require('express');
 var http = require('http');
 var https = require('https');
 var fs = require('fs');
+var compression = require('compression');
 var app = express();
+
+app.use(compression());
 
 app.use(function(req, res, next) {
   if(!req.secure) {
