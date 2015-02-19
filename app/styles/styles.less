@@ -44,15 +44,19 @@
 }
 
 .link {
-  .font-bold;
+  .bold;
   cursor: pointer;
-  color: @link-color;
-  transition: color @transition;
+  color: @default-color;
+  background: #f3f3f3;
+  padding: 0.2em 0.3em 0.3em 0.3em;
+  transition: background @transition, color @transition;
 }
 
 .link-active {
   .link;
-  color: @green;
+  background: #c2f2d4;
+  color: #02461c;
+  z-index: 10;
 }
 
 .app {
@@ -109,6 +113,9 @@
   .link;
   height: 100%;
   color: white;
+  background: none;
+  display: block;
+  padding: 0;
 }
 
 .app-nav-link-active {
@@ -116,6 +123,7 @@
 }
 
 .app-nav-image {
+  cursor: pointer;
   height: 100%;
 }
 
@@ -231,7 +239,7 @@
 .button {
   .text;
   .font-bold;
-  background: #3E96F9;
+  background: @link-color;
   color: white;
   text-align: center;
   letter-spacing: 0.05em;
@@ -264,7 +272,6 @@
 }
 
 .fine-print-link {
-  color: @default-color;
 }
 
 .fine-print-link-active {
