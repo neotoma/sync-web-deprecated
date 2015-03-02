@@ -23,7 +23,20 @@ App.DashboardRoute = App.AuthenticatedRoute.extend({
 
     var store = this.store;
     socket.on('statusesUpdate', function(data) {
-      store.pushPayload('status', data);
+      var statusesPayload = {
+        statuses: data.statuses
+      };
+
+      var itemsPayload = {
+        items: data.items
+      };
+
+      var lastItem = store.all('item').get('lastObject');
+      var newItem = store.push('item', itemsPayload.items[0]);
+
+      if (!lastItem || lastItem.get('syncVerifiedAt') < newItem.get('syncVerifiedAt')) {
+        store.pushPayload('status', statusesPayload);
+      }
     });
   }
 });

@@ -7,8 +7,8 @@ App.Item = DS.Model.extend({
   path:                 DS.attr('string'),
   description:          DS.attr('string'),
   error:                DS.attr('string'),
+  storage:              DS.attr('string'),
   user:                 DS.belongsTo('user'),
-  storage:              DS.belongsTo('storage'),
   source:               DS.belongsTo('source'),
   contentType:          DS.belongsTo('contentType'),
   status:               DS.hasMany('status')
