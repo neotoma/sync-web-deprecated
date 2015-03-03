@@ -19,13 +19,12 @@ App.SourceNotifyButtonView = Ember.View.extend({
         event: 'source-support'
       });
 
-      notificationRequest.save().then(function(notificationRequest) {
-        source.set('notificationRequest', notificationRequest);
-      });
-    } else {
-      source.get('notificationRequest').destroyRecord().then(function() {
-        source.set('notificationRequest', null);
-      });
+      source.set('notificationRequest', notificationRequest);
+
+      notificationRequest.save();
+    } else if(!this.get('source.notificationRequest.isSaving')) {
+      source.get('notificationRequest').destroyRecord();
+      source.set('notificationRequest', null);
     }
   }
 })
