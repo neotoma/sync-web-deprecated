@@ -70,20 +70,16 @@ body>.ember-view {
       .link;
     }
 
-    a:hover, a:focus {
-      .link-active;
+    a:hover {
+      .link-hover;
+    }
+
+    a:focus {
+      .link-focus;
     }
 
     .fine-print {
       .fine-print;
-
-      a {
-        .fine-print-link;
-
-        &:hover, &:focus {
-          .fine-print-link-active;
-        }
-      }
     }
 
     hr { 
@@ -105,6 +101,10 @@ body>.ember-view {
 
           h1 {
             .connect-section-name;
+
+            .description {
+              .connect-section-description;
+            }
           }
 
           .button-area {
@@ -125,10 +125,6 @@ body>.ember-view {
 
           button {
             .connect-section-button
-          }
-
-          .description {
-            .connect-section-description;
           }
         }
       }
@@ -154,6 +150,34 @@ body>.ember-view {
 
     button {
       .button;
+
+      &.enabled {
+        .button-enabled;
+
+        &:hover {
+          .button-enabled-hover;
+        }
+
+        &:focus {
+          .button-enabled-focus;
+
+          &:hover {
+            .button-enabled-focus-hover;
+          }
+        }
+      }
+
+      &:hover {
+        .button-hover;
+      }
+
+      &:focus {
+        .button-focus;
+
+        &:hover {
+          .button-focus-hover;
+        }
+      }
     }
   }
 }

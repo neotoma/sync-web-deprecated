@@ -4,6 +4,9 @@
       <img {{bind-attr src=source.logoGlyphUrl}} />
     </div>
     {{source.name}}
+    {{#unless source.enabled}}
+      <div class="description">Not Yet Supported</div>
+    {{/unless}}
   </h1>
 
   {{#if source.enabled}}
@@ -19,7 +22,6 @@
   {{else}}
     <div class="button-area notify">
       {{view "SourceNotifyButton" source=source}}
-      <div class="description">Not Yet Supported</div>
     </div>
   {{/if}}
 </div>

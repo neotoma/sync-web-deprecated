@@ -20,11 +20,14 @@
 @default-color: #2A2A2A;
 @light-color: #767676;
 @link-color: #3E96F9;
+@dark-link-color: #1770d4;
 @border-color: #EAEAEA;
 @light-background-color: #fbfcfd;
 @dark-background-color: #f5f6f7;
 
 @green: #38df77;
+@dark-green: #28ce66;
+@very-dark-green: #14ba53;
 
 @animation-length: 0.5s;
 @transition: @animation-length ease;
@@ -46,14 +49,26 @@
 .link {
   .bold;
   cursor: pointer;
-  color: @default-color;
+  color: @link-color;
   transition: color @transition;
 }
 
-.link-active {
+.link-focus {
+  .link;
+  color: @dark-link-color;
+
+  @media @mobile {
+    color: @link-color;
+  }
+}
+
+.link-hover {
   .link;
   color: @green;
-  z-index: 10;
+
+  @media @mobile {
+    color: @link-color;
+  }
 }
 
 .app {
@@ -111,7 +126,7 @@
   height: 100%;
   color: white;
   background: none;
-  display: block;
+  display: inline-block;
   padding: 0;
 }
 
@@ -246,10 +261,29 @@
   transition: background @transition, border @transition, font-weight @transition, opacity @transition;
   cursor: pointer;
   border-radius: 0.2em;
+}
 
-  &:hover, &:focus {
-    outline-width: 0;
-    background: @green;
+.button-hover {
+  background: @green;
+
+  @media @mobile {
+    background: @link-color;
+  }
+}
+
+.button-focus {
+  background: @dark-link-color;
+
+  @media @mobile {
+    background: @link-color;
+  }
+}
+
+.button-focus-hover {
+  background: @green;
+
+  @media @mobile {
+    background: @link-color;
   }
 }
 
@@ -257,6 +291,34 @@
   .button;
   font-size: 1.4em;
   padding: 1em 1.5em;
+}
+
+.button-enabled {
+  background: @dark-green;
+}
+
+.button-enabled-focus {
+  background: @very-dark-green;
+
+  @media @mobile {
+    background: @dark-green;
+  }
+}
+
+.button-enabled-focus-hover {
+  background: @dark-green;
+
+  @media @mobile {
+    background: @dark-green;
+  }
+}
+
+.button-enabled-hover {
+  background: @dark-green;
+
+  @media @mobile {
+    background: @dark-green;
+  }
 }
 
 .fine-print {
@@ -267,13 +329,6 @@
     padding: 2em;
     font-size: 0.8em;
   }
-}
-
-.fine-print-link {
-}
-
-.fine-print-link-active {
-  .link-active;
 }
 
 .form {
@@ -353,8 +408,6 @@
   border-top: 0;
 }
 
-
-
 /* Connect Section */
 
 @connect-section-button-area-width: 8em;
@@ -384,6 +437,21 @@
   }
 }
 
+.connect-section-description {
+  .italic;
+  color: @light-color;
+  font-size: 0.3em;
+  line-height: 1em;
+  margin-left: 0.2em;
+
+  @media @mobile {
+    .font;
+    font-size: 0.6em;
+    margin-top: 0.2em;
+    margin-left: 0;
+  }
+}
+
 .connect-section-button-area {
   position: absolute;
   top: 50%;
@@ -405,18 +473,10 @@
   }
 }
 
-.connect-section-description {
-  .italic;
-  color: @light-color;
-  font-size: 0.875em;
-}
-
 .connect-section-notify-button-area {
 }
 
 .connect-section-notify-button {
-  display: none;
-  margin-bottom: 1em;
 }
 
 .connect-section-notify-description {

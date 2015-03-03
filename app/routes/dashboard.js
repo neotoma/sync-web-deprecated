@@ -2,11 +2,22 @@ App.DashboardRoute = App.AuthenticatedRoute.extend({
   model: function() {
     return Ember.RSVP.hash({
       sources: this.store.find('source'),
-      statuses: this.store.find('status')
+      statuses: this.store.find('status'),
+      notificationRequests: this.store.find('notificationRequest')
     });
   },
 
   setupController: function(controller, model) {
+    // Associated notification requests with relevant sources
+    model.notificationRequests.forEach(function(notificationRequest) {
+      model.sources.forEach(function(source) {
+        if (notificationRequest.get('source') == source) {
+          source.set('notificationRequest', notificationRequest);
+          return;
+        }
+      });
+    });
+
     // Associated statuses with relevant content types
     model.statuses.forEach(function(status) {
       model.sources.forEach(function(source) {
