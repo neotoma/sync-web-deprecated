@@ -25,7 +25,8 @@ app.http_port = process.env.ASHEVILLE_WEB_HTTP_PORT;
 
 https.createServer({
   key: fs.readFileSync(process.env.ASHEVILLE_WEB_SSL_KEY, 'utf8'),
-  cert: fs.readFileSync(process.env.ASHEVILLE_WEB_SSL_CRT, 'utf8')
+  cert: fs.readFileSync(process.env.ASHEVILLE_WEB_SSL_CRT, 'utf8'),
+  ca: fs.readFileSync(process.env.ASHEVILLE_SYNC_SSL_INT_CRT, 'utf8')
 }, app).listen(app.https_port);
 
 http.createServer(app).listen(app.http_port);

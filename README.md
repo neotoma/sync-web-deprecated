@@ -19,6 +19,7 @@ export ASHEVILLE_WEB_PORT=<port on which to run app locally>
 export ASHEVILLE_WEB_ADAPTER_HOST=<host for the asheville sync service for local app>
 export ASHEVILLE_WEB_SSL_KEY=<path to file with SSL key>
 export ASHEVILLE_WEB_SSL_CRT=<path to file with SSL certificate>
+export ASHEVILLE_WEB_SSL_INT_CRT=<path to file with SSL intermediate CA certificate>
 ```
 
 #### Required for Remote Deployment
