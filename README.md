@@ -4,10 +4,6 @@ The app empowers someone to connect an online storage service, select the source
 
 This app is designed to work with [Asheville Sync](https://github.com/asheville/sync) for server-side data management.
 
-## Product Management
-
-Product initiatives for this app are organized on the [Asheville Product Sprints](https://trello.com/b/gN599TRG/product-sprints) board on Trello, and development tasks are organized in the [Asheville Web](https://www.pivotaltracker.com/s/projects/951914) project on Pivotal Tracker.
-
 ## Environment Variables
 
 The application requires SSL and uses the following environment variables for its configuration during build, testing, and deployment processes.
