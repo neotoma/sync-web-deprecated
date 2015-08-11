@@ -8,7 +8,7 @@ App.SourceContentTypeView = Ember.View.extend({
   }.property('contentType.status.hasItemsPending'),
 
   totalItemsSyncedPercentage: function() {
-    return (this.get('contentType.percentageItemsSynced')) ? this.get('contentType.percentageItemsSynced') + '%' : '0%';
+    return (this.get('contentType.percentageItemsSynced')) ? this.get('contentType.percentageItemsSynced') : '0';
   }.property('contentType.percentageItemsSynced'),
 
   syncBarStyle: function() {
