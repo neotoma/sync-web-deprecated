@@ -11,7 +11,8 @@ The application requires SSL and uses the following environment variables for it
 #### Required for Local Development
 
 ```
-export ASHEVILLE_WEB_PORT=<port on which to run app locally>
+export ASHEVILLE_WEB_HTTP_PORT=<http port on which to run app locally>
+export ASHEVILLE_WEB_HTTPS_PORT=<https port on which to run app locally>
 export ASHEVILLE_WEB_ADAPTER_HOST=<host for the asheville sync service for local app>
 export ASHEVILLE_WEB_SSL_KEY=<path to file with SSL key>
 export ASHEVILLE_WEB_SSL_CRT=<path to file with SSL certificate>
