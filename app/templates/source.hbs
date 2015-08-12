@@ -14,6 +14,7 @@
       {{#each contentType in view.orderedContentTypes}}
         {{view "SourceContentType" contentType=contentType}}
       {{/each}}
+      <div><a {{action "disconnect" target=view}}>Disconnect {{source.name}}</a></div>
     {{else}}
       <div class="button-area auth">
         {{view "SourceAuthButton" source=source}}

@@ -8,5 +8,13 @@ App.SourceView = Ember.View.extend({
 
   connect: function() {
     return !this.get('source.enabled') || !this.get('source.authed');
-  }.property('source.enabled', 'source.authed')
+  }.property('source.enabled', 'source.authed'),
+
+  actions: {
+    disconnect: function() {
+      if (confirm('Are you sure you want to disconnect ' + this.get('source.name') + '?')) {
+        this.get('source.userSourceAuths.firstObject').destroyRecord();
+      }
+    }
+  }
 })

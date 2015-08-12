@@ -131,7 +131,9 @@ body.dashboard {
           .content-type-sync-spinner {
             opacity: 1;
           }
+        }
 
+        &.pending.hasTotalItemsAvailable {
           .content-type-sync-bar {
             background: linear-gradient(270deg, #f5f6f7, #fbfbfb);
             background-size: 400% 400%;
@@ -142,6 +144,12 @@ body.dashboard {
             background: linear-gradient(270deg, #09D26F, #0add75);
             background-size: 400% 400%;
             animation: cycleGradient @transition infinite;
+          }
+        }
+
+        &.hasNoTotalItemsAvailable {
+          .content-type-sync-bar {
+            display: none;
           }
         }
       }
