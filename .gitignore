@@ -1,6 +1,6 @@
 *.env
+*.sublime-workspace
 .DS_Store
-web.sublime-workspace
 bower_components
 build
 node_modules
